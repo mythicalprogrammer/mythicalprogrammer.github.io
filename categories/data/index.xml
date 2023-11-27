@@ -2,20 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>data on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
-        <link>https://example.com/categories/data/</link>
+        <link>https://mythicalprogrammer.github.io/categories/data/</link>
         <description>Recent content in data on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 17 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/data/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/data/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Interesting Papers I&#39;ve read this week.</title>
+        <link>https://mythicalprogrammer.github.io/p/interesting-papers-i-ve-read-this-week/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/interesting-papers-i-ve-read-this-week/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/interesting-papers-i-ve-read-this-week/book-2304078_1920.jpg" alt="Featured image of post Interesting Papers I&#39;ve read this week." /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This week I had to study for a job interview at a pretty sweet place. So in preparation for it I’ve read up on statistics that I’ve listed on my resume. I’ve came across a few good papers and I’m just happy to have read it. Just wanted to post it here in case if I ever need a refresher on Bayesian.&lt;/p&gt;
+&lt;h2 id=&#34;basic-master-level-statistic&#34;&gt;Basic Master Level Statistic&lt;/h2&gt;
+&lt;p&gt;Introductory Mathematical Statistics Methods of Estimation and Properties of Point Estimators: Fundamental Exercises with Solutions by Dr. Olga Korosteleva&lt;/p&gt;
+&lt;p&gt;This is written by my professor and it was in a neat package of overview of what I’ve learned in my master program. It is a good refresher. There were some notes I’ve written for clarifications:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+  MLE - This selects the parameter values that make the data most probable
+&lt;/li&gt;
+&lt;li&gt;
+    Likelihood (frequentist point of view) - is a function of the parameters of a statistical model, given specific observed data.
+&lt;/li&gt;
+&lt;li&gt;
+    Method of Moments Estimators (MOM) &amp; MLE are two estimator methods to do point estimation for parameter. This is the frequentist point of view on estimating parameters which are fixed. Where as Bayesian model parameter as a random variable and not a fixed point.
+&lt;/li&gt;
+&lt;li&gt;
+    Fisher information - is a way of measuring the amount of information that an observable random variable X carries about an unknown parameter theta of a distribution models X.
+&lt;/li&gt;
+&lt;li&gt;
+    Cramer-Rao Lower Bound - expresses a lower-bound on the variance of unbiased estimators of a deterministic parameter. An unbiased estimator which achieves this lower bound is efficient.
+&lt;/li&gt;
+&lt;li&gt;
+    Sufficient Statistic - a statistic that summarize all of the information in a sample about the desired parameter. (Penn State have more clarification on this).
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bayesian-review&#34;&gt;Bayesian Review&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/1001.4656&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;On Bayesian Data Analysis by Christian P. Robert and Judith Rousseau (August 27, 2018)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Point estimation parameter vs parameter with distribution. Credible Interval vs Confidence Interval. Critiques of Bayesian and solutions.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;An Introduction to Bayesian Statistics Without Using Equations by Tomoharu Eguchi (2008)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Great visualization take on how to explain Bayesian Statistic.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/1106.2697&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;A tutorial on Bayesian nonparametric models by Samuel J. Gershman and David M. Blei (2012)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A review what I used during my time at the FDA.&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;p&gt;First picture: &lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/en/book-magnifying-glass-glass-2304078/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/en/book-magnifying-glass-glass-2304078/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Light Novel Analysis (part 1)</title>
-        <link>https://example.com/p/light-novel-analysis-part-1/</link>
+        <link>https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/</link>
         <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/light-novel-analysis-part-1/</guid>
-        <description>&lt;img src="https://example.com/p/light-novel-analysis-part-1/lightnovel.jpg" alt="Featured image of post Light Novel Analysis (part 1)" /&gt;&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.14/c3.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://example.com/js/lightnovel_novelbycountry_donut.js&#34;&gt;&lt;/script&gt;
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+        <guid>https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/lightnovel.jpg" alt="Featured image of post Light Novel Analysis (part 1)" /&gt;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I’m into light novels so I’ve decided to combine my love for data science and light novel.&lt;/p&gt;
 &lt;h1 id=&#34;information-retrieval&#34;&gt;Information Retrieval&lt;/h1&gt;
 &lt;p&gt;I started out by retrieving some data from online via scraping using &lt;a class=&#34;link&#34; href=&#34;https://scrapy.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -90,10 +132,10 @@
 &lt;/table&gt;
 &lt;p&gt;The average ratings only include novels that have at least 30 user ratings.&lt;/p&gt;
 &lt;p&gt;I did not take any other rating from other countries because there are less than 30 novels. As a statistician I feel 30 or more is a sufficient number to represent the population for each category anything smaller than is insufficient.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/light-novel-analysis-part-1/all_rating.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/all_rating.png&#34;
 	width=&#34;1134&#34;
 	height=&#34;774&#34;
-	srcset=&#34;https://example.com/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_480x0_resize_box_3.png 480w, https://example.com/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_480x0_resize_box_3.png 480w, https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;A bar graph of all ratings&#34;
@@ -196,6 +238,9 @@ Youjo Senki
 &lt;/ul&gt;
 &lt;h1 id=&#34;etc&#34;&gt;Etc..&lt;/h1&gt;
 &lt;p&gt;The novel picture is taken from google searching for a CC license image.&lt;/p&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.14/c3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;./js/lightnovel_novelbycountry_donut.js&#34;&gt;&lt;/script&gt;
 </description>
         </item>
         

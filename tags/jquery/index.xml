@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>jquery on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
+        <link>https://mythicalprogrammer.github.io/tags/jquery/</link>
+        <description>Recent content in jquery on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Fri, 17 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/jquery/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>My Web Stack in the year 2023 and the future</title>
+        <link>https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/</link>
+        <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/ghost-in-the-shell-7765132_1280.jpg" alt="Featured image of post My Web Stack in the year 2023 and the future" /&gt;&lt;h2 id=&#34;current-webstack-2023&#34;&gt;Current Webstack 2023&lt;/h2&gt;
+&lt;h3 id=&#34;elixirhttpselixir-langorg&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://elixir-lang.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Elixir&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I enjoy the programming language. It&amp;rsquo;s fun and it&amp;rsquo;s mostly complete as quoted by Jose Valim (the creator of Elixir).&lt;/p&gt;
+&lt;p&gt;There are mostly improvements for developers like debugging and bug fixes.&lt;/p&gt;
+&lt;p&gt;Jose Valim have been working hard and in a few years or so maybe we get type in Elixir. It&amp;rsquo;s not guarantee but he have been talking about his work.&lt;/p&gt;
+&lt;p&gt;One thing is there are like &lt;a class=&#34;link&#34; href=&#34;https://elixir-lang.org/install.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;three version managers&lt;/a&gt; for managing Elixir and Erlang versions now.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/asdf-vm/asdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;asdf&lt;/a&gt; - install and manage different &lt;a class=&#34;link&#34; href=&#34;https://github.com/asdf-vm/asdf-elixir&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Elixir&lt;/a&gt; and &lt;a class=&#34;link&#34; href=&#34;https://github.com/asdf-vm/asdf-erlang&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Erlang&lt;/a&gt; versions&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/taylor/kiex&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;kiex&lt;/a&gt; - install and manage different Elixir versions&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/yrashk/kerl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;kerl&lt;/a&gt; - install and manage different Erlang versions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;phoenix-frameworkhttpsphoenixframeworkorg&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://phoenixframework.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Phoenix Framework&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;It&amp;rsquo;s getting better.&lt;/p&gt;
+&lt;p&gt;Deployment is &lt;code&gt;mix release&lt;/code&gt; &lt;a class=&#34;link&#34; href=&#34;https://hexdocs.pm/mix/1.15/Mix.Tasks.Release.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;1&lt;/a&gt; instead of using &lt;a class=&#34;link&#34; href=&#34;https://github.com/edeliver/edeliver&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;edeliver&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The framework have &lt;a class=&#34;link&#34; href=&#34;https://hexdocs.pm/phoenix/mix_phx_gen_auth.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;built in log-in&lt;/a&gt; now. Back then there were so many third party log-in options. It was hectic just trying to figure it out and integrate it.&lt;/p&gt;
+&lt;h3 id=&#34;javascripthttpsdevelopermozillaorgen-usdocswebjavascriptlanguage_overview&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_overview&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Javascript&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Just plain vanilla Javascript. I am not really into front end as much and don&amp;rsquo;t have much time for it. Been doing a lot of statistic, data science, and machine learning stuff.&lt;/p&gt;
+&lt;h3 id=&#34;jqueryhttpsjquerycom&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://jquery.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;JQuery&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;m going to stick with what I know. End users doesn&amp;rsquo;t care about the tech you use. It works and I&amp;rsquo;d like to quickly bring up a project.&lt;/p&gt;
+&lt;h3 id=&#34;bootstraphttpsgetbootstrapcom&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://getbootstrap.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bootstrap&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Same reason as above.&lt;/p&gt;
+&lt;h3 id=&#34;postgresqlhttpswwwpostgresqlorg&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.postgresql.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PostgreSQL&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;PostgreSQL is still my favorite RMDB.&lt;/p&gt;
+&lt;h3 id=&#34;linux-debianhttpswwwdebianorg&#34;&gt;Linux (&lt;a class=&#34;link&#34; href=&#34;https://www.debian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Debian&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;Debian is rock solid as a server OS. It&amp;rsquo;s either this or Ubuntu. It doesn&amp;rsquo;t matter much for me.&lt;/p&gt;
+&lt;h3 id=&#34;ide&#34;&gt;IDE&lt;/h3&gt;
+&lt;h4 id=&#34;vimhttpswwwvimorg--tmuxhttpsgithubcomtmuxtmuxwiki&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.vim.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VIM&lt;/a&gt; &amp;amp; &lt;a class=&#34;link&#34; href=&#34;https://github.com/tmux/tmux/wiki&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tmux&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;These two in tandem is my go to for web development.&lt;/p&gt;
+&lt;h2 id=&#34;future&#34;&gt;Future&lt;/h2&gt;
+&lt;h3 id=&#34;tailwind-csshttpstailwindcsscom&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://tailwindcss.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tailwind CSS&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;d like to move to Tailwind CSS. They already name all the things you need and you don&amp;rsquo;t have to come up with any. It may looks ugly html but I don&amp;rsquo;t mind it. I don&amp;rsquo;t mind html tag having tons of classes.&lt;/p&gt;
+&lt;p&gt;It also remove zombie classes too. Zombie classes are classes that are defined but not used.&lt;/p&gt;
+&lt;h3 id=&#34;phoenix-liveviewhttpsgithubcomphoenixframeworkphoenix_live_view&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/phoenixframework/phoenix_live_view&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Phoenix LiveView&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Can reduce Javascript codes. I&amp;rsquo;d like to use as little javascript as possible and more Elixir instead.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s not 1.0 yet and even then it&amp;rsquo;s probably not perfect. I&amp;rsquo;ll play around just to stay ahead and keep a general idea where it&amp;rsquo;s going.&lt;/p&gt;
+&lt;h3 id=&#34;ide-1&#34;&gt;IDE&lt;/h3&gt;
+&lt;h4 id=&#34;vs-studio-codehttpscodevisualstudiocom&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://code.visualstudio.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VS Studio Code&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;It&amp;rsquo;s a good IDE for tailwind css integration (autocomplete and suggestions).&lt;/p&gt;
+&lt;h3 id=&#34;flyiohttpsflyio&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://fly.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Fly.io&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Manage server and back end for me. Less system admin tasks eating my time and it&amp;rsquo;ll let me concentrate on iterating and getting the project out.&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;At the end of the day, I am tired of trying to get the ideal tech stack and get everything perfect.&lt;/p&gt;
+&lt;p&gt;I just want to have a product out.&lt;/p&gt;
+&lt;p&gt;Get people to use it and iterate the product.&lt;/p&gt;
+&lt;p&gt;Once and if the product is flesh out then I&amp;rsquo;ll worry about perfection.&lt;/p&gt;
+&lt;p&gt;At this point my mindset is my code will be toss out within 5 years for a rewrite either adopting a new tech or update. So don&amp;rsquo;t worry about perfection.&lt;/p&gt;
+&lt;h2 id=&#34;credit&#34;&gt;Credit&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/illustrations/ghost-in-the-shell-ghost-shell-7765132/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ghost In The Shell Ghost Shell&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

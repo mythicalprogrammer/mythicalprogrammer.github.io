@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>hierarchicalmodeling on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
+        <link>https://mythicalprogrammer.github.io/tags/hierarchicalmodeling/</link>
+        <description>Recent content in hierarchicalmodeling on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Sat, 15 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/hierarchicalmodeling/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1</title>
+        <link>https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/</link>
+        <pubDate>Sat, 15 Jul 2017 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/salmon_sushi.jpg" alt="Featured image of post Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1" /&gt;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;So I’ve learned a little bit about Bayesian Hierarchical Modeling at FDA and decided to put down my thoughts and write about it more to reinforced what I’ve learned. I also want to try out some new javascript data visual libraries.&lt;/p&gt;
+&lt;p&gt;A great book I’ve found is, &lt;em&gt;“Introduction to Hierarchical Bayesian Modeling for Ecological Data”&lt;/em&gt; by Parent and Rivot [1].&lt;/p&gt;
+&lt;p&gt;While at the FDA I code my own model without using any MCMC framework and it was very slow in R. I realize I need a MCMC framework under my toolbelt. After some &lt;a class=&#34;link&#34; href=&#34;https://www.reddit.com/r/statistics/comments/5on87q/stan_vs_winbugs_a_search_for_informed_opinions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;research&lt;/a&gt; I decided on &lt;a class=&#34;link&#34; href=&#34;https://mc-stan.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stan&lt;/a&gt; using the &lt;a class=&#34;link&#34; href=&#34;https://mc-stan.org/users/interfaces/rstan&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;rstan r package&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;the-graph-not-dag-not-a-bayesian-network&#34;&gt;The Graph (not DAG; not a Bayesian network)&lt;/h1&gt;
+&lt;p&gt;Graph represents the salmon migration and birth cycle. Each edge represent a year pass. The nodes are square because they’re given. The information is given from previous knowledge.&lt;/p&gt;
+&lt;style type=&#34;text/css&#34;&gt;
+#cy {
+     height: 400px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy2, #cy3, #cy4, #cy5, #cy6, #cy7, #cy8 {
+     height: 70px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy9, #cy10, #cy11, #cy12, #cy13 {
+     height: 200px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy14 {
+     height: 300px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy15 {
+     height: 400px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy16 {
+     height: 500px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+&lt;/style&gt;
+
+&lt;div id=&#34;cy&#34;&gt;&lt;/div&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34;text-align: center&#34;&gt;Variable
+      &lt;th style=&#34;text-align: center&#34;&gt;Definition
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&#34;text-align: center&#34;&gt;Wt
+      &lt;td style=&#34;text-align: center&#34;&gt;Salmon Eggs
+    &lt;tr&gt;
+      &lt;td style=&#34;text-align: center&#34;&gt;0+
+      &lt;td style=&#34;text-align: center&#34;&gt;Young-of-the-year (hatched)
+    &lt;tr&gt;
+      &lt;td style=&#34;text-align: center&#34;&gt;PSm
+      &lt;td style=&#34;text-align: center&#34;&gt;Pre-smolts
+    &lt;tr&gt;
+      &lt;td style=&#34;text-align: center&#34;&gt;Sm1
+      &lt;td style=&#34;text-align: center&#34;&gt;Smolt after 1 year
+    &lt;tr&gt;
+      &lt;td style=&#34;text-align: center&#34;&gt;Sp1
+      &lt;td style=&#34;text-align: center&#34;&gt;Returns one year earlier than Sp2
+    &lt;tr&gt;
+      &lt;td style=&#34;text-align: center&#34;&gt;Parr1
+      &lt;td style=&#34;text-align: center&#34;&gt;Smaller juveniles left behind by Sm1
+    &lt;tr&gt;
+      &lt;td style=&#34;text-align: center&#34;&gt;Sm2
+      &lt;td style=&#34;text-align: center&#34;&gt;Smolt after 2 year
+    &lt;tr&gt;
+      &lt;td style=&#34;text-align: center&#34;&gt;Sp2
+      &lt;td style=&#34;text-align: center&#34;&gt;Returns one year after Sp1
+&lt;/table&gt;
+
+            &lt;h1 id=&#34;the-models---introducing-probability-into-the-graph&#34;&gt;The Models - Introducing Probability into the Graph&lt;/h1&gt;
+            &lt;p&gt;We’re going to take the graph that represent Salmon’s migration cycle and introduce uncertainty to it (model it via probability). By doing this we create a new graph that is complete different from the Salmon’s migration cycle graph. It is a graph base on probability view.
+            &lt;p&gt;We go through each square node and one by one apply a model and probability to it.
+            &lt;p&gt;Model is time base, &lt;em&gt;t&lt;/em&gt; will represent a particular year.
+            
+&lt;ul&gt;
+              &lt;li&gt;Sp &lt;sub&gt;t&lt;/sub&gt; = Sp1 &lt;sub&gt;t&lt;/sub&gt; + Sp2 &lt;sub&gt;t&lt;/sub&gt; = # of spawners at t-th year
+              &lt;li&gt;W &lt;sub&gt;t&lt;/sub&gt; = # of eggs spawned by the adults returning in year t
+              &lt;li&gt;0+ &lt;sub&gt;t&lt;/sub&gt; = Young-of-the-year at t-th year
+              &lt;li&gt;PSm &lt;sub&gt;t&lt;/sub&gt; = pre-smolts at t-th year
+              &lt;li&gt;Sm1 &lt;sub&gt;t&lt;/sub&gt; = 1+ smolts (1 year to smolt) at t-th year
+              &lt;li&gt;P1 &lt;sub&gt;t&lt;/sub&gt; = Parr1 = smaller juveniles left behind by Sm1 at t-th year
+              &lt;li&gt;Sm2 &lt;sub&gt;t&lt;/sub&gt; = 2+ smolts (2 years to smolt) at t-th year
+            &lt;/ul&gt;
+            &lt;p&gt;
+              &lt;strong&gt;Spawners -&amp;gt; Eggs&lt;/strong&gt;
+            &lt;div id=&#34;cy2&#34;&gt;&lt;/div&gt;
+            &lt;p&gt;W &lt;sub&gt;t&lt;/sub&gt; = Sp &lt;sub&gt;t&lt;/sub&gt; ⋅ P_f ⋅ fec
+            &lt;ul&gt;
+              &lt;li&gt;W &lt;sub&gt;t&lt;/sub&gt; = # of eggs spawned by the adults returning in year t
+              &lt;li&gt;Sp &lt;sub&gt;t&lt;/sub&gt; = # of spawners = Sp1 + Sp2
+              &lt;li&gt;P_f = proportion of females
+              &lt;li&gt;fec = mean of fecundity (fertility)
+            &lt;/ul&gt;
+            &lt;p&gt;
+              &lt;strong&gt;Eggs -&amp;gt; 0+ juveniles&lt;/strong&gt;
+            &lt;div id=&#34;cy3&#34;&gt;&lt;/div&gt;
+            &lt;p&gt;This is Ricker Cruve model with parameters (α,β) which is a classic discrete population model.
+            &lt;p&gt;0+&lt;sub&gt;t+1&lt;/sub&gt; = α ⋅ W&lt;sub&gt;t&lt;/sub&gt; ⋅ e&lt;sup&gt;-β ⋅ W&lt;sub&gt;t&lt;/sub&gt;&lt;/sup&gt; ⋅ e&lt;sup&gt;ε&lt;sub&gt;t&lt;/sub&gt;&lt;/sup&gt; where ε&lt;sub&gt;t&lt;/sub&gt; ~iid N(0, σ&lt;sup&gt;2&lt;/sup&gt;)
+        &lt;ul&gt;
+          &lt;li&gt;
+           0+&lt;sub&gt;t+1&lt;/sub&gt; = freshwater production of juveniles resulting from the reproduction of the spawners returning in year t 
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;0+ juveniles -&amp;gt; Smolts&lt;/strong&gt;&lt;/p&gt;
+            
+            &lt;div id=&#34;cy4&#34;&gt;&lt;/div&gt;
+            
+&lt;p&gt;PSm&lt;sub&gt;t+2&lt;/sub&gt; ~ Binomial(0+&lt;sub&gt;t+1&lt;/sub&gt;, γ&lt;sub&gt;0+&lt;/sub&gt;) = # of 0+&lt;sub&gt;t+1&lt;/sub&gt; will survive and migrate to PSm&lt;sub&gt;t+2&lt;/sub&gt;&lt;/p&gt;
+            
+            
+            &lt;div id=&#34;cy5&#34;&gt;&lt;/div&gt;
+            
+&lt;p&gt;Sm1&lt;sub&gt;t+2&lt;/sub&gt; ~ Binomial(PSm&lt;sub&gt;t+2&lt;/sub&gt;, θ&lt;sub&gt;Sm1&lt;/sub&gt;) = # of PSm&lt;sub&gt;t+2&lt;/sub&gt; will survive and migrate as 1+smolts (Sm1)&lt;/p&gt;
+            
+            
+            &lt;div id=&#34;cy6&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;Sm2&lt;sub&gt;t+3&lt;/sub&gt; ~ Binomial(Parr1&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;parr1&lt;/sub&gt;) = # of Parr1&lt;sub&gt;t+2&lt;/sub&gt; will survive and migrate as 2+smolts (Sm2)&lt;/p&gt; 
+            
+&lt;ul&gt;&lt;li&gt;PSm&lt;sub&gt;t+2&lt;/sub&gt; = young-of-the-year 0+&lt;sub&gt;t+1&lt;/sub&gt; will survive next spring year t+2&lt;/li&gt;&lt;li&gt;γ&lt;sub&gt;0+&lt;/sub&gt; = survival rate of 0+&lt;/li&gt;&lt;li&gt;θ&lt;sub&gt;Sm1&lt;/sub&gt; = proportion of pre-smolts will migrate as 1+Smolts (survival rate)&lt;/li&gt;&lt;li&gt;γ&lt;sub&gt;parr1&lt;/sub&gt; = survival rate of parr1&lt;/li&gt;&lt;/ul&gt;
+            
+            
+            &lt;div id=&#34;cy7&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;Sp1&lt;sub&gt;t+3&lt;/sub&gt; ~ Binomial(Sm1&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;)&lt;/p&gt;
+              
+            &lt;div id=&#34;cy8&#34;&gt;&lt;/div&gt;
+              
+&lt;p&gt;Sp2&lt;sub&gt;t+4&lt;/sub&gt; ~ Binomial(Sm2&lt;sub&gt;t+3&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;)&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;γ&lt;sub&gt;Sm&lt;/sub&gt; = survival rate&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning from observations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;These two are observed and given:&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;p&gt;C&lt;sub&gt;Sm1,t&lt;/sub&gt; = observations = # of smolts caught downstream trap&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;π&lt;sub&gt;Sm&lt;/sub&gt; = trap efficiency&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Using these data points we can figure out the unknowns.&lt;/p&gt;
+
+&lt;p&gt;Our unknowns, the parameters, are: α, β, σ, γ&lt;sub&gt;0+&lt;/sub&gt;, θ&lt;sub&gt;sm1&lt;/sub&gt;, γ&lt;sub&gt;Parr1&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;&lt;/p&gt;
+
+&lt;p&gt;# of smolts caught downstream trap can be model as a binomial distribution either the smolt is caught or not.&lt;/p&gt;
+
+&lt;p&gt;C&lt;sub&gt;Sm1,t&lt;/sub&gt; ~ Binomial(Sm1&lt;sub&gt;t&lt;/sub&gt;, π&lt;sub&gt;Sm&lt;/sub&gt;)&lt;/p&gt;
+
+&lt;p&gt;*Note (advance): observations assume &lt;a href=&#34;https://en.wikipedia.org/wiki/Bayesian_hierarchical_modeling#Exchangeability&#34;&gt;Bayesian’s property of exchangability&lt;/a&gt;&lt;/p&gt;
+              
+            &lt;h3 id=&#34;the-models---creating-a-proability-graphical-model&#34;&gt;The Models - Creating a probability graphical model&lt;/h3&gt;
+            
+&lt;p&gt;0+&lt;sub&gt;t+1&lt;/sub&gt; = α ⋅ W&lt;sub&gt;t&lt;/sub&gt; ⋅ e&lt;sup&gt;-β ⋅ W&lt;sub&gt;t&lt;/sub&gt;&lt;/sup&gt; ⋅ e&lt;sup&gt;ε&lt;sub&gt;t&lt;/sub&gt;&lt;/sup&gt; where ε&lt;sub&gt;t&lt;/sub&gt; ~iid N(0, σ&lt;sup&gt;2&lt;/sup&gt;)&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;0+&lt;sub&gt;t+1&lt;/sub&gt; = freshwater production of juveniles resulting from the reproduction of the spawners returning in year t&lt;/li&gt;&lt;/ul&gt;
+            
+            
+            &lt;div id=&#34;cy9&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;PSm&lt;sub&gt;t+2&lt;/sub&gt; ~ Binomial(0+&lt;sub&gt;t+1&lt;/sub&gt;, γ&lt;sub&gt;0+&lt;/sub&gt;) = # of 0+&lt;sub&gt;t+1&lt;/sub&gt; will survive and migrate to PSm&lt;sub&gt;t+2&lt;/sub&gt;&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;γ&lt;sub&gt;0+&lt;/sub&gt; = survival rate of 0+&lt;/li&gt;&lt;/ul&gt;
+            
+            &lt;div id=&#34;cy10&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;Sm1&lt;sub&gt;t+2&lt;/sub&gt; ~ Binomial(PSm&lt;sub&gt;t+2&lt;/sub&gt;, θ&lt;sub&gt;Sm1&lt;/sub&gt;) = # of PSm&lt;sub&gt;t+2&lt;/sub&gt; will survive and migrate as 1+smolts (Sm1)&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;PSm&lt;sub&gt;t+2&lt;/sub&gt; = young-of-the-year 0+&lt;sub&gt;t+1&lt;/sub&gt; will survive next spring year t+2&lt;/li&gt;&lt;li&gt;θ&lt;sub&gt;Sm1&lt;/sub&gt; = proportion of pre-smolts will migrate as 1+Smolts (survival rate)&lt;/li&gt;&lt;/ul&gt;
+            
+            &lt;div id=&#34;cy11&#34;&gt;&lt;/div&gt;
+            
+&lt;p&gt;Sm2&lt;sub&gt;t+3&lt;/sub&gt; ~ Binomial(Parr1&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;parr1&lt;/sub&gt;) = # of Parr1&lt;sub&gt;t+2&lt;/sub&gt; will survive and migrate as 2+smolts (Sm2)&lt;/p&gt;
+            
+            
+            &lt;div id=&#34;cy12&#34;&gt;&lt;/div&gt;
+            
+&lt;p&gt;Sp1&lt;sub&gt;t+3&lt;/sub&gt; ~ Binomial(Sm1&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;)&lt;/p&gt;
+&lt;p&gt;Sp2&lt;sub&gt;t+4&lt;/sub&gt; ~ Binomial(Sm2&lt;sub&gt;t+3&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;)&lt;/p&gt;
+
+            &lt;div id=&#34;cy13&#34;&gt;&lt;/div&gt;
+            
+&lt;p&gt; Now we put all the parts together into graph. &lt;/p&gt;
+
+            &lt;div id=&#34;cy14&#34;&gt;&lt;/div&gt;
+            
+&lt;p&gt;Okay, now that we got the probability graphical model down we can figure out the joint probability distribution.&lt;/p&gt;
+
+&lt;p&gt;P(J&lt;sub&gt;t&lt;/sub&gt;) = ?&lt;/p&gt;
+
+&lt;p&gt;Step 1. Looking at the graph, we’re going to start with all nodes with no parent: α, β, σ, W&lt;sub&gt;t&lt;/sub&gt;, γ&lt;sub&gt;0+&lt;/sub&gt;, θ&lt;sub&gt;Sm1&lt;/sub&gt;, γ&lt;sub&gt;Parr1&lt;/sub&gt;, and γ&lt;sub&gt;Sm&lt;/sub&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&#34;highlighter-rouge&#34;&gt;P(J&lt;sub&gt;t&lt;/sub&gt;) = P[α] ⋅ P[β] ⋅ P[σ] ⋅ P[W&lt;sub&gt;t&lt;/sub&gt;] ⋅ P[γ&lt;sub&gt;0+&lt;/sub&gt;] ⋅ P[θ&lt;sub&gt;Sm1&lt;/sub&gt;] ⋅ P[γ&lt;sub&gt;Parr1&lt;/sub&gt;] ⋅ P[γ&lt;sub&gt;Sm&lt;/sub&gt;] … &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Step 2. Now we’re going to look at the nodes with parents.&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;0+&lt;sub&gt;t+1&lt;/sub&gt; is P[0+&lt;sub&gt;t+1&lt;/sub&gt; | W&lt;sub&gt;t&lt;/sub&gt;, α, β, σ]&lt;/li&gt;&lt;li&gt;PSm&lt;sub&gt;t+2&lt;/sub&gt; is P[PSm&lt;sub&gt;t+2&lt;/sub&gt; | 0+&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;0+&lt;/sub&gt;]&lt;/li&gt;&lt;li&gt;Sm1&lt;sub&gt;t+2&lt;/sub&gt; &amp;amp; Parr1&lt;sub&gt;t+2&lt;/sub&gt; is P[Sm1&lt;sub&gt;t+2&lt;/sub&gt;, Parr1&lt;sub&gt;t+2&lt;/sub&gt; | PSm&lt;sub&gt;t+2&lt;/sub&gt;, θ&lt;sub&gt;Sm1&lt;/sub&gt;]. Notice how complex this one is. It is because Sm1 and Parr1 both share the same parameters.&lt;/li&gt;&lt;li&gt;P[Sp1&lt;sub&gt;t+3&lt;/sub&gt; | Sm1&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;]&lt;/li&gt;&lt;li&gt;P[Sm2&lt;sub&gt;t+3&lt;/sub&gt; | Parr1&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;Parr1&lt;/sub&gt;]&lt;/li&gt;&lt;li&gt;P[Sp2&lt;sub&gt;t+4&lt;/sub&gt; | Sm2&lt;sub&gt;t+3&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;]&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;
+  &lt;code class=&#34;highlighter-rouge&#34;&gt;
+    P(J&lt;sub&gt;t&lt;/sub&gt;) = P[α] ⋅ P[β] ⋅ P[σ] ⋅ P[W&lt;sub&gt;t&lt;/sub&gt;] ⋅ P[γ&lt;sub&gt;0+&lt;/sub&gt;] ⋅ P[θ&lt;sub&gt;Sm1&lt;/sub&gt;] ⋅ P[γ&lt;sub&gt;Parr1&lt;/sub&gt;] ⋅ P[γ&lt;sub&gt;Sm&lt;/sub&gt;] &lt;/code&gt;&lt;br/&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;code class=&#34;highlighter-rouge&#34;&gt; ⋅ P[0+&lt;sub&gt;t+1&lt;/sub&gt; | W&lt;sub&gt;t&lt;/sub&gt;, α, β, σ] ⋅ P[PSm&lt;sub&gt;t+2&lt;/sub&gt; | 0+&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;0+&lt;/sub&gt;] &lt;/code&gt; &lt;code class=&#34;highlighter-rouge&#34;&gt; ⋅ P[Sm1&lt;sub&gt;t+2&lt;/sub&gt;, Parr1&lt;sub&gt;t+2&lt;/sub&gt; | PSm&lt;sub&gt;t+2&lt;/sub&gt;, θ&lt;sub&gt;Sm1&lt;/sub&gt;]
+     &lt;/code&gt; &lt;br /&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;code class=&#34;highlighter-rouge&#34;&gt; ⋅ P[Sp1&lt;sub&gt;t+3&lt;/sub&gt; | Sm1&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;] ⋅ P[Sm2&lt;sub&gt;t+3&lt;/sub&gt; | Parr1&lt;sub&gt;t+2&lt;/sub&gt;, γ&lt;sub&gt;Parr1&lt;/sub&gt;] ⋅ P[Sp2&lt;sub&gt;t+4&lt;/sub&gt; | Sm2&lt;sub&gt;t+3&lt;/sub&gt;, γ&lt;sub&gt;Sm&lt;/sub&gt;] &lt;/code&gt;&lt;/p&gt;
+
+            &lt;h3 id=&#34;okay-so-what-wheres-the-bayesian-network&#34;&gt;Okay so what? Where’s the Bayesian network?&lt;/h3&gt;
+           
+           &lt;p&gt;Not yet. The book needs to introduce the concept of a simple model vs a hierarchical model and some terminology.&lt;/p&gt; 
+           &lt;p&gt;So far we haven’t introduce any observational variable (random variable) at all.&lt;/p&gt;
+            
+            &lt;div id=&#34;cy15&#34;&gt;&lt;/div&gt;
+            
+            &lt;ul&gt;&lt;li&gt;θ represents parameters&lt;/li&gt;&lt;li&gt;Z represents latent parameters&lt;/li&gt;&lt;li&gt;Y represents the output Random Variable. (little y represent the realization/sample of Y random variable).&lt;/li&gt;&lt;/ul&gt;
+            
+            &lt;p&gt;Left is a simple model. The right graph is a hierarchical model.&lt;/p&gt;
+            
+            &lt;p&gt;Z represents latent variables (nuisance variables), basically variables we don’t really care, also they’re hidden we don’t observed it directly like Y. Y represents observations. Observations are random so Y is capitalized and smaller y is the realization of Y or a sample of Y. The node is pink because it is an observable.&lt;/p&gt;
+            
+            &lt;p&gt;P[θ, Z, Y] = P[θ] ⋅ P[Z | θ] ⋅ P[Y | θ, Z]&lt;/p&gt;
+            
+            &lt;p&gt;Well first what’s the experiment?&lt;/p&gt;
+            
+            &lt;p&gt;For this it’s salmon captures and they’re model via binomial distribution either you catch the fish or not.&lt;/p&gt;
+            
+            &lt;p&gt;Notice the C stands for catches.&lt;/p&gt;
+            
+            &lt;ul&gt;&lt;li&gt;C&lt;sub&gt;0+, t+1&lt;/sub&gt; ~ Binomial(0+&lt;sub&gt;t+1&lt;/sub&gt;, π&lt;sub&gt;0+&lt;/sub&gt;)&lt;/li&gt;&lt;li&gt;C&lt;sub&gt;Sm1, t+2&lt;/sub&gt; ~ Binomial(Sm1&lt;sub&gt;t+2&lt;/sub&gt;, π&lt;sub&gt;Sm&lt;/sub&gt;)&lt;/li&gt;&lt;li&gt;C&lt;sub&gt;Sm2, t+3&lt;/sub&gt; ~ Binomial(Sm1&lt;sub&gt;t+3&lt;/sub&gt;, π&lt;sub&gt;Sm&lt;/sub&gt;)&lt;/li&gt;&lt;li&gt;C&lt;sub&gt;Sp1, t+3&lt;/sub&gt; ~ Binomial(Sp1&lt;sub&gt;t+3&lt;/sub&gt;, π&lt;sub&gt;Sp&lt;/sub&gt;)&lt;/li&gt;&lt;li&gt;C&lt;sub&gt;Sp2, t+4&lt;/sub&gt; ~ Binomial(Sp2&lt;sub&gt;t+4&lt;/sub&gt;, π&lt;sub&gt;Sp&lt;/sub&gt;)&lt;/li&gt;&lt;/ul&gt;
+            
+            
+            &lt;div id=&#34;cy16&#34;&gt;&lt;/div&gt;
+            
+            
+            &lt;p&gt;Once again the squares represent known/given values (the π’s are given). The pink circle means observed values. Pink in general means they’re known either by given or by observations. The purple boxes represent grouping and group the nodes into their respective group.&lt;/p&gt;
+            &lt;p&gt;Ok. Finally, we got a Bayesian network. Really, what now?&lt;/p&gt;
+            &lt;p&gt;How does y (the sample or realization of Y) fits in this fancy graph?&lt;/p&gt;
+            
+            &lt;h3 id=&#34;what-happen-when-the-observation-is-available&#34;&gt;What happen when the Observation is available?&lt;/h3&gt;
+            
+            &lt;p&gt;Before that notice how we build the model and the direction. The direction is downward from the Salmon cycle toward the latent variable and then towards the obsevation.&lt;/p&gt;
+            &lt;p&gt;Why did the book brought this up? It is because when you train the model using the data/observations that are available you go in the opposite direction.&lt;/p&gt;
+            
+            &lt;p&gt;You start at the Y (observation layer and Y is a random variable) and Y is now, Y = y, since little y is the realization of random variable Y. y is a sample of Y or the data (values not just some placeholder variable). And you go up to latent layer and then to the parameter later.&lt;/p&gt;
+            &lt;p&gt;Let’s see it mathematically:&lt;/p&gt;
+            &lt;p&gt;Here’s the joint probability:&lt;/p&gt;
+            &lt;p&gt;P[Y, θ, Z]&lt;/p&gt;
+            &lt;p&gt;Now here’s the joint probability with Y = y, when we have data to train the model and find the paramenter.&lt;/p&gt;
+            &lt;p&gt;P[θ, Z | Y = y]&lt;/p&gt;
+            &lt;p&gt;Given Y = y, the observations propagate upward from the observation to the latent layer to the parameter layer.&lt;/p&gt;
+            &lt;p&gt;This is how you train the model after you are done creating the model.&lt;/p&gt;
+            &lt;p&gt;You can see the Bayes Rule connection too right? We’re always dealing with Joint Probability and Conditional Probability.&lt;/p&gt;
+            &lt;p&gt;Bayesian make it so that they’re conditionally independent. This is one of the property of Bayesian statistic.&lt;/p&gt;
+            &lt;p&gt;This is now a posterior distribution. Posterior being after the data. Prior distribution is before the data.&lt;/p&gt;
+            &lt;p&gt;P[θ, Z | Y = y] = posterior distributionundefined
+            &lt;p&gt;I’m going to repeat it again.&lt;/p&gt;
+            &lt;p&gt;Posterior is after the data have been inputed.&lt;/p&gt;
+            &lt;p&gt;Prior is before the data. It is your prior belief.&lt;/p&gt;
+            &lt;p&gt;In Bayesian you need to supply a belief in form of a prior distribution. It’s weird but don’t worry if you don’t know anything then you can use a noninformative prior distribution.&lt;/p&gt;
+            &lt;p&gt;The belief thing is also away to encode expert belief too.&lt;/p&gt;
+            &lt;p&gt;So given what we have now, we just have to apply Bayes’ Rule to the conditional probability and you get your parameter values.&lt;/p&gt;
+            &lt;h3 id=&#34;bayes-rule&#34;&gt;Bayes’ Rule&lt;/h3&gt;
+            &lt;p&gt;P[θ Z | Y = y] = P[θ, Z, Y = y] / P[Y = y]&lt;/p&gt;
+            &lt;p&gt;Some stat here and you get.&lt;/p&gt;
+            &lt;p&gt;P[θ Z | Y = y] ∝ P[θ] ⋅ P[Z | θ] ⋅ P[Y = y | θ, Z]&lt;/p&gt;
+            
+            
+            &lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+            
+            
+            &lt;p&gt;I highly recommend this book. Andrew Gelman’s DBA book is more PhD level and his approach is not graphical like this but more mathy. Being visual this book helps a lot into tying things together.&lt;/p&gt;
+            &lt;p&gt;There was no observations/data and no code for this chapter. Ah dangit. Well until next time, stay tuned for the next episode of Bayesian man.&lt;/p&gt;
+            &lt;p&gt;&lt;sup&gt;&lt;a href=&#34;#myfootnote1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;Buy the book if you like what you see on the post. This is basically my notes on chapter 1 of the book. It’s an amazing book and I highly recommend it.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;What did I learn about myself&lt;/strong&gt;&lt;/p&gt;
+            &lt;p&gt;I’m glad I’m reviewing this chapter of the book again. I have a confession to make, if I want to understand a material/subject I need to read 3 times and do projects on it and a review of what I’ve learned. I need tons of practice. I guess this is one of the reason why I started this blog.&lt;/p&gt;
+            &lt;p&gt;This chapter ties in again DAG, Bayes’ Rule, and conditional probabilities. Good refresher and clear up things that I was wrong about. Especially the salmon breeding cycle, I didn’t think about the fact that it wasn’t a DAG. And that from that model we create a Bayesian Graph Model (DAG).&lt;/p&gt;
+            &lt;p&gt;I think I’ll go through each chapter of this book as a refresher while playing with javascript graphical libraries and hopefully learn Stan. I need to make sure I didn’t miss out on anything from the first reading.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;What Did I Get to Practice? (for me)&lt;/strong&gt;&lt;/p&gt;
+            
+            &lt;ol&gt;&lt;li&gt;&lt;del&gt;Bayesian Hierarchical Modeling using &lt;a href=&#34;https://cran.r-project.org/web/packages/rstan/index.html&#34;&gt;rstan&lt;/a&gt;.&lt;/del&gt;&lt;/li&gt;&lt;li&gt;Tried out a javascript data visualisation library, &lt;a href=&#34;https://js.cytoscape.org&#34;&gt;cytoscape.js&lt;/a&gt;, for modeling graphs.&lt;/li&gt;&lt;li&gt;Gets to refresh Bayesian Graphical Model (Bayesian Network).&lt;/li&gt;&lt;/ol&gt;
+            
+            &lt;p&gt;&lt;strong&gt;Rough Roadmap for Bayesian HM&lt;/strong&gt;&lt;/p&gt;
+            
+&lt;ol&gt;&lt;li&gt;Finish off this book. Introduction to Hierarchical Bayesian Modeling for Ecological Data (Chapman &amp;amp; Hall/CRC Applied Environmental Statistics)&lt;/li&gt;&lt;li&gt;Read this for Hamiltonian Markov Chain(Statistics in the social and behavioral sciences series) Gill, Jeff-Bayesian Methods A Social and Behavioral Sciences Approach-CRC Press (2014)&lt;/li&gt;&lt;li&gt;Read https://arxiv.org/abs/1111.4246 an implementation of HMC&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=21a85f1YS5Q&#34;&gt;Measure theory videos&lt;/a&gt;&lt;/li&gt;&lt;li&gt;DBA 3 reread again learning Dirichlet Process&lt;/li&gt;&lt;/ol&gt;
+
+&lt;h4 id=&#34;etc&#34;&gt;Etc..&lt;/h4&gt;
+
+&lt;ol&gt;&lt;li&gt;&lt;a name=&#34;myfootnote1&#34; target=&#34;_blank&#34; href=&#34;https://www.amazon.com/gp/product/B00BBGP7QE/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00BBGP7QE&amp;amp;linkCode=as2&amp;amp;tag=mythicalprogr-20&amp;amp;linkId=0902d5294515fd663d8322cd1c3d0b30&#34;&gt;Introduction to Hierarchical Bayesian Modeling for Ecological Data (Chapman &amp;amp; Hall/CRC Applied Environmental Statistics)&lt;/a&gt;&lt;img src=&#34;//ir-na.amazon-adsystem.com/e/ir?t=mythicalprogr-20&amp;amp;l=am2&amp;amp;o=1&amp;amp;a=B00BBGP7QE&#34; width=&#34;1&#34; height=&#34;1&#34; border=&#34;0&#34; alt=&#34;&#34; style=&#34;border:none !important; margin:0px !important;&#34;&gt; The book link is Amazon affiliated. If you get it at CRC publishing you can get it 20 bucks cheaper if you use a discount code, just that it takes longer to ship. Also note I would recommend reading “Doing Bayesian Data Analysis” first before even trying to get into Hierarchical Modeling.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;www.htmlhelp.com/reference/html40/entities/symbols.html&#34;&gt;Would like to thank this website for all the html mathematical notations.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The salmon sushi picture was taken from &lt;a href=&#34;pixabay.com&#34;&gt;pixabay&lt;/a&gt; under creative common license.
+&lt;/li&gt;
+&lt;/ol&gt;
+            
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.1.3/cytoscape.min.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;js/salmon_post.js&#34;&gt;&lt;/script&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

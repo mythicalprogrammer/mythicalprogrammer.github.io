@@ -2,125 +2,163 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/categories/book/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/p/hello-r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/book-notes/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/plot/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/post/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/categories/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/r/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/post/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/categories/sql/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/regression/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/p/test-chinese/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/page/</loc>
+    <lastmod>2023-11-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/test/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/portfolio/</loc>
+    <lastmod>2023-11-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/bootstrap/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/archives/</loc>
+    <loc>https://mythicalprogrammer.github.io/tags/elixir/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/jquery/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/phoenix/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/postgresql/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/tailwind/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/technology/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/web-development/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/webdev/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/programming-language/</loc>
+    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/r/</loc>
+    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/p/useful-r-packages-i-ve-come-across/</loc>
+    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/deployment/</loc>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/distillery/</loc>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/edeliver/</loc>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/p/elixir-phoenix-deploy-distillery-and-edeliver/</loc>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/page/</loc>
+    <loc>https://mythicalprogrammer.github.io/about-me/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/css/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/p/books-i-ve-read-this-week-and-future-reading-plans/</loc>
+    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/html/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/datascience/</loc>
+    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/markdown/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/machinelearning/</loc>
+    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/p/markdown-syntax-guide/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/modeling/</loc>
+    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/syntax/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/categories/statistic/</loc>
+    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/themes/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/categories/analysis/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/themes/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/bayesian/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/privacy/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/categories/data/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/p/rich-content/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/p/interesting-papers-i-ve-read-this-week/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/shortcodes/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/statistic/</loc>
+    <lastmod>2018-12-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/p/things-i-ve-learned-about-modeling/</loc>
+    <lastmod>2018-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/openbsd/</loc>
+    <lastmod>2018-11-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/%D9%85%D8%A7%D8%B1%D9%83%D8%AF%D8%A7%D9%88%D9%86/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/categories/technology/</loc>
+    <lastmod>2018-11-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/p/%D9%85%D8%AB%D8%A7%D9%84-%D9%86%D8%B5/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/p/the-case-for-boring-technology/</loc>
+    <lastmod>2018-11-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/%D9%86%D8%B5/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/</loc>
+    <lastmod>2018-06-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/%D9%88%D8%B3%D9%85-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/regression/</loc>
+    <lastmod>2018-06-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/p/math-typesetting/</loc>
-    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/emoji/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/p/emoji-support/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/about/</loc>
-    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/categories/analysis/</loc>
+    <loc>https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/</loc>
     <lastmod>2017-07-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/data/</loc>
+    <loc>https://mythicalprogrammer.github.io/categories/natural-language-processing/</loc>
     <lastmod>2017-07-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/p/light-novel-analysis-part-1/</loc>
+    <loc>https://mythicalprogrammer.github.io/categories/nlp/</loc>
     <lastmod>2017-07-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/natural-language-processing/</loc>
-    <lastmod>2017-07-17T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/</loc>
+    <lastmod>2017-07-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/nlp/</loc>
-    <lastmod>2017-07-17T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/hierarchicalmodeling/</loc>
+    <lastmod>2017-07-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/links/</loc>
+    <loc>https://mythicalprogrammer.github.io/links/</loc>
   </url><url>
-    <loc>https://example.com/search/</loc>
+    <loc>https://mythicalprogrammer.github.io/search/</loc>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/test/</loc>
   </url>
 </urlset>

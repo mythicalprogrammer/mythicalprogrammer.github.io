@@ -1,0 +1,112 @@
+---
+title: Useful Financial R packages I've come across
+author: Anthony Quoc Anh Doan
+date: '2023-11-15'
+slug: useful-r-packages-i-ve-come-across
+categories:
+  - R
+tags:
+  - programming language
+description: ~
+math: ~
+license: ~
+hidden: no
+comments: yes
+image: gift-444520_640.jpg 
+---
+
+## Intro
+
+
+I've been doing side project. One of the area I am interested in financial securities mostly stocks, ETFs, REITs, and options.
+
+I came across congress financial security trading records. I cleaned the data and currently figuring out what the response / outcome column is.
+
+I came across a few R packages along the way that have been useful for me for this endearvour and I'd like to share them. All these R packages was found through a [youtube tutorial](https://www.youtube.com/watch?v=TR9u-FGLicE).
+
+## Packages
+<p align="center"> <img title="Adorable toddler and bear" width="80%" src="toddler-8297939_640.jpg" height="60%" /> </p>
+
+### RQuantLib Package
+
+This package is very useful for getting and finding all trading dates of the US market.
+
+Example:
+
+```r
+# 2023-11-15 - Wednesday
+# 2023-11-12 - Sunday
+RQuantLib::isBusinessDay(
+  calendar = "UnitedStates/NYSE", 
+  dates = as.Date(c('2023-11-15','2023-11-12')))
+# Output: [1]  TRUE FALSE
+```
+
+Source: [https://github.com/eddelbuettel/rquantlib](https://github.com/eddelbuettel/rquantlib)
+
+Of course Dirk Eddelbuettel is involved. The dude is a legend in R circle (and anything related to C++ and R crossover).
+
+### rvest Package
+
+It's a webscraping package.
+
+I used this to grab the EPS and earning dates to create a response/outcome variable for congress trading dataset.
+
+[Credit for the code. quantRoom youtube.](https://www.youtube.com/watch?v=TR9u-FGLicE)
+
+Example:
+
+```r
+###
+# get EPS by Ticker - includes Earning date
+###
+
+getEPS <- function(ticker) {
+  Sys.sleep(3)
+  url <- paste0(
+    "https://finance.yahoo.com/calendar/earnings/?symbol=",
+    ticker)
+  # read in page html
+  pg <- rvest::read_html(url)
+  # locate table
+  TABLE <- 
+    pg %>%
+    rvest::html_nodes("table") %>%
+    rvest::html_table()
+  # row bind results and convert to data.frame
+  TABLE <- as.data.frame(t(do.call(rbind,TABLE[[1]])))
+  # remove timezone from Earnings Date
+  TABLE$`Earnings Date` <- gsub("EST","",TABLE$`Earnings Date`)
+  TABLE$`Earnings Date` <- gsub("EDT","",TABLE$`Earnings Date`)
+  # fix Earning Date/time
+  TABLE$`Earnings Date` <- 
+    as.POSIXct(TABLE$`Earnings Date`, 
+               format = "%b %d, %Y, %I %p", 
+               tz = "EST")
+  # fix EPS
+  TABLE$`EPS Estimate` <- as.numeric(TABLE$`EPS Estimate`) %>% 
+    suppressWarnings()
+  TABLE$`Reported EPS` <- as.numeric(TABLE$`Reported EPS`) %>% 
+    suppressWarnings()
+  # fix earning surprise percentage
+  TABLE$`Surprise(%)` <- (
+    as.numeric(gsub("\\+","",TABLE$`Surprise(%)`)) %>% 
+    suppressWarnings()
+  )/100
+  # return ALL
+  TABLE
+}
+
+EPS <- getEPS(ticker="ADM")
+```
+
+Source: [https://rvest.tidyverse.org/](https://rvest.tidyverse.org/)
+
+## Credits
+
+### Pictures
+1. Bear & Baby [https://pixabay.com/illustrations/toddler-baby-teddy-bear-cute-stars-8297939/](https://pixabay.com/illustrations/toddler-baby-teddy-bear-cute-stars-8297939/)
+2. Gifts [https://pixabay.com/photos/gift-package-ribbon-parcel-444520/](https://pixabay.com/photos/gift-package-ribbon-parcel-444520/)
+
+### Code tutorial
+1. [quantRoom youtube.](https://www.youtube.com/watch?v=TR9u-FGLicE)

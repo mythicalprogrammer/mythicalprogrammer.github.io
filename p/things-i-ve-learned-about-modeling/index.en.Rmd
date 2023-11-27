@@ -1,0 +1,53 @@
+---
+title: Things I've learned about modeling.
+author: Anthony Quoc Anh Doan
+date: '2018-11-29'
+slug: things-i-ve-learned-about-modeling
+categories:
+  - analysis
+tags:
+  - modeling
+  - statistic
+description: ~
+image: person-984236_1920.jpg
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Introduction
+
+I’ve been creating models for a while now.
+
+Recently read a statistical modeling book on survival analysis and I learned something new. Something that is thought provoking toward modeling.
+
+I just wanted to put my thoughts on here and see figure out where I’m going with this post when I get there.
+
+## Hypothesis, Response type, and Data type
+
+I recently have a growth or a better understanding between distinction of research and given data.
+
+In the past I believe the data type is what play a role in the class and type of model you can do. Examples of type of model are longitudinal, survival, time series, etc…
+
+I know as a researcher you have to have a hypothesis first before conducting your experiment and choose your test statistic. If you don’t then you risk introducing bias.
+
+But reading a recent book, I’ve come to realize that the hypothesis is the most important thing that dictate your model and the type of data you have at hand is a close second.
+
+What the type of your response in your model dictate your modeling class (longitudinal, survival, etc..). From there you have to make sure your data can address your hypothesis which is tie to the type of your response.
+
+Again the hypothesis play a important role to modeling. It then dictate the response type which will dictate what type of data you should have. Then, the data type will dictate what model can you can do.
+
+But real life isn’t like this.
+
+The majority of data science and machine learning, you have data already. You cannot conduct experiment to generate data yourself because you are given data and expect to work on it. So you essentially skip several step and go straight to what type of data I have at hand and what class of model can I use. If you have a hypothesis it can help but if you have the wrong type of data you cannot answer it.
+
+Before I give an example, I want to say most people actually get the data and throw it in a black box algorithm and see what’s going on. Another group of people will look at the data type and see what type of model you can apply. These two cases are mostly for when you are given data and the observations are done already.
+
+When you do research, you get to dictate what you’re looking via hypothesis. Then you get to design the experiment with the type of data you need in mind. Finally the classes of algorithm you can apply is base on your hypothesis and data type.
+
+Between the given data and conducting research to get data, I am incline to believe the latter have less chances of bias.
+
+## Etc...
+
+First picture: https://pixabay.com/en/person-reading-studyin-bed-books-984236/

@@ -2,97 +2,97 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
-        <link>https://example.com/categories/</link>
+        <link>https://mythicalprogrammer.github.io/categories/</link>
         <description>Recent content in Categories on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Tue, 01 Dec 2020 21:13:14 -0500</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 22 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>book</title>
+        <link>https://mythicalprogrammer.github.io/categories/book/</link>
+        <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/book/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>SQL</title>
+        <link>https://mythicalprogrammer.github.io/categories/sql/</link>
+        <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/sql/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Web Development</title>
+        <link>https://mythicalprogrammer.github.io/categories/web-development/</link>
+        <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/web-development/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>R</title>
-        <link>https://example.com/categories/r/</link>
-        <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+        <link>https://mythicalprogrammer.github.io/categories/r/</link>
+        <pubDate>Wed, 15 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/categories/r/</guid>
+        <guid>https://mythicalprogrammer.github.io/categories/r/</guid>
         <description></description>
         </item>
         <item>
-        <title>Test</title>
-        <link>https://example.com/categories/test/</link>
-        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        <title>statistic</title>
+        <link>https://mythicalprogrammer.github.io/categories/statistic/</link>
+        <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/categories/test/</guid>
-        <description>&lt;img src="https://example.com/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
-        </item>
-        <item>
-        <title>测试</title>
-        <link>https://example.com/categories/%E6%B5%8B%E8%AF%95/</link>
-        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
-        
-        <guid>https://example.com/categories/%E6%B5%8B%E8%AF%95/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>syntax</title>
-        <link>https://example.com/categories/syntax/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://example.com/categories/syntax/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>themes</title>
-        <link>https://example.com/categories/themes/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://example.com/categories/themes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>تجربة</title>
-        <link>https://example.com/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://example.com/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>تجربة مع فراغات</title>
-        <link>https://example.com/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://example.com/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</guid>
+        <guid>https://mythicalprogrammer.github.io/categories/statistic/</guid>
         <description></description>
         </item>
         <item>
         <title>analysis</title>
-        <link>https://example.com/categories/analysis/</link>
-        <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
+        <link>https://mythicalprogrammer.github.io/categories/analysis/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/categories/analysis/</guid>
+        <guid>https://mythicalprogrammer.github.io/categories/analysis/</guid>
         <description></description>
         </item>
         <item>
         <title>data</title>
-        <link>https://example.com/categories/data/</link>
-        <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
+        <link>https://mythicalprogrammer.github.io/categories/data/</link>
+        <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/categories/data/</guid>
+        <guid>https://mythicalprogrammer.github.io/categories/data/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>technology</title>
+        <link>https://mythicalprogrammer.github.io/categories/technology/</link>
+        <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/technology/</guid>
         <description></description>
         </item>
         <item>
         <title>natural language processing</title>
-        <link>https://example.com/categories/natural-language-processing/</link>
+        <link>https://mythicalprogrammer.github.io/categories/natural-language-processing/</link>
         <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/categories/natural-language-processing/</guid>
+        <guid>https://mythicalprogrammer.github.io/categories/natural-language-processing/</guid>
         <description></description>
         </item>
         <item>
         <title>nlp</title>
-        <link>https://example.com/categories/nlp/</link>
+        <link>https://mythicalprogrammer.github.io/categories/nlp/</link>
         <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/categories/nlp/</guid>
+        <guid>https://mythicalprogrammer.github.io/categories/nlp/</guid>
         <description></description>
+        </item>
+        <item>
+        <title>Test</title>
+        <link>https://mythicalprogrammer.github.io/categories/test/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/test/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
         </item>
         
     </channel>

@@ -2,20 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>natural language processing on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
-        <link>https://example.com/categories/natural-language-processing/</link>
+        <link>https://mythicalprogrammer.github.io/categories/natural-language-processing/</link>
         <description>Recent content in natural language processing on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 17 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/natural-language-processing/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 17 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/natural-language-processing/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Light Novel Analysis (part 1)</title>
-        <link>https://example.com/p/light-novel-analysis-part-1/</link>
+        <link>https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/</link>
         <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/light-novel-analysis-part-1/</guid>
-        <description>&lt;img src="https://example.com/p/light-novel-analysis-part-1/lightnovel.jpg" alt="Featured image of post Light Novel Analysis (part 1)" /&gt;&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.14/c3.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://example.com/js/lightnovel_novelbycountry_donut.js&#34;&gt;&lt;/script&gt;
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+        <guid>https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/lightnovel.jpg" alt="Featured image of post Light Novel Analysis (part 1)" /&gt;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I’m into light novels so I’ve decided to combine my love for data science and light novel.&lt;/p&gt;
 &lt;h1 id=&#34;information-retrieval&#34;&gt;Information Retrieval&lt;/h1&gt;
 &lt;p&gt;I started out by retrieving some data from online via scraping using &lt;a class=&#34;link&#34; href=&#34;https://scrapy.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -90,10 +87,10 @@
 &lt;/table&gt;
 &lt;p&gt;The average ratings only include novels that have at least 30 user ratings.&lt;/p&gt;
 &lt;p&gt;I did not take any other rating from other countries because there are less than 30 novels. As a statistician I feel 30 or more is a sufficient number to represent the population for each category anything smaller than is insufficient.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/light-novel-analysis-part-1/all_rating.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/all_rating.png&#34;
 	width=&#34;1134&#34;
 	height=&#34;774&#34;
-	srcset=&#34;https://example.com/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_480x0_resize_box_3.png 480w, https://example.com/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_480x0_resize_box_3.png 480w, https://mythicalprogrammer.github.io/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;A bar graph of all ratings&#34;
@@ -196,6 +193,9 @@ Youjo Senki
 &lt;/ul&gt;
 &lt;h1 id=&#34;etc&#34;&gt;Etc..&lt;/h1&gt;
 &lt;p&gt;The novel picture is taken from google searching for a CC license image.&lt;/p&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.14/c3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;./js/lightnovel_novelbycountry_donut.js&#34;&gt;&lt;/script&gt;
 </description>
         </item>
         

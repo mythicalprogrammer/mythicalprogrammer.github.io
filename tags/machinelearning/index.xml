@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>machinelearning on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
+        <link>https://mythicalprogrammer.github.io/tags/machinelearning/</link>
+        <description>Recent content in machinelearning on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Sun, 16 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/machinelearning/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Books I&#39;ve read this week and future reading plans.</title>
+        <link>https://mythicalprogrammer.github.io/p/books-i-ve-read-this-week-and-future-reading-plans/</link>
+        <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/books-i-ve-read-this-week-and-future-reading-plans/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/books-i-ve-read-this-week-and-future-reading-plans/books-1655783_1280.jpg" alt="Featured image of post Books I&#39;ve read this week and future reading plans." /&gt;&lt;h2 id=&#34;books-ive-read-this-week&#34;&gt;Books I’ve read this week&lt;/h2&gt;
+&lt;p&gt;So I’m reading up my tech stack I’ve chosen for the next five years for my start up. Mostly setting up my dev machine and foundation toolings.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nostarch.com/obenbsd2e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Absolute OpenBSD Unix for the Practical Paranoid (2nd Edition) by Michael W. Lucas&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The partition harddrive during installing of this book is outdated.&lt;/p&gt;
+&lt;p&gt;Tutorial I’ve used is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sohcahtoa.org.uk/openbsd.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://sohcahtoa.org.uk/openbsd.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.c0ffee.net/blog/openbsd-on-a-laptop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.c0ffee.net/blog/openbsd-on-a-laptop/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I’ve installed xfce window manager desktop whatever and there were some hiccup. Especially having to figure out to enable an option for xfce terminal to run as shell login user (why is this not default?).&lt;/p&gt;
+&lt;p&gt;I’ve also set up ksh terminal using polyglot github configuration. It works for me.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pragprog.com/book/bhtmux2/tmux-2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;tmux 2 Productive Mouse-Free Development by Brian P. Hogan&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I’ve read this book a few years ago and it’s the reason why I am good at tmux. I learned about tmux at a Ruby on Rail talk 10 years ago.&lt;/p&gt;
+&lt;p&gt;I’m using this &lt;a class=&#34;link&#34; href=&#34;https://github.com/gpakosz/.tmux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;config file&lt;/a&gt; with a few tweaks. The pane split short cut for both horizontal and vertical are the same &amp;gt;___&amp;gt;. Also copy mode doesn’t use vi key even though pane navigation uses vi keys.&lt;/p&gt;
+&lt;p&gt;I couldn’t get the font working on OpenBSD and am still working on it. It’s in the backburner.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&#34;narrative-794978_1920.jpg&#34; /&gt;&lt;/center&gt;
+&lt;h2 id=&#34;what-am-i-reading-next&#34;&gt;What am I reading next&lt;/h2&gt;
+&lt;p&gt;In the technology queue there are two books.&lt;/p&gt;
+&lt;p&gt;I would like the latest Vim book. I’ve read the practical vim book and currently want to read up on neo vim and the latest book by the same author iirc. &lt;a class=&#34;link&#34; href=&#34;https://pragprog.com/book/modvim/modern-vim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pragprog.com/book/modvim/modern-vim&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The vim one will be handy since R studio is not a port in OpenBSD and the dependancies is pretty bad to make it port.&lt;/p&gt;
+&lt;p&gt;I’ve found this sweeet article from my alma mata for vim+tmux R dev: &lt;a class=&#34;link&#34; href=&#34;https://hpcc.ucr.edu/manuals_linux-cluster_terminalIDE.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hpcc.ucr.edu/manuals_linux-cluster_terminalIDE.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Also forgot about this one: &lt;a class=&#34;link&#34; href=&#34;https://kadekillary.work/post/nvim-r/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kadekillary.work/post/nvim-r/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Also a sweet website for top vim plugins: &lt;a class=&#34;link&#34; href=&#34;https://vimawesome.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vim awesome&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Another one I would like to read is a postgresql book. I’ll start with the book below and see how it goes.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.packtpub.com/big-data-and-business-intelligence/learning-postgresql-10-second-edition&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Learning PostgreSQL 10 - Second Edition by Andrey Volkov and Salahaldin Juba&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There’s also a pretty interesting one in depth: &lt;a class=&#34;link&#34; href=&#34;https://use-the-index-luke.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Use the Index Luke&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;From there I have an elixir book to read and a phoenix book but that’s for later.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&#34;sunset-485016_1920.png&#34; /&gt;&lt;/center&gt;
+&lt;h2 id=&#34;random-thoughts-on-publishers&#34;&gt;Random thoughts on publishers&lt;/h2&gt;
+&lt;p&gt;It seems like I’m moving away from manning and have been reading a lot of Pragmatic Programmers and No Stach publisher.&lt;/p&gt;
+&lt;p&gt;Packt is really a hit or miss.&lt;/p&gt;
+&lt;h2 id=&#34;what-about-books-in-other-subject&#34;&gt;What about books in other subject?&lt;/h2&gt;
+&lt;p&gt;I’m reading a few self help books, which is personal, so I won’t be putting it here. Just trying to be my best self that’s all.&lt;/p&gt;
+&lt;p&gt;As for statistic, I’ve found a new spatial modeling book that was recently released: &lt;a class=&#34;link&#34; href=&#34;https://geocompr.robinlovelace.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Geocomputation with R by Robin Lovelace, Jakub Nowosad, Jannes Muenchow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I dislike the title name because it sounds funky to be honest I’m hoping it spatial analysis which from the summary it is. Maybe geocomputation is some domain specific terminology I don’t know and I’m just being silly.&lt;/p&gt;
+&lt;p&gt;Feel free to hit me up on &lt;a class=&#34;link&#34; href=&#34;https://twitter.com/AnthonyDoan20&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;twitter&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://mastodon.social/@anthony_doan&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;mastodon&lt;/a&gt;, and whatever if you guys have any suggestions on books either technical or self help or statistical modeling.&lt;/p&gt;
+&lt;p&gt;Have a wonderful week.&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;First picture: &lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/en/books-door-entrance-culture-1655783/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/en/books-door-entrance-culture-1655783/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Second picture: &lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/en/narrative-history-dream-tell-794978/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/en/narrative-history-dream-tell-794978/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Third picture: &lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/en/sunset-island-mar-dusk-brain-485016/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/en/sunset-island-mar-dusk-brain-485016/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

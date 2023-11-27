@@ -1,0 +1,129 @@
+---
+title: Portfolio
+author: Anthony Quoc Anh Doan
+date: '2023-11-20'
+slug: portfolio
+categories: []
+tags: []
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Thesis
+
+- [Tree-based Ensemble Classification Algorithm for High Dimensional Data](./final_thesis_draft.pdf) - CSULB (Master of Science in Applied Statistics)
+
+
+## Publications
+
+- Nicholas Keisuke Brownell, Evan Shannon, **Quoc Doan**, Gregg C. Fonarow, and Boback Ziaeian (2023 Mar, 81).
+Healthcare Utilization for US Veterans with Heart Failure during the Covid19 Pandemic (Vol. 31 No. 8). J
+Am Coll Cardiol. 2023 Mar, 81 (8 Supplement) 536.
+(https://www.jacc.org/doi/full/10.1016/S0735-1097%2823%2900980-4)
+- Pending authors . Pending Title - My Health Veteran Online Utilization and Comorbidities 2023
+
+## Employment History
+
+See my [resume](./2023_08_28_resume.pdf).
+
+## Portfolio
+
+### Fumigate www.fumigatedb.com
+
+Version 0.1.0 Summer 2018 - 2021
+
+I created this website as an authoritative website for perfume. Technology stack is Phoenix web framework. Bootstrap for responsive design and SEO friendly. PostgreSQL for data storage. Server is on Digital Ocean VPS. Ubuntu 18.04 is the OS and was hardened by me. Data is web scraped using scrapy web scrape framework.
+
+Source Code: [https://github.com/mythicalprogrammer/fumigate/](https://github.com/mythicalprogrammer/fumigate/)
+
+---
+
+### Intro to Random Forest 
+
+Guest Speaker for undergrad class - CSULB 
+
+[Intro to Random Forest - Slides](https://web.csulb.edu/~tebert/teaching/lectures/551/random_forest.pdf)
+
+I was invited to present my thesis subject, ensemble of decision trees, specifically Random Forest.
+
+Fall 2017
+
+---
+
+### Predictive Model for Detecting Toxicity in Drugs
+
+FDA - Food & Drug Administration - National Center Toxicological Research 2017
+
+Implemented non-parametric Bayesian hierarchical model using Chinese restaurant process in R to predict drug induced liver injuries (DILI). This model was going to be use to predict new and old drugs on the market to see if there is a possibility of toxicity base on other known drugs with similar chemical profile. Nonparametric Bayesian is used is used so that the model can extend to multiple data sources, beyond DILI, to make prediction.
+
+---
+
+### Le Snob www.lesnob.com
+
+2014
+
+Fashion website that sell high end luxury fashion for Le Snob brand. Web designer designed the website. I was responsible for translating it into code (PHP, CSS, HTML, Javascript) and for deployment.
+
+--- 
+
+
+### KYHO - Knock Your Heart Out (Android App)
+
+[KYHO](https://play.google.com/store/apps/details?id=kyho.com)
+
+An Android app that help you look up exercises and create routines for workout. Coded in Java and Android SDK.
+
+2014
+
+---
+
+### Bluepromocode www.dealspotr.com
+
+2013
+
+Redesigned Bluepromocode website using Scala, Ember.js, and Bootstrap 3. Website is renamed to Dealspotr.
+
+---
+
+### Stylespotter www.stylespotter.com
+
+2013
+
+Helped create spiders to web crawl fashion websites and then upload the scraped data onto MongoDB. Scrapy was the webscraping framework used.
+
+---
+
+### PaeDae API www.github.com/PaeDae/paedae-unity-wrapper
+
+2013
+
+PaeDae’s API Unity Wrapper enabling Unity3D applications to integrate with PaeDae web services and serve advertisements.
+
+---
+
+### Baublebox www.baublebox.com
+
+2013
+
+Reviewed PHP’s code, most of the code was on FuelPHP MVC framework. Gave suggestions on
+refactoring existing code and how to use MVC framework.
+
+---
+
+### UCR Extension Memorandum of Understanding [mou.extension.ucr.edu](mou.extension.ucr.edu)
+
+2012
+
+The whole website code is on the Zend MVC framework using PHP language. There is an internal web tool to control the layout and links.
+
+---
+
+### UCR Extension Program Fee www.iep.ucr.edu/dates_and_fees.php
+
+2011
+
+This is a tool to give potential international students an idea how much studying aboard with UCR cost. I coded this using Zend MVC framework, jQuery, and SQL. Some of the design changed especially the header but my overall code is still intact. The SQL table and schemas were created and design by me.

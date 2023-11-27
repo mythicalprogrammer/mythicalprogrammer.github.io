@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Update Busy moving. I have a summer project for this blog (look forward to it, it’ll be fun). I also a summer internship at JPL NASA!
+You can get the pdf paper here.
+I just finished my semester and I did a final project that I’m pretty proud of. I put in a lot of effort and my professor Dr. Zhou was very awesome.
+Abstract Human immunodeficiency virus or HIV are responsible for decline in CD4&#43; cell count.'>
+<title>Linear Mixed Effects Models for CD4&#43; Cell Counts in Men with HIV</title>
+
+<link rel='canonical' href='https://mythicalprogrammer.github.io/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/'>
+
+<link rel="stylesheet" href="/scss/style.min.ae544f6e875175eb0f852537f03e029a61665cc22ad0fd93bf333e7c3bee5a8c.css"><meta property='og:title' content='Linear Mixed Effects Models for CD4&#43; Cell Counts in Men with HIV'>
+<meta property='og:description' content='Update Busy moving. I have a summer project for this blog (look forward to it, it’ll be fun). I also a summer internship at JPL NASA!
+You can get the pdf paper here.
+I just finished my semester and I did a final project that I’m pretty proud of. I put in a lot of effort and my professor Dr. Zhou was very awesome.
+Abstract Human immunodeficiency virus or HIV are responsible for decline in CD4&#43; cell count.'>
+<meta property='og:url' content='https://mythicalprogrammer.github.io/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/'>
+<meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='modeling' /><meta property='article:tag' content='regression' /><meta property='article:tag' content='statistic' /><meta property='article:published_time' content='2018-06-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-06-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/freddie-mercury-memorial-779956_640.jpg' />
+<meta name="twitter:site" content="@AnthonyDoan20">
+    <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="Linear Mixed Effects Models for CD4&#43; Cell Counts in Men with HIV">
+<meta name="twitter:description" content="Update Busy moving. I have a summer project for this blog (look forward to it, it’ll be fun). I also a summer internship at JPL NASA!
+You can get the pdf paper here.
+I just finished my semester and I did a final project that I’m pretty proud of. I put in a lot of effort and my professor Dr. Zhou was very awesome.
+Abstract Human immunodeficiency virus or HIV are responsible for decline in CD4&#43; cell count."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/freddie-mercury-memorial-779956_640.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud04d226d349438d5d6dbe19a25343199_44779_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</a></h1>
+            <h2 class="site-description">An instrument of peace. Where there is hatred, let me sow love; where there is doubt, let&#39;s get some data and build a model.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mythicalprogrammer'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/anthony-anh-quoc-doan-a7234321/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+  <path d="M8 11l0 5" />
+  <path d="M8 8l0 .01" />
+  <path d="M12 16l0 -5" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://mastodon.social/@anthony_doan'
+                        target="_blank"
+                        title="Mastodon"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-mastodon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z" />
+  <path d="M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.reddit.com/user/anthony_doan/'
+                        target="_blank"
+                        title="Reddit"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-reddit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z" />
+  <path d="M12 8l1 -5l6 1" />
+  <path d="M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <circle cx="9" cy="13" r=".5" fill="currentColor" />
+  <circle cx="15" cy="13" r=".5" fill="currentColor" />
+  <path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/339405/mythicalprogrammer'
+                        target="_blank"
+                        title="StackOverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-stackoverflow" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" />
+  <path d="M8 16h8" />
+  <path d="M8.322 12.582l7.956 .836" />
+  <path d="M8.787 9.168l7.826 1.664" />
+  <path d="M10.096 5.764l7.608 2.472" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AnthonyDoan20'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/portfolio' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder-star" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" />
+  <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+</svg>
+                
+                <span>Portfolio</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#update">Update</a></li>
+        <li><a href="#abstract">Abstract</a></li>
+      </ol>
+    </li>
+    <li><a href="#1-introduction">1 Introduction</a>
+      <ol>
+        <li><a href="#11-hiv-and-cd4-cells">1.1 HIV and CD4+ Cells</a></li>
+        <li><a href="#12-the-data">1.2 The Data</a></li>
+        <li><a href="#13-aim-of-the-investigation">1.3 Aim of the Investigation</a></li>
+      </ol>
+    </li>
+    <li><a href="#2-methods">2 Methods</a>
+      <ol>
+        <li><a href="#21-exploratory-data-analysis">2.1 Exploratory Data Analysis</a></li>
+        <li><a href="#22-modeling-longitudinal-data">2.2 Modeling Longitudinal Data</a></li>
+        <li><a href="#23-assumptions">2.3 Assumptions</a></li>
+      </ol>
+    </li>
+    <li><a href="#3-results">3 Results</a>
+      <ol>
+        <li><a href="#31-exploratory-data-analysis-results">3.1 Exploratory Data Analysis Results</a></li>
+        <li><a href="#32-model-selection-and-rejected-models">3.2 Model Selection and Rejected Models</a></li>
+        <li><a href="#33-predictor-selection">3.3 Predictor Selection</a></li>
+        <li><a href="#34-final-model">3.4 Final Model</a></li>
+      </ol>
+    </li>
+    <li><a href="#etc">Etc…</a></li>
+    <li><a href="#post-mordem">Post Mordem</a>
+      <ol>
+        <li><a href="#etc-1">Etc..</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/">
+                <img src="/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/freddie-mercury-memorial-779956_640_hu53777eb8fcd46320722b3f01d82c23b1_63523_800x0_resize_q75_box.jpg"
+                        srcset="/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/freddie-mercury-memorial-779956_640_hu53777eb8fcd46320722b3f01d82c23b1_63523_800x0_resize_q75_box.jpg 800w, /p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/freddie-mercury-memorial-779956_640_hu53777eb8fcd46320722b3f01d82c23b1_63523_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1067" 
+                        loading="lazy"
+                        alt="Featured image of post Linear Mixed Effects Models for CD4&#43; Cell Counts in Men with HIV" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/analysis/" >
+                analysis
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/">Linear Mixed Effects Models for CD4&#43; Cell Counts in Men with HIV</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 07, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    10 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h3 id="update">Update</h3>
+<p>Busy moving. I have a summer project for this blog (look forward to it, it’ll be fun). I also a summer internship at JPL NASA!</p>
+<p><strong>You can get the <a class="link" href="./linear-mixed-effects.pdf" >pdf paper here</a>.</strong></p>
+<p>I just finished my semester and I did a final project that I’m pretty proud of. I put in a lot of effort and my professor Dr. Zhou was very awesome.</p>
+<h3 id="abstract">Abstract</h3>
+<p>Human immunodeficiency virus or HIV are responsible for decline in CD4+ cell count. The investigation is set out to find the population rate of CD4+ cell count decline per milliliter of blood, to characterize the of individual rate of cell decline, and the factors that predict cell decline. Using exploratory data analysis and longitudinal tools, a linear mixed effects model with random intercept and random slope was created. The estimated population average time course of CD4+ cell depletion is 80.1857 CD4+ cells per milliliter of blood. The degree of heterogeneity across men in the rate of progression as time passes is 54.8061127978 cell count. The factors that predict cell count decline is time, pack of smoke, number of sexual partners, cesd mental illness score, age &amp; time interaction, and smoke &amp; time. The time factor is the most dramatic in term of CD4+ cell depletion.</p>
+<h2 id="1-introduction">1 Introduction</h2>
+<h3 id="11-hiv-and-cd4-cells">1.1 HIV and CD4+ Cells</h3>
+<p>Human immunodeficiency virus or HIV is a virus that attack immune system by killing a class of immune cell named CD4+ cell. On average a normal person without HIV have 1000 cells per milliliter of blood. As time passes from the initial HIV infection an infected person CD4+ cell counts starts to decline. Acquired immune deficiency syndrome or AIDS is the disease caused by the HIV virus.</p>
+<h3 id="12-the-data">1.2 The Data</h3>
+<p>The data used in this paper is a subset of the Multicenter AIDS Cohort Study with 369 men with HIV. The data consist of columns representing: time since seroconversion, CD4 count, age (relative to arbitrary origin), packs of cigarettes smoked per day, recreational drug use (yes/no), number of sexual partners, CESD (mental illness score), and subject ID. The data have been standardized, the measurements are unbalance, and the time interval are not evenly spaced.</p>
+<h3 id="13-aim-of-the-investigation">1.3 Aim of the Investigation</h3>
+<p>The aim of the investigation is four main points: average time course of CD4+ cell depletion, time course for individual men, to characterize the degree of heterogeneity across men in the rate of progression, and factors which predict CD4+ cell changes.</p>
+<h2 id="2-methods">2 Methods</h2>
+<h3 id="21-exploratory-data-analysis">2.1 Exploratory Data Analysis</h3>
+<p>The goal in exploratory data analysis (EDA) is to have an idea what the CD4+ cell count data looks like and ideas to go from EDA to modeling the data. Creating a response trend model will give an idea how time affect the response and if polynomial time is needed. A variogram graph will indicate what kind of variance is needed to be account for in the model. There are three different kind of variance either random effect variance, within-subject variance, and between-subject variance are needed.</p>
+<h3 id="22-modeling-longitudinal-data">2.2 Modeling Longitudinal Data</h3>
+<p>The next step is to create a suitable longitudinal model for the CD4+ cell data to answer the aim of this investigation. The model that will be chosen will have to address the variances that was shown in the variogram during EDA. After the model is selected the next step will be predictor selection. The predictor selection will be base on the deviance test of the full and the reduced model. Deviance test will be perform because the comparison are base on nested models.</p>
+<h3 id="23-assumptions">2.3 Assumptions</h3>
+<p>The assumptions this investigation made is there are between-subject variations, within-subject variations, and measurement variations that need to be explicitly accounted for. The chosen longitudinal model will account for these explicitly so that the investigation can have an accurate and precise answers to the aim of this investigation.</p>
+<p>Between-subject is latent factors. Latent factors are biological variability examples are diet, genetics, and other latent factors. Latent factors can keep an individuals CD4+ cell count consistently higher than the population mean or lower than the population mean.</p>
+<p>The within-subject variation is serial correlation. The serial correlation is induced by time, the close two measurements are the more correlated they are. The farther apart two measurements are the less correlated they are.</p>
+<p>Measurement variation takes into account for the process of taking measurements is an imperfect process and that there will be some variation in taking CD4+ cell count measurement. A variogram with force equally spacing of time intervals will confirm these assumptions of variations exist in the CD4+ cell count data.</p>
+<h2 id="3-results">3 Results</h2>
+<h3 id="31-exploratory-data-analysis-results">3.1 Exploratory Data Analysis Results</h3>
+<p align="center"> <img title="CD4+ Cells Spaghetti Plot" width="80%" src="1_cd4.png" /> </p>
+<p>Figure 1: A graph between the response of the CD4+ cell count on the y-axis and the time points on the x-axis.</p>
+<p>The spaghetti plot, Figure 1, shows that the data is unbalanced and that the time intervals are irregular and unequaled. It also show that individual have different base line which imply random intercept and that individual have different rate of progression which imply random slope. This will help in model selection especially when certain covariance structure have assumption about balance data and equally spaced time intervals.</p>
+<p align="center"> <img title="CD4+ Cells Population Trend Plot" width="80%" src="2_cd4.png" /> </p>
+<p>Figure 2: A graph between the response of the CD4+ cell count on the y-axis and the time points on the x-axis.</p>
+<p>The response trend graph, Figure 2, indicate that perhaps time is not constant but some sort of polynomial. Between time point 0 and 2 months there is a sharp drop in CD4+ cell count and closer to the 2 month time point the CD4+ cell count rate of decline starts to steady out and the sharp decrease rate is slowed down drastically. Modeling the data with quadratic or cubic time predictor may be needed base on this graph.</p>
+<p align="center"> <img title="CD4+ Variogram" width="80%" src="3_cd4.png" /> </p>
+<p>Figure 3: A variogram of the CD4+ cell count data with time intervals forced to be equally space.</p>
+<p>Next is a plotted variogram (Figure 3) to check the assumption of having three sources of variation. Due to the data having unequaled time intervals the measurements are averaged and binned to the nearest time point. The blue line represent that variogram line and the grey horizontal line represents total variance.</p>
+<p>Looking at Figure 3, the variogram blue solid line does not start at zero it indicate that there exist measurement errors. The variogram is not a flat blue line but a slanted line with a slope indicating that there exist serial correlation. Finally the blue line does not touched the upper limit of total variance indicating that there is random effect in play. The assumption that the CD4+ cell count data have all three sources of variation can be safely assume and is verified empirically.</p>
+<h3 id="32-model-selection-and-rejected-models">3.2 Model Selection and Rejected Models</h3>
+<p>Longitudinal analysis have many linear models that to choose from. Models such as unstructured covariance and structured covariance. This section will discuss the reason for not choosing certain models.</p>
+<p>Unstructured covariance is ruled out for two reasons. The first reason being that the large data set and large number of predictors would result in a large amount of parameter estimations. The second reason is that unstructured covariance is unsuitable for data set that have measurement taken at unequally spaced intervals.</p>
+<p>Toeplitz covariance structure and autoregressive covariance structure both are other choices of structured covariance model. Both toeplitz and autoregressive assume that measurements are made at equal intervals of time. The CD4+ cell data have irregular unequal intervals of time.</p>
+<p>The variogram shows there are three sources of variation. Independent model is rejected because the model assume there is only measurement error. Uniform model is also rejected because it only address two sources of variation, measurement error and between-individual variation. Exponential covariance model is rejected because the model address only within-individual variation.</p>
+<p>Linear mixed effects models is chosen is because the model addresses all three sources of variation. The model explicitly distinguished between fixed and random effects. The advantage of this explicit distinction enable accurate and precise answers to the aim of this investigation.</p>
+<h3 id="33-predictor-selection">3.3 Predictor Selection</h3>
+<div class="table-wrapper"><table>
+    <thead>
+        <tr>
+            <th style="text-align: left">Predictors    
+            <th style="text-align: center">   β_hat values   
+            <th style="text-align: right">   p-values for t-test
+    <tbody>
+        <tr>
+            <td style="text-align: left">intercept
+            <td style="text-align: center">790.11
+            <td style="text-align: right">&lt;.0001
+        <tr>
+            <td style="text-align: left">time
+            <td style="text-align: center">-81.6092
+            <td style="text-align: right">&lt;.0001
+        <tr>
+            <td style="text-align: left">age
+            <td style="text-align: center">1.6277
+            <td style="text-align: right">0.3790
+        <tr>
+            <td style="text-align: left">smoke
+            <td style="text-align: center">41.0459
+            <td style="text-align: right">&lt;.0001
+        <tr>
+            <td style="text-align: left">drug
+            <td style="text-align: center">22.6537
+            <td style="text-align: right">0.2677
+        <tr>
+            <td style="text-align: left">partners
+            <td style="text-align: center">6.5509
+            <td style="text-align: right">0.0043
+        <tr>
+            <td style="text-align: left">cesd
+            <td style="text-align: center">-2.3499
+            <td style="text-align: right">0.0070
+        <tr>
+            <td style="text-align: left">age × time
+            <td style="text-align: center">-1.3805
+            <td style="text-align: right">0.0317
+        <tr>
+            <td style="text-align: left">smoke × time
+            <td style="text-align: center">-14.2323
+            <td style="text-align: right">&lt;.0001
+        <tr>
+            <td style="text-align: left">drug × time
+            <td style="text-align: center">-1.7315
+            <td style="text-align: right">0.8488
+        <tr>
+            <td style="text-align: left">partners × time
+            <td style="text-align: center">-0.3958
+            <td style="text-align: right">0.7161
+        <tr>
+            <td style="text-align: left">cesd × time
+            <td style="text-align: center">0.1585
+            <td style="text-align: right">0.6899
+        <tr>
+            <td style="text-align: left">time^2
+            <td style="text-align: center">0.8753
+            <td style="text-align: right">0.6187
+</table></div>
+<p>Table 1: Full linear mixed effects model estimate.</p>
+<p>After choosing the linear fixed effects model with random intercept and random slope to model the data, the next part is selecting a good combination of predictors that describe the CD4+ cell count data. A full model is fitted first. From Table 1, which show the estimated β, predictors that are not significant at p-value of 0.05 will be dropped and the predictors that are significant will be kept as a reduced model. Note the time^2 was included in the full model because of the nonlinear trend of time that was indicated in the response trend graph.</p>
+<p>The predictors that are dropped are drug, drug × time, partners × time, cesd × time, and time^2. Even though the age predictor is not significant the interaction age × time is significant therefore the age predictor is kept in the reduced model.</p>
+<div class="table-wrapper"><table>
+    <thead>
+        <tr>
+            <th style="text-align: left">   
+            <th style="text-align: center">   Full Model   
+            <th style="text-align: right">   Reduced Model
+    <tbody>
+        <tr>
+            <td style="text-align: left">intercept
+            <td style="text-align: center">790.11
+            <td style="text-align: right">&lt;.0001
+        <tr>
+            <td style="text-align: left">-2 Log Likelihood
+            <td style="text-align: center">33603.4
+            <td style="text-align: right">33600.9
+        <tr>
+            <td style="text-align: left">χ2 Test
+            <td style="text-align: center">2.5
+            <td style="text-align: right">2.5
+        <tr>
+            <td style="text-align: left">Statistic Degree of Freedom
+            <td style="text-align: center">13
+            <td style="text-align: right">8
+        <tr>
+            <td style="text-align: left">χ2 25,0.95
+            <td style="text-align: center">11.070
+            <td style="text-align: right">11.070
+</table></div>
+<p>Table 2: Likelihood Ratio test for two linear mixed effect models.</p>
+<p>Hypothesis H1: Reduced Linear Mixed Effects Model Hypothesis H2: Full Linear Mixed Effects Model</p>
+<p>After fitting the reduced model, a likelihood ratio test was conducted between the full model and the reduced model. Table 2 shows the χ2 test statistic at 2.5 which is the difference between the -2 Log Likelihood of full model and reduced model. The degree of freedom for χ2 is the difference between the number of parameters in the full model and the number of parameters in the reduced model which is 5. The null hypothesis for the deviance test is the reduced model and the alternative hypothesis is the full model. Since the test statistic is 2.5 which is much less than 11.070, the reduced model is chosen.</p>
+<h3 id="34-final-model">3.4 Final Model</h3>
+<p>The equation listed below is the selected model that best represent the CD4+ cell count data and the best explanation of the data. With this model, the investigation can proceed to answer the aim of the investigation.</p>
+<p>Yij = β0 + β1 timeij + β2 ageij + β3 smokeij + β4 partnersij + β5 cesdij + β6 ageij × timeij + β7 smokeij × timeij + b0i + b1i × timeij + eij
+</p>
+<p>=791.05 − 80.1857timeij + 1.4697ageij + 38.0785smokeij + 7.0434partnersij − 2.2867 cesdij − 1.3400 ageij × timeij − 13.2674 smokeij × timeij + b0i + b1i timeij + eij (1)
+</p>
+<p>Where b0i represents the random intercept for each individual and b1i represents the random slope for each individual.</p>
+<p>The model can be rewritten in matrix notation</p>
+<p>Yi=Xiβ+Zibi +ei, i=1,…,N,j=1,…,ni (2)
+where Y i is a vector of size ni × 1 representing observations for ith individual, j represent the jth measurement for ith individual, Xi is a ni × p design matrix of p independent fixed effect variables, Zi is a ni × q design matrix of q independent random effect variables, β is a vector of size p × 1 representing fixed effect parameters, bi is an independent vector of q × 1 size representing random effects with MVN(0,G) distribution (Multivariate Normal), and ei represents an independent vector of random errors of size ni ×1 with MVN(0,Ri) distribution. The ei are independent of bi.</p>
+<p>The Ri represent within-subject variance. Linear fixed effects model break Ri down into two sources of within-subject variance, serial correlation and measurement error. The measurement error variance (τ^2) is equal to 59104. The serial correlation variance (σ^2) is 1.0649. The G matrix represents the between-subject variance.</p>
+<p>See paper for more matrix notations… &gt;<em>__</em>&lt;</p>
+<h2 id="etc">Etc…</h2>
+<p>Please see paper for results, SAS codes, R codes, and conclusion. The blog post is getting long.</p>
+<h2 id="post-mordem">Post Mordem</h2>
+<p>Well… translating a paper into a blog post is terrible. The paper is too academic with high domain assumption and an abstract and a link to the paper is sufficient.</p>
+<h3 id="etc-1">Etc..</h3>
+<p><a href="https://pixabay.com/en/freddie-mercury-memorial-statue-779956/">The Freddie Mercury picture is taken from pixabay.</a>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/modeling/">modeling</a>
+        
+            <a href="/tags/regression/">regression</a>
+        
+            <a href="/tags/statistic/">statistic</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/things-i-ve-learned-about-modeling/">
+        
+        
+            <div class="article-image">
+                <img src="/p/things-i-ve-learned-about-modeling/person-984236_1920.a09eb812c670e6c0c296e8851829e688_hu54856dd37b73ba3ac68393b7b83b222a_651196_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Things I&#39;ve learned about modeling."
+                        data-key="things-i-ve-learned-about-modeling" 
+                        data-hash="md5-oJ64EsZw5sDCluiFGCnmiA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Things I&#39;ve learned about modeling.</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/interesting-papers-i-ve-read-this-week/">
+        
+        
+            <div class="article-image">
+                <img src="/p/interesting-papers-i-ve-read-this-week/book-2304078_1920.235df27ae73ae793db636270338d8170_hudbbbaa23eb712c9e80c8b666d23f0fa6_671506_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Interesting Papers I&#39;ve read this week."
+                        data-key="interesting-papers-i-ve-read-this-week" 
+                        data-hash="md5-I13yeuc655PbY2JwM42BcA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Interesting Papers I&#39;ve read this week.</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/light-novel-analysis-part-1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/light-novel-analysis-part-1/lightnovel.bca02c2deb1cabf5895668942b0e758b_hue3f6c131a135f7a211aab575893b8d77_402324_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Light Novel Analysis (part 1)"
+                        data-key="light-novel-analysis-part-1" 
+                        data-hash="md5-vKAsLescq/WJVmiUKw51iw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Light Novel Analysis (part 1)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/">
+        
+        
+            <div class="article-image">
+                <img src="/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/salmon_sushi.518aa7a2793c452fbae6dde7ddcc853b_hu4711793190d15acc5555df5b859ceb84_343879_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1"
+                        data-key="book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one" 
+                        data-hash="md5-UYqnonk8RS&#43;65t3n3cyFOw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2009 - 
+        
+        2023 Anthony Quoc Anh Doan - Ramblings of a Happy Scientist
+        
+    </section>
+    
+    <section>
+      <p align="center">Desiderata by Max Ehrmann</p>
+      <p>
+          Go placidly amid the noise and the haste, and remember what peace there may be in silence. As far as possible without surrender be on good terms with all persons. Speak your truth quietly and clearly; and listen to others, even to the dull and the ignorant, they too have their story. Avoid loud and aggressive persons, they are vexations to the spirit.
+      </p>
+
+      <p>
+    If you compare yourself with others, you may become vain or bitter; for always there will be greater and lesser persons than yourself. Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.
+      </p>
+
+      <p>
+    Exercise caution in your business affairs, for the world is full of trickery. But let not this blind you to what virtue there is; many persons strive for high ideals, and everywhere life is full of heroism. Be yourself. Especially do not feign affection. Neither be cynical about love; for in the face of all aridity and disenchantment it is as perennial as the grass. Take kindly the counsel of the years, gracefully surrendering the things of youth.
+      </p>
+
+      <p>
+    Nurture strength of spirit to shield you in sudden misfortune. But do not distress yourself with dark imaginings. Many fears are born of fatigue and loneliness. Beyond a wholesome discipline, be gentle with yourself. You are a child of the universe, no less than the trees and the stars; you have a right to be here. And whether or not it is clear to you, no doubt the universe is unfolding as it should.
+      </p>
+
+      <p>
+    Therefore, be at peace with God, whatever you conceive Him to be. And whatever your labors and aspirations in the noisy confusion of life, keep peace in your soul. With all its sham, drudgery and broken dreams; it is still a beautiful world. Be cheerful.
+      </p>
+
+      <p>
+    Strive to be happy.
+      </p>
+      
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

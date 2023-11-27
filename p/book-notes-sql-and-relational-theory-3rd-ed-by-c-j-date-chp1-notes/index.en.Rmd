@@ -1,0 +1,141 @@
+---
+title: 'Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes'
+author: A.Q.Doan
+date: '2023-11-21'
+slug: book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes
+categories:
+  - SQL
+  - Book
+tags: [Book notes]
+description: ~
+image: database-schema-1895779_1280.png
+math: ~
+license: Not Sure. These are snippets of passage in the book I've found relevant.
+hidden: yes
+comments: yes
+---
+
+## Introduction
+
+Started reading "SQL and Relational Theory" by [C.J. Date](https://en.wikipedia.org/wiki/Christopher_J._Date).
+
+It's been awhile since I've dealt with Relational Theory so I'm taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.
+
+## Original Model Terminology
+
+The original model by [E. F. Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd) had three major components: 
+
+1. `structure`, 
+2. `integrity`, 
+3. and `manipulation`.
+
+### Structural Features
+
+1. **Relation** ("*table*") - are defined over types
+2. **Attribute** ("*column*")
+3. **Type** ("*column values*" aka "*domain*") - a conceptual pool of values from which actual attributes in actual relations take their actual values.
+4. **N-ary relation** - # of column in a table
+5. **Candidate key** ("*key*") - every relation has at least one. A combination of attributes (cols), often just 1 attribute (e.g. column with id's), such that every tuple in the relation has a unique value for the combinatoin in question.
+6. **Primary key** - is a candidate key that's been singled out for special trestment in some way.
+7. **Foreign key** - a combination, or set, of attributes `FK` in some relation `r2` such that each `FK` value is required to be equal to some value of some key `K` in some relation `r1`.
+8. **Constraint** (aka *integrity constraint*) - a boolean expression that must evaluate to TRUE. 
+
+
+### Integrity Features
+
+1. **The Entity Integrity Rule** - Primary key attributes don't permit NULL's.
+2. **The Referential Integrity Rule** - There mustn't be any unmatched foreign key values. *If B references A, then A must exists.*
+
+### Manipulative Features 
+
+1. **Relational algebra** - a collection of operators (e.g., `difference`, or `MINUS`) that can be applied to relations (tables). Allows us to derived "new" relations from "old" ones.
+2. **Relational assignment** operator - allows the value of some relational algebra expression (e.g., `r1 MINUS r2`, where `r1` and `r2` are relations) to be assigned to some relation (table). How updates are done in the relational model.*Update* means `INSERT`, `DELETE`, and `UPDATE` operators.
+3. **Closure property** - The output from every operation is the same kind of thing as the input, the out put from one peration can become the input to another. Enable us to wrjite nested relational expressions.
+
+#### Original Operators* 
+
+*the ones that Codd defined in his earliest papers
+
+![Figure 1.2 The Original Relational Algebra](fig1_2_the_original_relational_algebra.png)
+
+1. **Restrict** - Returns a relation containing all tuples from a specified relation that satisfy a specified condition. For example, we might restrict relation `EMP` to just those tuples where the `DNO` value is `D2`. *My Note*: this seems like a `WHERE` clause.  
+2. **Project** - Returns a relation containing all (sub)tuples that remain in a specified relation after specified attributes have been removed. For example, we might project relation `EMP` on just the `ENO` and `SALARY` attributes (thereby removing the `ENAME` and `DNO` attributes). *My Notes*: `SELECT` statement, where you specified which column(s) you want.
+3. **Product** - Returns a relation containing all possible tuples that are a combination of two tuples, one from each of two specified relations. Note: TRhis operator is also known variously as *cartesian product* (sometimes more specifically *extended* or *expanded* cartesian product), *cross product*,*cross join*, and *cartesian join*; in fact it's really just a special case of join (see chp 6). 
+4. **Union** - Returns a relation containing all tuples that appear in either or both of two specified relations. 
+5. **Intersect** - Returns a relation containing all tuples that appear in both of two specified relations (special case of join). 
+6. **Difference** - Returns a relation containing all tuples that appear in the first and not the second of specified relations.
+7. **Join** - Returns a relation containing all possible tuples that are a combination of two tuples, one from each of two specified relations, such that the two tuples contributing to any given result tuple have a common value for the common attributes of the two relations (and that common value appears just once, not twice, in that result tuple). Note: This kind of join was originally called the *natural* join, to distinguish it from various other kinds. This is the most inportant join so *join* means *natural join*. 
+
+**Note:** [Relational Calculus](https://en.wikipedia.org/wiki/Relational_calculus) is an alternative to [Relational Algebra](https://en.wikipedia.org/wiki/Relational_algebra). 
+
+## Data Model vs Implementation 
+
+1. A **data model (first sense)** is an abstract, self-contained, logical definition of the data structures, data operators, and so forth, that together make up the abstract machine with which users interact. *The model (first sense) is what the user has to know.*
+2. An **implementation** of a given data model (first sense) is a physical realization on a real machine of the components of the abstract machine that together constitute that model. *The implementation is what the user doesn’t have to know.*
+3. **Physical data independence** - means we have the freedom to make changes in the way the data is physically stored and accessed without having to make corresponding changes in the way the data is perceived by the user. *...means protecting investment in user training
+and applications.*
+4. A **data model (second sense)** is a model of the data—especially the persistent data—of some particular enterprise. Is just a logical, and possibly somewhat abstract, database design.
+5. A **domain** can be thought of as a conceptual pool of values from which actual attributes in actual relations take their actual values. In other words, a domain is a type, and the terms domain and type are effectively interchangeable.
+
+### Data Model (first sense) vs Data Model (second sense)
+
+* A **data model in the first sense** is like a *programming language*, whose constructs can be used to solve many specific problems but in and of themselves have no direct connection with any such specific problem.
+* A **data model in the second sense** is like a *specific program* written in that language—it uses the facilities provided by the model, in the first sense of that term, to solve some specific problem.
+
+## PROPERTIES OF RELATIONS
+
+First of all, every relation has a heading and a body: 
+
+1. **Heading** is a set of attributes (where by the term attribute I mean, very specifically, an attribute-name : type-name pair, and where no two attributes in the same heading have the same attribute name).
+2. **Body** is a set of tuples that conform to that heading.
+3. **Degree** (aka *arity*) is the number of attributes in the heading, both of that heading as such and of any relation that has that heading. 
+4. **Cardinality** is the number of tuples in the body, both of the body itself and of the relation that contains it.
+
+
+1. Relations never contain duplicate tuples. SQL tables are allowed to contain duplicate rows and thus aren’t relations, in general.
+2. The tuples of a relation are unordered. `ORDER BY` is useful for
+displaying results, but it isn’t a relational operator as such.
+3. Relations are always *normalized* (equivalently, they’re in *first normal form*, `1NF`).
+
+
+## Some Crucial Points
+
+* Every subset of a tuple is a tuple.
+* Every subset of a heading is a heading.
+* Every subset of a body is a body.
+
+Equality:
+* two tuples are duplicates of each other if and only if they’re equal: in other words, if and only if they’re the very same tuple.
+* two relations are equal if and only if, in turn, their headings are equal and their bodies are equal.
+
+## BASE vs. DERIVED RELATIONS
+
+The operators of the relational algebra allow us to start with some given relations and obtain further relations from those given ones.
+
+The given relations are referred to as *base relations*, the others are *derived relations*.
+
+* `CREATE TABLE` SQL statement - creates base relations.
+* `CREATE VIEW` SQL statement - is one way to create derived relations. A *view* (also known as a `virtual relation`) is a named relation whose value at any given time `t` is the result of evaluating a certain relational expression at that time `t`. 
+* Can think of a view as being **“materialized”**—in effect, you can think of a base relation being constructed whose value is obtained by evaluating the specified relational expression—at the time the view in question is referenced. 
+
+Note: Relational model has nothing to say about physical storage matters at all. 
+
+Note: a view is that it is a table/relation. Don't treat it any differently when come to relational algebra on view vs table/relation.
+
+## RELATIONS vs. RELVARS
+
+## VALUES vs. VARIABLES
+
+1. A **value** is an *“individual constant”* (this is the term used by logicians), such as the integer 3. A value has no location in time or space. However, values can be represented in memory by means of some encoding, and those representations or encodings do have location in time and space. Indeed, distinct representations of the same value can appear at any number of distinct locations in time and space—meaning, loosely, that any number of different variables (see the definition immediately following) can have the same value, at the same time or different times. Observe in particular that, by definition, a value can’t be updated; for if it could, then after such an update it wouldn’t be that value any longer.
+2. A **variable** is a holder for a representation of a value. A variable does have location in time and space. Also, variables, unlike values, can be updated; that is, the current value of the variable can be replaced by another value. (After all, that’s what *“variable”* means—to be a variable is to be updatable, to be updatable is to be a variable; equivalently, to be a variable is to be assignable to, to be assignable to is to be a variable.)
+
+## CONCLUDING REMARKS
+
+* Relations have no duplicate tuples, no top to bottom tuple ordering, and no left to right attribute ordering. 
+* Overall, the relational model is declarative, not procedural, in nature; that is, it always favors declarative solutions over procedural ones, wherever such solutions are feasible. 
+* **Declarative** means the system does the work. 
+* **Procedural** means the user does the work. 
+
+## Credits
+
+* First picture (tables): [database-schema-data-tables-schema-1895779](https://pixabay.com/vectors/database-schema-data-tables-schema-1895779/)

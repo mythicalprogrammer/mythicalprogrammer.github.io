@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
+A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex. In particular, those types can be either system or user defined.'>
+<title>Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes</title>
+
+<link rel='canonical' href='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/'>
+
+<link rel="stylesheet" href="/scss/style.min.ae544f6e875175eb0f852537f03e029a61665cc22ad0fd93bf333e7c3bee5a8c.css"><meta property='og:title' content='Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes'>
+<meta property='og:description' content='Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
+A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex. In particular, those types can be either system or user defined.'>
+<meta property='og:url' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/'>
+<meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Book notes' /><meta property='article:published_time' content='2023-11-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280.jpg' />
+<meta name="twitter:site" content="@AnthonyDoan20">
+    <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes">
+<meta name="twitter:description" content="Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
+A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex. In particular, those types can be either system or user defined."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud04d226d349438d5d6dbe19a25343199_44779_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</a></h1>
+            <h2 class="site-description">An instrument of peace. Where there is hatred, let me sow love; where there is doubt, let&#39;s get some data and build a model.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mythicalprogrammer'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/anthony-anh-quoc-doan-a7234321/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+  <path d="M8 11l0 5" />
+  <path d="M8 8l0 .01" />
+  <path d="M12 16l0 -5" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://mastodon.social/@anthony_doan'
+                        target="_blank"
+                        title="Mastodon"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-mastodon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z" />
+  <path d="M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.reddit.com/user/anthony_doan/'
+                        target="_blank"
+                        title="Reddit"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-reddit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z" />
+  <path d="M12 8l1 -5l6 1" />
+  <path d="M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <circle cx="9" cy="13" r=".5" fill="currentColor" />
+  <circle cx="15" cy="13" r=".5" fill="currentColor" />
+  <path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/339405/mythicalprogrammer'
+                        target="_blank"
+                        title="StackOverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-stackoverflow" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" />
+  <path d="M8 16h8" />
+  <path d="M8.322 12.582l7.956 .836" />
+  <path d="M8.787 9.168l7.826 1.664" />
+  <path d="M10.096 5.764l7.608 2.472" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AnthonyDoan20'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/portfolio' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder-star" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" />
+  <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+</svg>
+                
+                <span>Portfolio</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#types-and-relations">TYPES AND RELATIONS</a></li>
+    <li><a href="#equality-comparisons">EQUALITY COMPARISONS</a></li>
+    <li><a href="#data-value-atomicity">DATA VALUE ATOMICITY</a></li>
+    <li><a href="#whats-a-type">WHAT’S A TYPE?</a></li>
+    <li><a href="#scalar-vs-nonscalar-types">SCALAR vs. NONSCALAR TYPES</a></li>
+    <li><a href="#scalar-types-in-sql">SCALAR TYPES IN SQL</a></li>
+    <li><a href="#type-checking-and-coercion-in-sql">TYPE CHECKING AND COERCION IN SQL</a></li>
+    <li><a href="#collations-in-sql">COLLATIONS IN SQL</a></li>
+    <li><a href="#row-and-table-types-in-sql">ROW AND TABLE TYPES IN SQL</a></li>
+    <li><a href="#concluding-remarks">CONCLUDING REMARKS</a></li>
+    <li><a href="#credits">Credits</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/">
+                <img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_800x0_resize_q75_box.jpg"
+                        srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_800x0_resize_q75_box.jpg 800w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="453" 
+                        loading="lazy"
+                        alt="Featured image of post Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/sql/" >
+                SQL
+            </a>
+        
+            <a href="/categories/book/" >
+                book
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/">Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 22, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    9 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="types-and-domains">Types and Domains</h1>
+<h2 id="types-and-relations">TYPES AND RELATIONS</h2>
+<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sees-it-4138304_1280.jpg"
+	width="853"
+	height="1280"
+	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sees-it-4138304_1280_hu29a3f0abc71b4a3eecfe9dc01436e86c_258345_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sees-it-4138304_1280_hu29a3f0abc71b4a3eecfe9dc01436e86c_258345_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="RELATIONS"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="66"
+		data-flex-basis="159px"
+	
+></p>
+<p><strong>Data types</strong> (<strong>types</strong> for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.</p>
+<p>A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex. In particular, those types can be either system or user defined.</p>
+<p>Two major topics:</p>
+<ul>
+<li><strong>Equality comparisons and “domain check override”:</strong> That domains really are types.</li>
+<li><strong>Data value atomicity and first normal form:</strong> That the types in question can be arbitrarily complex.</li>
+</ul>
+<h2 id="equality-comparisons">EQUALITY COMPARISONS</h2>
+<p>The Main Differences Between an Expression and a Statement in Programming. Expressions can be assigned or used as operands, while statements can only be declared. Statements create side effects to be useful, while expressions are values or execute to values.</p>
+<p>THE_ operators, effectively provides both (a) the domain checking we want in the first place and
+(b) a way of overriding that checking, when desired, in the second place</p>
+<p><strong>strong typing.</strong> -
+(a) everything—in particular, every value and every variable—has a type, and (b) whenever we try to perform some operation, the system checks that the
+operands are of the right types for the operation in question (or, possibly, that they’re coercible to
+those right types). Observe, moreover, that this mechanism works for all operations, not just for
+the equality comparisons</p>
+<h2 id="data-value-atomicity">DATA VALUE ATOMICITY</h2>
+<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/atom-3669818_1280.jpg"
+	width="1280"
+	height="720"
+	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/atom-3669818_1280_hu71442ee2154632edebb8def9e89c4ef8_192625_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/atom-3669818_1280_hu71442ee2154632edebb8def9e89c4ef8_192625_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Atomicity"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p><strong>data value atomicity</strong> and the related notion of <strong>first
+normal form</strong> (<code>1NF</code> for short).</p>
+<p>1NF meant that every tuple in every
+relation contains just a single value (of the appropriate type) in every attribute position—and it’s
+usual to add that those “single values” are supposed to be “atomic.</p>
+<p>What does it mean for data to be atomic?</p>
+<p>Codd defines atomic data as data that “cannot be decomposed into
+smaller pieces by the DBMS (excluding certain special functions).”</p>
+<p>the notion of <strong>atomicity has no absolute meaning;</strong> it
+just depends on what we want to do with the data.</p>
+<h2 id="whats-a-type">WHAT’S A TYPE?</h2>
+<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/typewriter-1248088_1280.jpg"
+	width="1280"
+	height="853"
+	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/typewriter-1248088_1280_hu78a9f0ec1cb07f9f1e113f5480a76b75_249355_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/typewriter-1248088_1280_hu78a9f0ec1cb07f9f1e113f5480a76b75_249355_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Typewriter"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="360px"
+	
+></p>
+<p>So what is a type, exactly? In essence, it’s a named, <em>finite</em> set of values—all possible values of some specific kind.</p>
+<p>To elaborate briefly:</p>
+<ul>
+<li>The types we’re interested in are always <em>finite</em> because we’re dealing with computers,which (as pointed out in connection with type RATIONAL earlier in the chapter) are finite by definition.</li>
+<li>Note also that <em>qualifier named</em>: Types with different names are different types.</li>
+</ul>
+<p>Moreover:</p>
+<ul>
+<li><strong>Every <em>value</em> is of some type</strong> — in fact, of exactly one type, except possibly if type inheritance is supported, a concept that’s beyond the scope of this book.</li>
+<li><strong>Every variable, every attribute, every operator that returns a result, and every parameter of every operator is defined, or declared, to be of some type.</strong> 10 And to say that, e.g., variable V is declared to be of type T means, precisely, that every value v that can legally be
+assigned to V is in turn of type T.</li>
+<li><strong>Every expression denotes some value and is therefore of some type:</strong> namely, the type of the value in question, which is to say the type of the value returned by the outermost operator in the expression (where by “outermost” I mean the operator that’s executed last). For example, the type of the expression
+<code>( a / b ) + ( x - y )</code>
+is the type declared for the operator “<code>+</code>”, whatever that happens to be.</li>
+</ul>
+<p><strong>associated with every type there’s a set of operators for operating on values and variables of the type in question</strong> — where to say that operator <code>Op</code> is “associated with” type <code>T</code> basically just means that operator <code>Op</code> has a parameter of type <code>T</code></p>
+<p>That defining a new type involves at least all of the following:</p>
+<ol>
+<li>Defining a name for the type (obviously enough).</li>
+<li>Defining the values that make up that type. I’ll discuss this aspect in detail in Chapter 8.</li>
+<li>Defining the hidden physical representation for values of that type. As noted earlier, this is
+an implementation issue, not a model issue, and I won’t discuss it further in this book (at
+least, not much).</li>
+<li>Defining one or more selector operators for selecting, or specifying, values of that type.
+Note: Here’s as good a place as any to point out in the interest of accuracy that the
+selectors for type T aren’t “associated with” type T in the sense that they have a parameter
+of type T; rather, they return a result of type T.</li>
+<li>Defining the operators, including in particular assignment (“:=”), equality comparison
+(“=”), and THE_ operators, that apply to values and variables of that type (see below).</li>
+<li>For those operators that return a result, defining the type of that result (again, see below).</li>
+</ol>
+<p>points 4, 5, and 6 taken together imply that (a) the system knows precisely
+which expressions are legal, and (b) for those expressions that are legal it knows the type of the
+result as well.</p>
+<h2 id="scalar-vs-nonscalar-types">SCALAR vs. NONSCALAR TYPES</h2>
+<p>Types are frequently said to be either scalar or nonscalar. Loosely, a type is scalar if it has no user visible components and nonscalar otherwise.</p>
+<ul>
+<li><strong>scalar</strong> - types that are neither tuple nor relation types.</li>
+<li><strong>nonscalar</strong> - types that are either tuple or relation types.</li>
+<li>A <em>generated type</em> is a type that’s obtained by invoking some
+type generator (in the example, the <strong>type generator</strong> is, specifically, RELATION). You can think of a type generator as a special kind of operator; it’s special because (a) it returns a type instead of a value, and (b) it’s invoked at compile time instead of run time. For instance, most programming languages support a type generator called ARRAY, which lets users define a variety of specific array types. For present purposes, however, the only type generators we’re interested in are TUPLE and RELATION.</li>
+</ul>
+<p>Finally, a few miscellaneous points to close this section:</p>
+<ul>
+<li>Even though tuple and relation types do have user visible components (namely, their attributes), there’s no suggestion that those components have to be physically stored as such, in the form in which they’re seen by the user. In fact, the physical representation of tuples and relations should be hidden from the user, just as it is for scalar values (recall the discussion of physical data independence in Chapter 1).</li>
+<li>Like scalar types, tuple and relation types certainly need associated selector operators (and literals as a special case). I’ll defer the details to the next chapter. They don’t need <code>THE_</code> operators, however; instead, they have operators that provide access to the corresponding attributes, and those operators play a role somewhat analogous to that played by <code>THE_</code> operators in connection with scalar types.</li>
+<li>Tuple and relation types also need assignment and equality comparison operators. I gave an example of tuple assignment earlier in the present section; I’ll defer details of the other operators—relational assignment, and tuple and relational equality comparisons—to the next chapter.</li>
+</ul>
+<h2 id="scalar-types-in-sql">SCALAR TYPES IN SQL</h2>
+<p>SQL supports the following more or less self-explanatory system defined
+scalar types:</p>
+<ul>
+<li>BOOLEAN</li>
+<li>INTEGER</li>
+<li>SMALLINT</li>
+<li>BIGINT</li>
+<li>NUMERIC(p,q)</li>
+<li>DECIMAL(p,q)</li>
+<li>FLOAT(p)</li>
+<li>CHARACTER(n)</li>
+<li>CHARACTER VARYING(n)</li>
+<li>CHARACTER LARGE OBJECT(n)</li>
+<li>BINARY(n)</li>
+<li>BINARY VARYING(n)</li>
+<li>BINARY LARGE OBJECT(n)</li>
+<li>DATE</li>
+<li>TIME</li>
+<li>TIMESTAMP</li>
+<li>INTERVAL</li>
+<li>XML</li>
+</ul>
+<h2 id="type-checking-and-coercion-in-sql">TYPE CHECKING AND COERCION IN SQL</h2>
+<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/stop-1971756_640.jpg"
+	width="640"
+	height="476"
+	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/stop-1971756_640_hud9bef26450e551accdd4025dfb691a3b_149023_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/stop-1971756_640_hud9bef26450e551accdd4025dfb691a3b_149023_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="COERCION"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="134"
+		data-flex-basis="322px"
+	
+></p>
+<p>SQL supports only a weak form of strong typing.</p>
+<p>Thus, for example, an attempt to compare a number and a character string is illegal.</p>
+<p>However, an attempt to compare (say) two numbers is legal, even if those numbers are of different types—say INTEGER and FLOAT.</p>
+<p><strong>Strong recommendations:</strong> Do your best to avoid coercions wherever possible. columns with the same name are always of the same type; And when they can’t be avoided, I recommend doing them explicitly,
+using <code>CAST</code> or some <code>CAST</code> equivalent</p>
+<p>Certain coercions are unfortunately built into the very fabric of SQL and so can’t be avoided. To be specific:</p>
+<ul>
+<li>If a table expression tx is used as a row subquery, then the table <code>t</code> denoted by tx is supposed to have just one row <code>r</code>, and that table <code>t</code> is coerced to that row <code>r</code>.</li>
+<li>If a table expression <code>tx</code> is used as a scalar subquery, then the table t denoted by tx is supposed to have just one column and just one row and hence to contain just one value <code>v</code>, and that table <code>t</code> is doubly coerced to that value <code>v</code>. Note: This case occurs in connection with SQL-style aggregation in particular (see Chapter 7).</li>
+<li>In practice, the row expression <code>rx</code> in the <code>ALL</code> or <code>ANY</code> comparison <code>rx θ sq</code>—where (a) <code>θ</code> is a simple scalar comparison operator, such as “<code>&lt;</code>” or “<code>&gt;</code>”, followed by the keyword <code>ALL</code> or <code>ANY</code>, and (b) <em>sq</em> is a subquery—often consists of a simple scalar expression, in which case the scalar value denoted by that expression is effectively coerced to a row that contains just that scalar value. Note: Throughout this book, I use the term row expression to mean either a row subquery or a row selector invocation (where row selector in turn is my preferred term for what SQL calls a row value constructor—see Chapter 3); in other words, I use row expression to mean any expression that denotes a row, just as I use table expression to mean any expression that denotes a table. As for <code>ALL</code> or <code>ANY</code> comparisons, they’re discussed in Chapter 11.</li>
+</ul>
+<h2 id="collations-in-sql">COLLATIONS IN SQL</h2>
+<p>A <strong>collation</strong>—
+also known as a collating sequence—is a rule that’s associated with a specific character set and governs the comparison of strings of characters from that character set. Let C be a collation for
+character set S, and let a and b be any two characters from S. Then C must be such that exactly
+one of the comparisons a &lt; b, a = b, and a &gt; b evaluates to TRUE and the other two to FALSE
+(under C).</p>
+<p><strong>Recommendation:</strong>
+Don’t use PAD SPACE—always use NO PAD instead, if possible.</p>
+<p><strong>Strong recommendation:</strong> Avoid possibly nondeterministic expressions as much as you can.</p>
+<h2 id="row-and-table-types-in-sql">ROW AND TABLE TYPES IN SQL</h2>
+<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sunrise-1014712_640.jpg"
+	width="640"
+	height="422"
+	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sunrise-1014712_640_hu4459685c3f53736b064ee02b0a339fc0_45530_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sunrise-1014712_640_hu4459685c3f53736b064ee02b0a339fc0_45530_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="ROW"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="363px"
+	
+></p>
+<p>SQL ROW type generator (type constructor):</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#719e07">DECLARE</span> SRV <span style="color:#719e07">#</span> <span style="color:#719e07">SQL</span> <span style="color:#719e07">row</span> <span style="color:#719e07">variable</span>
+</span></span><span style="display:flex;"><span><span style="color:#719e07">ROW</span> ( SNO <span style="color:#b58900">VARCHAR</span>(<span style="color:#2aa198">5</span>) ,
+</span></span><span style="display:flex;"><span>      SNAME <span style="color:#b58900">VARCHAR</span>(<span style="color:#2aa198">25</span>) ,
+</span></span><span style="display:flex;"><span>      STATUS <span style="color:#b58900">INTEGER</span> ,
+</span></span><span style="display:flex;"><span>      CITY <span style="color:#b58900">VARCHAR</span>(<span style="color:#2aa198">20</span>) ) ;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>SQL row assignment:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span> <span style="color:#719e07">SET</span> SRV <span style="color:#719e07">=</span> ( S <span style="color:#719e07">WHERE</span> SNO <span style="color:#719e07">=</span> <span style="color:#2aa198">&#39;S1&#39;</span> ) ;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>SQL doesn&rsquo;t really have a <code>TABLE</code> type generator.</p>
+<p><code>CREATE TABLE</code> for defining table variables.</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#719e07">CREATE</span> <span style="color:#719e07">TABLE</span> S
+</span></span><span style="display:flex;"><span>  ( SNO    <span style="color:#b58900">VARCHAR</span>(<span style="color:#2aa198">5</span>)  <span style="color:#719e07">NOT</span> <span style="color:#719e07">NULL</span> ,
+</span></span><span style="display:flex;"><span>    SNAME  <span style="color:#b58900">VARCHAR</span>(<span style="color:#2aa198">25</span>) <span style="color:#719e07">NOT</span> <span style="color:#719e07">NULL</span> ,
+</span></span><span style="display:flex;"><span>    STATUS <span style="color:#b58900">INTEGER</span>     <span style="color:#719e07">NOT</span> <span style="color:#719e07">NULL</span> ,
+</span></span><span style="display:flex;"><span>    CITY   <span style="color:#b58900">VARCHAR</span>(<span style="color:#2aa198">20</span>) <span style="color:#719e07">NOT</span> <span style="color:#719e07">NULL</span> ,
+</span></span><span style="display:flex;"><span>    <span style="color:#719e07">UNIQUE</span> ( SNO ) ) ;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Type tables. <strong>Strong recommendation:</strong> Don&rsquo;t use them, nor any features related to them.</p>
+<h2 id="concluding-remarks">CONCLUDING REMARKS</h2>
+<ul>
+<li>Relations can have attributes of any type whatsoever.</li>
+<li>The question as to what types are supported is orthogonal to the question of support for the relational model itself.</li>
+<li><strong>First normal form</strong> just means that every tuple in every relation contains a single value, of the appropriate type, in every attribute position.</li>
+<li>Certain important exceptions to the rule that relational attributes can be of any type whatsoever. Two exceptions:</li>
+</ul>
+<ol>
+<li>The first is that if relation <code>r</code> is of type <code>T</code>, then no attribute of <code>r</code> can itself be of type <code>T</code> (think about it!).</li>
+<li>The second (which in fact I’ve already touched on) is that no relation in the database can have an attribute of any pointer type.</li>
+</ol>
+<h2 id="credits">Credits</h2>
+<ul>
+<li>First picture (tables): <a class="link" href="https://pixabay.com/illustrations/village-city-coast-colorful-houses-8396532/"  target="_blank" rel="noopener"
+    >https://pixabay.com/illustrations/village-city-coast-colorful-houses-8396532/</a></li>
+<li><a class="link" href="https://pixabay.com/photos/sees-it-relation-relationship-soul-4138304/"  target="_blank" rel="noopener"
+    >https://pixabay.com/photos/sees-it-relation-relationship-soul-4138304/</a></li>
+<li><a class="link" href="https://pixabay.com/photos/atom-nuclear-power-plant-abandoned-3669818/"  target="_blank" rel="noopener"
+    >https://pixabay.com/photos/atom-nuclear-power-plant-abandoned-3669818/</a></li>
+<li><a class="link" href="https://pixabay.com/photos/stop-violence-abuse-partner-1971756/"  target="_blank" rel="noopener"
+    >https://pixabay.com/photos/stop-violence-abuse-partner-1971756/</a> - This is the only one out of a few choices that had some sembalence of sense for Coercion. Plus I love Kermit.</li>
+<li><a class="link" href="https://pixabay.com/photos/sunrise-boat-rowing-boat-nobody-1014712/"  target="_blank" rel="noopener"
+    >https://pixabay.com/photos/sunrise-boat-rowing-boat-nobody-1014712/</a></li>
+<li><a class="link" href="https://pixabay.com/photos/typewriter-vintage-old-1248088/"  target="_blank" rel="noopener"
+    >https://pixabay.com/photos/typewriter-vintage-old-1248088/</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/book-notes/">Book notes</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Not Sure. These are snippets of passage in the book I&rsquo;ve found relevant.</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2009 - 
+        
+        2023 Anthony Quoc Anh Doan - Ramblings of a Happy Scientist
+        
+    </section>
+    
+    <section>
+      <p align="center">Desiderata by Max Ehrmann</p>
+      <p>
+          Go placidly amid the noise and the haste, and remember what peace there may be in silence. As far as possible without surrender be on good terms with all persons. Speak your truth quietly and clearly; and listen to others, even to the dull and the ignorant, they too have their story. Avoid loud and aggressive persons, they are vexations to the spirit.
+      </p>
+
+      <p>
+    If you compare yourself with others, you may become vain or bitter; for always there will be greater and lesser persons than yourself. Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.
+      </p>
+
+      <p>
+    Exercise caution in your business affairs, for the world is full of trickery. But let not this blind you to what virtue there is; many persons strive for high ideals, and everywhere life is full of heroism. Be yourself. Especially do not feign affection. Neither be cynical about love; for in the face of all aridity and disenchantment it is as perennial as the grass. Take kindly the counsel of the years, gracefully surrendering the things of youth.
+      </p>
+
+      <p>
+    Nurture strength of spirit to shield you in sudden misfortune. But do not distress yourself with dark imaginings. Many fears are born of fatigue and loneliness. Beyond a wholesome discipline, be gentle with yourself. You are a child of the universe, no less than the trees and the stars; you have a right to be here. And whether or not it is clear to you, no doubt the universe is unfolding as it should.
+      </p>
+
+      <p>
+    Therefore, be at peace with God, whatever you conceive Him to be. And whatever your labors and aspirations in the noisy confusion of life, keep peace in your soul. With all its sham, drudgery and broken dreams; it is still a beautiful world. Be cheerful.
+      </p>
+
+      <p>
+    Strive to be happy.
+      </p>
+      
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

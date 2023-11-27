@@ -1,0 +1,67 @@
+---
+title: Interesting Papers I've read this week.
+author: Anthony Quoc Anh Doan
+date: '2018-12-13'
+slug: interesting-papers-i-ve-read-this-week
+categories:
+  - analysis
+  - data
+tags:
+  - statistic
+  - bayesian
+description: ~
+image: book-2304078_1920.jpg
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Introduction
+
+This week I had to study for a job interview at a pretty sweet place. So in preparation for it I’ve read up on statistics that I’ve listed on my resume. I’ve came across a few good papers and I’m just happy to have read it. Just wanted to post it here in case if I ever need a refresher on Bayesian.
+
+## Basic Master Level Statistic
+
+Introductory Mathematical Statistics Methods of Estimation and Properties of Point Estimators: Fundamental Exercises with Solutions by Dr. Olga Korosteleva
+
+This is written by my professor and it was in a neat package of overview of what I’ve learned in my master program. It is a good refresher. There were some notes I’ve written for clarifications:
+
+<ul>
+<li>
+  MLE - This selects the parameter values that make the data most probable
+</li>
+<li>
+    Likelihood (frequentist point of view) - is a function of the parameters of a statistical model, given specific observed data.
+</li>
+<li>
+    Method of Moments Estimators (MOM) & MLE are two estimator methods to do point estimation for parameter. This is the frequentist point of view on estimating parameters which are fixed. Where as Bayesian model parameter as a random variable and not a fixed point.
+</li>
+<li>
+    Fisher information - is a way of measuring the amount of information that an observable random variable X carries about an unknown parameter theta of a distribution models X.
+</li>
+<li>
+    Cramer-Rao Lower Bound - expresses a lower-bound on the variance of unbiased estimators of a deterministic parameter. An unbiased estimator which achieves this lower bound is efficient.
+</li>
+<li>
+    Sufficient Statistic - a statistic that summarize all of the information in a sample about the desired parameter. (Penn State have more clarification on this).
+</li>
+</ul>
+
+## Bayesian Review
+
+[On Bayesian Data Analysis by Christian P. Robert and Judith Rousseau (August 27, 2018)](https://arxiv.org/abs/1001.4656)
+
+Point estimation parameter vs parameter with distribution. Credible Interval vs Confidence Interval. Critiques of Bayesian and solutions.
+
+*An Introduction to Bayesian Statistics Without Using Equations by Tomoharu Eguchi (2008)*
+
+Great visualization take on how to explain Bayesian Statistic.
+
+[A tutorial on Bayesian nonparametric models by Samuel J. Gershman and David M. Blei (2012)](https://arxiv.org/abs/1106.2697)
+
+A review what I used during my time at the FDA.
+
+## Credits
+
+First picture: [https://pixabay.com/en/book-magnifying-glass-glass-2304078/](https://pixabay.com/en/book-magnifying-glass-glass-2304078/)

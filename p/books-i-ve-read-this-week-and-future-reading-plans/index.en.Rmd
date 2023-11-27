@@ -1,0 +1,95 @@
+---
+title: Books I've read this week and future reading plans.
+author: Anthony Quoc Anh Doan
+date: '2018-12-16'
+slug: books-i-ve-read-this-week-and-future-reading-plans
+categories:
+  - statistic
+tags:
+  - modeling
+  - datascience
+  - machinelearning
+  - technology
+  - webdev
+description: ~
+image: books-1655783_1280.jpg 
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Books I’ve read this week
+
+So I’m reading up my tech stack I’ve chosen for the next five years for my start up. Mostly setting up my dev machine and foundation toolings.
+
+[Absolute OpenBSD Unix for the Practical Paranoid (2nd Edition) by Michael W. Lucas](https://nostarch.com/obenbsd2e)
+
+The partition harddrive during installing of this book is outdated.
+
+Tutorial I’ve used is:
+
+- [https://sohcahtoa.org.uk/openbsd.html](https://sohcahtoa.org.uk/openbsd.html)
+- [https://www.c0ffee.net/blog/openbsd-on-a-laptop/](https://www.c0ffee.net/blog/openbsd-on-a-laptop)
+
+I’ve installed xfce window manager desktop whatever and there were some hiccup. Especially having to figure out to enable an option for xfce terminal to run as shell login user (why is this not default?).
+
+I’ve also set up ksh terminal using polyglot github configuration. It works for me.
+
+[tmux 2 Productive Mouse-Free Development by Brian P. Hogan](https://pragprog.com/book/bhtmux2/tmux-2)
+
+I’ve read this book a few years ago and it’s the reason why I am good at tmux. I learned about tmux at a Ruby on Rail talk 10 years ago.
+
+I’m using this [config file](https://github.com/gpakosz/.tmux) with a few tweaks. The pane split short cut for both horizontal and vertical are the same >___>. Also copy mode doesn’t use vi key even though pane navigation uses vi keys.
+
+I couldn’t get the font working on OpenBSD and am still working on it. It’s in the backburner.
+
+<center><img src="narrative-794978_1920.jpg" /></center>
+
+## What am I reading next
+
+In the technology queue there are two books.
+
+I would like the latest Vim book. I’ve read the practical vim book and currently want to read up on neo vim and the latest book by the same author iirc. [https://pragprog.com/book/modvim/modern-vim](https://pragprog.com/book/modvim/modern-vim)
+
+The vim one will be handy since R studio is not a port in OpenBSD and the dependancies is pretty bad to make it port.
+
+I’ve found this sweeet article from my alma mata for vim+tmux R dev: [https://hpcc.ucr.edu/manuals_linux-cluster_terminalIDE.html](https://hpcc.ucr.edu/manuals_linux-cluster_terminalIDE.html)
+
+Also forgot about this one: [https://kadekillary.work/post/nvim-r/](https://kadekillary.work/post/nvim-r/)
+
+Also a sweet website for top vim plugins: [vim awesome](https://vimawesome.com/)
+
+Another one I would like to read is a postgresql book. I’ll start with the book below and see how it goes.
+
+[Learning PostgreSQL 10 - Second Edition by Andrey Volkov and Salahaldin Juba](https://www.packtpub.com/big-data-and-business-intelligence/learning-postgresql-10-second-edition)
+
+There’s also a pretty interesting one in depth: [Use the Index Luke](https://use-the-index-luke.com/)
+
+From there I have an elixir book to read and a phoenix book but that’s for later.
+
+<center><img src="sunset-485016_1920.png" /></center>
+
+## Random thoughts on publishers
+
+It seems like I’m moving away from manning and have been reading a lot of Pragmatic Programmers and No Stach publisher.
+
+Packt is really a hit or miss.
+
+## What about books in other subject?
+
+I’m reading a few self help books, which is personal, so I won’t be putting it here. Just trying to be my best self that’s all.
+
+As for statistic, I’ve found a new spatial modeling book that was recently released: [Geocomputation with R by Robin Lovelace, Jakub Nowosad, Jannes Muenchow](https://geocompr.robinlovelace.net/)
+
+I dislike the title name because it sounds funky to be honest I’m hoping it spatial analysis which from the summary it is. Maybe geocomputation is some domain specific terminology I don’t know and I’m just being silly.
+
+Feel free to hit me up on [twitter](https://twitter.com/AnthonyDoan20), [mastodon](https://mastodon.social/@anthony_doan), and whatever if you guys have any suggestions on books either technical or self help or statistical modeling.
+
+Have a wonderful week.
+
+## Credits
+
+- First picture: [https://pixabay.com/en/books-door-entrance-culture-1655783/](https://pixabay.com/en/books-door-entrance-culture-1655783/)
+- Second picture: [https://pixabay.com/en/narrative-history-dream-tell-794978/](https://pixabay.com/en/narrative-history-dream-tell-794978/)
+- Third picture: [https://pixabay.com/en/sunset-island-mar-dusk-brain-485016/](https://pixabay.com/en/sunset-island-mar-dusk-brain-485016/)

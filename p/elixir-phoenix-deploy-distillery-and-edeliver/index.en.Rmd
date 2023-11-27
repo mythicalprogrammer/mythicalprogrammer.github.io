@@ -1,0 +1,1259 @@
+---
+title: Elixir Phoenix 1.4 Deployments with Distillery and Edeliver on Ubuntu
+author: Anthony Quoc Anh Doan
+date: '2019-09-16'
+slug: elixir-phoenix-deploy-distillery-and-edeliver
+categories:
+  - Web Development
+tags:
+  - Elixir
+  - Phoenix
+  - webdev
+  - deployment
+  - distillery
+  - edeliver
+description: ~
+image: color-1544543_1280.jpg
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Step 1: Create your Digital Ocean droplet
+
+Make sure you add your SSH when creating digital ocean and do not add a paraphrase to your SSH. It doesn’t work with paraphrase.
+
+## Step 2: Setting up your server (DO droplet)
+
+### Log into your server.
+
+```bash
+ ssh root@134.209.8.141
+```
+
+### Setup VIM as default editor on your server.
+
+```bash
+ sudo update-alternatives --config editor
+```
+
+Make sure you select the `/usr/bin/vim.basic` option which is number 3.
+
+### Update your locale.
+
+```bash
+ sudo update-locale LC_ALL=en_US.UTF-8
+ sudo update-locale LANGUAGE=en_US.UTF-8
+```
+
+### Create new deploy user
+
+The next step is to create a non-root user on the server which will own our application and handle deployments. We’ll configure the .ssh directory for the user, configure the user to have passwordless sudo access, and disabled password login to harden the server a bit.
+
+Let’s create the user `deploy`.
+
+As `root` on the target server:
+
+```bash
+ adduser deploy
+```
+
+Fill out the data as required. Like password.
+
+Next, run this series of commands to configure the user’s `.ssh`   directory:
+
+```bash
+ sudo mkdir -p /home/deploy/.ssh
+ sudo touch /home/deploy/.ssh/authorized_keys
+ sudo chmod 700 /home/deploy/.ssh
+ sudo chmod 644 /home/deploy/.ssh/authorized_keys
+ sudo chown -R deploy:deploy /home/deploy
+```
+
+As `root` on the target server:
+
+```bash
+ sudo vim /etc/ssh/sshd_config
+```
+
+Verify that password authentication is set to “no”:
+
+```bash
+ PasswordAuthentication no
+```
+
+### Add deploy to sudoers
+
+Finally we'll add the user to sudo.
+
+As `root` on the target machine:
+
+```bash
+ visudo
+```
+
+This will open the sudoers file where we can add the `deploy` users privileges below `root` like this:
+
+```bash
+ # User privilege specification
+
+ root ALL=(ALL:ALL) ALL
+
+ deploy ALL=(ALL) NOPASSWD: ALL
+```
+
+### Add ssh public key to authorized_keys
+
+In another terminal window, on your local machine:
+
+```bash
+ cat ~/.ssh/id_rsa.pub
+```
+
+On the target server, paste the key into authorized_keys:
+
+```bash
+ sudo vim /home/deploy/.ssh/authorized_keys
+```
+
+Now we can safely log in and work as the `deploy` user on the target machine without having to enter a password.
+
+Now go to Basic Hardening article to remove `root` login.
+
+### Set up your firewall on Ubuntu 
+
+source/credit: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
+
+Ubuntu 18.04 servers can use the UFW firewall to make sure only connections to certain services are allowed. We can set up a basic firewall very easily using this application.
+
+Different applications can register their profiles with UFW upon installation. These profiles allow UFW to manage these applications by name. OpenSSH, the service allowing us to connect to our server now, has a profile registered with UFW.
+
+You can see this by typing:
+
+```bash
+ ufw app list
+```
+
+Output:
+
+```bash
+Available applications:
+  OpenSSH
+```
+
+We need to make sure that the firewall allows SSH connections so that we can log back in next time. We can allow these connections by typing:
+
+```bash
+ ufw allow OpenSSH
+```
+
+Afterwards, we can enable the firewall by typing:
+
+```bash
+ ufw enable
+```
+
+Type “`y`” and press `ENTER` to proceed. You can see that SSH connections are still allowed by typing:
+
+```bash
+ ufw status
+```
+
+Output:
+
+```bash
+ Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere
+OpenSSH (v6)               ALLOW       Anywhere (v6)
+```
+
+As *the firewall is currently blocking all connections except for SSH*, if you install and configure additional services, you will need to adjust the firewall settings to allow acceptable traffic in. You can learn some common UFW operations in [this guide](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands).
+
+## Step 3: Target Server - Install asdf
+
+Sometimes, you’ll need to install specific versions or Erlang, Elixir or Node, and we’ll use [asdf](https://github.com/asdf-vm/asdf), a version manager to tackle this complex task.
+
+`asdf` is an extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more.
+
+To install it, we’ll first switch over to our newly created `deploy` user.
+
+On the target server as `root`:
+
+```bash
+ $ su deploy
+ $ cd # move into deploy's home path
+```
+
+### Install asdf
+
+Install dependencies:
+
+```bash
+sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
+
+sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
+
+sudo apt-get update
+
+sudo apt-get install -y build-essential git wget libssl-dev libreadline-dev \
+  libncurses5-dev zlib1g-dev m4 curl wx-common libwxgtk3.0-dev autoconf \
+  libxml2-utils xsltproc fop unixodbc unixodbc-bin unixodbc-dev
+
+sudo apt-get install openjdk-8-jdk
+sudo apt-get autoremove
+sudo apt-get upgrade
+```
+
+Ensure that you are using the deploy account, and clone the repo:
+
+```bash
+ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+```
+
+After this you need to add asdf to your `deploy` user bash profile:
+
+```bash
+ cd ~
+ vim ~/.profile
+```
+
+Add this at the end of your profile:
+
+```bash
+ . $HOME/.asdf/asdf.sh
+```
+
+### Optional step if you are on $5 Digital Ocean Droplet
+
+For $5 droplet, asdf only works if you create a swapspace (I set it to 4GB) and wait a bit for asdf to install and build erlang felt like 30 min. See solution: (https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-18-04) See the problem reported: (https://github.com/asdf-vm/asdf-erlang/issues/91)
+
+Switch to root to create swap space.
+
+We can see if the system has any configured swap by typing:
+
+```bash
+ sudo swapon --show
+```
+
+You can verify that there is no active swap using the `free` utility:
+
+```bash
+ free -h
+```
+
+#### Create swap file. 
+
+The size of swap file is usually double your ram. But do 4G minimum.
+
+```bash
+ sudo fallocate -l 4G /swapfile
+```
+
+We can verify that the correct amount of space was reserved by typing:
+
+```bash
+  ls -lh /swapfile
+```
+
+#### Enabling the swap file
+
+Now that we have a file of the correct size available, we need to actually turn this into swap space.
+
+First, we need to lock down the permissions of the file so that only the users with `root` privileges can read the contents. This prevents normal users from being able to access the file, which would have significant security implications.
+
+Make the file only accessible to `root` by typing:
+
+```bash
+ sudo chmod 600 /swapfile
+```
+
+Verify the permissions change by typing:
+
+```bash
+ ls -lh /swapfile
+```
+
+As you can see, only the `root` user has the read and write flags enabled.
+
+We can now mark the file as swap space by typing:
+
+```bash
+ sudo mkswap /swapfile
+```
+
+Output:
+
+```bash
+Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+no label, UUID=6e965805-2ab9-450f-aed6-577e74089dbf
+```
+After marking the file, we can enable the swap file, allowing our system to start utilizing it:
+
+```bash
+ sudo swapon /swapfile
+```
+
+Verify that the swap is available by typing:
+
+```bash
+ sudo swapon --show
+```
+
+#### Making the swapfile permanent
+
+Our recent changes have enabled the swap file for the current session. However, if we reboot, the server will not retain the swap settings automatically. We can change this by adding the swap file to our `/etc/fstab` file.
+
+Back up the `/etc/fstab` file in case anything goes wrong:
+
+```bash
+ sudo cp /etc/fstab /etc/fstab.bak 
+```
+
+Add the swap file information to the end of your `/etc/fstab` file by typing:
+
+```bash
+ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+Now switch to deploy user and check to see if asdf by typing `asdf`.
+
+## Step 4: Target Server - Install Erlang/Elixir
+
+Because we need our Phoenix project to run on both the local development machine and the production server, we’ll need to install the same languages and tools in both places. Erlang 21.1, and Elixir 1.7.4.
+
+### Install Erlang
+
+We’re going to use `asdf` to install Erlang. I uses plugins for different libraries, so let’s add the plugin:
+
+As `deploy` on the target machine:
+
+```bash
+ asdf plugin-add erlang
+```
+
+Install Erlang/OTP 22 (or whichever version your app needs)
+
+```bash
+asdf install erlang 22.0
+asdf global erlang 22.0
+```
+
+OPTIONAL If anything went wrong or if dependencies skipped
+
+```bash
+ asdf plugin-remove erlang
+ asdf plugin-remove elixir
+ asdf plugin-add erlang
+ asdf plugin-add elixir
+```
+
+### Install Elixir
+
+As `deploy` add the plugin:
+
+```bash
+ asdf plugin-add elixir
+```
+
+Install Elixir and make it global:
+
+```bash
+ asdf install elixir 1.8.2
+ asdf global elixir 1.8.2
+```
+
+Now you can open a new terminal and try `erl`:
+
+```bash
+ erl
+```
+
+And you can try `iex`:
+
+```bash
+ iex
+```
+
+Use `asdf .tool-versions` file to manage which version is active on each of your projects.
+
+Use `Mix` to install `Hex`.
+
+```bash
+  mix local.hex
+```
+
+## Step 5: Target Server - Install Nodejs
+
+Installing Node is straightforward with a few commands.
+
+*NOTE*: Look up what NODE version to install. Replace XX with version number such as 12. see https://github.com/nodesource/distributions/blob/master/README.md
+
+```bash
+ sudo apt install curl
+ curl -sL https://deb.nodesource.com/setup_XX.x | sudo -E bash -
+ sudo apt-get install -y nodejs
+```
+
+## Step 6: Target Server - Install Postgresql
+
+base on https://computingforgeeks.com/install-postgresql-11-on-ubuntu-18-04-ubuntu-16-04/
+
+As `root` on the target server:
+
+Add PostgreSQL 11 APT repository (for Bionic 18.04 ubuntu)
+
+https://www.postgresql.org/download/linux/ubuntu/
+
+Create the file `/etc/apt/sources.list.d/pgdg` list and add a line for the repository.
+
+```bash
+ sudo vim /etc/apt/sources.list.d/pgdg.list
+```
+
+Add this line:
+
+```bash
+ deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+```
+
+Import the repository signing key, and update the package lists :
+
+```bash
+ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc |     sudo apt-key add -
+ sudo apt-get update
+```
+
+### Install PostgreSQL 11 on Ubuntu 18.04 / Ubuntu 16.04
+
+After importing GPG key, add repository contents to your Ubuntu 18.04/16.04 system:
+
+```bash
+ sudo apt-get install postgresql-11
+```
+
+Verify repository file contents
+
+```bash
+ cat /etc/apt/sources.list.d/pgdg.list
+```
+
+### Create new database user
+
+During the postgres installation, a postgres root user `postgres` was created, but we don’t want to connect to the server with this user. Let’s create a separate postgres user for our app.
+
+You can switch to the postgres user with `su postgres` than back to root with exit
+
+On the target server, switch to the `postgres` user, create a `phx` database user and set the new user’s password:
+
+```bash
+ $ su postgres
+ $ cd ~
+
+ $ createuser phx --pwprompt
+ Enter password for new role: 
+ Enter it again:
+```
+
+*NOTE*: Remember these credentials as they’ll be used once we configure our Phoenix application for production.
+
+### Create production database:
+
+We’ll need to create our production database manually as edeliver only manages migrations.
+
+As `postgres` on the target server:
+
+```bash
+ createdb fumigate_prod
+```
+
+Then log in to `psql`:
+
+```bash
+ psql
+```
+
+Ensure that you are logged into the postgres cli tool and run:
+
+```bash
+ GRANT ALL PRIVILEGES ON DATABASE fumigate_prod TO phx;
+```
+
+This gives our new `phx` user access to the newly created database. Exit psql with `\q`.
+
+### Database credentials:
+
+To re-cap:
+
+* username: `phx`
+* password: `<yourpass>`
+* database: `fumigate_prod`
+
+## Step 7: Target Server - Production Configuration
+
+### Create `prod.secret.exs`
+
+You may have noticed that Phoenix created a `config/prod.secret.exs` file. This is imported by `config/prod.exs` but is ignored by git by default. We’ll need to create this file on the target machine so edeliver can symlink to it during the build process.
+
+We’re also going to store our applications in `~/apps/<appname>` format which is the equivalent of `/home/deploy/apps/<appname>`.
+
+Let’s switch over to our `deploy` user. On the target machine:
+
+```bash
+ su deploy
+ cd
+```
+
+Make a new directory for our secrets:
+
+```bash
+ mkdir -p apps/fumigate/secret
+```
+
+Then create a new `prod.secret.exs` file in that directory:
+
+```bash
+ vim ~/apps/fumigate/secret/prod.secret.exs
+```
+
+Add this content to it:
+
+```bash
+ use Mix.Config
+
+config :fumigate, FumigateWeb.Endpoint,
+
+ secret_key_base: "YOURKEYHERE+v7fAdFNvoSZpUwTU96jA0UjEF1sgiVwdI5F"
+
+config :fumigate, Fumigate.Repo,
+
+ username: "phx",
+
+ password: "yourpassword",
+
+ database: "fumigate_prod",
+
+ pool_size: 15
+```
+
+You can generate a new secret key by using `mix phx.gen.secret` on your local machine.
+
+*IMPORTANT*: Update the file to have a production ready secret key, and the database credentials you set from earlier.
+
+## Step 8: Install Distillery and edeliver
+
+As previously mentioned, [Distillery](https://github.com/bitwalker/distillery) compiles our Phoenix application into releases, and edeliver uses ssh and scp to build and deploy the releases to our production server.
+
+On your local machine, open `mix.exs` and add 2 deps:
+
+```bash
+ {:edeliver, ">= 1.6.0"},
+ {:distillery, "~> 2.0", warn_missing: false},
+```
+
+And add `:edeliver` to `extra_applications` in the `application` block:
+
+```bash
+   def application do
+    [   
+      mod: {Fumigate.Application, []},
+      extra_applications: [:logger, :runtime_tools, :edeliver]
+    ]   
+  end 
+```
+
+Use mix to install deps:
+
+```bash
+ mix deps.get
+```
+
+### Initialize Distillery
+
+Distillery requires a build configuration file that is not generated by default.
+
+Let’s generate it with:
+
+```bash
+ mix distillery.init
+```
+
+
+This generates configuration files for Distillery in the `rel` directory. We don’t need to make any changes to the default config.
+
+We now need to exclude `.deliver/releases/` from our git repo.
+
+```bash
+ echo ".deliver/releases/" >> .gitignore
+```
+
+### Configure edeliver
+
+Create a `.deliver` directory in your project folder and add the `config` file: (Change the IP to your server IP 134.209.8.141)
+
+```bash
+#!/bin/bash
+
+ APP="fumigate"
+
+ BUILD_HOST="134.209.8.141"
+ BUILD_USER="deploy"
+ BUILD_AT="/tmp/edeliver/$APP/builds"
+
+ START_DEPLOY=true
+ CLEAN_DEPLOY=true
+ 
+ # prevent re-installing node modules; this defaults to "."
+ GIT_CLEAN_PATHS="_build rel priv/static"
+
+ PRODUCTION_HOSTS="134.209.8.141"
+ PRODUCTION_USER="deploy"
+ DELIVER_TO="/home/deploy/apps"
+
+
+ # For Phoenix projects, symlink prod.secret.exs to our tmp source
+ pre_erlang_get_and_update_deps() {
+   local _prod_secret_path="/home/deploy/apps/$APP/secret/prod.secret.exs"
+   if [ "$TARGET_MIX_ENV" = "prod" ]; then
+     status "Linking '$_prod_secret_path'"
+     __sync_remote "
+       [ -f ~/.profile ] && source ~/.profile
+       mkdir -p '$BUILD_AT'
+       ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
+     "
+   fi
+    }
+
+ pre_erlang_clean_compile() {
+   status "Running npm install"
+     __sync_remote "
+       [ -f ~/.profile ] && source ~/.profile
+       set -e
+       cd '$BUILD_AT'/assets
+       npm install
+     "
+
+   status "Compiling assets"
+      __sync_remote "
+       [ -f ~/.profile ] && source ~/.profile
+       set -e
+       cd '$BUILD_AT'/assets
+       node_modules/.bin/webpack --mode production --silent
+     "
+
+   status "Running phoenix.digest" # log output prepended with "----->"
+   __sync_remote " # runs the commands on the build host
+     [ -f ~/.profile ] && source ~/.profile # load profile (optional)
+     set -e # fail if any command fails (recommended)
+     cd '$BUILD_AT' # enter the build directory on the build host (required)
+          # prepare something
+     mkdir -p priv/static # required by the phoenix.digest task
+     # run your custom task
+     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest $SILENCE
+     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest.clean $SILENCE
+   "
+ }
+```
+
+These are mostly environment variables use by Edeliver in the shell scripts. Go through them one by one and try to understand what they’re doing.
+
+You can read more about the configuration variables in their [Wiki](https://github.com/edeliver/edeliver/wiki/Configuration-(.deliver-config)).
+
+*Don’t forget to update your host configuration*
+
+The custom functions are hooks that run during different phases of the deployment.
+
+You can also read more about running additional tasks in their [Wiki](https://github.com/edeliver/edeliver/wiki/Run-additional-build-tasks).
+
+### Project prod configuration
+
+We’ll need to make some changes to the default production configuration in our project.
+
+**DO NOT RUN ON PORT 80. KEEP IT AT 4000.** The application is running on deploy there fore it cannot run on port 80. We need to route incoming requests from 80 http and https to port 4000. Do not attempt to run app as root. That’s asking for trouble. Source: https://elixirforum.com/t/running-on-ec2-giving-error/13574/5
+
+Open `config/prod.exs` and update it to this:
+
+```bash
+use Mix.Config
+
+config :fumigate, FumigateWeb.Endpoint,
+   http: [:inet6, port: System.get_env("PORT") || 4000],
+   url: [host: "fumigatedb.com", port: 80],
+   cache_static_manifest: "priv/static/cache_manifest.json",
+   server: true,
+   code_reloader: false
+
+ # Do not print debug messages in production
+ config :logger, level: :info
+
+# ## SSL Support
+ #
+ # To get SSL working, you will need to add the `https` key
+ # to the previous section and set your `:url` port to 443:
+ #
+ #     config :fumigate, FumigateWeb.Endpoint,
+ #       ...
+ #       url: [host: "example.com", port: 443],
+ #       https: [
+ #         :inet6,
+ #         port: 443,
+ #         cipher_suite: :strong,
+ #         keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
+#         certfile: System.get_env("SOME_APP_SSL_CERT_PATH")
+ #       ]
+ #
+ # The `cipher_suite` is set to `:strong` to support only the
+ # latest and more secure SSL ciphers. This means old browsers
+ # and clients may not be supported. You can set it to
+ # `:compatible` for wider support.
+ #
+ # `:keyfile` and `:certfile` expect an absolute path to the key
+# and cert in disk or a relative path inside priv, for example
+ # "priv/ssl/server.key". For all supported SSL configuration
+ # options, see https://hexdocs.pm/plug/Plug.SSL.html#configure/1
+ #
+ # We also recommend setting `force_ssl` in your endpoint, ensuring
+ # no data is ever sent via http, always redirecting to https:
+ #
+ #     config :fumigate, FumigateWeb.Endpoint,
+ #       force_ssl: [hsts: true]
+ #
+ # Check `Plug.SSL` for all available options in `force_ssl`.
+
+ # ## Using releases (distillery)
+ #
+ # If you are doing OTP releases, you need to instruct Phoenix
+ # to start the server for all endpoints:
+ #
+ config :phoenix, :serve_endpoints, true
+ #
+ # Alternatively, you can configure exactly which server to
+ # start per endpoint:
+ #
+ #     config :fumigate, FumigateWeb.Endpoint, server: true
+ #
+ # Note you can't rely on `System.get_env/1` when using releases.
+ # See the releases documentation accordingly.
+
+ # Finally import the config/prod.secret.exs which should be versioned
+ # separately.
+ import_config "prod.secret.exs"
+```
+
+These are settings recommended by Distillery. You might notice that we’re setting the system port using the `PORT` environment variable. This needs to be available during the build process and we can add it to the `~/.profile` file on our production server.
+
+### Add env Variables to Target Server
+
+Login as `deploy` to the target server.
+
+Open up the `.profile`.
+
+```bash
+ cd ~
+ vim ~/.profile
+```
+
+And add these lines:
+
+```bash
+export MIX_ENV=prod
+export PORT=4000
+```
+
+This will ensure that our system runs on port 4000, and that the environment is set to `prod`.
+
+Logout of deploy and log back in for `~/.profile` be in effect.
+
+## Step 9: Deployment
+
+We’re finally ready to build and deploy our first release. The default version is `0.1.0` so let’s just keep that for now.
+
+Warning: the commands for building and deploy can seem complicated at first but once you become familiar with them, you will see that they use a natural language style.
+
+### Build the production release:
+
+**NOTE:** edeliver uses `git master branch` to build the code into release package.
+
+In your project directory and git master branch:
+
+```bash
+ mix edeliver build release production --verbose
+```
+
+This builds the release on the target server, and stores the archive in your local `.edeliver/releases` directory.
+
+### Deploy the reload to production:
+
+In your project directory:
+
+```bash
+ mix edeliver deploy release to production --verbose
+ mix edeliver migrate production --verbose
+ mix edeliver start production --verbose
+```
+
+Other neat edeliver commands:
+
+```bash
+ mix edeliver ping production # shows which nodes are up and running
+ mix edeliver version production # shows the release version running on the nodes
+ mix edeliver show migrations on production # shows pending database migrations
+ mix edeliver migrate production # run database migrations
+ mix edeliver restart production # or start or stop
+```
+
+You can read more about Edeliver in their [documentation](https://github.com/edeliver/edeliver).
+
+### View our website on our server
+
+```bash
+ ssh deploy@188.166.182.170
+ curl localhost:4000
+```
+
+## Step 10: Generating SSL CERT - BEFORE Routing incoming http request to port 4000 (our phoenix app)
+
+https://www.digitalocean.com/community/tutorials/how-to-use-certbot-standalone-mode-to-retrieve-let-s-encrypt-ssl-certificates-on-ubuntu-1804
+
+https://github.com/certbot/certbot/issues/5257
+
+We should generate SSL Certificate. The certbot generator needs port 80. So you need to do this before rerouting incoming port 80 requests to our phoenix web app that’s listening on port 4000.
+
+### Step 1 — Installing Certbot
+
+The first step to using Let’s Encrypt to obtain an SSL certificate is to install the Certbot software on your server.
+
+Certbot is in very active development, so the Certbot packages provided by Ubuntu tend to be outdated. However, the Certbot developers maintain a Ubuntu software repository with up-to-date versions, so we’ll use that repository instead.
+
+First, add the repository:
+
+```bash
+ sudo add-apt-repository ppa:certbot/certbot
+ apt-get update
+```
+
+Install certbot:
+
+```bash
+ sudo apt-get install certbot
+```
+
+### Step 2 — Generating Certificate
+
+Make sure that your firewall is accepting port 80.
+
+```bash
+ sudo ufw allow 80
+```
+
+Generate the SSL cert:
+
+```bash
+ sudo certbot certonly --standalone --preferred-challenges http -d fumigatedb.com -d www.fumigatedb.com
+```
+
+Enable it so deploy user and app own by deploy can read those certs:
+
+```bash
+ chmod 755 /etc/letsencrypt/live/
+ chmod 755 /etc/letsencrypt/archive/
+```
+
+We’ll get back to using cert on the server soon in step 13.
+
+## Step 11: Routing incoming http request to port 4000 (our phoenix app)
+
+https://serverfault.com/questions/238563/can-i-use-ufw-to-setup-a-port-forward
+
+Let’s say you want to forward requests going to 80 (http) to a server listening on port 4000.
+
+Note that you will need to make sure port 8080 is allowed, otherwise ufw will block the requests that are redirected to 4000.
+
+```bash
+ sudo ufw allow 4000/tcp
+```
+
+There are no ufw commands for setting up the port forwards, so it must be done via configuraton files. Add the lines below to `/etc/ufw/before.rules`, before the `filter` section, right at the top of the file:
+
+```bash
+  sudo vim /etc/ufw/before.rules
+```
+
+```bash
+ *nat
+ :PREROUTING ACCEPT [0:0]
+ -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 4000
+ COMMIT
+```
+
+Then restart the server:
+
+```bash
+ sudo reboot
+ ssh deploy@134.209.8.141
+```
+
+Enable ufw to start on boot:
+
+```bash
+ sudo ufw enable
+```
+
+*Debug tips*: check `/var/log/syslog`
+
+## Step 12: Fail2ban
+
+https://www.lifewire.com/harden-ubuntu-server-security-4178243
+
+https://www.techrepublic.com/article/how-to-install-fail2ban-on-ubuntu-server-18-04/
+
+The fail2ban system is an intrusion prevention system that monitors log files and searches for particular patterns that correspond to a failed login attempt. If a certain number of failed logins are detected from a specific IP address (within a specified amount of time), fail2ban will block access from that IP address.
+
+To install fail2ban, open a terminal window and issue the command:
+
+```bash
+ sudo apt-get update
+ sudo apt-get upgrade
+ sudo apt-get install -y fail2ban
+```
+
+Within the directory `/etc/fail2ban`, you’ll find the main configuration file, jail.conf. Also in that directory is the subdirectory, jail.d. The jail.conf file is the main configuration file and jail.d contains the secondary configuration files. Do not edit the jail.conf file. Instead, we’ll create a new configuration that will monitor SSH logins with the command:
+
+```bash
+ sudo vim /etc/fail2ban/jail.local
+```
+
+In this new file add the following contents:
+
+```bash
+[sshd]
+    enabled = true
+    port = 22
+    filter = sshd
+    logpath = /var/log/auth.log
+    maxretry = 3
+```
+
+This configuration does the following:
+
+* Enables the jail.
+* Sets the SSH port to be monitored to 22.
+* Uses the sshd filter.
+* Sets the log file to be monitored.
+
+Save and close that file. Restart fail2ban with the command:
+
+```bash
+ sudo systemctl start fail2ban
+ sudo systemctl enable fail2ban
+ sudo systemctl restart fail2ban
+```
+
+If you attempt to Secure Shell into that server and fail the log in three times (set as the default by fail2ban), access will be then blocked from the [IP address](https://www.lifewire.com/what-is-an-ip-address-2625920) you are working from.
+
+### Testing and unbanning
+
+You can test to make sure the new jail works by failing three attempts at logging into the server, via ssh. After the third failed attempt, the connection will hang. Hit `[Ctrl]+[c]` to escape and then attempt to SSH back into the server. You should no longer be able to SSH into that server from the IP address you were using.
+
+You can then unban your test IP address with the following command:
+
+```bash
+ sudo fail2ban-client set sshd unbanip IP_ADDRESS
+```
+
+where `IP_ADDRESS` is the banned IP Address.
+
+You should now be able to log back into the server with SSH.
+
+### Scratching the surface
+
+This barely scratches the surface as to what fail2ban can do. But now you have a good idea on how to use the system. To find out more, make sure to read the man page with the command:
+
+```bash
+ man fail2ban
+```
+
+That manual page provides a good overview of what fail2ban can do.
+
+## Step 13: Port foward SSL to Port 4001
+
+Set up the firewall:
+
+```bash
+ sudo ufw allow https
+ sudo ufw allow 443
+ sudo ufw allow 4001
+```
+
+There are no ufw commands for setting up the port forwards, so it must be done via configuraton files. Add the lines below to `/etc/ufw/before.rules`, before the `filter` section, right at the top of the file:
+
+```bash
+ sudo vim /etc/ufw/before.rules
+```
+
+```bash
+ *nat
+ :PREROUTING ACCEPT [0:0]
+ -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 4001
+ COMMIT
+```
+
+Then restart the server:
+
+```bash
+ sudo ufw enable
+ sudo reboot
+ ssh deploy@134.209.8.141
+```
+
+## Step 14: SSL
+
+https://blog.progressplum.app/ssl-migration-from-nginx-to-cowboy-2-in-phoenix-1-4/
+
+https://medium.com/@zek/secure-your-phoenix-app-with-free-ssl-48ac749c17d7
+
+
+### Step 1 — Generating Diffie Hellman parameters
+
+If you don’t already have a set of Diffie Hellman parameters[2] to use with your SSL, generate a new set for extra security. Run this command on the server but be aware that it’s very CPU-intensive and may take a while on a slow VPS.
+
+```bash
+ openssl dhparam -out /etc/letsencrypt/dhparam.pem 4096
+```
+
+### Step 2 — Set up your environment
+
+```bash
+ sudo vim ~/.profile
+```
+
+```bash
+ export MIX_ENV=prod
+
+ export PORT=4000
+
+ export SPORT=4001
+
+ export SSL_CERT_FILE=/etc/letsencrypt/live/fumigatedb.com/cert.pem
+
+ export SSL_CACERT_FILE=/etc/letsencrypt/live/fumigatedb.com/chain.pem
+
+ export SSL_KEY_FILE=/etc/letsencrypt/live/fumigatedb.com/privkey.pem
+
+ export SSL_DHPARAM_FILE=/etc/letsencrypt/dhparam.pem
+```
+
+Change `fumigatedb.com` to your domainname.
+
+### Step 3 — prod Configuration
+
+Update your application’s Endpoint configuration to add SSL support in `config/prod.exs`.
+
+```bash
+ vim config/prod.exs
+```
+
+```bash
+config :fumigate, FumigateWeb.Endpoint,
+       url: [scheme: "https", host: "fumigatedb.com", port: 443],
+       http: [:inet6, port: System.get_env("PORT") || 4000],
+       https: [
+           :inet6,
+           port: System.get\_env("SPORT") || 4001,
+           otp_app: :fumigate,
+           cipher_suite: :strong,
+           keyfile: System.get_env("SSL_KEY_FILE"),
+           certfile: System.get_env("SSL_CERT_FILE"),
+           cacertfile: System.get_env("SSL_CACERT_FILE"),
+           dhfile: System.get_env("SSL_DHPARAM_FILE")
+       ],
+       cache_static_manifest: "priv/static/cache_manifest.json",
+       server: true,
+       code_reloader: false
+```
+
+Save to git master repo and rerun edeliver again.
+
+```bash
+ git commit -a -m "edited prod.exs to add HTTPS scheme"
+ git push origin master
+ mix edeliver build release production --verbose
+ mix edeliver deploy release to production
+ mix edeliver stop production
+ mix edeliver start production
+```
+
+Check the ssl website now with: https://www.ssllabs.com/ssltest/
+
+### Step 4 — Application Configuration forcing SSL
+
+```bash
+ git commit -a -m "edited prod.exs to force SSL connection"
+
+ git push origin master
+
+ mix edeliver build release production --verbose
+
+ mix edeliver deploy release to production
+
+ mix edeliver stop production
+
+ mix edeliver start production
+```
+
+### Step 5 — Increasing the security of SSL
+
+https://elixirforum.com/t/making-ssl-tests-all-pass-for-phoenix-lets-encrypt/3507/11
+
+```bash
+use Mix.Config
+
+ # For production, don't forget to configure the url host
+ # to something meaningful, Phoenix uses this information
+ # when generating URLs.
+ #
+ # Note we also include the path to a cache manifest
+ # containing the digested version of static files. This
+ # manifest is generated by the `mix phx.digest` task,
+ # which you should run after static files are built and
+ # before starting your production server.
+ config :fumigate, FumigateWeb.Endpoint,
+   url: [scheme: "https", host: "fumigatedb.com", port: 443],
+   force_ssl: [hsts: true],
+   http: [:inet6, port: System.get_env("PORT") || 4000],
+   https: [
+        :inet6,
+     port: System.get_env("SPORT") || 4001,
+     otp_app: :fumigate,
+     cipher_suite: :strong,
+     keyfile: System.get_env("SSL_KEY_FILE"),
+     certfile: System.get_env("SSL_CERT_FILE"),
+     cacertfile: System.get_env("SSL_CACERT_FILE"),
+     dhfile: System.get_env("SSL_DHPARAM_FILE"),
+     versions: [:"tlsv1.2", :"tlsv1.1", :"tlsv1"],
+           ciphers: ~w(
+             ECDHE-ECDSA-AES256-GCM-SHA384
+             ECDHE-ECDSA-AES256-SHA384
+             ECDHE-ECDSA-AES128-GCM-SHA256
+             ECDHE-ECDSA-AES128-SHA256
+             ECDHE-ECDSA-AES256-SHA
+             ECDHE-ECDSA-AES128-SHA
+
+             ECDHE-RSA-AES256-GCM-SHA384
+             ECDHE-RSA-AES256-SHA384
+             ECDHE-RSA-AES128-GCM-SHA256
+             ECDHE-RSA-AES128-SHA256
+             ECDHE-RSA-AES256-SHA
+             ECDHE-RSA-AES128-SHA
+
+             ECDH-ECDSA-AES256-GCM-SHA384
+             ECDH-ECDSA-AES256-SHA384
+             ECDH-ECDSA-AES128-GCM-SHA256
+             ECDH-ECDSA-AES128-SHA256
+             
+             
+             DHE-RSA-AES256-GCM-SHA384
+             DHE-RSA-AES256-SHA256
+             DHE-DSS-AES256-GCM-SHA384
+             DHE-DSS-AES256-SHA256
+             DHE-RSA-AES256-SHA
+             DHE-DSS-AES256-SHA
+
+             DHE-DSS-AES128-GCM-SHA256
+             DHE-RSA-AES128-GCM-SHA256
+             DHE-RSA-AES128-SHA256
+             DHE-DSS-AES128-SHA256
+             DHE-RSA-AES128-SHA
+             DHE-DSS-AES128-SHA
+             
+             
+             AES128-GCM-SHA256
+             AES128-SHA
+             DES-CBC3-SHA
+           )c,
+           secure_renegotiate: true,
+           reuse_sessions: true,
+           honor_cipher_order: true,
+           client_renegotiation: false,
+           eccs: [
+             :sect571r1, :sect571k1, :secp521r1, :brainpoolP512r1, :sect409k1,
+             :sect409r1, :brainpoolP384r1, :secp384r1, :sect283k1, :sect283r1,
+             :brainpoolP256r1, :secp256k1, :secp256r1, :sect239k1, :sect233k1,
+             :sect233r1, :secp224k1, :secp224r1
+           ],
+   ],
+   cache_static_manifest: "priv/static/cache_manifest.json",
+   server: true,
+   code_reloader: false
+
+ # Do not print debug messages in production
+ config :logger, level: :info
+
+ # ## SSL Support
+ #
+ # To get SSL working, you will need to add the `https` key
+ # to the previous section and set your `:url` port to 443:
+ #
+ #     config :fumigate, FumigateWeb.Endpoint,
+ #       ...
+ #       url: [host: "example.com", port: 443],
+  #       https: [
+ #         :inet6,
+ #         port: 443,
+ #         cipher_suite: :strong,
+ #         keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
+ #         certfile: System.get_env("SOME_APP_SSL_CERT_PATH")
+ #       ]
+ #
+ # The `cipher_suite` is set to `:strong` to support only the
+ # latest and more secure SSL ciphers. This means old browsers
+ # and clients may not be supported. You can set it to
+ # `:compatible` for wider support.
+ #
+ # `:keyfile` and `:certfile` expect an absolute path to the key
+ # and cert in disk or a relative path inside priv, for example
+ # "priv/ssl/server.key". For all supported SSL configuration
+  # options, see https://hexdocs.pm/plug/Plug.SSL.html#configure/1
+ #
+ # We also recommend setting `force_ssl` in your endpoint, ensuring
+ # no data is ever sent via http, always redirecting to https:
+ #
+ #
+ # Check `Plug.SSL` for all available options in `force_ssl`.
+
+ # ## Using releases (distillery)
+ #
+ # If you are doing OTP releases, you need to instruct Phoenix
+ # to start the server for all endpoints:
+ #
+ config :phoenix, :serve_endpoints, true
+ #
+ # Alternatively, you can configure exactly which server to
+ # start per endpoint:
+ #
+ #     config :fumigate, FumigateWeb.Endpoint, server: true
+ #
+ # Note you can't rely on `System.get_env/1` when using releases.
+ # See the releases documentation accordingly.
+
+ # Finally import the config/prod.secret.exs which should be versioned
+ # separately.
+ import_config "prod.secret.exs"
+```
+## Credit
+
+### Base on these resources:
+
+1. https://devato.com/automate-elixir-phoenix-1-4-deployment-with-distillery-and-edeliver-on-ubuntu/#step-6-target-server-install-nodejs
+2. https://medium.com/@zek/deploy-early-and-often-deploying-phoenix-with-edeliver-and-distillery-part-one-5e91cac8d4bd
+3. https://medium.com/@zek/deploy-early-and-often-deploying-phoenix-with-edeliver-and-distillery-part-two-f361ef36aa10
+4. https://blog.progressplum.app/ssl-migration-from-nginx-to-cowboy-2-in-phoenix-1-4/
+5. https://elixirforum.com/t/elixir-1-9-releases-with-edeliver/23728/3?u=mythicalprogrammer
+
+
+### Pictures
+
+1. First picture: [Color Phoenix Tradition](https://pixabay.com/illustrations/color-phoenix-tradition-legend-1544543/)

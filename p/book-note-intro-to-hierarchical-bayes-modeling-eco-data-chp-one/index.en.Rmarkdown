@@ -1,0 +1,32 @@
+---
+title: 'Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data,
+  Chapter 1'
+author: Anthony Quoc Anh Doan
+date: '2017-07-15'
+categories:
+  - book
+tags:
+  - bayesian
+  - hierarchicalmodeling
+  - modeling
+  - statistic
+slug: book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one
+hidden: no
+comments: yes
+image: salmon_sushi.jpg
+---
+
+
+# Introduction
+
+So I’ve learned a little bit about Bayesian Hierarchical Modeling at FDA and decided to put down my thoughts and write about it more to reinforced what I’ve learned. I also want to try out some new javascript data visual libraries.
+
+A great book I’ve found is, *“Introduction to Hierarchical Bayesian Modeling for Ecological Data”* by Parent and Rivot [1].
+
+While at the FDA I code my own model without using any MCMC framework and it was very slow in R. I realize I need a MCMC framework under my toolbelt. After some [research](https://www.reddit.com/r/statistics/comments/5on87q/stan_vs_winbugs_a_search_for_informed_opinions/) I decided on [Stan](https://mc-stan.org/) using the [rstan r package](https://mc-stan.org/users/interfaces/rstan).
+
+# The Graph (not DAG; not a Bayesian network)
+
+Graph represents the salmon migration and birth cycle. Each edge represent a year pass. The nodes are square because they’re given. The information is given from previous knowledge.
+
+{{<2017_07_15_the_graph>}}

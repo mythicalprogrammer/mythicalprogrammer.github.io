@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
+It&amp;rsquo;s been awhile since I&amp;rsquo;ve dealt with Relational Theory so I&amp;rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.
+Original Model Terminology The original model by E. F. Codd had three major components:
+structure, integrity, and manipulation.'>
+<title>Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes</title>
+
+<link rel='canonical' href='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/'>
+
+<link rel="stylesheet" href="/scss/style.min.ae544f6e875175eb0f852537f03e029a61665cc22ad0fd93bf333e7c3bee5a8c.css"><meta property='og:title' content='Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes'>
+<meta property='og:description' content='Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
+It&amp;rsquo;s been awhile since I&amp;rsquo;ve dealt with Relational Theory so I&amp;rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.
+Original Model Terminology The original model by E. F. Codd had three major components:
+structure, integrity, and manipulation.'>
+<meta property='og:url' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/'>
+<meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Book notes' /><meta property='article:published_time' content='2023-11-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280.png' />
+<meta name="twitter:site" content="@AnthonyDoan20">
+    <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes">
+<meta name="twitter:description" content="Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
+It&amp;rsquo;s been awhile since I&amp;rsquo;ve dealt with Relational Theory so I&amp;rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.
+Original Model Terminology The original model by E. F. Codd had three major components:
+structure, integrity, and manipulation."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud04d226d349438d5d6dbe19a25343199_44779_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</a></h1>
+            <h2 class="site-description">An instrument of peace. Where there is hatred, let me sow love; where there is doubt, let&#39;s get some data and build a model.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mythicalprogrammer'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/anthony-anh-quoc-doan-a7234321/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+  <path d="M8 11l0 5" />
+  <path d="M8 8l0 .01" />
+  <path d="M12 16l0 -5" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://mastodon.social/@anthony_doan'
+                        target="_blank"
+                        title="Mastodon"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-mastodon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z" />
+  <path d="M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.reddit.com/user/anthony_doan/'
+                        target="_blank"
+                        title="Reddit"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-reddit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z" />
+  <path d="M12 8l1 -5l6 1" />
+  <path d="M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <circle cx="9" cy="13" r=".5" fill="currentColor" />
+  <circle cx="15" cy="13" r=".5" fill="currentColor" />
+  <path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/339405/mythicalprogrammer'
+                        target="_blank"
+                        title="StackOverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-stackoverflow" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" />
+  <path d="M8 16h8" />
+  <path d="M8.322 12.582l7.956 .836" />
+  <path d="M8.787 9.168l7.826 1.664" />
+  <path d="M10.096 5.764l7.608 2.472" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AnthonyDoan20'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/portfolio' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder-star" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" />
+  <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+</svg>
+                
+                <span>Portfolio</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#original-model-terminology">Original Model Terminology</a>
+      <ol>
+        <li><a href="#structural-features">Structural Features</a></li>
+        <li><a href="#integrity-features">Integrity Features</a></li>
+        <li><a href="#manipulative-features">Manipulative Features</a>
+          <ol>
+            <li><a href="#original-operators">Original Operators*</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#data-model-vs-implementation">Data Model vs Implementation</a>
+      <ol>
+        <li><a href="#data-model-first-sense-vs-data-model-second-sense">Data Model (first sense) vs Data Model (second sense)</a></li>
+      </ol>
+    </li>
+    <li><a href="#properties-of-relations">PROPERTIES OF RELATIONS</a></li>
+    <li><a href="#some-crucial-points">Some Crucial Points</a></li>
+    <li><a href="#base-vs-derived-relations">BASE vs. DERIVED RELATIONS</a></li>
+    <li><a href="#relations-vs-relvars">RELATIONS vs. RELVARS</a></li>
+    <li><a href="#values-vs-variables">VALUES vs. VARIABLES</a></li>
+    <li><a href="#concluding-remarks">CONCLUDING REMARKS</a></li>
+    <li><a href="#credits">Credits</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/">
+                <img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_800x0_resize_box_3.png"
+                        srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_800x0_resize_box_3.png 800w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="699" 
+                        loading="lazy"
+                        alt="Featured image of post Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/sql/" >
+                SQL
+            </a>
+        
+            <a href="/categories/book/" >
+                book
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/">Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 21, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction">Introduction</h2>
+<p>Started reading &ldquo;SQL and Relational Theory&rdquo; by <a class="link" href="https://en.wikipedia.org/wiki/Christopher_J._Date"  target="_blank" rel="noopener"
+    >C.J. Date</a>.</p>
+<p>It&rsquo;s been awhile since I&rsquo;ve dealt with Relational Theory so I&rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.</p>
+<h2 id="original-model-terminology">Original Model Terminology</h2>
+<p>The original model by <a class="link" href="https://en.wikipedia.org/wiki/Edgar_F._Codd"  target="_blank" rel="noopener"
+    >E. F. Codd</a> had three major components:</p>
+<ol>
+<li><code>structure</code>,</li>
+<li><code>integrity</code>,</li>
+<li>and <code>manipulation</code>.</li>
+</ol>
+<h3 id="structural-features">Structural Features</h3>
+<ol>
+<li><strong>Relation</strong> (&quot;<em>table</em>&quot;) - are defined over types</li>
+<li><strong>Attribute</strong> (&quot;<em>column</em>&quot;)</li>
+<li><strong>Type</strong> (&quot;<em>column values</em>&quot; aka &ldquo;<em>domain</em>&rdquo;) - a conceptual pool of values from which actual attributes in actual relations take their actual values.</li>
+<li><strong>N-ary relation</strong> - # of column in a table</li>
+<li><strong>Candidate key</strong> (&quot;<em>key</em>&quot;) - every relation has at least one. A combination of attributes (cols), often just 1 attribute (e.g. column with id&rsquo;s), such that every tuple in the relation has a unique value for the combinatoin in question.</li>
+<li><strong>Primary key</strong> - is a candidate key that&rsquo;s been singled out for special trestment in some way.</li>
+<li><strong>Foreign key</strong> - a combination, or set, of attributes <code>FK</code> in some relation <code>r2</code> such that each <code>FK</code> value is required to be equal to some value of some key <code>K</code> in some relation <code>r1</code>.</li>
+<li><strong>Constraint</strong> (aka <em>integrity constraint</em>) - a boolean expression that must evaluate to TRUE.</li>
+</ol>
+<h3 id="integrity-features">Integrity Features</h3>
+<ol>
+<li><strong>The Entity Integrity Rule</strong> - Primary key attributes don&rsquo;t permit NULL&rsquo;s.</li>
+<li><strong>The Referential Integrity Rule</strong> - There mustn&rsquo;t be any unmatched foreign key values. <em>If B references A, then A must exists.</em></li>
+</ol>
+<h3 id="manipulative-features">Manipulative Features</h3>
+<ol>
+<li><strong>Relational algebra</strong> - a collection of operators (e.g., <code>difference</code>, or <code>MINUS</code>) that can be applied to relations (tables). Allows us to derived &ldquo;new&rdquo; relations from &ldquo;old&rdquo; ones.</li>
+<li><strong>Relational assignment</strong> operator - allows the value of some relational algebra expression (e.g., <code>r1 MINUS r2</code>, where <code>r1</code> and <code>r2</code> are relations) to be assigned to some relation (table). How updates are done in the relational model.<em>Update</em> means <code>INSERT</code>, <code>DELETE</code>, and <code>UPDATE</code> operators.</li>
+<li><strong>Closure property</strong> - The output from every operation is the same kind of thing as the input, the out put from one peration can become the input to another. Enable us to wrjite nested relational expressions.</li>
+</ol>
+<h4 id="original-operators">Original Operators*</h4>
+<p>*the ones that Codd defined in his earliest papers</p>
+<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/fig1_2_the_original_relational_algebra.PNG"
+	width="883"
+	height="758"
+	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/fig1_2_the_original_relational_algebra_huf92dc89bfee175422dd0d35d7552ca9e_34135_480x0_resize_box_3.PNG 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/fig1_2_the_original_relational_algebra_huf92dc89bfee175422dd0d35d7552ca9e_34135_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Figure 1.2 The Original Relational Algebra"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="116"
+		data-flex-basis="279px"
+	
+></p>
+<ol>
+<li><strong>Restrict</strong> - Returns a relation containing all tuples from a specified relation that satisfy a specified condition. For example, we might restrict relation <code>EMP</code> to just those tuples where the <code>DNO</code> value is <code>D2</code>. <em>My Note</em>: this seems like a <code>WHERE</code> clause.</li>
+<li><strong>Project</strong> - Returns a relation containing all (sub)tuples that remain in a specified relation after specified attributes have been removed. For example, we might project relation <code>EMP</code> on just the <code>ENO</code> and <code>SALARY</code> attributes (thereby removing the <code>ENAME</code> and <code>DNO</code> attributes). <em>My Notes</em>: <code>SELECT</code> statement, where you specified which column(s) you want.</li>
+<li><strong>Product</strong> - Returns a relation containing all possible tuples that are a combination of two tuples, one from each of two specified relations. Note: TRhis operator is also known variously as <em>cartesian product</em> (sometimes more specifically <em>extended</em> or <em>expanded</em> cartesian product), <em>cross product</em>,<em>cross join</em>, and <em>cartesian join</em>; in fact it&rsquo;s really just a special case of join (see chp 6).</li>
+<li><strong>Union</strong> - Returns a relation containing all tuples that appear in either or both of two specified relations.</li>
+<li><strong>Intersect</strong> - Returns a relation containing all tuples that appear in both of two specified relations (special case of join).</li>
+<li><strong>Difference</strong> - Returns a relation containing all tuples that appear in the first and not the second of specified relations.</li>
+<li><strong>Join</strong> - Returns a relation containing all possible tuples that are a combination of two tuples, one from each of two specified relations, such that the two tuples contributing to any given result tuple have a common value for the common attributes of the two relations (and that common value appears just once, not twice, in that result tuple). Note: This kind of join was originally called the <em>natural</em> join, to distinguish it from various other kinds. This is the most inportant join so <em>join</em> means <em>natural join</em>.</li>
+</ol>
+<p><strong>Note:</strong> <a class="link" href="https://en.wikipedia.org/wiki/Relational_calculus"  target="_blank" rel="noopener"
+    >Relational Calculus</a> is an alternative to <a class="link" href="https://en.wikipedia.org/wiki/Relational_algebra"  target="_blank" rel="noopener"
+    >Relational Algebra</a>.</p>
+<h2 id="data-model-vs-implementation">Data Model vs Implementation</h2>
+<ol>
+<li>A <strong>data model (first sense)</strong> is an abstract, self-contained, logical definition of the data structures, data operators, and so forth, that together make up the abstract machine with which users interact. <em>The model (first sense) is what the user has to know.</em></li>
+<li>An <strong>implementation</strong> of a given data model (first sense) is a physical realization on a real machine of the components of the abstract machine that together constitute that model. <em>The implementation is what the user doesn’t have to know.</em></li>
+<li><strong>Physical data independence</strong> - means we have the freedom to make changes in the way the data is physically stored and accessed without having to make corresponding changes in the way the data is perceived by the user. <em>&hellip;means protecting investment in user training
+and applications.</em></li>
+<li>A <strong>data model (second sense)</strong> is a model of the data—especially the persistent data—of some particular enterprise. Is just a logical, and possibly somewhat abstract, database design.</li>
+<li>A <strong>domain</strong> can be thought of as a conceptual pool of values from which actual attributes in actual relations take their actual values. In other words, a domain is a type, and the terms domain and type are effectively interchangeable.</li>
+</ol>
+<h3 id="data-model-first-sense-vs-data-model-second-sense">Data Model (first sense) vs Data Model (second sense)</h3>
+<ul>
+<li>A <strong>data model in the first sense</strong> is like a <em>programming language</em>, whose constructs can be used to solve many specific problems but in and of themselves have no direct connection with any such specific problem.</li>
+<li>A <strong>data model in the second sense</strong> is like a <em>specific program</em> written in that language—it uses the facilities provided by the model, in the first sense of that term, to solve some specific problem.</li>
+</ul>
+<h2 id="properties-of-relations">PROPERTIES OF RELATIONS</h2>
+<p>First of all, every relation has a heading and a body:</p>
+<ol>
+<li>
+<p><strong>Heading</strong> is a set of attributes (where by the term attribute I mean, very specifically, an attribute-name : type-name pair, and where no two attributes in the same heading have the same attribute name).</p>
+</li>
+<li>
+<p><strong>Body</strong> is a set of tuples that conform to that heading.</p>
+</li>
+<li>
+<p><strong>Degree</strong> (aka <em>arity</em>) is the number of attributes in the heading, both of that heading as such and of any relation that has that heading.</p>
+</li>
+<li>
+<p><strong>Cardinality</strong> is the number of tuples in the body, both of the body itself and of the relation that contains it.</p>
+</li>
+<li>
+<p>Relations never contain duplicate tuples. SQL tables are allowed to contain duplicate rows and thus aren’t relations, in general.</p>
+</li>
+<li>
+<p>The tuples of a relation are unordered. <code>ORDER BY</code> is useful for
+displaying results, but it isn’t a relational operator as such.</p>
+</li>
+<li>
+<p>Relations are always <em>normalized</em> (equivalently, they’re in <em>first normal form</em>, <code>1NF</code>).</p>
+</li>
+</ol>
+<h2 id="some-crucial-points">Some Crucial Points</h2>
+<ul>
+<li>Every subset of a tuple is a tuple.</li>
+<li>Every subset of a heading is a heading.</li>
+<li>Every subset of a body is a body.</li>
+</ul>
+<p>Equality:</p>
+<ul>
+<li>two tuples are duplicates of each other if and only if they’re equal: in other words, if and only if they’re the very same tuple.</li>
+<li>two relations are equal if and only if, in turn, their headings are equal and their bodies are equal.</li>
+</ul>
+<h2 id="base-vs-derived-relations">BASE vs. DERIVED RELATIONS</h2>
+<p>The operators of the relational algebra allow us to start with some given relations and obtain further relations from those given ones.</p>
+<p>The given relations are referred to as <em>base relations</em>, the others are <em>derived relations</em>.</p>
+<ul>
+<li><code>CREATE TABLE</code> SQL statement - creates base relations.</li>
+<li><code>CREATE VIEW</code> SQL statement - is one way to create derived relations. A <em>view</em> (also known as a <code>virtual relation</code>) is a named relation whose value at any given time <code>t</code> is the result of evaluating a certain relational expression at that time <code>t</code>.</li>
+<li>Can think of a view as being <strong>“materialized”</strong>—in effect, you can think of a base relation being constructed whose value is obtained by evaluating the specified relational expression—at the time the view in question is referenced.</li>
+</ul>
+<p>Note: Relational model has nothing to say about physical storage matters at all.</p>
+<p>Note: a view is that it is a table/relation. Don&rsquo;t treat it any differently when come to relational algebra on view vs table/relation.</p>
+<h2 id="relations-vs-relvars">RELATIONS vs. RELVARS</h2>
+<h2 id="values-vs-variables">VALUES vs. VARIABLES</h2>
+<ol>
+<li>A <strong>value</strong> is an <em>“individual constant”</em> (this is the term used by logicians), such as the integer 3. A value has no location in time or space. However, values can be represented in memory by means of some encoding, and those representations or encodings do have location in time and space. Indeed, distinct representations of the same value can appear at any number of distinct locations in time and space—meaning, loosely, that any number of different variables (see the definition immediately following) can have the same value, at the same time or different times. Observe in particular that, by definition, a value can’t be updated; for if it could, then after such an update it wouldn’t be that value any longer.</li>
+<li>A <strong>variable</strong> is a holder for a representation of a value. A variable does have location in time and space. Also, variables, unlike values, can be updated; that is, the current value of the variable can be replaced by another value. (After all, that’s what <em>“variable”</em> means—to be a variable is to be updatable, to be updatable is to be a variable; equivalently, to be a variable is to be assignable to, to be assignable to is to be a variable.)</li>
+</ol>
+<h2 id="concluding-remarks">CONCLUDING REMARKS</h2>
+<ul>
+<li>Relations have no duplicate tuples, no top to bottom tuple ordering, and no left to right attribute ordering.</li>
+<li>Overall, the relational model is declarative, not procedural, in nature; that is, it always favors declarative solutions over procedural ones, wherever such solutions are feasible.</li>
+<li><strong>Declarative</strong> means the system does the work.</li>
+<li><strong>Procedural</strong> means the user does the work.</li>
+</ul>
+<h2 id="credits">Credits</h2>
+<ul>
+<li>First picture (tables): <a class="link" href="https://pixabay.com/vectors/database-schema-data-tables-schema-1895779/"  target="_blank" rel="noopener"
+    >database-schema-data-tables-schema-1895779</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/book-notes/">Book notes</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Not Sure. These are snippets of passage in the book I&rsquo;ve found relevant.</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2009 - 
+        
+        2023 Anthony Quoc Anh Doan - Ramblings of a Happy Scientist
+        
+    </section>
+    
+    <section>
+      <p align="center">Desiderata by Max Ehrmann</p>
+      <p>
+          Go placidly amid the noise and the haste, and remember what peace there may be in silence. As far as possible without surrender be on good terms with all persons. Speak your truth quietly and clearly; and listen to others, even to the dull and the ignorant, they too have their story. Avoid loud and aggressive persons, they are vexations to the spirit.
+      </p>
+
+      <p>
+    If you compare yourself with others, you may become vain or bitter; for always there will be greater and lesser persons than yourself. Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.
+      </p>
+
+      <p>
+    Exercise caution in your business affairs, for the world is full of trickery. But let not this blind you to what virtue there is; many persons strive for high ideals, and everywhere life is full of heroism. Be yourself. Especially do not feign affection. Neither be cynical about love; for in the face of all aridity and disenchantment it is as perennial as the grass. Take kindly the counsel of the years, gracefully surrendering the things of youth.
+      </p>
+
+      <p>
+    Nurture strength of spirit to shield you in sudden misfortune. But do not distress yourself with dark imaginings. Many fears are born of fatigue and loneliness. Beyond a wholesome discipline, be gentle with yourself. You are a child of the universe, no less than the trees and the stars; you have a right to be here. And whether or not it is clear to you, no doubt the universe is unfolding as it should.
+      </p>
+
+      <p>
+    Therefore, be at peace with God, whatever you conceive Him to be. And whatever your labors and aspirations in the noisy confusion of life, keep peace in your soul. With all its sham, drudgery and broken dreams; it is still a beautiful world. Be cheerful.
+      </p>
+
+      <p>
+    Strive to be happy.
+      </p>
+      
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

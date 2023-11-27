@@ -2,87 +2,196 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
-        <link>https://example.com/page/</link>
+        <link>https://mythicalprogrammer.github.io/page/</link>
         <description>Recent content in Pages on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Portfolio</title>
+        <link>https://mythicalprogrammer.github.io/portfolio/</link>
+        <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/portfolio/</guid>
+        <description>&lt;h2 id=&#34;thesis&#34;&gt;Thesis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;./final_thesis_draft.pdf&#34; &gt;Tree-based Ensemble Classification Algorithm for High Dimensional Data&lt;/a&gt; - CSULB (Master of Science in Applied Statistics)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;publications&#34;&gt;Publications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Nicholas Keisuke Brownell, Evan Shannon, &lt;strong&gt;Quoc Doan&lt;/strong&gt;, Gregg C. Fonarow, and Boback Ziaeian (2023 Mar, 81).
+Healthcare Utilization for US Veterans with Heart Failure during the Covid19 Pandemic (Vol. 31 No. 8). J
+Am Coll Cardiol. 2023 Mar, 81 (8 Supplement) 536.
+(&lt;a class=&#34;link&#34; href=&#34;https://www.jacc.org/doi/full/10.1016/S0735-1097%2823%2900980-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.jacc.org/doi/full/10.1016/S0735-1097%2823%2900980-4&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Pending authors . Pending Title - My Health Veteran Online Utilization and Comorbidities 2023&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;employment-history&#34;&gt;Employment History&lt;/h2&gt;
+&lt;p&gt;See my &lt;a class=&#34;link&#34; href=&#34;./2023_08_28_resume.pdf&#34; &gt;resume&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;portfolio&#34;&gt;Portfolio&lt;/h2&gt;
+&lt;h3 id=&#34;fumigate-wwwfumigatedbcom&#34;&gt;Fumigate &lt;a class=&#34;link&#34; href=&#34;https://www.fumigatedb.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.fumigatedb.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Version 0.1.0 Summer 2018 - 2021&lt;/p&gt;
+&lt;p&gt;I created this website as an authoritative website for perfume. Technology stack is Phoenix web framework. Bootstrap for responsive design and SEO friendly. PostgreSQL for data storage. Server is on Digital Ocean VPS. Ubuntu 18.04 is the OS and was hardened by me. Data is web scraped using scrapy web scrape framework.&lt;/p&gt;
+&lt;p&gt;Source Code: &lt;a class=&#34;link&#34; href=&#34;https://github.com/mythicalprogrammer/fumigate/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mythicalprogrammer/fumigate/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;intro-to-random-forest&#34;&gt;Intro to Random Forest&lt;/h3&gt;
+&lt;p&gt;Guest Speaker for undergrad class - CSULB&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://web.csulb.edu/~tebert/teaching/lectures/551/random_forest.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Intro to Random Forest - Slides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I was invited to present my thesis subject, ensemble of decision trees, specifically Random Forest.&lt;/p&gt;
+&lt;p&gt;Fall 2017&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;predictive-model-for-detecting-toxicity-in-drugs&#34;&gt;Predictive Model for Detecting Toxicity in Drugs&lt;/h3&gt;
+&lt;p&gt;FDA - Food &amp;amp; Drug Administration - National Center Toxicological Research 2017&lt;/p&gt;
+&lt;p&gt;Implemented non-parametric Bayesian hierarchical model using Chinese restaurant process in R to predict drug induced liver injuries (DILI). This model was going to be use to predict new and old drugs on the market to see if there is a possibility of toxicity base on other known drugs with similar chemical profile. Nonparametric Bayesian is used is used so that the model can extend to multiple data sources, beyond DILI, to make prediction.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;le-snob-wwwlesnobcom&#34;&gt;Le Snob &lt;a class=&#34;link&#34; href=&#34;https://www.lesnob.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.lesnob.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2014&lt;/p&gt;
+&lt;p&gt;Fashion website that sell high end luxury fashion for Le Snob brand. Web designer designed the website. I was responsible for translating it into code (PHP, CSS, HTML, Javascript) and for deployment.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;kyho---knock-your-heart-out-android-app&#34;&gt;KYHO - Knock Your Heart Out (Android App)&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://play.google.com/store/apps/details?id=kyho.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;KYHO&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;An Android app that help you look up exercises and create routines for workout. Coded in Java and Android SDK.&lt;/p&gt;
+&lt;p&gt;2014&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;bluepromocode-wwwdealspotrcom&#34;&gt;Bluepromocode &lt;a class=&#34;link&#34; href=&#34;https://www.dealspotr.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.dealspotr.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2013&lt;/p&gt;
+&lt;p&gt;Redesigned Bluepromocode website using Scala, Ember.js, and Bootstrap 3. Website is renamed to Dealspotr.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;stylespotter-wwwstylespottercom&#34;&gt;Stylespotter &lt;a class=&#34;link&#34; href=&#34;https://www.stylespotter.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.stylespotter.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2013&lt;/p&gt;
+&lt;p&gt;Helped create spiders to web crawl fashion websites and then upload the scraped data onto MongoDB. Scrapy was the webscraping framework used.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;paedae-api-wwwgithubcompaedaepaedae-unity-wrapper&#34;&gt;PaeDae API &lt;a class=&#34;link&#34; href=&#34;https://www.github.com/PaeDae/paedae-unity-wrapper&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.github.com/PaeDae/paedae-unity-wrapper&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2013&lt;/p&gt;
+&lt;p&gt;PaeDae’s API Unity Wrapper enabling Unity3D applications to integrate with PaeDae web services and serve advertisements.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;baublebox-wwwbaubleboxcom&#34;&gt;Baublebox &lt;a class=&#34;link&#34; href=&#34;https://www.baublebox.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.baublebox.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2013&lt;/p&gt;
+&lt;p&gt;Reviewed PHP’s code, most of the code was on FuelPHP MVC framework. Gave suggestions on
+refactoring existing code and how to use MVC framework.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;ucr-extension-memorandum-of-understanding-mouextensionucredumouextensionucredu&#34;&gt;UCR Extension Memorandum of Understanding &lt;a class=&#34;link&#34; href=&#34;mou.extension.ucr.edu&#34; &gt;mou.extension.ucr.edu&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2012&lt;/p&gt;
+&lt;p&gt;The whole website code is on the Zend MVC framework using PHP language. There is an internal web tool to control the layout and links.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;ucr-extension-program-fee-wwwiepucredudates_and_feesphp&#34;&gt;UCR Extension Program Fee &lt;a class=&#34;link&#34; href=&#34;https://www.iep.ucr.edu/dates_and_fees.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.iep.ucr.edu/dates_and_fees.php&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2011&lt;/p&gt;
+&lt;p&gt;This is a tool to give potential international students an idea how much studying aboard with UCR cost. I coded this using Zend MVC framework, jQuery, and SQL. Some of the design changed especially the header but my overall code is still intact. The SQL table and schemas were created and design by me.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Archives</title>
-        <link>https://example.com/archives/</link>
+        <link>https://mythicalprogrammer.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/archives/</guid>
+        <guid>https://mythicalprogrammer.github.io/archives/</guid>
         <description></description>
         </item>
         <item>
-        <title>About</title>
-        <link>https://example.com/about/</link>
+        <title>About Me</title>
+        <link>https://mythicalprogrammer.github.io/about-me/</link>
         <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/about/</guid>
-        <description>&lt;p&gt;Written in Go, Hugo is an open source static site generator available under the &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/blob/master/LICENSE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Apache Licence 2.0.&lt;/a&gt; Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.&lt;/p&gt;
-&lt;p&gt;Hugo makes use of a variety of open source projects including:&lt;/p&gt;
+        <guid>https://mythicalprogrammer.github.io/about-me/</guid>
+        <description>&lt;h2 id=&#34;bio&#34;&gt;Bio&lt;/h2&gt;
+&lt;p&gt;I am a data scientist. I used to do web development (fullstack) and system administration for a living.&lt;/p&gt;
+&lt;p&gt;I have a Bachelor of Science degree in Computer Science and a Master degree in Applied Statistic.&lt;/p&gt;
+&lt;p&gt;I have over 10 years of professional working experiences as a programmer and
+over 4 years and counting as a statistician.&lt;/p&gt;
+&lt;p&gt;My &lt;a class=&#34;link&#34; href=&#34;./2023_08_28_resume.pdf&#34; &gt;resume&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Currently doing data science and being happy.&lt;/p&gt;
+&lt;p&gt;The theme is Theme Stack designed by &lt;a class=&#34;link&#34; href=&#34;https://jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Jimmy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I hope you have an awesome day.&lt;/p&gt;
+&lt;h2 id=&#34;education&#34;&gt;Education&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/yuin/goldmark&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/yuin/goldmark&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alecthomas/chroma&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/alecthomas/chroma&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/muesli/smartcrop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/muesli/smartcrop&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/spf13/cobra&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/spf13/cobra&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/spf13/viper&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/spf13/viper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;California State University, Long Beach Long Beach, CA - Master of Science in Applied Statistics (Biostatistic focus) GPA: 3.80&lt;/li&gt;
+&lt;li&gt;University of California, Riverside Riverside, CA - Bachelor of Science in Computer Science&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.&lt;/p&gt;
-&lt;p&gt;Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.&lt;/p&gt;
-&lt;p&gt;Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.&lt;/p&gt;
-&lt;p&gt;Learn more and contribute on &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;thesis&#34;&gt;Thesis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;./final_thesis_draft.pdf&#34; &gt;Tree-based Ensemble Classification Algorithm for High Dimensional Data&lt;/a&gt; - CSULB (Master of Science in Applied Statistics)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;publications&#34;&gt;Publications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Nicholas Keisuke Brownell, Evan Shannon, Quoc Doan, Gregg C. Fonarow, and Boback Ziaeian (2023 Mar, 81).
+Healthcare Utilization for US Veterans with Heart Failure during the Covid19 Pandemic (Vol. 31 No. 8). J
+Am Coll Cardiol. 2023 Mar, 81 (8 Supplement) 536.
+(&lt;a class=&#34;link&#34; href=&#34;https://www.jacc.org/doi/full/10.1016/S0735-1097%2823%2900980-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.jacc.org/doi/full/10.1016/S0735-1097%2823%2900980-4&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Pending authors . Pending Title - My Health Veteran Online Utilization and Comorbidities 2023&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;employment-history&#34;&gt;Employment History&lt;/h2&gt;
+&lt;p&gt;See my &lt;a class=&#34;link&#34; href=&#34;./2023_08_28_resume.pdf&#34; &gt;resume&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;portfolio&#34;&gt;Portfolio&lt;/h2&gt;
+&lt;h3 id=&#34;fumigate-wwwfumigatedbcom&#34;&gt;Fumigate &lt;a class=&#34;link&#34; href=&#34;https://www.fumigatedb.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.fumigatedb.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Version 0.1.0 Summer 2018 - 2021&lt;/p&gt;
+&lt;p&gt;I created this website as an authoritative website for perfume. Technology stack is Phoenix web framework. Bootstrap for responsive design and SEO friendly. PostgreSQL for data storage. Server is on Digital Ocean VPS. Ubuntu 18.04 is the OS and was hardened by me. Data is web scraped using scrapy web scrape framework.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;predictive-model-for-detecting-toxicity-in-drugs&#34;&gt;Predictive Model for Detecting Toxicity in Drugs&lt;/h3&gt;
+&lt;p&gt;FDA - Food &amp;amp; Drug Administration - National Center Toxicological Research 2017&lt;/p&gt;
+&lt;p&gt;Implemented non-parametric Bayesian hierarchical model using Chinese restaurant process in R to predict drug induced liver injuries (DILI). This model was going to be use to predict new and old drugs on the market to see if there is a possibility of toxicity base on other known drugs with similar chemical profile. Nonparametric Bayesian is used is used so that the model can extend to multiple data sources, beyond DILI, to make prediction.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;le-snob-wwwlesnobcom&#34;&gt;Le Snob &lt;a class=&#34;link&#34; href=&#34;https://www.lesnob.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.lesnob.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2014&lt;/p&gt;
+&lt;p&gt;Fashion website that sell high end luxury fashion for Le Snob brand. Web designer designed the website. I was responsible for translating it into code (PHP, CSS, HTML, Javascript) and for deployment.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;bluepromocode-wwwdealspotrcom&#34;&gt;Bluepromocode &lt;a class=&#34;link&#34; href=&#34;https://www.dealspotr.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.dealspotr.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2013&lt;/p&gt;
+&lt;p&gt;Redesigned Bluepromocode website using Scala, Ember.js, and Bootstrap 3. Website is renamed to Dealspotr.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;stylespotter-wwwstylespottercom&#34;&gt;Stylespotter &lt;a class=&#34;link&#34; href=&#34;https://www.stylespotter.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.stylespotter.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2013&lt;/p&gt;
+&lt;p&gt;Helped create spiders to web crawl fashion websites and then upload the scraped data onto MongoDB. Scrapy was the webscraping framework used.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;paedae-api-wwwgithubcompaedaepaedae-unity-wrapper&#34;&gt;PaeDae API &lt;a class=&#34;link&#34; href=&#34;https://www.github.com/PaeDae/paedae-unity-wrapper&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.github.com/PaeDae/paedae-unity-wrapper&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2013&lt;/p&gt;
+&lt;p&gt;PaeDae’s API Unity Wrapper enabling Unity3D applications to integrate with PaeDae web services and serve advertisements.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;baublebox-wwwbaubleboxcom&#34;&gt;Baublebox &lt;a class=&#34;link&#34; href=&#34;https://www.baublebox.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.baublebox.com&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2013&lt;/p&gt;
+&lt;p&gt;Reviewed PHP’s code, most of the code was on FuelPHP MVC framework. Gave suggestions on
+refactoring existing code and how to use MVC framework.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;ucr-extension-memorandum-of-understanding-mouextensionucredumouextensionucredu&#34;&gt;UCR Extension Memorandum of Understanding &lt;a class=&#34;link&#34; href=&#34;mou.extension.ucr.edu&#34; &gt;mou.extension.ucr.edu&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2012&lt;/p&gt;
+&lt;p&gt;The whole website code is on the Zend MVC framework using PHP language. There is an internal web tool to control the layout and links.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;ucr-extension-program-fee-wwwiepucredudates_and_feesphp&#34;&gt;UCR Extension Program Fee &lt;a class=&#34;link&#34; href=&#34;https://www.iep.ucr.edu/dates_and_fees.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.iep.ucr.edu/dates_and_fees.php&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2011&lt;/p&gt;
+&lt;p&gt;This is a tool to give potential international students an idea how much studying aboard with UCR cost. I coded this using Zend MVC framework, jQuery, and SQL. Some of the design changed especially the header but my overall code is still intact. The SQL table and schemas were created and design by me.&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Links</title>
-        <link>https://example.com/links/</link>
+        <link>https://mythicalprogrammer.github.io/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/links/</guid>
-        <description>&lt;p&gt;To use this feature, add &lt;code&gt;links&lt;/code&gt; section to frontmatter.&lt;/p&gt;
-&lt;p&gt;This page&amp;rsquo;s frontmatter:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;links&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;GitHub&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;description&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;GitHub is the world&amp;#39;s largest software development platform.&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;website&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;https://github.com&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;TypeScript&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;description&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;website&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;https://www.typescriptlang.org&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;ts-logo-128.jpg&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;code&gt;image&lt;/code&gt; field accepts both local and external images.&lt;/p&gt;
-</description>
+        <guid>https://mythicalprogrammer.github.io/links/</guid>
+        <description></description>
         </item>
         <item>
         <title>Search</title>
-        <link>https://example.com/search/</link>
+        <link>https://mythicalprogrammer.github.io/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/search/</guid>
+        <guid>https://mythicalprogrammer.github.io/search/</guid>
         <description></description>
         </item>
         

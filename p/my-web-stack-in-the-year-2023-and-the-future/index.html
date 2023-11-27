@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Current Webstack 2023 Elixir I enjoy the programming language. It&amp;rsquo;s fun and it&amp;rsquo;s mostly complete as quoted by Jose Valim (the creator of Elixir).
+There are mostly improvements for developers like debugging and bug fixes.
+Jose Valim have been working hard and in a few years or so maybe we get type in Elixir. It&amp;rsquo;s not guarantee but he have been talking about his work.
+One thing is there are like three version managers for managing Elixir and Erlang versions now.'>
+<title>My Web Stack in the year 2023 and the future</title>
+
+<link rel='canonical' href='https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/'>
+
+<link rel="stylesheet" href="/scss/style.min.ae544f6e875175eb0f852537f03e029a61665cc22ad0fd93bf333e7c3bee5a8c.css"><meta property='og:title' content='My Web Stack in the year 2023 and the future'>
+<meta property='og:description' content='Current Webstack 2023 Elixir I enjoy the programming language. It&amp;rsquo;s fun and it&amp;rsquo;s mostly complete as quoted by Jose Valim (the creator of Elixir).
+There are mostly improvements for developers like debugging and bug fixes.
+Jose Valim have been working hard and in a few years or so maybe we get type in Elixir. It&amp;rsquo;s not guarantee but he have been talking about his work.
+One thing is there are like three version managers for managing Elixir and Erlang versions now.'>
+<meta property='og:url' content='https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/'>
+<meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Elixir' /><meta property='article:tag' content='Phoenix' /><meta property='article:tag' content='postgresql' /><meta property='article:tag' content='webdev' /><meta property='article:tag' content='technology' /><meta property='article:tag' content='tailwind' /><meta property='article:tag' content='jquery' /><meta property='article:tag' content='bootstrap' /><meta property='article:published_time' content='2023-11-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/ghost-in-the-shell-7765132_1280.jpg' />
+<meta name="twitter:site" content="@AnthonyDoan20">
+    <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="My Web Stack in the year 2023 and the future">
+<meta name="twitter:description" content="Current Webstack 2023 Elixir I enjoy the programming language. It&amp;rsquo;s fun and it&amp;rsquo;s mostly complete as quoted by Jose Valim (the creator of Elixir).
+There are mostly improvements for developers like debugging and bug fixes.
+Jose Valim have been working hard and in a few years or so maybe we get type in Elixir. It&amp;rsquo;s not guarantee but he have been talking about his work.
+One thing is there are like three version managers for managing Elixir and Erlang versions now."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/ghost-in-the-shell-7765132_1280.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud04d226d349438d5d6dbe19a25343199_44779_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</a></h1>
+            <h2 class="site-description">An instrument of peace. Where there is hatred, let me sow love; where there is doubt, let&#39;s get some data and build a model.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mythicalprogrammer'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/anthony-anh-quoc-doan-a7234321/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+  <path d="M8 11l0 5" />
+  <path d="M8 8l0 .01" />
+  <path d="M12 16l0 -5" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://mastodon.social/@anthony_doan'
+                        target="_blank"
+                        title="Mastodon"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-mastodon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z" />
+  <path d="M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.reddit.com/user/anthony_doan/'
+                        target="_blank"
+                        title="Reddit"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-reddit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z" />
+  <path d="M12 8l1 -5l6 1" />
+  <path d="M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <circle cx="9" cy="13" r=".5" fill="currentColor" />
+  <circle cx="15" cy="13" r=".5" fill="currentColor" />
+  <path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/339405/mythicalprogrammer'
+                        target="_blank"
+                        title="StackOverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-stackoverflow" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" />
+  <path d="M8 16h8" />
+  <path d="M8.322 12.582l7.956 .836" />
+  <path d="M8.787 9.168l7.826 1.664" />
+  <path d="M10.096 5.764l7.608 2.472" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AnthonyDoan20'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/portfolio' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder-star" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" />
+  <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+</svg>
+                
+                <span>Portfolio</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#current-webstack-2023">Current Webstack 2023</a>
+      <ol>
+        <li><a href="#elixirhttpselixir-langorg"><a href="https://elixir-lang.org/">Elixir</a></a></li>
+        <li><a href="#phoenix-frameworkhttpsphoenixframeworkorg"><a href="https://phoenixframework.org/">Phoenix Framework</a></a></li>
+        <li><a href="#javascripthttpsdevelopermozillaorgen-usdocswebjavascriptlanguage_overview"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_overview">Javascript</a></a></li>
+        <li><a href="#jqueryhttpsjquerycom"><a href="https://jquery.com/">JQuery</a></a></li>
+        <li><a href="#bootstraphttpsgetbootstrapcom"><a href="https://getbootstrap.com/">Bootstrap</a></a></li>
+        <li><a href="#postgresqlhttpswwwpostgresqlorg"><a href="https://www.postgresql.org/">PostgreSQL</a></a></li>
+        <li><a href="#linux-debianhttpswwwdebianorg">Linux (<a href="https://www.debian.org/">Debian</a>)</a></li>
+        <li><a href="#ide">IDE</a>
+          <ol>
+            <li><a href="#vimhttpswwwvimorg--tmuxhttpsgithubcomtmuxtmuxwiki"><a href="https://www.vim.org/">VIM</a> &amp; <a href="https://github.com/tmux/tmux/wiki">Tmux</a></a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#future">Future</a>
+      <ol>
+        <li><a href="#tailwind-csshttpstailwindcsscom"><a href="https://tailwindcss.com/">Tailwind CSS</a></a></li>
+        <li><a href="#phoenix-liveviewhttpsgithubcomphoenixframeworkphoenix_live_view"><a href="https://github.com/phoenixframework/phoenix_live_view">Phoenix LiveView</a></a></li>
+        <li><a href="#ide-1">IDE</a>
+          <ol>
+            <li><a href="#vs-studio-codehttpscodevisualstudiocom"><a href="https://code.visualstudio.com/">VS Studio Code</a></a></li>
+          </ol>
+        </li>
+        <li><a href="#flyiohttpsflyio"><a href="https://fly.io/">Fly.io</a></a></li>
+      </ol>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#credit">Credit</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/my-web-stack-in-the-year-2023-and-the-future/">
+                <img src="/p/my-web-stack-in-the-year-2023-and-the-future/ghost-in-the-shell-7765132_1280_hu2ae759ce12b03dce750ac36f7d6b378c_337571_800x0_resize_q75_box.jpg"
+                        srcset="/p/my-web-stack-in-the-year-2023-and-the-future/ghost-in-the-shell-7765132_1280_hu2ae759ce12b03dce750ac36f7d6b378c_337571_800x0_resize_q75_box.jpg 800w, /p/my-web-stack-in-the-year-2023-and-the-future/ghost-in-the-shell-7765132_1280_hu2ae759ce12b03dce750ac36f7d6b378c_337571_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post My Web Stack in the year 2023 and the future" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web-development/" >
+                Web Development
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/my-web-stack-in-the-year-2023-and-the-future/">My Web Stack in the year 2023 and the future</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 17, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="current-webstack-2023">Current Webstack 2023</h2>
+<h3 id="elixirhttpselixir-langorg"><a class="link" href="https://elixir-lang.org/"  target="_blank" rel="noopener"
+    >Elixir</a></h3>
+<p>I enjoy the programming language. It&rsquo;s fun and it&rsquo;s mostly complete as quoted by Jose Valim (the creator of Elixir).</p>
+<p>There are mostly improvements for developers like debugging and bug fixes.</p>
+<p>Jose Valim have been working hard and in a few years or so maybe we get type in Elixir. It&rsquo;s not guarantee but he have been talking about his work.</p>
+<p>One thing is there are like <a class="link" href="https://elixir-lang.org/install.html"  target="_blank" rel="noopener"
+    >three version managers</a> for managing Elixir and Erlang versions now.</p>
+<ul>
+<li><a class="link" href="https://github.com/asdf-vm/asdf"  target="_blank" rel="noopener"
+    >asdf</a> - install and manage different <a class="link" href="https://github.com/asdf-vm/asdf-elixir"  target="_blank" rel="noopener"
+    >Elixir</a> and <a class="link" href="https://github.com/asdf-vm/asdf-erlang"  target="_blank" rel="noopener"
+    >Erlang</a> versions</li>
+<li><a class="link" href="https://github.com/taylor/kiex"  target="_blank" rel="noopener"
+    >kiex</a> - install and manage different Elixir versions</li>
+<li><a class="link" href="https://github.com/yrashk/kerl"  target="_blank" rel="noopener"
+    >kerl</a> - install and manage different Erlang versions</li>
+</ul>
+<h3 id="phoenix-frameworkhttpsphoenixframeworkorg"><a class="link" href="https://phoenixframework.org/"  target="_blank" rel="noopener"
+    >Phoenix Framework</a></h3>
+<p>It&rsquo;s getting better.</p>
+<p>Deployment is <code>mix release</code> <a class="link" href="https://hexdocs.pm/mix/1.15/Mix.Tasks.Release.html"  target="_blank" rel="noopener"
+    >1</a> instead of using <a class="link" href="https://github.com/edeliver/edeliver"  target="_blank" rel="noopener"
+    >edeliver</a>.</p>
+<p>The framework have <a class="link" href="https://hexdocs.pm/phoenix/mix_phx_gen_auth.html"  target="_blank" rel="noopener"
+    >built in log-in</a> now. Back then there were so many third party log-in options. It was hectic just trying to figure it out and integrate it.</p>
+<h3 id="javascripthttpsdevelopermozillaorgen-usdocswebjavascriptlanguage_overview"><a class="link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_overview"  target="_blank" rel="noopener"
+    >Javascript</a></h3>
+<p>Just plain vanilla Javascript. I am not really into front end as much and don&rsquo;t have much time for it. Been doing a lot of statistic, data science, and machine learning stuff.</p>
+<h3 id="jqueryhttpsjquerycom"><a class="link" href="https://jquery.com/"  target="_blank" rel="noopener"
+    >JQuery</a></h3>
+<p>I&rsquo;m going to stick with what I know. End users doesn&rsquo;t care about the tech you use. It works and I&rsquo;d like to quickly bring up a project.</p>
+<h3 id="bootstraphttpsgetbootstrapcom"><a class="link" href="https://getbootstrap.com/"  target="_blank" rel="noopener"
+    >Bootstrap</a></h3>
+<p>Same reason as above.</p>
+<h3 id="postgresqlhttpswwwpostgresqlorg"><a class="link" href="https://www.postgresql.org/"  target="_blank" rel="noopener"
+    >PostgreSQL</a></h3>
+<p>PostgreSQL is still my favorite RMDB.</p>
+<h3 id="linux-debianhttpswwwdebianorg">Linux (<a class="link" href="https://www.debian.org/"  target="_blank" rel="noopener"
+    >Debian</a>)</h3>
+<p>Debian is rock solid as a server OS. It&rsquo;s either this or Ubuntu. It doesn&rsquo;t matter much for me.</p>
+<h3 id="ide">IDE</h3>
+<h4 id="vimhttpswwwvimorg--tmuxhttpsgithubcomtmuxtmuxwiki"><a class="link" href="https://www.vim.org/"  target="_blank" rel="noopener"
+    >VIM</a> &amp; <a class="link" href="https://github.com/tmux/tmux/wiki"  target="_blank" rel="noopener"
+    >Tmux</a></h4>
+<p>These two in tandem is my go to for web development.</p>
+<h2 id="future">Future</h2>
+<h3 id="tailwind-csshttpstailwindcsscom"><a class="link" href="https://tailwindcss.com/"  target="_blank" rel="noopener"
+    >Tailwind CSS</a></h3>
+<p>I&rsquo;d like to move to Tailwind CSS. They already name all the things you need and you don&rsquo;t have to come up with any. It may looks ugly html but I don&rsquo;t mind it. I don&rsquo;t mind html tag having tons of classes.</p>
+<p>It also remove zombie classes too. Zombie classes are classes that are defined but not used.</p>
+<h3 id="phoenix-liveviewhttpsgithubcomphoenixframeworkphoenix_live_view"><a class="link" href="https://github.com/phoenixframework/phoenix_live_view"  target="_blank" rel="noopener"
+    >Phoenix LiveView</a></h3>
+<p>Can reduce Javascript codes. I&rsquo;d like to use as little javascript as possible and more Elixir instead.</p>
+<p>It&rsquo;s not 1.0 yet and even then it&rsquo;s probably not perfect. I&rsquo;ll play around just to stay ahead and keep a general idea where it&rsquo;s going.</p>
+<h3 id="ide-1">IDE</h3>
+<h4 id="vs-studio-codehttpscodevisualstudiocom"><a class="link" href="https://code.visualstudio.com/"  target="_blank" rel="noopener"
+    >VS Studio Code</a></h4>
+<p>It&rsquo;s a good IDE for tailwind css integration (autocomplete and suggestions).</p>
+<h3 id="flyiohttpsflyio"><a class="link" href="https://fly.io/"  target="_blank" rel="noopener"
+    >Fly.io</a></h3>
+<p>Manage server and back end for me. Less system admin tasks eating my time and it&rsquo;ll let me concentrate on iterating and getting the project out.</p>
+<h2 id="summary">Summary</h2>
+<p>At the end of the day, I am tired of trying to get the ideal tech stack and get everything perfect.</p>
+<p>I just want to have a product out.</p>
+<p>Get people to use it and iterate the product.</p>
+<p>Once and if the product is flesh out then I&rsquo;ll worry about perfection.</p>
+<p>At this point my mindset is my code will be toss out within 5 years for a rewrite either adopting a new tech or update. So don&rsquo;t worry about perfection.</p>
+<h2 id="credit">Credit</h2>
+<ol>
+<li><a class="link" href="https://pixabay.com/illustrations/ghost-in-the-shell-ghost-shell-7765132/"  target="_blank" rel="noopener"
+    >Ghost In The Shell Ghost Shell</a></li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/elixir/">Elixir</a>
+        
+            <a href="/tags/phoenix/">Phoenix</a>
+        
+            <a href="/tags/postgresql/">postgresql</a>
+        
+            <a href="/tags/webdev/">webdev</a>
+        
+            <a href="/tags/technology/">technology</a>
+        
+            <a href="/tags/tailwind/">tailwind</a>
+        
+            <a href="/tags/jquery/">jquery</a>
+        
+            <a href="/tags/bootstrap/">bootstrap</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/elixir-phoenix-deploy-distillery-and-edeliver/">
+        
+        
+            <div class="article-image">
+                <img src="/p/elixir-phoenix-deploy-distillery-and-edeliver/color-1544543_1280.e0963f6d253d16a6f34a88c82cda3d96_hu03f7c0de7591ec620ffda9d2135553d8_169172_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Elixir Phoenix 1.4 Deployments with Distillery and Edeliver on Ubuntu"
+                        data-key="elixir-phoenix-deploy-distillery-and-edeliver" 
+                        data-hash="md5-4JY/bSU9FqbzSojILNo9lg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Elixir Phoenix 1.4 Deployments with Distillery and Edeliver on Ubuntu</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/the-case-for-boring-technology/">
+        
+        
+            <div class="article-image">
+                <img src="/p/the-case-for-boring-technology/bored-3082828_1920.8d155e4bc33a13340c65ffa1cd922023_hua3f227cc1dad48243028196a49fdfc22_223249_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post The Case for Boring Technology"
+                        data-key="the-case-for-boring-technology" 
+                        data-hash="md5-jRVeS8M6EzQMZf&#43;hzZIgIw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">The Case for Boring Technology</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/books-i-ve-read-this-week-and-future-reading-plans/">
+        
+        
+            <div class="article-image">
+                <img src="/p/books-i-ve-read-this-week-and-future-reading-plans/books-1655783_1280.49439f490e20201d7dff09fcdd62a8a6_huf9341335e8f72240952417d2ba534169_608015_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Books I&#39;ve read this week and future reading plans."
+                        data-key="books-i-ve-read-this-week-and-future-reading-plans" 
+                        data-hash="md5-SUOfSQ4gIB19/wn83WKopg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Books I&#39;ve read this week and future reading plans.</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2009 - 
+        
+        2023 Anthony Quoc Anh Doan - Ramblings of a Happy Scientist
+        
+    </section>
+    
+    <section>
+      <p align="center">Desiderata by Max Ehrmann</p>
+      <p>
+          Go placidly amid the noise and the haste, and remember what peace there may be in silence. As far as possible without surrender be on good terms with all persons. Speak your truth quietly and clearly; and listen to others, even to the dull and the ignorant, they too have their story. Avoid loud and aggressive persons, they are vexations to the spirit.
+      </p>
+
+      <p>
+    If you compare yourself with others, you may become vain or bitter; for always there will be greater and lesser persons than yourself. Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.
+      </p>
+
+      <p>
+    Exercise caution in your business affairs, for the world is full of trickery. But let not this blind you to what virtue there is; many persons strive for high ideals, and everywhere life is full of heroism. Be yourself. Especially do not feign affection. Neither be cynical about love; for in the face of all aridity and disenchantment it is as perennial as the grass. Take kindly the counsel of the years, gracefully surrendering the things of youth.
+      </p>
+
+      <p>
+    Nurture strength of spirit to shield you in sudden misfortune. But do not distress yourself with dark imaginings. Many fears are born of fatigue and loneliness. Beyond a wholesome discipline, be gentle with yourself. You are a child of the universe, no less than the trees and the stars; you have a right to be here. And whether or not it is clear to you, no doubt the universe is unfolding as it should.
+      </p>
+
+      <p>
+    Therefore, be at peace with God, whatever you conceive Him to be. And whatever your labors and aspirations in the noisy confusion of life, keep peace in your soul. With all its sham, drudgery and broken dreams; it is still a beautiful world. Be cheerful.
+      </p>
+
+      <p>
+    Strive to be happy.
+      </p>
+      
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction So I’ve learned a little bit about Bayesian Hierarchical Modeling at FDA and decided to put down my thoughts and write about it more to reinforced what I’ve learned. I also want to try out some new javascript data visual libraries.
+A great book I’ve found is, “Introduction to Hierarchical Bayesian Modeling for Ecological Data” by Parent and Rivot [1].
+While at the FDA I code my own model without using any MCMC framework and it was very slow in R.'>
+<title>Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1</title>
+
+<link rel='canonical' href='https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/'>
+
+<link rel="stylesheet" href="/scss/style.min.ae544f6e875175eb0f852537f03e029a61665cc22ad0fd93bf333e7c3bee5a8c.css"><meta property='og:title' content='Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1'>
+<meta property='og:description' content='Introduction So I’ve learned a little bit about Bayesian Hierarchical Modeling at FDA and decided to put down my thoughts and write about it more to reinforced what I’ve learned. I also want to try out some new javascript data visual libraries.
+A great book I’ve found is, “Introduction to Hierarchical Bayesian Modeling for Ecological Data” by Parent and Rivot [1].
+While at the FDA I code my own model without using any MCMC framework and it was very slow in R.'>
+<meta property='og:url' content='https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/'>
+<meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='bayesian' /><meta property='article:tag' content='hierarchicalmodeling' /><meta property='article:tag' content='modeling' /><meta property='article:tag' content='statistic' /><meta property='article:published_time' content='2017-07-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2017-07-15T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/salmon_sushi.jpg' />
+<meta name="twitter:site" content="@AnthonyDoan20">
+    <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1">
+<meta name="twitter:description" content="Introduction So I’ve learned a little bit about Bayesian Hierarchical Modeling at FDA and decided to put down my thoughts and write about it more to reinforced what I’ve learned. I also want to try out some new javascript data visual libraries.
+A great book I’ve found is, “Introduction to Hierarchical Bayesian Modeling for Ecological Data” by Parent and Rivot [1].
+While at the FDA I code my own model without using any MCMC framework and it was very slow in R."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/salmon_sushi.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud04d226d349438d5d6dbe19a25343199_44779_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</a></h1>
+            <h2 class="site-description">An instrument of peace. Where there is hatred, let me sow love; where there is doubt, let&#39;s get some data and build a model.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mythicalprogrammer'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/anthony-anh-quoc-doan-a7234321/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+  <path d="M8 11l0 5" />
+  <path d="M8 8l0 .01" />
+  <path d="M12 16l0 -5" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://mastodon.social/@anthony_doan'
+                        target="_blank"
+                        title="Mastodon"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-mastodon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z" />
+  <path d="M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.reddit.com/user/anthony_doan/'
+                        target="_blank"
+                        title="Reddit"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-reddit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z" />
+  <path d="M12 8l1 -5l6 1" />
+  <path d="M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <circle cx="9" cy="13" r=".5" fill="currentColor" />
+  <circle cx="15" cy="13" r=".5" fill="currentColor" />
+  <path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/339405/mythicalprogrammer'
+                        target="_blank"
+                        title="StackOverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-stackoverflow" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" />
+  <path d="M8 16h8" />
+  <path d="M8.322 12.582l7.956 .836" />
+  <path d="M8.787 9.168l7.826 1.664" />
+  <path d="M10.096 5.764l7.608 2.472" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AnthonyDoan20'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/portfolio' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder-star" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" />
+  <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+</svg>
+                
+                <span>Portfolio</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/">
+                <img src="/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/salmon_sushi_hu4711793190d15acc5555df5b859ceb84_343879_800x0_resize_q75_box.jpg"
+                        srcset="/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/salmon_sushi_hu4711793190d15acc5555df5b859ceb84_343879_800x0_resize_q75_box.jpg 800w, /p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/salmon_sushi_hu4711793190d15acc5555df5b859ceb84_343879_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/book/" >
+                book
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/">Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 15, 2017</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    10 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="introduction">Introduction</h1>
+<p>So I’ve learned a little bit about Bayesian Hierarchical Modeling at FDA and decided to put down my thoughts and write about it more to reinforced what I’ve learned. I also want to try out some new javascript data visual libraries.</p>
+<p>A great book I’ve found is, <em>“Introduction to Hierarchical Bayesian Modeling for Ecological Data”</em> by Parent and Rivot [1].</p>
+<p>While at the FDA I code my own model without using any MCMC framework and it was very slow in R. I realize I need a MCMC framework under my toolbelt. After some <a class="link" href="https://www.reddit.com/r/statistics/comments/5on87q/stan_vs_winbugs_a_search_for_informed_opinions/"  target="_blank" rel="noopener"
+    >research</a> I decided on <a class="link" href="https://mc-stan.org/"  target="_blank" rel="noopener"
+    >Stan</a> using the <a class="link" href="https://mc-stan.org/users/interfaces/rstan"  target="_blank" rel="noopener"
+    >rstan r package</a>.</p>
+<h1 id="the-graph-not-dag-not-a-bayesian-network">The Graph (not DAG; not a Bayesian network)</h1>
+<p>Graph represents the salmon migration and birth cycle. Each edge represent a year pass. The nodes are square because they’re given. The information is given from previous knowledge.</p>
+<style type="text/css">
+#cy {
+     height: 400px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy2, #cy3, #cy4, #cy5, #cy6, #cy7, #cy8 {
+     height: 70px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy9, #cy10, #cy11, #cy12, #cy13 {
+     height: 200px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy14 {
+     height: 300px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy15 {
+     height: 400px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+ #cy16 {
+     height: 500px;
+     width: 100%;
+     left: 0;
+     top: 0;
+}
+</style>
+
+<div id="cy"></div>
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Variable
+      <th style="text-align: center">Definition
+  <tbody>
+    <tr>
+      <td style="text-align: center">Wt
+      <td style="text-align: center">Salmon Eggs
+    <tr>
+      <td style="text-align: center">0+
+      <td style="text-align: center">Young-of-the-year (hatched)
+    <tr>
+      <td style="text-align: center">PSm
+      <td style="text-align: center">Pre-smolts
+    <tr>
+      <td style="text-align: center">Sm1
+      <td style="text-align: center">Smolt after 1 year
+    <tr>
+      <td style="text-align: center">Sp1
+      <td style="text-align: center">Returns one year earlier than Sp2
+    <tr>
+      <td style="text-align: center">Parr1
+      <td style="text-align: center">Smaller juveniles left behind by Sm1
+    <tr>
+      <td style="text-align: center">Sm2
+      <td style="text-align: center">Smolt after 2 year
+    <tr>
+      <td style="text-align: center">Sp2
+      <td style="text-align: center">Returns one year after Sp1
+</table></div>
+
+            <h1 id="the-models---introducing-probability-into-the-graph">The Models - Introducing Probability into the Graph</h1>
+            <p>We’re going to take the graph that represent Salmon’s migration cycle and introduce uncertainty to it (model it via probability). By doing this we create a new graph that is complete different from the Salmon’s migration cycle graph. It is a graph base on probability view.
+            <p>We go through each square node and one by one apply a model and probability to it.
+            <p>Model is time base, <em>t</em> will represent a particular year.
+            
+<ul>
+              <li>Sp <sub>t</sub> = Sp1 <sub>t</sub> + Sp2 <sub>t</sub> = # of spawners at t-th year
+              <li>W <sub>t</sub> = # of eggs spawned by the adults returning in year t
+              <li>0+ <sub>t</sub> = Young-of-the-year at t-th year
+              <li>PSm <sub>t</sub> = pre-smolts at t-th year
+              <li>Sm1 <sub>t</sub> = 1+ smolts (1 year to smolt) at t-th year
+              <li>P1 <sub>t</sub> = Parr1 = smaller juveniles left behind by Sm1 at t-th year
+              <li>Sm2 <sub>t</sub> = 2+ smolts (2 years to smolt) at t-th year
+            </ul>
+            <p>
+              <strong>Spawners -&gt; Eggs</strong>
+            <div id="cy2"></div>
+            <p>W <sub>t</sub> = Sp <sub>t</sub> ⋅ P_f ⋅ fec
+            <ul>
+              <li>W <sub>t</sub> = # of eggs spawned by the adults returning in year t
+              <li>Sp <sub>t</sub> = # of spawners = Sp1 + Sp2
+              <li>P_f = proportion of females
+              <li>fec = mean of fecundity (fertility)
+            </ul>
+            <p>
+              <strong>Eggs -&gt; 0+ juveniles</strong>
+            <div id="cy3"></div>
+            <p>This is Ricker Cruve model with parameters (α,β) which is a classic discrete population model.
+            <p>0+<sub>t+1</sub> = α ⋅ W<sub>t</sub> ⋅ e<sup>-β ⋅ W<sub>t</sub></sup> ⋅ e<sup>ε<sub>t</sub></sup> where ε<sub>t</sub> ~iid N(0, σ<sup>2</sup>)
+        <ul>
+          <li>
+           0+<sub>t+1</sub> = freshwater production of juveniles resulting from the reproduction of the spawners returning in year t 
+          </li>
+        </ul>
+
+<p><strong>0+ juveniles -&gt; Smolts</strong></p>
+            
+            <div id="cy4"></div>
+            
+<p>PSm<sub>t+2</sub> ~ Binomial(0+<sub>t+1</sub>, γ<sub>0+</sub>) = # of 0+<sub>t+1</sub> will survive and migrate to PSm<sub>t+2</sub></p>
+            
+            
+            <div id="cy5"></div>
+            
+<p>Sm1<sub>t+2</sub> ~ Binomial(PSm<sub>t+2</sub>, θ<sub>Sm1</sub>) = # of PSm<sub>t+2</sub> will survive and migrate as 1+smolts (Sm1)</p>
+            
+            
+            <div id="cy6"></div>
+
+<p>Sm2<sub>t+3</sub> ~ Binomial(Parr1<sub>t+2</sub>, γ<sub>parr1</sub>) = # of Parr1<sub>t+2</sub> will survive and migrate as 2+smolts (Sm2)</p> 
+            
+<ul><li>PSm<sub>t+2</sub> = young-of-the-year 0+<sub>t+1</sub> will survive next spring year t+2</li><li>γ<sub>0+</sub> = survival rate of 0+</li><li>θ<sub>Sm1</sub> = proportion of pre-smolts will migrate as 1+Smolts (survival rate)</li><li>γ<sub>parr1</sub> = survival rate of parr1</li></ul>
+            
+            
+            <div id="cy7"></div>
+
+<p>Sp1<sub>t+3</sub> ~ Binomial(Sm1<sub>t+2</sub>, γ<sub>Sm</sub>)</p>
+              
+            <div id="cy8"></div>
+              
+<p>Sp2<sub>t+4</sub> ~ Binomial(Sm2<sub>t+3</sub>, γ<sub>Sm</sub>)</p>
+<ul><li>γ<sub>Sm</sub> = survival rate</li></ul>
+
+<p><strong>Learning from observations</strong></p>
+
+<p>These two are observed and given:</p>
+
+<ul><li><p>C<sub>Sm1,t</sub> = observations = # of smolts caught downstream trap</p></li><li><p>π<sub>Sm</sub> = trap efficiency</p></li></ul>
+
+<p>Using these data points we can figure out the unknowns.</p>
+
+<p>Our unknowns, the parameters, are: α, β, σ, γ<sub>0+</sub>, θ<sub>sm1</sub>, γ<sub>Parr1</sub>, γ<sub>Sm</sub></p>
+
+<p># of smolts caught downstream trap can be model as a binomial distribution either the smolt is caught or not.</p>
+
+<p>C<sub>Sm1,t</sub> ~ Binomial(Sm1<sub>t</sub>, π<sub>Sm</sub>)</p>
+
+<p>*Note (advance): observations assume <a href="https://en.wikipedia.org/wiki/Bayesian_hierarchical_modeling#Exchangeability">Bayesian’s property of exchangability</a></p>
+              
+            <h3 id="the-models---creating-a-proability-graphical-model">The Models - Creating a probability graphical model</h3>
+            
+<p>0+<sub>t+1</sub> = α ⋅ W<sub>t</sub> ⋅ e<sup>-β ⋅ W<sub>t</sub></sup> ⋅ e<sup>ε<sub>t</sub></sup> where ε<sub>t</sub> ~iid N(0, σ<sup>2</sup>)</p>
+
+<ul><li>0+<sub>t+1</sub> = freshwater production of juveniles resulting from the reproduction of the spawners returning in year t</li></ul>
+            
+            
+            <div id="cy9"></div>
+
+<p>PSm<sub>t+2</sub> ~ Binomial(0+<sub>t+1</sub>, γ<sub>0+</sub>) = # of 0+<sub>t+1</sub> will survive and migrate to PSm<sub>t+2</sub></p>
+
+<ul><li>γ<sub>0+</sub> = survival rate of 0+</li></ul>
+            
+            <div id="cy10"></div>
+
+<p>Sm1<sub>t+2</sub> ~ Binomial(PSm<sub>t+2</sub>, θ<sub>Sm1</sub>) = # of PSm<sub>t+2</sub> will survive and migrate as 1+smolts (Sm1)</p>
+
+<ul><li>PSm<sub>t+2</sub> = young-of-the-year 0+<sub>t+1</sub> will survive next spring year t+2</li><li>θ<sub>Sm1</sub> = proportion of pre-smolts will migrate as 1+Smolts (survival rate)</li></ul>
+            
+            <div id="cy11"></div>
+            
+<p>Sm2<sub>t+3</sub> ~ Binomial(Parr1<sub>t+2</sub>, γ<sub>parr1</sub>) = # of Parr1<sub>t+2</sub> will survive and migrate as 2+smolts (Sm2)</p>
+            
+            
+            <div id="cy12"></div>
+            
+<p>Sp1<sub>t+3</sub> ~ Binomial(Sm1<sub>t+2</sub>, γ<sub>Sm</sub>)</p>
+<p>Sp2<sub>t+4</sub> ~ Binomial(Sm2<sub>t+3</sub>, γ<sub>Sm</sub>)</p>
+
+            <div id="cy13"></div>
+            
+<p> Now we put all the parts together into graph. </p>
+
+            <div id="cy14"></div>
+            
+<p>Okay, now that we got the probability graphical model down we can figure out the joint probability distribution.</p>
+
+<p>P(J<sub>t</sub>) = ?</p>
+
+<p>Step 1. Looking at the graph, we’re going to start with all nodes with no parent: α, β, σ, W<sub>t</sub>, γ<sub>0+</sub>, θ<sub>Sm1</sub>, γ<sub>Parr1</sub>, and γ<sub>Sm</sub>.</p>
+
+<p><code class="highlighter-rouge">P(J<sub>t</sub>) = P[α] ⋅ P[β] ⋅ P[σ] ⋅ P[W<sub>t</sub>] ⋅ P[γ<sub>0+</sub>] ⋅ P[θ<sub>Sm1</sub>] ⋅ P[γ<sub>Parr1</sub>] ⋅ P[γ<sub>Sm</sub>] … </code></p>
+
+<p>Step 2. Now we’re going to look at the nodes with parents.</p>
+
+<ul><li>0+<sub>t+1</sub> is P[0+<sub>t+1</sub> | W<sub>t</sub>, α, β, σ]</li><li>PSm<sub>t+2</sub> is P[PSm<sub>t+2</sub> | 0+<sub>t+2</sub>, γ<sub>0+</sub>]</li><li>Sm1<sub>t+2</sub> &amp; Parr1<sub>t+2</sub> is P[Sm1<sub>t+2</sub>, Parr1<sub>t+2</sub> | PSm<sub>t+2</sub>, θ<sub>Sm1</sub>]. Notice how complex this one is. It is because Sm1 and Parr1 both share the same parameters.</li><li>P[Sp1<sub>t+3</sub> | Sm1<sub>t+2</sub>, γ<sub>Sm</sub>]</li><li>P[Sm2<sub>t+3</sub> | Parr1<sub>t+2</sub>, γ<sub>Parr1</sub>]</li><li>P[Sp2<sub>t+4</sub> | Sm2<sub>t+3</sub>, γ<sub>Sm</sub>]</li></ul>
+
+<p>
+  <code class="highlighter-rouge">
+    P(J<sub>t</sub>) = P[α] ⋅ P[β] ⋅ P[σ] ⋅ P[W<sub>t</sub>] ⋅ P[γ<sub>0+</sub>] ⋅ P[θ<sub>Sm1</sub>] ⋅ P[γ<sub>Parr1</sub>] ⋅ P[γ<sub>Sm</sub>] </code><br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<code class="highlighter-rouge"> ⋅ P[0+<sub>t+1</sub> | W<sub>t</sub>, α, β, σ] ⋅ P[PSm<sub>t+2</sub> | 0+<sub>t+2</sub>, γ<sub>0+</sub>] </code> <code class="highlighter-rouge"> ⋅ P[Sm1<sub>t+2</sub>, Parr1<sub>t+2</sub> | PSm<sub>t+2</sub>, θ<sub>Sm1</sub>]
+     </code> <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="highlighter-rouge"> ⋅ P[Sp1<sub>t+3</sub> | Sm1<sub>t+2</sub>, γ<sub>Sm</sub>] ⋅ P[Sm2<sub>t+3</sub> | Parr1<sub>t+2</sub>, γ<sub>Parr1</sub>] ⋅ P[Sp2<sub>t+4</sub> | Sm2<sub>t+3</sub>, γ<sub>Sm</sub>] </code></p>
+
+            <h3 id="okay-so-what-wheres-the-bayesian-network">Okay so what? Where’s the Bayesian network?</h3>
+           
+           <p>Not yet. The book needs to introduce the concept of a simple model vs a hierarchical model and some terminology.</p> 
+           <p>So far we haven’t introduce any observational variable (random variable) at all.</p>
+            
+            <div id="cy15"></div>
+            
+            <ul><li>θ represents parameters</li><li>Z represents latent parameters</li><li>Y represents the output Random Variable. (little y represent the realization/sample of Y random variable).</li></ul>
+            
+            <p>Left is a simple model. The right graph is a hierarchical model.</p>
+            
+            <p>Z represents latent variables (nuisance variables), basically variables we don’t really care, also they’re hidden we don’t observed it directly like Y. Y represents observations. Observations are random so Y is capitalized and smaller y is the realization of Y or a sample of Y. The node is pink because it is an observable.</p>
+            
+            <p>P[θ, Z, Y] = P[θ] ⋅ P[Z | θ] ⋅ P[Y | θ, Z]</p>
+            
+            <p>Well first what’s the experiment?</p>
+            
+            <p>For this it’s salmon captures and they’re model via binomial distribution either you catch the fish or not.</p>
+            
+            <p>Notice the C stands for catches.</p>
+            
+            <ul><li>C<sub>0+, t+1</sub> ~ Binomial(0+<sub>t+1</sub>, π<sub>0+</sub>)</li><li>C<sub>Sm1, t+2</sub> ~ Binomial(Sm1<sub>t+2</sub>, π<sub>Sm</sub>)</li><li>C<sub>Sm2, t+3</sub> ~ Binomial(Sm1<sub>t+3</sub>, π<sub>Sm</sub>)</li><li>C<sub>Sp1, t+3</sub> ~ Binomial(Sp1<sub>t+3</sub>, π<sub>Sp</sub>)</li><li>C<sub>Sp2, t+4</sub> ~ Binomial(Sp2<sub>t+4</sub>, π<sub>Sp</sub>)</li></ul>
+            
+            
+            <div id="cy16"></div>
+            
+            
+            <p>Once again the squares represent known/given values (the π’s are given). The pink circle means observed values. Pink in general means they’re known either by given or by observations. The purple boxes represent grouping and group the nodes into their respective group.</p>
+            <p>Ok. Finally, we got a Bayesian network. Really, what now?</p>
+            <p>How does y (the sample or realization of Y) fits in this fancy graph?</p>
+            
+            <h3 id="what-happen-when-the-observation-is-available">What happen when the Observation is available?</h3>
+            
+            <p>Before that notice how we build the model and the direction. The direction is downward from the Salmon cycle toward the latent variable and then towards the obsevation.</p>
+            <p>Why did the book brought this up? It is because when you train the model using the data/observations that are available you go in the opposite direction.</p>
+            
+            <p>You start at the Y (observation layer and Y is a random variable) and Y is now, Y = y, since little y is the realization of random variable Y. y is a sample of Y or the data (values not just some placeholder variable). And you go up to latent layer and then to the parameter later.</p>
+            <p>Let’s see it mathematically:</p>
+            <p>Here’s the joint probability:</p>
+            <p>P[Y, θ, Z]</p>
+            <p>Now here’s the joint probability with Y = y, when we have data to train the model and find the paramenter.</p>
+            <p>P[θ, Z | Y = y]</p>
+            <p>Given Y = y, the observations propagate upward from the observation to the latent layer to the parameter layer.</p>
+            <p>This is how you train the model after you are done creating the model.</p>
+            <p>You can see the Bayes Rule connection too right? We’re always dealing with Joint Probability and Conditional Probability.</p>
+            <p>Bayesian make it so that they’re conditionally independent. This is one of the property of Bayesian statistic.</p>
+            <p>This is now a posterior distribution. Posterior being after the data. Prior distribution is before the data.</p>
+            <p>P[θ, Z | Y = y] = posterior distributionundefined
+            <p>I’m going to repeat it again.</p>
+            <p>Posterior is after the data have been inputed.</p>
+            <p>Prior is before the data. It is your prior belief.</p>
+            <p>In Bayesian you need to supply a belief in form of a prior distribution. It’s weird but don’t worry if you don’t know anything then you can use a noninformative prior distribution.</p>
+            <p>The belief thing is also away to encode expert belief too.</p>
+            <p>So given what we have now, we just have to apply Bayes’ Rule to the conditional probability and you get your parameter values.</p>
+            <h3 id="bayes-rule">Bayes’ Rule</h3>
+            <p>P[θ Z | Y = y] = P[θ, Z, Y = y] / P[Y = y]</p>
+            <p>Some stat here and you get.</p>
+            <p>P[θ Z | Y = y] ∝ P[θ] ⋅ P[Z | θ] ⋅ P[Y = y | θ, Z]</p>
+            
+            
+            <h3 id="conclusion">Conclusion</h3>
+            
+            
+            <p>I highly recommend this book. Andrew Gelman’s DBA book is more PhD level and his approach is not graphical like this but more mathy. Being visual this book helps a lot into tying things together.</p>
+            <p>There was no observations/data and no code for this chapter. Ah dangit. Well until next time, stay tuned for the next episode of Bayesian man.</p>
+            <p><sup><a href="#myfootnote1">1</a></sup>Buy the book if you like what you see on the post. This is basically my notes on chapter 1 of the book. It’s an amazing book and I highly recommend it.</p>
+            <p><strong>What did I learn about myself</strong></p>
+            <p>I’m glad I’m reviewing this chapter of the book again. I have a confession to make, if I want to understand a material/subject I need to read 3 times and do projects on it and a review of what I’ve learned. I need tons of practice. I guess this is one of the reason why I started this blog.</p>
+            <p>This chapter ties in again DAG, Bayes’ Rule, and conditional probabilities. Good refresher and clear up things that I was wrong about. Especially the salmon breeding cycle, I didn’t think about the fact that it wasn’t a DAG. And that from that model we create a Bayesian Graph Model (DAG).</p>
+            <p>I think I’ll go through each chapter of this book as a refresher while playing with javascript graphical libraries and hopefully learn Stan. I need to make sure I didn’t miss out on anything from the first reading.</p>
+            <p><strong>What Did I Get to Practice? (for me)</strong></p>
+            
+            <ol><li><del>Bayesian Hierarchical Modeling using <a href="https://cran.r-project.org/web/packages/rstan/index.html">rstan</a>.</del></li><li>Tried out a javascript data visualisation library, <a href="https://js.cytoscape.org">cytoscape.js</a>, for modeling graphs.</li><li>Gets to refresh Bayesian Graphical Model (Bayesian Network).</li></ol>
+            
+            <p><strong>Rough Roadmap for Bayesian HM</strong></p>
+            
+<ol><li>Finish off this book. Introduction to Hierarchical Bayesian Modeling for Ecological Data (Chapman &amp; Hall/CRC Applied Environmental Statistics)</li><li>Read this for Hamiltonian Markov Chain(Statistics in the social and behavioral sciences series) Gill, Jeff-Bayesian Methods A Social and Behavioral Sciences Approach-CRC Press (2014)</li><li>Read https://arxiv.org/abs/1111.4246 an implementation of HMC</li><li><a href="https://www.youtube.com/watch?v=21a85f1YS5Q">Measure theory videos</a></li><li>DBA 3 reread again learning Dirichlet Process</li></ol>
+
+<h4 id="etc">Etc..</h4>
+
+<ol><li><a name="myfootnote1" target="_blank" href="https://www.amazon.com/gp/product/B00BBGP7QE/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00BBGP7QE&amp;linkCode=as2&amp;tag=mythicalprogr-20&amp;linkId=0902d5294515fd663d8322cd1c3d0b30">Introduction to Hierarchical Bayesian Modeling for Ecological Data (Chapman &amp; Hall/CRC Applied Environmental Statistics)</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=mythicalprogr-20&amp;l=am2&amp;o=1&amp;a=B00BBGP7QE" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;"> The book link is Amazon affiliated. If you get it at CRC publishing you can get it 20 bucks cheaper if you use a discount code, just that it takes longer to ship. Also note I would recommend reading “Doing Bayesian Data Analysis” first before even trying to get into Hierarchical Modeling.</li><li><a href="www.htmlhelp.com/reference/html40/entities/symbols.html">Would like to thank this website for all the html mathematical notations.</a></li>
+<li>The salmon sushi picture was taken from <a href="pixabay.com">pixabay</a> under creative common license.
+</li>
+</ol>
+            
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.1.3/cytoscape.min.js"></script>
+<script type="text/javascript" src="js/salmon_post.js"></script>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/bayesian/">bayesian</a>
+        
+            <a href="/tags/hierarchicalmodeling/">hierarchicalmodeling</a>
+        
+            <a href="/tags/modeling/">modeling</a>
+        
+            <a href="/tags/statistic/">statistic</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/interesting-papers-i-ve-read-this-week/">
+        
+        
+            <div class="article-image">
+                <img src="/p/interesting-papers-i-ve-read-this-week/book-2304078_1920.235df27ae73ae793db636270338d8170_hudbbbaa23eb712c9e80c8b666d23f0fa6_671506_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Interesting Papers I&#39;ve read this week."
+                        data-key="interesting-papers-i-ve-read-this-week" 
+                        data-hash="md5-I13yeuc655PbY2JwM42BcA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Interesting Papers I&#39;ve read this week.</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/things-i-ve-learned-about-modeling/">
+        
+        
+            <div class="article-image">
+                <img src="/p/things-i-ve-learned-about-modeling/person-984236_1920.a09eb812c670e6c0c296e8851829e688_hu54856dd37b73ba3ac68393b7b83b222a_651196_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Things I&#39;ve learned about modeling."
+                        data-key="things-i-ve-learned-about-modeling" 
+                        data-hash="md5-oJ64EsZw5sDCluiFGCnmiA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Things I&#39;ve learned about modeling.</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/">
+        
+        
+            <div class="article-image">
+                <img src="/p/linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv/_hu53777eb8fcd46320722b3f01d82c23b1_63523_70e9bb02c35a36ae4c45fad68d0ed6a6.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linear Mixed Effects Models for CD4&#43; Cell Counts in Men with HIV"
+                        data-key="linear-mixed-effects-models-for-cd4-cell-counts-in-men-with-hiv" 
+                        data-hash="md5-oC6bDRIUX1mvGdm7Cg5Pug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linear Mixed Effects Models for CD4&#43; Cell Counts in Men with HIV</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2009 - 
+        
+        2023 Anthony Quoc Anh Doan - Ramblings of a Happy Scientist
+        
+    </section>
+    
+    <section>
+      <p align="center">Desiderata by Max Ehrmann</p>
+      <p>
+          Go placidly amid the noise and the haste, and remember what peace there may be in silence. As far as possible without surrender be on good terms with all persons. Speak your truth quietly and clearly; and listen to others, even to the dull and the ignorant, they too have their story. Avoid loud and aggressive persons, they are vexations to the spirit.
+      </p>
+
+      <p>
+    If you compare yourself with others, you may become vain or bitter; for always there will be greater and lesser persons than yourself. Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.
+      </p>
+
+      <p>
+    Exercise caution in your business affairs, for the world is full of trickery. But let not this blind you to what virtue there is; many persons strive for high ideals, and everywhere life is full of heroism. Be yourself. Especially do not feign affection. Neither be cynical about love; for in the face of all aridity and disenchantment it is as perennial as the grass. Take kindly the counsel of the years, gracefully surrendering the things of youth.
+      </p>
+
+      <p>
+    Nurture strength of spirit to shield you in sudden misfortune. But do not distress yourself with dark imaginings. Many fears are born of fatigue and loneliness. Beyond a wholesome discipline, be gentle with yourself. You are a child of the universe, no less than the trees and the stars; you have a right to be here. And whether or not it is clear to you, no doubt the universe is unfolding as it should.
+      </p>
+
+      <p>
+    Therefore, be at peace with God, whatever you conceive Him to be. And whatever your labors and aspirations in the noisy confusion of life, keep peace in your soul. With all its sham, drudgery and broken dreams; it is still a beautiful world. Be cheerful.
+      </p>
+
+      <p>
+    Strive to be happy.
+      </p>
+      
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

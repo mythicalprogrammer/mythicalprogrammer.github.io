@@ -1,0 +1,121 @@
+---
+title: My Web Stack in the year 2023 and the future
+author: Anthony Quoc Anh Doan
+date: '2023-11-17'
+slug: my-web-stack-in-the-year-2023-and-the-future
+categories:
+  - Web Development
+tags:
+  - Elixir
+  - Phoenix
+  - postgresql
+  - webdev
+  - technology
+  - tailwind
+  - jquery
+  - bootstrap
+description: ~
+image: ghost-in-the-shell-7765132_1280.jpg
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Current Webstack 2023
+
+### [Elixir](https://elixir-lang.org/)
+
+I enjoy the programming language. It's fun and it's mostly complete as quoted by Jose Valim (the creator of Elixir). 
+
+There are mostly improvements for developers like debugging and bug fixes.
+
+Jose Valim have been working hard and in a few years or so maybe we get type in Elixir. It's not guarantee but he have been talking about his work.
+
+One thing is there are like [three version managers](https://elixir-lang.org/install.html) for managing Elixir and Erlang versions now.
+
+
+* [asdf](https://github.com/asdf-vm/asdf) - install and manage different [Elixir](https://github.com/asdf-vm/asdf-elixir) and [Erlang](https://github.com/asdf-vm/asdf-erlang) versions
+* [kiex](https://github.com/taylor/kiex) - install and manage different Elixir versions
+* [kerl](https://github.com/yrashk/kerl) - install and manage different Erlang versions
+
+
+### [Phoenix Framework](https://phoenixframework.org/)
+
+It's getting better.
+
+Deployment is `mix release` [1](https://hexdocs.pm/mix/1.15/Mix.Tasks.Release.html) instead of using [edeliver](https://github.com/edeliver/edeliver). 
+
+The framework have [built in log-in](https://hexdocs.pm/phoenix/mix_phx_gen_auth.html) now. Back then there were so many third party log-in options. It was hectic just trying to figure it out and integrate it.
+
+
+
+
+### [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_overview)
+
+
+Just plain vanilla Javascript. I am not really into front end as much and don't have much time for it. Been doing a lot of statistic, data science, and machine learning stuff.
+
+
+
+### [JQuery](https://jquery.com/)
+
+I'm going to stick with what I know. End users doesn't care about the tech you use. It works and I'd like to quickly bring up a project.
+
+### [Bootstrap](https://getbootstrap.com/)
+
+Same reason as above.
+
+### [PostgreSQL](https://www.postgresql.org/)
+
+PostgreSQL is still my favorite RMDB.
+
+### Linux ([Debian](https://www.debian.org/))
+
+Debian is rock solid as a server OS. It's either this or Ubuntu. It doesn't matter much for me.
+
+### IDE
+#### [VIM](https://www.vim.org/) & [Tmux](https://github.com/tmux/tmux/wiki)
+
+These two in tandem is my go to for web development. 
+
+## Future
+
+### [Tailwind CSS](https://tailwindcss.com/)
+
+I'd like to move to Tailwind CSS. They already name all the things you need and you don't have to come up with any. It may looks ugly html but I don't mind it. I don't mind html tag having tons of classes.
+
+It also remove zombie classes too. Zombie classes are classes that are defined but not used.
+
+### [Phoenix LiveView](https://github.com/phoenixframework/phoenix_live_view)
+
+Can reduce Javascript codes. I'd like to use as little javascript as possible and more Elixir instead.
+
+It's not 1.0 yet and even then it's probably not perfect. I'll play around just to stay ahead and keep a general idea where it's going.
+
+### IDE
+
+#### [VS Studio Code](https://code.visualstudio.com/)
+
+It's a good IDE for tailwind css integration (autocomplete and suggestions).
+
+### [Fly.io](https://fly.io/)
+
+Manage server and back end for me. Less system admin tasks eating my time and it'll let me concentrate on iterating and getting the project out.
+
+## Summary
+
+At the end of the day, I am tired of trying to get the ideal tech stack and get everything perfect.
+
+I just want to have a product out. 
+
+Get people to use it and iterate the product.
+
+Once and if the product is flesh out then I'll worry about perfection.
+
+At this point my mindset is my code will be toss out within 5 years for a rewrite either adopting a new tech or update. So don't worry about perfection.
+
+
+## Credit
+
+1. [Ghost In The Shell Ghost Shell](https://pixabay.com/illustrations/ghost-in-the-shell-ghost-shell-7765132/)
