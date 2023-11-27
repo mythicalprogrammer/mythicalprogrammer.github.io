@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>nlp on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
+        <link>https://example.com/categories/nlp/</link>
+        <description>Recent content in nlp on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Mon, 17 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/nlp/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Light Novel Analysis (part 1)</title>
+        <link>https://example.com/p/light-novel-analysis-part-1/</link>
+        <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/p/light-novel-analysis-part-1/</guid>
+        <description>&lt;img src="https://example.com/p/light-novel-analysis-part-1/lightnovel.jpg" alt="Featured image of post Light Novel Analysis (part 1)" /&gt;&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.14/c3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://example.com/js/lightnovel_novelbycountry_donut.js&#34;&gt;&lt;/script&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;I’m into light novels so I’ve decided to combine my love for data science and light novel.&lt;/p&gt;
+&lt;h1 id=&#34;information-retrieval&#34;&gt;Information Retrieval&lt;/h1&gt;
+&lt;p&gt;I started out by retrieving some data from online via scraping using &lt;a class=&#34;link&#34; href=&#34;https://scrapy.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;scrapy&lt;/a&gt;. I love &lt;a class=&#34;link&#34; href=&#34;https://scrapy.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;scrapy&lt;/a&gt; and highly recommend it for any serious web scrapping task.&lt;/p&gt;
+&lt;h1 id=&#34;the-data&#34;&gt;The Data&lt;/h1&gt;
+&lt;p&gt;So what does the data look like?&lt;/p&gt;
+&lt;p&gt;2739 novels.&lt;/p&gt;
+&lt;p&gt;It’s in a json format.&lt;/p&gt;
+&lt;p&gt;The columns are novel title, description, novel type, genre, tags, rating, language, authors, year, and license.&lt;/p&gt;
+&lt;h1 id=&#34;exploratory-data-analysis&#34;&gt;Exploratory Data Analysis&lt;/h1&gt;
+&lt;p&gt;For this portion I will be using R to do some EDA (❤ &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/John_Tukey&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;John Tukey&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;There are eight languages in the data including 7 novels with no language category.&lt;/p&gt;
+&lt;p&gt;The languages are: Japanese, Chinese, Korean, Malaysian, Filipino, Indonesian, Thai, and Vietnamese.&lt;/p&gt;
+&lt;div id=&#34;chart-donut-totalnovel-by-country&#34;&gt;&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Languages&lt;/th&gt;
+&lt;th&gt;Number of Novels&lt;/th&gt;
+&lt;th&gt;Average Ratings&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Japanese&lt;/td&gt;
+&lt;td&gt;1496&lt;/td&gt;
+&lt;td&gt;3.994248&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Chinese&lt;/td&gt;
+&lt;td&gt;1059&lt;/td&gt;
+&lt;td&gt;3.978571&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Korean&lt;/td&gt;
+&lt;td&gt;131&lt;/td&gt;
+&lt;td&gt;4.142424&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Filipino&lt;/td&gt;
+&lt;td&gt;23&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Indonesian&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Thai&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Malaysian&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Vietnamese&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Uncategorized&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The average ratings only include novels that have at least 30 user ratings.&lt;/p&gt;
+&lt;p&gt;I did not take any other rating from other countries because there are less than 30 novels. As a statistician I feel 30 or more is a sufficient number to represent the population for each category anything smaller than is insufficient.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/light-novel-analysis-part-1/all_rating.png&#34;
+	width=&#34;1134&#34;
+	height=&#34;774&#34;
+	srcset=&#34;https://example.com/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_480x0_resize_box_3.png 480w, https://example.com/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;A bar graph of all ratings&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;146&#34;
+		data-flex-basis=&#34;351px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;I plot a histogram plot for all novels from all countries with 30 or more user ratings. It is left skewed. While I can only speculate that people tend to rate for their favorite novels. It’s interesting because there is quite a lot of quality novels out there and many hover above 4.0 rating out of 5.0.&lt;/p&gt;
+&lt;p&gt;There is a small number with perfect five ratings. 19 novels with 5 ratings all of them have single digit number of users reviews except for one (“Mum, I Used to Hate You”). It have 18 users that reviewed it with a 5 rating.&lt;/p&gt;
+&lt;p&gt;Sweet let’s find novels that have high rating and at least 30 user reviews! I tried 4.5 at first but it’s a huge list at least 300+ so I decided to look for 4.7 ratings. There is exactly 75 novels with that criteria.&lt;/p&gt;
+&lt;p&gt;Here’s the list and hope you guys find it useful.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;A Game To Make Him Fall
+A Will Eternal
+A Slight Smile is Very Charming
+Ame no Hi no Iris
+At the Northern Fort
+By A Slight Mistake
+Cultivation Chat Group
+Clockwork Planet
+Demon Girl ~Tale of a Lax Demon~
+Dungeon Defense
+Eight Treasures Trousseau
+Gekkou
+Golden Age Legitimate Fei
+Hokuou Kizoku to Moukinzuma no Yukiguni Karigurashi
+Hiraheishi wa Kako o Yumemiru
+Hikaru ga Chikyuu ni Itakoro……
+I Reincarnated into an Otome Game as a Villainess With Only Destruction Flags…
+I Don’t Like The World, I Only Like You
+It’s Because You Said There Would Be Candy!!
+Joy of Life
+Kenkyo, Kenjitsu o Motto ni Ikite Orimasu
+Kaze no Stigma
+Kono Kamen no Akuma ni Sodan wo!
+Kuzu to Kinka no Qualidea
+Manuscript Screening Boy and Manuscript Submitting Girl
+Marietta-hime no Konrei
+Marginal Operation
+Maoyuu Maou Yuusha
+Mimizuku to Yoru no Ou
+Mondaiji-tachi ga Isekai kara Kuru Sou Desu yo?
+Mulberry Song
+My Death Flags Show No Sign of Ending
+No Game No Life
+Nobunaga’s Imouto is My Wife
+Ookami to Koushinryou
+Overlord (LN)
+Ouroboros Record ~Circus of Oubeniel~
+Our Second Master
+Quickly Wear the Face of the Devil
+Rakuin no Monshou
+Rain
+Release that Witch
+Running Away From The Hero!
+Sansheng, Wangchuan Wu Shang
+Semi Datte Tensei Sureba Ryuu Ni Naru
+Sweet Heart in Honeyed Desire
+Tabi ni Deyou, Horobiyuku Sekai no Hate Made
+The Bathroom Goddess
+The Destruction of a Triad Boss Trilogy
+The Girl Who Bore the Flame Ring
+The Girl Who Ate a Death God
+The Founder of Diabolism
+The Legend of Sun Knight
+The Grandmaster Strategist
+The Magnificent Battle Records of A Former Noble Lady
+The Princess Wei Yang
+The Probability I Can Kill My Wife Without Being Found Out
+The Other World Dining Hall (LN)
+The Rebirth of the Malicious Empress of Military Lineage
+The Scum Villain’s Self-Saving System
+The Tang Dynasty’s Female Forensic Doctor
+The Witch and the Gourd of Stories
+To Be A Virtuous Wife
+Three Days of Happiness
+Uchi no Musume no Tame naraba, Ore wa Moshikashitara Maou mo Taoseru kamo Shirenai (LN)
+Uchi no Musume no Tame naraba, Ore wa Moshikashitara Maou mo Taoseru kamo Shirenai (WN)
+Tsuyokute New Saga (LN)
+Vermillion
+Utsuro no Hako to Zero no Maria
+Why Is the Prettiest Girl in School Trying to Talk to a Loner Like Me during Lunch Break?
+When He Comes, Close Your Eyes
+Virtual World: Peerless White Emperor
+Woof Woof Story ~ I Told You I am a Rich Person’s Dog, Not Fenrir ~
+Yahari Ore no Seishun Love Come wa Machigatte Iru
+Youjo Senki
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;I think I’ll be doing more light novel analysis in the future.&lt;/p&gt;
+&lt;p&gt;I think I’ll do NLP too something like sentiment analysis or something for those tags and categories. Of course this is when I have time.&lt;/p&gt;
+&lt;h1 id=&#34;what-did-i-get-to-practice-for-me&#34;&gt;What Did I Get to Practice? (for me)&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;My data science &amp;amp; statistic skills using R.&lt;/li&gt;
+&lt;li&gt;My web scraping skill using scrapy.&lt;/li&gt;
+&lt;li&gt;My devops skill, I made a custom vagrant for jekyll and used ansible to self provision. I created a new blog just for this post.&lt;/li&gt;
+&lt;li&gt;I made a yummy pie chart.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;etc&#34;&gt;Etc..&lt;/h1&gt;
+&lt;p&gt;The novel picture is taken from google searching for a CC license image.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,24 @@
+---
+title: 'Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data,
+  Chapter 1'
+author: Anthony Quoc Anh Doan
+date: '2017-07-15'
+categories:
+  - book
+tags:
+  - bayesian
+  - hierarchicalmodeling
+  - modeling
+  - statistic
+slug: book-note-introduction-to-hierarchical-bayesian-modeling-for-ecological-data-chapter-1
+hidden: no
+comments: yes
+---
+
+# Introduction
+
+So I’ve learned a little bit about Bayesian Hierarchical Modeling at FDA and decided to put down my thoughts and write about it more to reinforced what I’ve learned. I also want to try out some new javascript data visual libraries.
+
+A great book I’ve found is “Introduction to Hierarchical Bayesian Modeling for Ecological Data” by Parent and Rivot1.
+
+While at the FDA I code my own model without using any MCMC framework and it was very slow in R. I realize I need a MCMC framework under my toolbelt. After some research I decided on Stan using the rstan r package.

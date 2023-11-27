@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction I’m into light novels so I’ve decided to combine my love for data science and light novel.
+Information Retrieval I started out by retrieving some data from online via scraping using scrapy. I love scrapy and highly recommend it for any serious web scrapping task.
+The Data So what does the data look like?
+2739 novels.
+It’s in a json format.
+The columns are novel title, description, novel type, genre, tags, rating, language, authors, year, and license.'>
+<title>Light Novel Analysis (part 1)</title>
+
+<link rel='canonical' href='https://example.com/p/light-novel-analysis-part-1/'>
+
+<link rel="stylesheet" href="/scss/style.min.412609ee4bd45ef912087dddccedc8349d545944f8b6a95d120b812afce4591a.css"><meta property='og:title' content='Light Novel Analysis (part 1)'>
+<meta property='og:description' content='Introduction I’m into light novels so I’ve decided to combine my love for data science and light novel.
+Information Retrieval I started out by retrieving some data from online via scraping using scrapy. I love scrapy and highly recommend it for any serious web scrapping task.
+The Data So what does the data look like?
+2739 novels.
+It’s in a json format.
+The columns are novel title, description, novel type, genre, tags, rating, language, authors, year, and license.'>
+<meta property='og:url' content='https://example.com/p/light-novel-analysis-part-1/'>
+<meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2017-07-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2017-07-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://example.com/p/light-novel-analysis-part-1/lightnovel.jpg' />
+<meta name="twitter:site" content="@AnthonyDoan20">
+    <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="Light Novel Analysis (part 1)">
+<meta name="twitter:description" content="Introduction I’m into light novels so I’ve decided to combine my love for data science and light novel.
+Information Retrieval I started out by retrieving some data from online via scraping using scrapy. I love scrapy and highly recommend it for any serious web scrapping task.
+The Data So what does the data look like?
+2739 novels.
+It’s in a json format.
+The columns are novel title, description, novel type, genre, tags, rating, language, authors, year, and license."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/light-novel-analysis-part-1/lightnovel.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud04d226d349438d5d6dbe19a25343199_44779_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</a></h1>
+            <h2 class="site-description">An instrument of peace. Where there is hatred, let me sow love; where there is doubt, let&#39;s get some data and build a model.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mythicalprogrammer'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AnthonyDoan20'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/light-novel-analysis-part-1/">
+                <img src="/p/light-novel-analysis-part-1/lightnovel_hue3f6c131a135f7a211aab575893b8d77_402324_800x0_resize_q75_box.jpg"
+                        srcset="/p/light-novel-analysis-part-1/lightnovel_hue3f6c131a135f7a211aab575893b8d77_402324_800x0_resize_q75_box.jpg 800w, /p/light-novel-analysis-part-1/lightnovel_hue3f6c131a135f7a211aab575893b8d77_402324_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Light Novel Analysis (part 1)" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/analysis/" >
+                analysis
+            </a>
+        
+            <a href="/categories/data/" >
+                data
+            </a>
+        
+            <a href="/categories/nlp/" >
+                nlp
+            </a>
+        
+            <a href="/categories/natural-language-processing/" >
+                natural language processing
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/light-novel-analysis-part-1/">Light Novel Analysis (part 1)</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 17, 2017</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.14/c3.min.js"></script>
+<script src="/js/lightnovel_novelbycountry_donut.js"></script>
+<h1 id="introduction">Introduction</h1>
+<p>I’m into light novels so I’ve decided to combine my love for data science and light novel.</p>
+<h1 id="information-retrieval">Information Retrieval</h1>
+<p>I started out by retrieving some data from online via scraping using <a class="link" href="https://scrapy.org"  target="_blank" rel="noopener"
+    >scrapy</a>. I love <a class="link" href="https://scrapy.org"  target="_blank" rel="noopener"
+    >scrapy</a> and highly recommend it for any serious web scrapping task.</p>
+<h1 id="the-data">The Data</h1>
+<p>So what does the data look like?</p>
+<p>2739 novels.</p>
+<p>It’s in a json format.</p>
+<p>The columns are novel title, description, novel type, genre, tags, rating, language, authors, year, and license.</p>
+<h1 id="exploratory-data-analysis">Exploratory Data Analysis</h1>
+<p>For this portion I will be using R to do some EDA (❤ <a class="link" href="https://en.wikipedia.org/wiki/John_Tukey"  target="_blank" rel="noopener"
+    >John Tukey</a>).</p>
+<p>There are eight languages in the data including 7 novels with no language category.</p>
+<p>The languages are: Japanese, Chinese, Korean, Malaysian, Filipino, Indonesian, Thai, and Vietnamese.</p>
+<div id="chart-donut-totalnovel-by-country"></div>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Languages</th>
+<th>Number of Novels</th>
+<th>Average Ratings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Japanese</td>
+<td>1496</td>
+<td>3.994248</td>
+</tr>
+<tr>
+<td>Chinese</td>
+<td>1059</td>
+<td>3.978571</td>
+</tr>
+<tr>
+<td>Korean</td>
+<td>131</td>
+<td>4.142424</td>
+</tr>
+<tr>
+<td>Filipino</td>
+<td>23</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>Indonesian</td>
+<td>12</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>Thai</td>
+<td>7</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>Malaysian</td>
+<td>3</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>Vietnamese</td>
+<td>1</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>Uncategorized</td>
+<td>7</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table></div>
+<p>The average ratings only include novels that have at least 30 user ratings.</p>
+<p>I did not take any other rating from other countries because there are less than 30 novels. As a statistician I feel 30 or more is a sufficient number to represent the population for each category anything smaller than is insufficient.</p>
+<p><img src="/p/light-novel-analysis-part-1/all_rating.png"
+	width="1134"
+	height="774"
+	srcset="/p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_480x0_resize_box_3.png 480w, /p/light-novel-analysis-part-1/all_rating_hu657ccce2bd9db624f452d8d6a0b45f9d_67124_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="A bar graph of all ratings"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="146"
+		data-flex-basis="351px"
+	
+></p>
+<p>I plot a histogram plot for all novels from all countries with 30 or more user ratings. It is left skewed. While I can only speculate that people tend to rate for their favorite novels. It’s interesting because there is quite a lot of quality novels out there and many hover above 4.0 rating out of 5.0.</p>
+<p>There is a small number with perfect five ratings. 19 novels with 5 ratings all of them have single digit number of users reviews except for one (“Mum, I Used to Hate You”). It have 18 users that reviewed it with a 5 rating.</p>
+<p>Sweet let’s find novels that have high rating and at least 30 user reviews! I tried 4.5 at first but it’s a huge list at least 300+ so I decided to look for 4.7 ratings. There is exactly 75 novels with that criteria.</p>
+<p>Here’s the list and hope you guys find it useful.</p>
+<pre><code>A Game To Make Him Fall
+A Will Eternal
+A Slight Smile is Very Charming
+Ame no Hi no Iris
+At the Northern Fort
+By A Slight Mistake
+Cultivation Chat Group
+Clockwork Planet
+Demon Girl ~Tale of a Lax Demon~
+Dungeon Defense
+Eight Treasures Trousseau
+Gekkou
+Golden Age Legitimate Fei
+Hokuou Kizoku to Moukinzuma no Yukiguni Karigurashi
+Hiraheishi wa Kako o Yumemiru
+Hikaru ga Chikyuu ni Itakoro……
+I Reincarnated into an Otome Game as a Villainess With Only Destruction Flags…
+I Don’t Like The World, I Only Like You
+It’s Because You Said There Would Be Candy!!
+Joy of Life
+Kenkyo, Kenjitsu o Motto ni Ikite Orimasu
+Kaze no Stigma
+Kono Kamen no Akuma ni Sodan wo!
+Kuzu to Kinka no Qualidea
+Manuscript Screening Boy and Manuscript Submitting Girl
+Marietta-hime no Konrei
+Marginal Operation
+Maoyuu Maou Yuusha
+Mimizuku to Yoru no Ou
+Mondaiji-tachi ga Isekai kara Kuru Sou Desu yo?
+Mulberry Song
+My Death Flags Show No Sign of Ending
+No Game No Life
+Nobunaga’s Imouto is My Wife
+Ookami to Koushinryou
+Overlord (LN)
+Ouroboros Record ~Circus of Oubeniel~
+Our Second Master
+Quickly Wear the Face of the Devil
+Rakuin no Monshou
+Rain
+Release that Witch
+Running Away From The Hero!
+Sansheng, Wangchuan Wu Shang
+Semi Datte Tensei Sureba Ryuu Ni Naru
+Sweet Heart in Honeyed Desire
+Tabi ni Deyou, Horobiyuku Sekai no Hate Made
+The Bathroom Goddess
+The Destruction of a Triad Boss Trilogy
+The Girl Who Bore the Flame Ring
+The Girl Who Ate a Death God
+The Founder of Diabolism
+The Legend of Sun Knight
+The Grandmaster Strategist
+The Magnificent Battle Records of A Former Noble Lady
+The Princess Wei Yang
+The Probability I Can Kill My Wife Without Being Found Out
+The Other World Dining Hall (LN)
+The Rebirth of the Malicious Empress of Military Lineage
+The Scum Villain’s Self-Saving System
+The Tang Dynasty’s Female Forensic Doctor
+The Witch and the Gourd of Stories
+To Be A Virtuous Wife
+Three Days of Happiness
+Uchi no Musume no Tame naraba, Ore wa Moshikashitara Maou mo Taoseru kamo Shirenai (LN)
+Uchi no Musume no Tame naraba, Ore wa Moshikashitara Maou mo Taoseru kamo Shirenai (WN)
+Tsuyokute New Saga (LN)
+Vermillion
+Utsuro no Hako to Zero no Maria
+Why Is the Prettiest Girl in School Trying to Talk to a Loner Like Me during Lunch Break?
+When He Comes, Close Your Eyes
+Virtual World: Peerless White Emperor
+Woof Woof Story ~ I Told You I am a Rich Person’s Dog, Not Fenrir ~
+Yahari Ore no Seishun Love Come wa Machigatte Iru
+Youjo Senki
+</code></pre>
+<h1 id="conclusion">Conclusion</h1>
+<p>I think I’ll be doing more light novel analysis in the future.</p>
+<p>I think I’ll do NLP too something like sentiment analysis or something for those tags and categories. Of course this is when I have time.</p>
+<h1 id="what-did-i-get-to-practice-for-me">What Did I Get to Practice? (for me)</h1>
+<ul>
+<li>My data science &amp; statistic skills using R.</li>
+<li>My web scraping skill using scrapy.</li>
+<li>My devops skill, I made a custom vagrant for jekyll and used ansible to self provision. I created a new blog just for this post.</li>
+<li>I made a yummy pie chart.</li>
+</ul>
+<h1 id="etc">Etc..</h1>
+<p>The novel picture is taken from google searching for a CC license image.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 Anthony Quoc Anh Doan - Ramblings of a Happy Scientist
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
