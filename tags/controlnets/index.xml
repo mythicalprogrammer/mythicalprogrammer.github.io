@@ -331,8 +331,183 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;NOTE/WARNING:&lt;/strong&gt; Anything in the &lt;strong&gt;/workspace&lt;/strong&gt; directory will persist and exist after you stop your instance. Anything outside of this folder will not persist.&lt;/p&gt;
-&lt;p&gt;Stopped at video 3 min 21 sec.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/020_jupyter_lab_left_panel_file_explorer.PNG&#34;
+	width=&#34;373&#34;
+	height=&#34;252&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/020_jupyter_lab_left_panel_file_explorer_hu50dcfc7c390eb886e09ef3c1aab18f65_10015_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/020_jupyter_lab_left_panel_file_explorer_hu50dcfc7c390eb886e09ef3c1aab18f65_10015_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Jupyter Lab Leftside Panel File Explorer.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;355px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;setup-python-virtual-environment&#34;&gt;Setup Python Virtual Environment&lt;/h3&gt;
+&lt;p&gt;Type below into Jupyter&amp;rsquo;s terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python -m venv venv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/021_jupyter_python_venv.PNG&#34;
+	width=&#34;518&#34;
+	height=&#34;101&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/021_jupyter_python_venv_huf3895cf23b6886554e672ecda22cc054_7242_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/021_jupyter_python_venv_huf3895cf23b6886554e672ecda22cc054_7242_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Setup Python Virtual Environment.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;512&#34;
+		data-flex-basis=&#34;1230px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/022_jupyter_python_venv.PNG&#34;
+	width=&#34;378&#34;
+	height=&#34;231&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/022_jupyter_python_venv_hu46b5d3ffbd16961878f426236755c699_11317_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/022_jupyter_python_venv_hu46b5d3ffbd16961878f426236755c699_11317_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Setup Python Virtual Environment.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;392px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Activate virtual environment:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b58900&#34;&gt;source&lt;/span&gt; venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/023_jupyter_python_venv.PNG&#34;
+	width=&#34;561&#34;
+	height=&#34;55&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/023_jupyter_python_venv_huc9e7134cea4bac8d94e9190aef9c1d86_5944_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/023_jupyter_python_venv_huc9e7134cea4bac8d94e9190aef9c1d86_5944_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Activate Python Virtual Environment.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1020&#34;
+		data-flex-basis=&#34;2448px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;latest-comfyui-version&#34;&gt;Latest ComfyUI version&lt;/h3&gt;
+&lt;p&gt;Get the latest ComfyUI version.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b58900&#34;&gt;cd&lt;/span&gt; /workspace/ComfyUI
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git pull
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;comfyui-setup-nvidia&#34;&gt;ComfyUI setup Nvidia&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/comfyanonymous/ComfyUI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Following the Linux Nvidia installation instruction.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Type the commands below in Jupyter Terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b58900&#34;&gt;cd&lt;/span&gt; ComfyUI
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Then do this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;comfyui-managerhttpsgithubcomltdrdatacomfyui-manager-installation&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ltdrdata/ComfyUI-Manager&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ComfyUI Manager&lt;/a&gt; Installation&lt;/h3&gt;
+&lt;p&gt;Go to the &lt;code&gt;custom_nodes&lt;/code&gt; folder:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b58900&#34;&gt;cd&lt;/span&gt; /workspace/ComfyUI/custom_nodes/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Once in the &lt;code&gt;custom_nodes&lt;/code&gt; folder, we going to do &lt;code&gt;git clone&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;start-comfyui&#34;&gt;Start ComfyUI&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd /workspace/ComfyUI/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python main.py --listen
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;connect-to-comfyui&#34;&gt;Connect to ComfyUI&lt;/h3&gt;
+&lt;p&gt;Go back to &lt;strong&gt;Pod Console&lt;/strong&gt;, click on the &lt;code&gt;Connect&lt;/code&gt; button.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/024_connect_to_comfyui.PNG&#34;
+	width=&#34;472&#34;
+	height=&#34;461&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/024_connect_to_comfyui_hu194a1535b357d1f4570db8f7e0e8a3b5_26824_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/024_connect_to_comfyui_hu194a1535b357d1f4570db8f7e0e8a3b5_26824_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Console.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;102&#34;
+		data-flex-basis=&#34;245px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Notice the &lt;code&gt;Public IP&lt;/code&gt; and &lt;code&gt;External&lt;/code&gt; port across from Internal port 8188 (ComfyUI default port).&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s how you get you to comfyui in your browser:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Public IP&lt;/code&gt;:&lt;code&gt;External&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Public IP&lt;/code&gt;:40007&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/025_connect_to_comfyui.PNG&#34;
+	width=&#34;692&#34;
+	height=&#34;391&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/025_connect_to_comfyui_hucd4b96e3fd6f91ac78ca4588899d34db_45712_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/025_connect_to_comfyui_hucd4b96e3fd6f91ac78ca4588899d34db_45712_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod TCP port mappings.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;424px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;p&gt;Stopped at video 8 min 00 sec.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;./vampire_elf.jpg&#34; &gt;Vampire Elf picture&lt;/a&gt;: created by me using &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Stable_Diffusion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Stable Diffusion&lt;/a&gt; and &lt;a class=&#34;link&#34; href=&#34;https://github.com/AUTOMATIC1111/stable-diffusion-webui&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

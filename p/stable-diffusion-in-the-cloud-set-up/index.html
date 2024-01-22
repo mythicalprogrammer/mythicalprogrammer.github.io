@@ -396,6 +396,12 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff. 6GB VRAM
       <ol>
         <li><a href="#connect-to-juypter">Connect to Juypter</a></li>
         <li><a href="#jupyter-lab-terminal">Jupyter Lab Terminal</a></li>
+        <li><a href="#setup-python-virtual-environment">Setup Python Virtual Environment</a></li>
+        <li><a href="#latest-comfyui-version">Latest ComfyUI version</a></li>
+        <li><a href="#comfyui-setup-nvidia">ComfyUI setup Nvidia</a></li>
+        <li><a href="#comfyui-managerhttpsgithubcomltdrdatacomfyui-manager-installation"><a href="https://github.com/ltdrdata/ComfyUI-Manager">ComfyUI Manager</a> Installation</a></li>
+        <li><a href="#start-comfyui">Start ComfyUI</a></li>
+        <li><a href="#connect-to-comfyui">Connect to ComfyUI</a></li>
       </ol>
     </li>
     <li><a href="#credits">Credits</a></li>
@@ -813,8 +819,183 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff. 6GB VRAM
 	
 ></p>
 <p><strong>NOTE/WARNING:</strong> Anything in the <strong>/workspace</strong> directory will persist and exist after you stop your instance. Anything outside of this folder will not persist.</p>
-<p>Stopped at video 3 min 21 sec.</p>
+<p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/020_jupyter_lab_left_panel_file_explorer.PNG"
+	width="373"
+	height="252"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/020_jupyter_lab_left_panel_file_explorer_hu50dcfc7c390eb886e09ef3c1aab18f65_10015_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/020_jupyter_lab_left_panel_file_explorer_hu50dcfc7c390eb886e09ef3c1aab18f65_10015_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Jupyter Lab Leftside Panel File Explorer."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="355px"
+	
+></p>
+<h3 id="setup-python-virtual-environment">Setup Python Virtual Environment</h3>
+<p>Type below into Jupyter&rsquo;s terminal:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m venv venv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/021_jupyter_python_venv.PNG"
+	width="518"
+	height="101"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/021_jupyter_python_venv_huf3895cf23b6886554e672ecda22cc054_7242_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/021_jupyter_python_venv_huf3895cf23b6886554e672ecda22cc054_7242_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Setup Python Virtual Environment."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="512"
+		data-flex-basis="1230px"
+	
+></p>
+<p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/022_jupyter_python_venv.PNG"
+	width="378"
+	height="231"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/022_jupyter_python_venv_hu46b5d3ffbd16961878f426236755c699_11317_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/022_jupyter_python_venv_hu46b5d3ffbd16961878f426236755c699_11317_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Setup Python Virtual Environment."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="392px"
+	
+></p>
+<p>Activate virtual environment:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#b58900">source</span> venv/bin/activate
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/023_jupyter_python_venv.PNG"
+	width="561"
+	height="55"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/023_jupyter_python_venv_huc9e7134cea4bac8d94e9190aef9c1d86_5944_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/023_jupyter_python_venv_huc9e7134cea4bac8d94e9190aef9c1d86_5944_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Activate Python Virtual Environment."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1020"
+		data-flex-basis="2448px"
+	
+></p>
+<h3 id="latest-comfyui-version">Latest ComfyUI version</h3>
+<p>Get the latest ComfyUI version.</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#b58900">cd</span> /workspace/ComfyUI
+</span></span><span style="display:flex;"><span>git pull
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="comfyui-setup-nvidia">ComfyUI setup Nvidia</h3>
+<p><a class="link" href="https://github.com/comfyanonymous/ComfyUI"  target="_blank" rel="noopener"
+    >Following the Linux Nvidia installation instruction.</a></p>
+<p>Type the commands below in Jupyter Terminal:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#b58900">cd</span> ComfyUI
+</span></span><span style="display:flex;"><span>pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Then do this:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -r requirements.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="comfyui-managerhttpsgithubcomltdrdatacomfyui-manager-installation"><a class="link" href="https://github.com/ltdrdata/ComfyUI-Manager"  target="_blank" rel="noopener"
+    >ComfyUI Manager</a> Installation</h3>
+<p>Go to the <code>custom_nodes</code> folder:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#b58900">cd</span> /workspace/ComfyUI/custom_nodes/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Once in the <code>custom_nodes</code> folder, we going to do <code>git clone</code>.</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="start-comfyui">Start ComfyUI</h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cd /workspace/ComfyUI/
+</span></span><span style="display:flex;"><span>python main.py --listen
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="connect-to-comfyui">Connect to ComfyUI</h3>
+<p>Go back to <strong>Pod Console</strong>, click on the <code>Connect</code> button.</p>
+<p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/024_connect_to_comfyui.PNG"
+	width="472"
+	height="461"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/024_connect_to_comfyui_hu194a1535b357d1f4570db8f7e0e8a3b5_26824_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/024_connect_to_comfyui_hu194a1535b357d1f4570db8f7e0e8a3b5_26824_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Pod Console."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="102"
+		data-flex-basis="245px"
+	
+></p>
+<p>Notice the <code>Public IP</code> and <code>External</code> port across from Internal port 8188 (ComfyUI default port).</p>
+<p>That&rsquo;s how you get you to comfyui in your browser:</p>
+<p><code>Public IP</code>:<code>External</code></p>
+<p><code>Public IP</code>:40007</p>
+<p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/025_connect_to_comfyui.PNG"
+	width="692"
+	height="391"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/025_connect_to_comfyui_hucd4b96e3fd6f91ac78ca4588899d34db_45712_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/025_connect_to_comfyui_hucd4b96e3fd6f91ac78ca4588899d34db_45712_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Pod TCP port mappings."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="424px"
+	
+></p>
 <h2 id="credits">Credits</h2>
+<p>Stopped at video 8 min 00 sec.</p>
 <ul>
 <li><a class="link" href="./vampire_elf.jpg" >Vampire Elf picture</a>: created by me using <a class="link" href="https://en.wikipedia.org/wiki/Stable_Diffusion"  target="_blank" rel="noopener"
     >Stable Diffusion</a> and <a class="link" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui"  target="_blank" rel="noopener"
