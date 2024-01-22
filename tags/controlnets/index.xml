@@ -230,7 +230,11 @@
 		data-flex-basis=&#34;390px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;From the menu above, locate &lt;em&gt;&amp;lsquo;Expose TCP Ports&amp;rsquo;&lt;/em&gt;. Add &lt;strong&gt;8188&lt;/strong&gt; to that field. Note you should now have &lt;em&gt;&amp;lsquo;22,8188&amp;rsquo;&lt;/em&gt; (see picture below). Port 8188 is the default ComfyUI port.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;From the menu above, locate &lt;em&gt;&amp;lsquo;Expose TCP Ports&amp;rsquo;&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Add &lt;strong&gt;8188&lt;/strong&gt; to that field. Note you should now have &lt;em&gt;&amp;lsquo;22,8188&amp;rsquo;&lt;/em&gt; (see picture below).&lt;/li&gt;
+&lt;li&gt;Port 8188 is the default ComfyUI port.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/016_expose_tcp_ports_8188.PNG&#34;
 	width=&#34;527&#34;
 	height=&#34;89&#34;
