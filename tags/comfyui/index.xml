@@ -13,7 +13,7 @@
         
         <guid>https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/</guid>
         <description>&lt;img src="https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/vampire_elf.jpg" alt="Featured image of post Stable Diffusion in the Cloud Set up" /&gt;&lt;h2 id=&#34;objective&#34;&gt;Objective&lt;/h2&gt;
-&lt;p&gt;Just to document my set up so I can come back and refer to it.&lt;/p&gt;
+&lt;p&gt;Just to document my set up so I can come back and refer to it. And for this to be newbie friendly.&lt;/p&gt;
 &lt;p&gt;To set up an online cloud environment to run Stable Diffusion to create AI video (with ComfyUI and AnimateDiff).&lt;/p&gt;
 &lt;p&gt;It would save me money via:&lt;/p&gt;
 &lt;ul&gt;
@@ -506,8 +506,121 @@
 		data-flex-basis=&#34;424px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h2 id=&#34;download-models-from-civic-aicivitaicom&#34;&gt;Download Models from &lt;a class=&#34;link&#34; href=&#34;civitai.com&#34; &gt;Civic AI&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Make sure you close ComfyUI if it&amp;rsquo;s running.&lt;/p&gt;
+&lt;p&gt;At the Jupyter Terminal shortcut, &lt;code&gt;Ctrl + c&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Go to the ComfyUI &lt;em&gt;models&lt;/em&gt; folder:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b58900&#34;&gt;cd&lt;/span&gt; /workspace/ComfyUI/models
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/026_comfyui_models_folder.PNG&#34;
+	width=&#34;287&#34;
+	height=&#34;594&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/026_comfyui_models_folder_huf6b10eb92d45faf88c912a41ad58c4a6_21586_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/026_comfyui_models_folder_huf6b10eb92d45faf88c912a41ad58c4a6_21586_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ComfyUI&amp;rsquo;s models folder.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;48&#34;
+		data-flex-basis=&#34;115px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;checkpoint-models&#34;&gt;Checkpoint Models&lt;/h3&gt;
+&lt;p&gt;Go to &lt;code&gt;checkpoint&lt;/code&gt; model directory:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b58900&#34;&gt;cd&lt;/span&gt; /workspace/ComfyUI/models/checkpoints
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;You can list all that&amp;rsquo;s inside the folder with &lt;code&gt;ls&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;go-to-civic-ai-and-find-a-checkpoint-model-you-like&#34;&gt;Go to Civic AI and find a checkpoint model you like&lt;/h4&gt;
+&lt;p&gt;Make a Civic AI account (it&amp;rsquo;s free).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/027_civicai_search.PNG&#34;
+	width=&#34;1073&#34;
+	height=&#34;742&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/027_civicai_search_huf25b52f91c5a74b3503b2791ec2e430b_1230855_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/027_civicai_search_huf25b52f91c5a74b3503b2791ec2e430b_1230855_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Civic AI search options.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;347px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;For the search option click on the &lt;code&gt;Filters&lt;/code&gt; option.&lt;/p&gt;
+&lt;p&gt;These are all the options in the &lt;code&gt;Filters&lt;/code&gt; option menu (make sure you scroll down for more options):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/028_civicai_search_filters_menu.PNG&#34;
+	width=&#34;795&#34;
+	height=&#34;647&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/028_civicai_search_filters_menu_huab7234dc14a240ff96b9c7228b60cfd2_44664_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/028_civicai_search_filters_menu_huab7234dc14a240ff96b9c7228b60cfd2_44664_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Civic AI Filters options.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;122&#34;
+		data-flex-basis=&#34;294px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/029_civicai_search_filters_menu_continue.PNG&#34;
+	width=&#34;797&#34;
+	height=&#34;531&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/029_civicai_search_filters_menu_continue_hud4e7776bd971bedfd31fd1d81e9246fc_38823_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/029_civicai_search_filters_menu_continue_hud4e7776bd971bedfd31fd1d81e9246fc_38823_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Civic AI Filters options continue.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;My chosen checkpoint for this tutorial:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/030_civicai_chosen_checkpoint.PNG&#34;
+	width=&#34;464&#34;
+	height=&#34;582&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/030_civicai_chosen_checkpoint_hu202114f7b03fab950969229f0d773363_756220_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/030_civicai_chosen_checkpoint_hu202114f7b03fab950969229f0d773363_756220_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Civic AI chosen checkpoint&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;79&#34;
+		data-flex-basis=&#34;191px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Click on it to head to the main page of chosen checkpoint.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/031_civicai_chosen_checkpoint_select.PNG&#34;
+	width=&#34;1839&#34;
+	height=&#34;680&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/031_civicai_chosen_checkpoint_select_hu9c1dd051099e306d04669491e9990b1e_1459388_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/031_civicai_chosen_checkpoint_select_hu9c1dd051099e306d04669491e9990b1e_1459388_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Civic AI chosen checkpoint page&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;270&#34;
+		data-flex-basis=&#34;649px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
-&lt;p&gt;Stopped at video 8 min 00 sec.&lt;/p&gt;
+&lt;p&gt;Stopped at video 9 min 00 sec.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;./vampire_elf.jpg&#34; &gt;Vampire Elf picture&lt;/a&gt;: created by me using &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Stable_Diffusion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Stable Diffusion&lt;/a&gt; and &lt;a class=&#34;link&#34; href=&#34;https://github.com/AUTOMATIC1111/stable-diffusion-webui&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
