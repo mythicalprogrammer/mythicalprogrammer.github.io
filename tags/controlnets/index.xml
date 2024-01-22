@@ -6,7 +6,30 @@
         <description>Recent content in ControlNets on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/controlnets/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 22 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/controlnets/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>My current ComfyUI and AnimateDiff workflow (and How to set it up)</title>
+        <link>https://mythicalprogrammer.github.io/p/my-current-comfyui-and-animatediff-workflow/</link>
+        <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/my-current-comfyui-and-animatediff-workflow/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/my-current-comfyui-and-animatediff-workflow/dance_053.png" alt="Featured image of post My current ComfyUI and AnimateDiff workflow (and How to set it up)" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Firstly, I want to thank &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/@houseofdim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;House of Din&lt;/a&gt; and his &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=We3UmWWmlQE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;tutorial&lt;/a&gt;. It was this video that got me started with &lt;a class=&#34;link&#34; href=&#34;https://animatediff.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AnimateDiff&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;dance_053.png&#34; &gt;Dancing picture&lt;/a&gt; was created by me using stable diffusion&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=We3UmWWmlQE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ComfyUI + AnimateDiff + ControlNets Workflow by House of Din&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Animate Prep Workflow: &lt;a class=&#34;link&#34; href=&#34;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_prep_workflow.json&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_prep_workflow.json&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;AnimateDiff+ControlNets Workflow: &lt;a class=&#34;link&#34; href=&#34;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_workflow.json&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_workflow.json&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Stable Diffusion in the Cloud Set up</title>
         <link>https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/</link>
         <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
