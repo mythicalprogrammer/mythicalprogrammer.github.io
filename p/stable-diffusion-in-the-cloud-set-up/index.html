@@ -409,6 +409,7 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
         <li><a href="#checkpoint-models">Checkpoint Models</a>
           <ol>
             <li><a href="#go-to-civic-ai-and-find-a-checkpoint-model-you-like">Go to Civic AI and find a checkpoint model you like</a></li>
+            <li><a href="#download-chosen-checkpoint-into-your-pod">Download Chosen Checkpoint into your pod</a></li>
           </ol>
         </li>
       </ol>
@@ -1086,7 +1087,8 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
 		data-flex-basis="360px"
 	
 ></p>
-<p>My chosen checkpoint for this tutorial:</p>
+<p>My chosen checkpoint, <a class="link" href="https://civitai.com/models/36520/ghostmix"  target="_blank" rel="noopener"
+    >GhostMix</a>, for this tutorial:</p>
 <p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/030_civicai_chosen_checkpoint.PNG"
 	width="464"
 	height="582"
@@ -1116,7 +1118,63 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
 		data-flex-basis="649px"
 	
 ></p>
-<h2 id="credits">Credits</h2>
+<p>right click on the <code>Download</code> button and select <code>Copy Link</code>.</p>
+<p>The link address should be copied and it should be this:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://civitai.com/api/download/models/76907
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Find out the file name of the check point by downloading it to local computer and cancel the download:</p>
+<p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/033_civicai_chosen_checkpoint_filename.PNG"
+	width="452"
+	height="86"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/033_civicai_chosen_checkpoint_filename_hu19ddfcb2d8b69100d125173a5a4107e1_5128_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/033_civicai_chosen_checkpoint_filename_hu19ddfcb2d8b69100d125173a5a4107e1_5128_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Civic AI chosen checkpoint file name."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="525"
+		data-flex-basis="1261px"
+	
+></p>
+<p>File name:</p>
+<p><code>ghostmix_v20Bakedvae.safetensors</code></p>
+<h4 id="download-chosen-checkpoint-into-your-pod">Download Chosen Checkpoint into your pod</h4>
+<p>Head over to your pod Jupyter Notebook&rsquo;s terminal.</p>
+<p>Make sure you are in the <code>checkpoint</code> folder.</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#b58900">cd</span> /workspace/ComfyUI/models/checkpoints
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now download the chosen model:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://civitai.com/api/download/models/76907 -O ghostmix_v20Bakedvae.safetensors
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So the format is:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget model_url -O filename_with_extension
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="credits">Credits</h2>
 <p>Stopped at video 9 min 00 sec.</p>
 <ul>
 <li><a class="link" href="./vampire_elf.jpg" >Vampire Elf picture</a>: created by me using <a class="link" href="https://en.wikipedia.org/wiki/Stable_Diffusion"  target="_blank" rel="noopener"
