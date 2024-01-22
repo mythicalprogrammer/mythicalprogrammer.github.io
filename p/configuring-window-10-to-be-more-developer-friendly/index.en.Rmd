@@ -1,0 +1,29 @@
+---
+title: Configuring Window 10 to be more developer friendly
+author: Anthony Quoc Anh Doan
+date: '2023-11-30'
+slug: configuring-window-10-to-be-more-developer-friendly
+categories:
+  - Programming
+tags:
+  - Microsoft
+  - Window 10
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: yes 
+comments: yes
+---
+
+
+## Credits
+
+1. [Make your WSL or WSL2 terminal awesome - with Windows Terminal, zsh, oh-my-zsh and Powerlevel10k by Christian Lempa](https://www.youtube.com/watch?v=235G6X5EAvM&t=9s)
+2. [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+3. [Windows Package Manager, Winget](https://en.wikipedia.org/wiki/Windows_Package_Manager)
+4. [Winget Docs](https://learn.microsoft.com/en-us/windows/package-manager/#windows-package-manager-for-developers)
+5. [Windows Terminal](https://devblogs.microsoft.com/commandline/introducing-windows-terminal/)
+6. [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+7. [WSL issue](https://github.com/microsoft/WSL/issues/5663)
+8. [WSL Update](https://github.com/microsoft/WSL/issues/5393)

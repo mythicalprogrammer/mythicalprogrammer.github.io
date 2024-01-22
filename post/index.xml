@@ -6,7 +6,333 @@
         <description>Recent content in Posts on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Wed, 22 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Stable Diffusion in the Cloud Set up</title>
+        <link>https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/</link>
+        <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/vampire_elf.jpg" alt="Featured image of post Stable Diffusion in the Cloud Set up" /&gt;&lt;h2 id=&#34;objective&#34;&gt;Objective&lt;/h2&gt;
+&lt;p&gt;Just to document my set up so I can come back and refer to it.&lt;/p&gt;
+&lt;p&gt;To set up an online cloud environment to run Stable Diffusion to create AI video (with ComfyUI and AnimateDiff).&lt;/p&gt;
+&lt;p&gt;It would save me money via:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Electricity Cost&lt;/li&gt;
+&lt;li&gt;Graphic Card (which will depreciate overtime with new technology)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cloud-provider&#34;&gt;Cloud Provider&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runpod.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.runpod.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I use Runpod because that&amp;rsquo;s the first option I&amp;rsquo;ve found.&lt;/p&gt;
+&lt;p&gt;I also found a tutorial on setup via youtube:
+&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=PcrwJ5C3zGM&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ComfyUI AnimateDiff Prompt Travel: Runpod.io Cloud GPUs Tutorial by  c0nsumption&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-a-pod-a-gpu-cloud-instance&#34;&gt;Setting up a Pod (a GPU cloud instance)&lt;/h2&gt;
+&lt;p&gt;To start spinning up a new instance first click on the &lt;strong&gt;&amp;lsquo;New Pod&amp;rsquo;&lt;/strong&gt; option over at &lt;a class=&#34;link&#34; href=&#34;https://www.runpod.io/console/pods&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;the console&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/001_623pm_new_pod.PNG&#34;
+	width=&#34;762&#34;
+	height=&#34;460&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/001_623pm_new_pod_hu0436c6bdefe5583a007f48bb5117ce4b_17513_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/001_623pm_new_pod_hu0436c6bdefe5583a007f48bb5117ce4b_17513_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Spinning up a new pod.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;397px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pod-console&#34;&gt;Pod Console&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/002_645pm_pod_console.PNG&#34;
+	width=&#34;1139&#34;
+	height=&#34;676&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/002_645pm_pod_console_hua66c128e5793c8e7b532d2d6489527c9_65634_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/002_645pm_pod_console_hua66c128e5793c8e7b532d2d6489527c9_65634_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;New pod console.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;404px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pod-template&#34;&gt;Pod Template&lt;/h3&gt;
+&lt;p&gt;Make sure Pod Template is set to: &amp;lsquo;RunPod SD Comfy UI&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/003_647pm_pod_template.PNG&#34;
+	width=&#34;606&#34;
+	height=&#34;283&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/003_647pm_pod_template_hud8c63ac68950ba11a2bf53eab0f93df1_17608_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/003_647pm_pod_template_hud8c63ac68950ba11a2bf53eab0f93df1_17608_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Template.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;214&#34;
+		data-flex-basis=&#34;513px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pod-cloud-type&#34;&gt;Pod Cloud Type&lt;/h3&gt;
+&lt;p&gt;Select cloud type using the &lt;strong&gt;Cloud Type&lt;/strong&gt; drop down filter menu. I chose the &lt;em&gt;&amp;lsquo;Community Cloud&amp;rsquo;&lt;/em&gt; option because it&amp;rsquo;s cheaper.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/004_651pm_pod_cloud_type.PNG&#34;
+	width=&#34;243&#34;
+	height=&#34;104&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/004_651pm_pod_cloud_type_huc6a75c39f828504f8a4a5c88d11525a3_3361_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/004_651pm_pod_cloud_type_huc6a75c39f828504f8a4a5c88d11525a3_3361_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Cloud Type.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;560px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/005_652pm_pod_cloud_type_options.PNG&#34;
+	width=&#34;268&#34;
+	height=&#34;207&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/005_652pm_pod_cloud_type_options_hu28067c2bbdd436e17259241a9c9c0194_16241_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/005_652pm_pod_cloud_type_options_hu28067c2bbdd436e17259241a9c9c0194_16241_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Cloud Type Options.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;310px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;select-gpu&#34;&gt;Select GPU&lt;/h3&gt;
+&lt;p&gt;I chose this option for my first run. Click the option, &lt;strong&gt;&amp;lsquo;Deploy&amp;rsquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/006_700pm_pod_cloud_gpu_option_chosen.PNG&#34;
+	width=&#34;365&#34;
+	height=&#34;328&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/006_700pm_pod_cloud_gpu_option_chosen_hub13e3bb5cb91c8a3efbb43a980215a2d_18201_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/006_700pm_pod_cloud_gpu_option_chosen_hub13e3bb5cb91c8a3efbb43a980215a2d_18201_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Cloud GPU option.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;111&#34;
+		data-flex-basis=&#34;267px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;You will end up with the next menu, check all the option is correct. Make sure the &lt;em&gt;&amp;lsquo;Start Jupyter Notebook&amp;rsquo;&lt;/em&gt; checkbox is checked. Once confirming that the GPU instance configurations is correct click on the button, &lt;strong&gt;&amp;lsquo;Continue&amp;rsquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/007_702pm_pod_confirmation.PNG&#34;
+	width=&#34;1530&#34;
+	height=&#34;528&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/007_702pm_pod_confirmation_hudc26b2010ff706ac698d5694055a7789_69477_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/007_702pm_pod_confirmation_hudc26b2010ff706ac698d5694055a7789_69477_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Cloud confirmation. Yes the graphic on the console is messed up. That&amp;rsquo;s how it&amp;rsquo;s render in Chrome browser.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;289&#34;
+		data-flex-basis=&#34;695px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;deploy-gpu-instance&#34;&gt;Deploy GPU Instance&lt;/h3&gt;
+&lt;p&gt;Look over the pricing summary for the extra/hidden cost on top of the GPU pricing rate. Once you&amp;rsquo;re okay with the total cost, click on the button &lt;strong&gt;&amp;lsquo;Deploy&amp;rsquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/008_711pm_pod_final_confirmation_pricing_summary.PNG&#34;
+	width=&#34;1038&#34;
+	height=&#34;467&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/008_711pm_pod_final_confirmation_pricing_summary_hucea5bcf616d70e358d0440f6c98e98f6_51554_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/008_711pm_pod_final_confirmation_pricing_summary_hucea5bcf616d70e358d0440f6c98e98f6_51554_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Cloud Instance Pricing Summary. Yes the graphic on the console is messed up. That&amp;rsquo;s how it&amp;rsquo;s render in Chrome browser.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;ll redirect you to the Pod Console where your new instance is now created but not started.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/009_716pm_pod_console.PNG&#34;
+	width=&#34;1549&#34;
+	height=&#34;252&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/009_716pm_pod_console_hu654162822654bfbdd6ef0d7548ebf5fb_32204_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/009_716pm_pod_console_hu654162822654bfbdd6ef0d7548ebf5fb_32204_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Console with your new pod instance.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;614&#34;
+		data-flex-basis=&#34;1475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;More info on the pod by clicking the purple arrow button.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/010_720pm_pod_info.PNG&#34;
+	width=&#34;1550&#34;
+	height=&#34;521&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/010_720pm_pod_info_hue89b00dae94aec039a5a3f7c8cb3f22e_56086_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/010_720pm_pod_info_hue89b00dae94aec039a5a3f7c8cb3f22e_56086_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pod Info&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;297&#34;
+		data-flex-basis=&#34;714px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pod-customization&#34;&gt;Pod Customization&lt;/h2&gt;
+&lt;h3 id=&#34;set-up-comfyui-port-8188&#34;&gt;Set up ComfyUI port 8188&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;IMPORTANT&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Click on the hamburger button (the three horizontal line button) aka &lt;strong&gt;More Actions&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/013_pod_menu.PNG&#34;
+	width=&#34;434&#34;
+	height=&#34;107&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/013_pod_menu_hubc2712cf2ffbb125da2b82ebe118f8f5_6759_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/013_pod_menu_hubc2712cf2ffbb125da2b82ebe118f8f5_6759_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Hamburger&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;405&#34;
+		data-flex-basis=&#34;973px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Select &amp;lsquo;Edit Pod&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/014_pod_menu_hambuger_options.PNG&#34;
+	width=&#34;514&#34;
+	height=&#34;239&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/014_pod_menu_hambuger_options_huc9b148e40aa91fc0d87c6b59aff9ab82_40133_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/014_pod_menu_hambuger_options_huc9b148e40aa91fc0d87c6b59aff9ab82_40133_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Hamburger Options&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;516px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;You should get this menu.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/015_edit_pod_menu.PNG&#34;
+	width=&#34;1088&#34;
+	height=&#34;669&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/015_edit_pod_menu_hu7a304730aef8d0f5c65dab45cf40b0a3_55253_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/015_edit_pod_menu_hu7a304730aef8d0f5c65dab45cf40b0a3_55253_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Edit Pod menu.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;390px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;From the menu above, locate &lt;em&gt;&amp;lsquo;Expose TCP Ports&amp;rsquo;&lt;/em&gt;. Add &lt;strong&gt;8188&lt;/strong&gt; to that field. Note you should now have &lt;em&gt;&amp;lsquo;22,8188&amp;rsquo;&lt;/em&gt; (see picture below). Port 8188 is the default ComfyUI port.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/016_expose_tcp_ports_8188.PNG&#34;
+	width=&#34;527&#34;
+	height=&#34;89&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/016_expose_tcp_ports_8188_hu0eace8e6cde9764b301e6b353fd92369_3476_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/016_expose_tcp_ports_8188_hu0eace8e6cde9764b301e6b353fd92369_3476_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Expose TCP Ports. Add in port 8188.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;592&#34;
+		data-flex-basis=&#34;1421px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Click &lt;em&gt;Save&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;pod-software-installation&#34;&gt;Pod Software Installation&lt;/h2&gt;
+&lt;h3 id=&#34;connect-to-juypter&#34;&gt;Connect to Juypter&lt;/h3&gt;
+&lt;p&gt;Click on the &lt;strong&gt;&amp;lsquo;Connect&amp;rsquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/011_connect_pod.PNG&#34;
+	width=&#34;302&#34;
+	height=&#34;190&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/011_connect_pod_hu985d36e44075adac15ba50c13c96e34b_7917_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/011_connect_pod_hu985d36e44075adac15ba50c13c96e34b_7917_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Connect&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;381px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll get this menu:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/012_connect_pod_menu.PNG&#34;
+	width=&#34;674&#34;
+	height=&#34;665&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/012_connect_pod_menu_hu3b895798b8d11a6e88c5d3f139066791_44523_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/012_connect_pod_menu_hu3b895798b8d11a6e88c5d3f139066791_44523_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Connect menu.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;243px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Select the option &lt;strong&gt;Connect to Jupyter Lab [Port 8888]&lt;/strong&gt;. This will open a new tab in your browser with Jupyter Lab.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/017_connect_to_jupyter_lab_port_8888.PNG&#34;
+	width=&#34;345&#34;
+	height=&#34;53&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/017_connect_to_jupyter_lab_port_8888_hu28712a4630e896890d7af9875905361e_4589_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/017_connect_to_jupyter_lab_port_8888_hu28712a4630e896890d7af9875905361e_4589_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Connect to Jupyter Lab Port 8888.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;650&#34;
+		data-flex-basis=&#34;1562px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;jupyter-lab-terminal&#34;&gt;Jupyter Lab Terminal&lt;/h3&gt;
+&lt;p&gt;From the &lt;em&gt;Other&lt;/em&gt; menu, select the &lt;em&gt;Terminal&lt;/em&gt; option.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/018_jupyter_lab_other_menu.PNG&#34;
+	width=&#34;768&#34;
+	height=&#34;288&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/018_jupyter_lab_other_menu_hue22ce19f01fc4e83a8fdb3a864a609f8_11789_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/018_jupyter_lab_other_menu_hue22ce19f01fc4e83a8fdb3a864a609f8_11789_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Jupyter Lab Other menu options.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;266&#34;
+		data-flex-basis=&#34;640px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;From here you should get this terminal:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/019_jupyter_lab_terminal.PNG&#34;
+	width=&#34;415&#34;
+	height=&#34;185&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/019_jupyter_lab_terminal_hue93c85a38b1832848764fbe33539b37c_7138_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/img/019_jupyter_lab_terminal_hue93c85a38b1832848764fbe33539b37c_7138_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Jupyter Lab Terminal.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;224&#34;
+		data-flex-basis=&#34;538px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE/WARNING:&lt;/strong&gt; Anything in the &lt;strong&gt;/workspace&lt;/strong&gt; directory will persist and exist after you stop your instance. Anything outside of this folder will not persist.&lt;/p&gt;
+&lt;p&gt;Stopped at video 3 min 21 sec.&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;./vampire_elf.jpg&#34; &gt;Vampire Elf picture&lt;/a&gt;: created by me using Stable Diffusion and A1111.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>My Web Stack in the year 2023 and the future</title>
         <link>https://mythicalprogrammer.github.io/p/my-web-stack-in-the-year-2023-and-the-future/</link>
         <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>

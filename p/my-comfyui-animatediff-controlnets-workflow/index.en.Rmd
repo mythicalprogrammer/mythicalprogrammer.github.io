@@ -1,0 +1,64 @@
+---
+title: My ComfyUI, AnimateDiff, ControlNets Workflow
+author: Anthony Anh Quoc Doan
+date: '2024-01-20'
+slug: my-comfyui-animatediff-controlnets-workflow
+categories:
+  - Artificial intelligence
+  - Stable Diffusion 
+tags:
+  - AI
+  - ComfyUI
+  - AnimateDiff
+  - ControlNets
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: yes 
+comments: yes
+---
+
+## Goal
+
+To create a tutorial for myself so I can come back to.
+
+I have a passion for dancing and I'd want to make AI instagram video of myself dancing.
+
+
+## Preprocessing video
+
+### Softwares Needed
+
+1. [Handbrake](https://handbrake.fr/)
+2. [DaVinci Resolve](https://www.blackmagicdesign.com/products/davinciresolve) 
+
+
+### Steps
+
+Credit: [ComfyUI + AnimateDiff + ControlNets Workflow by House of Dim](https://www.youtube.com/watch?v=We3UmWWmlQE)
+1. Get a Video you want to AI
+2. If it's Iphone you need 1. Qubii; to back up into sd 2. a SD card reader to read from laptop.
+3. Get HandBrake; use this to convert your iphone video to mp4, so DaVinci Resolve can actually read the codec. Window cannot read Apple's MOV video.
+4. Get DaVinci Resolve (free)
+5. In DaVinci Resolve go to Project Settings menu (File -> Project Settings).
+   From here make sure the resolution is 1080 x 1920 HD (for instagram reel).
+   Make sure to check the checkbox for 'Use vertical resolution' for portrait mode.
+   Make sure the 'Playback frame rate' option is at '24' frames per second.
+6. Go to the 'Edit' tab. The tab menu are at the bottom.
+7. From here locate the 'Master' panel. Right click on the 'Master' panel to get a drop down menu.
+   Select the option 'Import Media...' from the right click drop down menu.
+   Select the video you want to AI
+   Drag and drop this video into the timeline panel
+8. 
+To trim the video:
+ On the timeline panel
+left side move the verticle red line forward to where you want your video to start.
+Then to trim the left side you do shortcut key 'Ctrl + Shift + ['
+For the right side, ending trim, same thing but the short cut key is 'Ctrl + Shift + ]'
+9. top right panel 'inspector'
+10. bottom tab deliver
+  set format to 'JPEG'
+
+
+
