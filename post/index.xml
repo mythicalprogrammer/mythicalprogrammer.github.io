@@ -676,7 +676,8 @@
 &lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget model_url -O filename_with_extension
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;/div&gt;&lt;p&gt;Type &lt;code&gt;ls&lt;/code&gt; to make sure the model is downloaded.&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
 &lt;p&gt;Stopped at video 9 min 00 sec.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;./vampire_elf.jpg&#34; &gt;Vampire Elf picture&lt;/a&gt;: created by me using &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Stable_Diffusion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
