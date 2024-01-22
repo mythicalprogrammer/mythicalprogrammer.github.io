@@ -677,8 +677,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Type &lt;code&gt;ls&lt;/code&gt; to make sure the model is downloaded.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;So that&amp;rsquo;s basically it for the set up.&lt;/p&gt;
+&lt;p&gt;Now you need a workflow and download models that the workflow require. I&amp;rsquo;ll make another post on AnimateDiff workflow using this base setup.&lt;/p&gt;
 &lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
-&lt;p&gt;Stopped at video 9 min 00 sec.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;./vampire_elf.jpg&#34; &gt;Vampire Elf picture&lt;/a&gt;: created by me using &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Stable_Diffusion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Stable Diffusion&lt;/a&gt; and &lt;a class=&#34;link&#34; href=&#34;https://github.com/AUTOMATIC1111/stable-diffusion-webui&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
