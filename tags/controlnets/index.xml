@@ -20,6 +20,8 @@
 &lt;li&gt;Electricity Cost&lt;/li&gt;
 &lt;li&gt;Graphic Card (which will depreciate overtime with new technology)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Real life reason:&lt;/p&gt;
+&lt;p&gt;I ran out of memory and it crash my queue when I was doing AnimateDiff. 6GB VRAM on my laptop wasn&amp;rsquo;t enough and it took over 16 hours to run a partial portion of it.&lt;/p&gt;
 &lt;h2 id=&#34;cloud-provider&#34;&gt;Cloud Provider&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runpod.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.runpod.io/&lt;/a&gt;&lt;/p&gt;
