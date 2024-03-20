@@ -414,6 +414,12 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
         </li>
       </ol>
     </li>
+    <li><a href="#starting-workflow">Starting Workflow</a>
+      <ol>
+        <li><a href="#start-up-pythons-virtual-environment">Start up Python&rsquo;s virtual environment</a></li>
+        <li><a href="#start-up-comfyui">Start up ComfyUI</a></li>
+      </ol>
+    </li>
     <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#credits">Credits</a></li>
   </ol>
@@ -496,7 +502,7 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
 
 
                 <time class="article-time--reading">
-                    4 minute read
+                    5 minute read
                 </time>
             </div>
         
@@ -607,21 +613,39 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
 	
 ></p>
 <h3 id="select-gpu">Select GPU</h3>
-<p>I chose this option for my first run. Click the option, <strong>&lsquo;Deploy&rsquo;</strong>.</p>
-<p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/006_700pm_pod_cloud_gpu_option_chosen.PNG"
-	width="365"
-	height="328"
-	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/006_700pm_pod_cloud_gpu_option_chosen_hub13e3bb5cb91c8a3efbb43a980215a2d_18201_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/006_700pm_pod_cloud_gpu_option_chosen_hub13e3bb5cb91c8a3efbb43a980215a2d_18201_1024x0_resize_box_3.PNG 1024w"
+<p>I chose this option for my first run.</p>
+<p>Click the option, <strong>&lsquo;Customize Deployment&rsquo;</strong>.</p>
+<p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/007_pod_customize.PNG"
+	width="266"
+	height="127"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/007_pod_customize_hudfba18417cdfac09ef173035b63fb2b9_4780_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/007_pod_customize_hudfba18417cdfac09ef173035b63fb2b9_4780_1024x0_resize_box_3.PNG 1024w"
 	loading="lazy"
 	
-		alt="Pod Cloud GPU option."
+		alt="Customize Deployment button."
 	
 	
 		class="gallery-image" 
-		data-flex-grow="111"
-		data-flex-basis="267px"
+		data-flex-grow="209"
+		data-flex-basis="502px"
 	
 ></p>
+<p>And change Container Disk to 25GB. Some installation package will eat up more
+than 5GB (default).</p>
+<p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/007_pod_customize2.PNG"
+	width="1455"
+	height="727"
+	srcset="/p/stable-diffusion-in-the-cloud-set-up/img/007_pod_customize2_hu1cb2ec184e4d6ae66ea3626b90362106_66343_480x0_resize_box_3.PNG 480w, /p/stable-diffusion-in-the-cloud-set-up/img/007_pod_customize2_hu1cb2ec184e4d6ae66ea3626b90362106_66343_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+		alt="Customize Deployment button."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
+<p>Click the option, <strong>&lsquo;Deploy&rsquo;</strong>.</p>
 <p>You will end up with the next menu, check all the option is correct. Make sure the <em>&lsquo;Start Jupyter Notebook&rsquo;</em> checkbox is checked. Once confirming that the GPU instance configurations is correct click on the button, <strong>&lsquo;Continue&rsquo;</strong>.</p>
 <p><img src="/p/stable-diffusion-in-the-cloud-set-up/img/007_702pm_pod_confirmation.PNG"
 	width="1530"
@@ -1163,7 +1187,7 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
 <pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://civitai.com/api/download/models/76907 -O ghostmix_v20Bakedvae.safetensors
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -O ghostmix_v20Bakedvae.safetensors https://civitai.com/api/download/models/76907 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>So the format is:</p>
@@ -1172,10 +1196,32 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
 <pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget model_url -O filename_with_extension
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -O filename_with_extension model_url 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Type <code>ls</code> to make sure the model is downloaded.</p>
+<h2 id="starting-workflow">Starting Workflow</h2>
+<h3 id="start-up-pythons-virtual-environment">Start up Python&rsquo;s virtual environment</h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#b58900">source</span> venv/bin/activate
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="start-up-comfyui">Start up ComfyUI</h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#b58900">cd</span> /workspace/ComfyUI/
+</span></span><span style="display:flex;"><span>python main.py --listen
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>`</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>So that&rsquo;s basically it for the set up.</p>
 <p>Now you need a workflow and download models that the workflow require. I&rsquo;ll make another post on AnimateDiff workflow using this base setup.</p>
@@ -1225,39 +1271,6 @@ I ran out of memory and it crash my queue when I was doing AnimateDiff."><meta n
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/my-current-comfyui-and-animatediff-workflow/">
-        
-        
-            <div class="article-image">
-                <img src="/p/my-current-comfyui-and-animatediff-workflow/dance_053.8a629e494cdf0d923590de182074f520_hu71ab205c8a698e86a3463b32c5f1d3c3_128035_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post My current ComfyUI and AnimateDiff workflow (and How to set it up)"
-                        data-key="my-current-comfyui-and-animatediff-workflow" 
-                        data-hash="md5-imKeSUzfDZI1kN4YIHT1IA==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">My current ComfyUI and AnimateDiff workflow (and How to set it up)</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     
