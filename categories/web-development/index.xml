@@ -19,7 +19,8 @@ I read &lt;a class=&#34;link&#34; href=&#34;https://hexdocs.pm/phoenix/component
     &gt;the official document&lt;/a&gt; and
 searched the web and it was lacking.&lt;/p&gt;
 &lt;p&gt;Especially on passing data onto the view template from component.&lt;/p&gt;
-&lt;p&gt;Phoenix framework (1.7.14) is MVC but have changed the way V(view) works. So
+&lt;p&gt;Phoenix framework (1.7.14) is &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MVC&lt;/a&gt; but have changed the way V(view) works. So
 this is just a documentation for myself.&lt;/p&gt;
 &lt;h2 id=&#34;file-structure&#34;&gt;File Structure&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;./gira/*&lt;/code&gt;&lt;/p&gt;

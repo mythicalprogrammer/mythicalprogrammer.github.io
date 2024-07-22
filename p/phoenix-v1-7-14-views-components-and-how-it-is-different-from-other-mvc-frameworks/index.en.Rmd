@@ -25,7 +25,7 @@ searched the web and it was lacking.
 
 Especially on passing data onto the view template from component. 
 
-Phoenix framework (1.7.14) is MVC but have changed the way V(view) works. So 
+Phoenix framework (1.7.14) is [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) but have changed the way V(view) works. So 
 this is just a documentation for myself.
 
 ## File Structure
