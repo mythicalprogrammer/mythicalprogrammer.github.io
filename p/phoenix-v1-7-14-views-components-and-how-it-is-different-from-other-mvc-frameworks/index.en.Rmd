@@ -1,0 +1,270 @@
+---
+title: Phoenix v1.7.14 Views (components) and how it is different from other MVC frameworks
+author: Anthony Quoc Anh Doan
+date: '2024-07-22'
+slug: phoenix-v1-7-14-views-components-and-how-it-is-different-from-other-mvc-frameworks
+categories:
+  - Web Development
+  - Programming
+tags:
+  - Elixir
+  - Phoenix
+description: ~
+image: ai-generated-8579708_1280.jpg
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Introduction
+
+There isn't many resources on how to do view in the [Phoenix framework (1.7.14)](https://www.phoenixframework.org/)
+I read [the official document](https://hexdocs.pm/phoenix/components.html) and 
+searched the web and it was lacking.
+
+Especially on passing data onto the view template from component. 
+
+Phoenix framework (1.7.14) is MVC but have changed the way V(view) works. So 
+this is just a documentation for myself.
+
+## File Structure
+
+`./gira/*`
+
+```bash
+assets/
+config/
+lib/
+priv/
+test/
+.formatter.exs
+.gitignore
+README.md
+mix.exs
+mix.lock
+```
+
+`./gira/lib/gira_web/`
+
+```bash
+components/
+controllers/
+endpoint.ex
+gettext.ex
+router.ex
+telemetry.ex
+```
+
+`./gira/lib/gira_web/controllers/`
+
+Notice the `page_controller.ex`, `page_html.ex`, and `page_html/`.
+
+The `page_html.ex` and `page_html/` is where the "view" logics are located.
+This is the convention in the Phoenix framework (1.7.14) and I would suggest sticking to the
+default. 
+
+Again controllers and views lives in the `controllers/` folder. View in the
+Phoenix framework (1.7.14) is postscript with `_html` and are further organized 
+in two places.
+
+```bash
+page_html/
+error_html.ex
+error_json.ex
+page_controller.ex
+page_html.ex
+```
+
+`./gira/lib/gira_web/components/`
+
+```bash
+layouts/
+core_components.ex
+layouts.ex
+```
+
+## Codes - Simple Component for layout
+
+This is a simple component navbar that doesn't uses any data (at least not yet).
+I decided to put the navbar view logic in the layout.
+
+`./gira/lib/gira_web/components/layouts.ex`
+
+```Elixir
+defmodule GiraWeb.Layouts do
+  @moduledoc """
+  This module holds different layouts used by your application.
+
+  See the `layouts` directory for all templates available.
+  The "root" layout is a skeleton rendered as part of the
+  application router. The "app" layout is set as the default
+  layout on both `use GiraWeb, :controller` and
+  `use GiraWeb, :live_view`.
+  """
+  use GiraWeb, :html
+
+  embed_templates "layouts/*"
+
+  def navbar(assigns) do
+    ~H"""
+      <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+              <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+              <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">GiraUpdates</span>
+          </a>
+          <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li>
+                <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+              </li>
+              <li>
+                  <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Reading<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg></button>
+                  <!-- Dropdown menu -->
+                  <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                        </li>
+                      </ul>
+                      <div class="py-1">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                      </div>
+                  </div>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Series</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Tools</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    """
+  end
+end
+```
+
+`./gira/lib/gira_web/components/layouts/app.html.heex`
+
+```HTML
+<.navbar />
+```
+
+## Codes - Complex Component with Controller (connecting with model)
+
+This one is to have a table component, the rows are generated base on the data
+given by the model. 
+
+`./gira/lib/gira_web/controllers/page_controller.ex`
+
+```Elixir
+defmodule GiraWeb.PageController do
+  use GiraWeb, :controller
+
+  alias Gira.NovelUpdate
+  #alias Gira.NovelUpdate.Update
+
+  def home(conn, _params) do
+    # The home page is often custom made,
+    # so skip the default app layout.
+    updates = NovelUpdate.list_updates()
+    render(conn, :home, updates: updates)
+  end
+end
+```
+
+`./gira/lib/gira_web/controllers/page_html.ex`
+
+```Elixir
+defmodule GiraWeb.PageHTML do
+  @moduledoc """
+  This module contains pages rendered by PageController.
+
+  See the `page_html` directory for all templates available.
+  """
+  use GiraWeb, :html
+
+  embed_templates "page_html/*"
+
+  def table_update(assigns) do
+    ~H"""
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+    <th scope="col" class="px-6 py-3">
+    Date
+    </th>
+    <th scope="col" class="px-6 py-3">
+    <div class="flex items-center">
+    Title
+    </div>
+    </th>
+    <th scope="col" class="px-6 py-3">
+    <div class="flex items-center">
+    Release
+    </div>
+    </th>
+    <th scope="col" class="px-6 py-3">
+    <div class="flex items-center">
+    Translation Group
+    </div>
+    </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700" :for={update <- @updates}>
+    <td class="px-6 py-4">
+    <%= update.update_date %>
+    </td>
+    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+    <%= update.title %>
+    </td>
+    <td class="px-6 py-4">
+    <%= update.release %>
+    </td>
+    <td class="px-6 py-4">
+    <%= update.translation_group %>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    """
+  end
+end
+```
+
+`./gira/lib/gira_web/controllers/page_html/home.html.heex`
+
+As of the writing this, I couldn't find an explicit example of how to connect
+model data to the template and component. I've tried countless combination 
+until I figured it out especially the code below.
+
+```HTML
+<.table_update updates={@updates} />
+```
+## Credit
+
+1. [Ai Generated Phoenix Fantasy royalty-free stock illustration. Free for use & download.](https://pixabay.com/illustrations/ai-generated-phoenix-fantasy-bird-8579708/)

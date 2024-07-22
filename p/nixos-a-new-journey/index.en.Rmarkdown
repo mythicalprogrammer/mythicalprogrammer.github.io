@@ -1,0 +1,68 @@
+---
+title: 'NixOS: A new journey'
+author: Anthony Quoc Anh Doan
+date: '2024-03-20'
+slug: nixos-a-new-journey
+categories:
+  - Linux
+tags:
+  - NixOS
+description: ~
+image:  nixos-logo.png
+math: ~
+license: ~
+hidden: yes 
+comments: yes
+---
+
+## Introducation
+
+This story happened a long time ago, 2 days ago, in a galaxy far, far away. It is already over. Nothing can be done to change it. It is a story of frustration and love for a crazy operating system on a lost technology laptop [Thinkpad T400](https://www.thinkwiki.org/wiki/Category:T400). 
+
+## Installation
+
+Installation on 32 bit
+
+https://nixos.org/manual/nixos/stable/index.html#sec-installation
+
+## Filesystem Chosen (BTRFS)
+
+Youtube overview on it: https://www.youtube.com/watch?v=iwNg_fusT9A
+
+Encryption: https://www.youtube.com/watch?v=co5V2YmFVEE
+
+
+### FS questions
+
+1. What are subvolumes in BTRFS?
+2. What software/apps is recommended for BTRFS? (Esp. Defrag. Look at OpenSUSE app)
+3. How large my /swap be if I have 64 GB of RAM?
+
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-swapspace
+
+At least 4GB.
+
+https://superuser.com/questions/777907/swap-partition-size-on-a-64-gb-ram-computer-for-memory-intensive-work
+
+16GB
+
+4. What's Impermanence means in NixOS?
+
+https://discourse.nixos.org/t/what-does-impermanence-add-over-built-in-functionality/27939
+
+"The idea of impermanence is that upon reboot, the machine loses its state and in the case of NixOS gets recreated from your configuration (stored in a persistent area of your file system). So any erroneous state changes (accidental or otherwise) are lost between reboots.
+The persistent area will hold some important data - perhaps ssh keys (depending on type) and passwords that you may need beyond your configuration.nix (or flake)
+It does not affect your home folders.
+I found Guekka’s blog are good resource - [NixOS as a server, part 1: Impermanence | Guekka's blog](https://guekka.github.io/nixos-server-1/)
+I use it - as much to find out more about it as anything else.
+If it interests you, try on a spare machine first."
+
+--  Damage May 7, 2023, 7:45pm 2 
+
+### NixOS's Wiki BTRFS layout recommendations
+
+[https://nixos.wiki/wiki/Btrfs](https://nixos.wiki/wiki/Btrfs)
+
+#5: How do you encrypt?
+
+https://wiki.nixos.org/wiki/Btrfs#Installation_with_encryption
