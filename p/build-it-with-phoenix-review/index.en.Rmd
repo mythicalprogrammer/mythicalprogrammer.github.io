@@ -1,0 +1,75 @@
+---
+title: Build It with Phoenix Review
+author: Anthony Quoc Anh Doan
+date: '2024-12-05'
+slug: build-it-with-phoenix-review
+categories:
+  - Web Development
+tags:
+  - Elixir
+  - Phoenix
+description: ~
+image: biwp.png
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+## Introduction
+
+I bought, ["Build It with Phoenix" by Geoffrey Lessel](builditwithphoenix.com) on 2023-08-2023 on sale.
+
+I didn't start on this until 2024-11-17 and finished it 2024-12-04.
+
+It's a program with videos and github codes to teach Phoenix and liveview.
+
+## Outline
+
+### Pros
+
+* Teaches and goes into the mindset of how to debug
+* How to read the document
+* How Phoenix Auth generator works and how to use it
+* How to upkeep a Phoenix project (Elixir in general too)
+
+### Cons
+
+* Not in depth about liveview and Phoenix.
+* A tad outdated still workable (`phx-update="append"`)
+
+## Pros
+
+### Teaches and goes into the mindset of how to debug
+
+* `iex`
+* ecto debug with `iex`
+* how to read error message and track down the line of codes that's causing it
+* `IO.inspect`
+
+### How to upkeep a Phoenix project (Elixir in general too)
+
+* `mix hex.outdated`
+* `mix hex.clean --all`
+* `mix hex.update --all`
+* `mix clean`
+* `mix compile`
+
+### Cons
+
+It's not as in depth as, ["Real-Time Phoenix" by Stephen Bussey](https://pragprog.com/titles/sbsockets/real-time-phoenix/).
+
+## Conclusion
+
+Overall, a great introduction to Phoenix. I have a decent amount of experience 
+of Phoenix, but I learned quite a bit.
+
+The biggest thing I like was how to think about context.
+
+It gave me a gentle introduction to liveview.
+
+It's a good first step into Phoenix and liveview and would recommend it.
+
+It's a bit tad expensive though at $129. 
+
+I hope Geo will update it with liveview version 1.0. 
