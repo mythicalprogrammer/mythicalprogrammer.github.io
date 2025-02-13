@@ -226,14 +226,11 @@ symbol_daily_performance <-
     sym_color <- "gray"
     sym_icon <- "ellipsis-horizontal"
     sym_value <- ""
-    # sym_value <- "➡️"
     if (sym$symbol_move_return > 0) {
       sym_color <- "success"
-      # sym_value <- "⬆️"
       sym_icon <- "trending-up"
     } else if (sym$symbol_move_return < 0) {
       sym_color <- "danger"
-      # sym_value <- "⬇️"
       sym_icon <- "trending-down"
     }
     bs4ValueBox(
@@ -333,59 +330,60 @@ vixValueBoxUI <- function(id) {
 
 vixValueBoxServer <- function(id) {
   moduleServer(id, function(input, output, session) {
-    vix <-
+    vix <- reactive(
       tq_get(
         "^VIX",
         from = lubridate::today() - 7,
         to = lubridate::today() + lubridate::days(1)
       ) %>%
-      slice_tail(n = 1) %>%
-      mutate(
-        symbol = "VIX",
-        close = round(close, digits = 2)
-      ) %>%
-      select(close)
+        slice_tail(n = 1) %>%
+        mutate(
+          symbol = "VIX",
+          close = round(close, digits = 2)
+        ) %>%
+        select(close)
+    )
 
     vix_subtitle <- "VIX"
 
-    # 0-15: This can indicate a certain amount of optimism in the market as well as very low volatility.
-    if (vix >= 0 & vix <= 15) {
-      vix_subtitle <-
-        paste("VIX: ", vix, " certain amount of optimism and very low volatility 🐮")
-      vix_subtitle2 <-
-        paste("Certain amount of optimism and very low volatility 🐮")
-      color <- "success"
-      icon <- "happy"
-      # 15-25: This can indicate that there is a certain amount of volatility, but nothing extreme.
-    } else if (vix > 15 & vix <= 25) {
-      vix_subtitle <-
-        paste("VIX: ", vix, " certain amount of volatility 🦬")
-      vix_subtitle2 <-
-        paste("Certain amount of volatility 🦬")
-      color <- "success"
-      color <- "success"
-      icon <- "happy"
-      # 25-30: This can indicate that there is a certain amount of market turbulence and volatility is increasing.
-    } else if (vix > 25 & vix <= 30) {
-      vix_subtitle <-
-        paste("VIX: ", vix, " certain amount of market turbulence and volatility is increasing volatility ✈️")
-      vix_subtitle2 <-
-        paste("Certain amount of market turbulence and volatility is increasing volatility ✈️")
-      color <- "warning"
-      icon <- "sad"
-      # 30 and over: This can indicate that the market is highly volatile and there may be some extreme swings soon.
-    } else if (vix > 30) {
-      vix_subtitle <-
-        paste("VIX: ", vix, " highly volatile and extreme swings 🐻")
-      vix_subtitle2 <-
-        paste("Highly volatile and extreme swings 🐻")
-      color <- "danger"
-      icon <- "skull"
-    }
 
     output$vix_score <- renderbs4ValueBox({
+      # 0-15: This can indicate a certain amount of optimism in the market as well as very low volatility.
+      if (vix() >= 0 & vix() <= 15) {
+        vix_subtitle <-
+          paste0("VIX: ", vix(), " certain amount of optimism and very low volatility 🐮")
+        vix_subtitle2 <-
+          paste0("Certain amount of optimism and very low volatility 🐮")
+        color <- "success"
+        icon <- "happy"
+        # 15-25: This can indicate that there is a certain amount of volatility, but nothing extreme.
+      } else if (vix() > 15 & vix() <= 25) {
+        vix_subtitle <-
+          paste0("VIX: ", vix(), " certain amount of volatility 🦬")
+        vix_subtitle2 <-
+          paste0("Certain amount of volatility 🦬")
+        color <- "success"
+        color <- "success"
+        icon <- "happy"
+        # 25-30: This can indicate that there is a certain amount of market turbulence and volatility is increasing.
+      } else if (vix() > 25 & vix() <= 30) {
+        vix_subtitle <-
+          paste0("VIX: ", vix(), " certain amount of market turbulence and volatility is increasing volatility ✈️")
+        vix_subtitle2 <-
+          paste0("Certain amount of market turbulence and volatility is increasing volatility ✈️")
+        color <- "warning"
+        icon <- "sad"
+        # 30 and over: This can indicate that the market is highly volatile and there may be some extreme swings soon.
+      } else if (vix() > 30) {
+        vix_subtitle <-
+          paste0("VIX: ", vix(), " highly volatile and extreme swings 🐻")
+        vix_subtitle2 <-
+          paste0("Highly volatile and extreme swings 🐻")
+        color <- "danger"
+        icon <- "skull"
+      }
       bs4ValueBox(
-        value = tags$p(paste("VIX: ", vix), style = "font-size: 150%;"),
+        value = tags$p(paste("VIX: ", vix()), style = "font-size: 150%;"),
         subtitle = vix_subtitle2,
         color = color,
         icon = ionicon(icon)

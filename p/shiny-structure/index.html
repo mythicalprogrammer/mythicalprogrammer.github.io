@@ -862,9 +862,6 @@ Template for server."><meta name="twitter:card" content="summary_large_image">
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">43
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">44
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">45
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">46
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">47
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">48
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>symbol_daily_performance <span style="color:#719e07">&lt;-</span>
@@ -894,14 +891,11 @@ Template for server."><meta name="twitter:card" content="summary_large_image">
 </span></span><span style="display:flex;"><span>    sym_color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;gray&#34;</span>
 </span></span><span style="display:flex;"><span>    sym_icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;ellipsis-horizontal&#34;</span>
 </span></span><span style="display:flex;"><span>    sym_value <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#586e75"># sym_value &lt;- &#34;➡️&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#268bd2">if </span>(sym<span style="color:#719e07">$</span>symbol_move_return <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">0</span>) {
 </span></span><span style="display:flex;"><span>      sym_color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># sym_value &lt;- &#34;⬆️&#34;</span>
 </span></span><span style="display:flex;"><span>      sym_icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;trending-up&#34;</span>
 </span></span><span style="display:flex;"><span>    } else <span style="color:#268bd2">if </span>(sym<span style="color:#719e07">$</span>symbol_move_return <span style="color:#719e07">&lt;</span> <span style="color:#2aa198">0</span>) {
 </span></span><span style="display:flex;"><span>      sym_color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;danger&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># sym_value &lt;- &#34;⬇️&#34;</span>
 </span></span><span style="display:flex;"><span>      sym_icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;trending-down&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#268bd2">bs4ValueBox</span>(
@@ -1123,6 +1117,7 @@ Template for server."><meta name="twitter:card" content="summary_large_image">
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">69
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">70
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">72
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#268bd2">library</span>(shiny)
@@ -1136,59 +1131,60 @@ Template for server."><meta name="twitter:card" content="summary_large_image">
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>vixValueBoxServer <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(id) {
 </span></span><span style="display:flex;"><span>  <span style="color:#268bd2">moduleServer</span>(id, <span style="color:#268bd2">function</span>(input, output, session) {
-</span></span><span style="display:flex;"><span>    vix <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>    vix <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">reactive</span>(
 </span></span><span style="display:flex;"><span>      <span style="color:#268bd2">tq_get</span>(
 </span></span><span style="display:flex;"><span>        <span style="color:#2aa198">&#34;^VIX&#34;</span>,
 </span></span><span style="display:flex;"><span>        from <span style="color:#719e07">=</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">today</span>() <span style="color:#719e07">-</span> <span style="color:#2aa198">7</span>,
 </span></span><span style="display:flex;"><span>        to <span style="color:#719e07">=</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">today</span>() <span style="color:#719e07">+</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">days</span>(<span style="color:#2aa198">1</span>)
 </span></span><span style="display:flex;"><span>      ) <span style="color:#719e07">%&gt;%</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">slice_tail</span>(n <span style="color:#719e07">=</span> <span style="color:#2aa198">1</span>) <span style="color:#719e07">%&gt;%</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">mutate</span>(
-</span></span><span style="display:flex;"><span>        symbol <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;VIX&#34;</span>,
-</span></span><span style="display:flex;"><span>        close <span style="color:#719e07">=</span> <span style="color:#268bd2">round</span>(close, digits <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>)
-</span></span><span style="display:flex;"><span>      ) <span style="color:#719e07">%&gt;%</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">select</span>(close)
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">slice_tail</span>(n <span style="color:#719e07">=</span> <span style="color:#2aa198">1</span>) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">mutate</span>(
+</span></span><span style="display:flex;"><span>          symbol <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;VIX&#34;</span>,
+</span></span><span style="display:flex;"><span>          close <span style="color:#719e07">=</span> <span style="color:#268bd2">round</span>(close, digits <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>)
+</span></span><span style="display:flex;"><span>        ) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">select</span>(close)
+</span></span><span style="display:flex;"><span>    )
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    vix_subtitle <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;VIX&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#586e75"># 0-15: This can indicate a certain amount of optimism in the market as well as very low volatility.</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">if </span>(vix <span style="color:#719e07">&gt;=</span> <span style="color:#2aa198">0</span> <span style="color:#719e07">&amp;</span> vix <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">15</span>) {
-</span></span><span style="display:flex;"><span>      vix_subtitle <span style="color:#719e07">&lt;-</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix, <span style="color:#2aa198">&#34; certain amount of optimism and very low volatility 🐮&#34;</span>)
-</span></span><span style="display:flex;"><span>      vix_subtitle2 <span style="color:#719e07">&lt;-</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Certain amount of optimism and very low volatility 🐮&#34;</span>)
-</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
-</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;happy&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># 15-25: This can indicate that there is a certain amount of volatility, but nothing extreme.</span>
-</span></span><span style="display:flex;"><span>    } else <span style="color:#268bd2">if </span>(vix <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">15</span> <span style="color:#719e07">&amp;</span> vix <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">25</span>) {
-</span></span><span style="display:flex;"><span>      vix_subtitle <span style="color:#719e07">&lt;-</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix, <span style="color:#2aa198">&#34; certain amount of volatility 🦬&#34;</span>)
-</span></span><span style="display:flex;"><span>      vix_subtitle2 <span style="color:#719e07">&lt;-</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Certain amount of volatility 🦬&#34;</span>)
-</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
-</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
-</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;happy&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># 25-30: This can indicate that there is a certain amount of market turbulence and volatility is increasing.</span>
-</span></span><span style="display:flex;"><span>    } else <span style="color:#268bd2">if </span>(vix <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">25</span> <span style="color:#719e07">&amp;</span> vix <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">30</span>) {
-</span></span><span style="display:flex;"><span>      vix_subtitle <span style="color:#719e07">&lt;-</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix, <span style="color:#2aa198">&#34; certain amount of market turbulence and volatility is increasing volatility ✈️&#34;</span>)
-</span></span><span style="display:flex;"><span>      vix_subtitle2 <span style="color:#719e07">&lt;-</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Certain amount of market turbulence and volatility is increasing volatility ✈️&#34;</span>)
-</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;warning&#34;</span>
-</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;sad&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># 30 and over: This can indicate that the market is highly volatile and there may be some extreme swings soon.</span>
-</span></span><span style="display:flex;"><span>    } else <span style="color:#268bd2">if </span>(vix <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">30</span>) {
-</span></span><span style="display:flex;"><span>      vix_subtitle <span style="color:#719e07">&lt;-</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix, <span style="color:#2aa198">&#34; highly volatile and extreme swings 🐻&#34;</span>)
-</span></span><span style="display:flex;"><span>      vix_subtitle2 <span style="color:#719e07">&lt;-</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Highly volatile and extreme swings 🐻&#34;</span>)
-</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;danger&#34;</span>
-</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;skull&#34;</span>
-</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    output<span style="color:#719e07">$</span>vix_score <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">renderbs4ValueBox</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># 0-15: This can indicate a certain amount of optimism in the market as well as very low volatility.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">if </span>(<span style="color:#268bd2">vix</span>() <span style="color:#719e07">&gt;=</span> <span style="color:#2aa198">0</span> <span style="color:#719e07">&amp;</span> <span style="color:#268bd2">vix</span>() <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">15</span>) {
+</span></span><span style="display:flex;"><span>        vix_subtitle <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste0</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, <span style="color:#268bd2">vix</span>(), <span style="color:#2aa198">&#34; certain amount of optimism and very low volatility 🐮&#34;</span>)
+</span></span><span style="display:flex;"><span>        vix_subtitle2 <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste0</span>(<span style="color:#2aa198">&#34;Certain amount of optimism and very low volatility 🐮&#34;</span>)
+</span></span><span style="display:flex;"><span>        color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>        icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;happy&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#586e75"># 15-25: This can indicate that there is a certain amount of volatility, but nothing extreme.</span>
+</span></span><span style="display:flex;"><span>      } else <span style="color:#268bd2">if </span>(<span style="color:#268bd2">vix</span>() <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">15</span> <span style="color:#719e07">&amp;</span> <span style="color:#268bd2">vix</span>() <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">25</span>) {
+</span></span><span style="display:flex;"><span>        vix_subtitle <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste0</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, <span style="color:#268bd2">vix</span>(), <span style="color:#2aa198">&#34; certain amount of volatility 🦬&#34;</span>)
+</span></span><span style="display:flex;"><span>        vix_subtitle2 <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste0</span>(<span style="color:#2aa198">&#34;Certain amount of volatility 🦬&#34;</span>)
+</span></span><span style="display:flex;"><span>        color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>        color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>        icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;happy&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#586e75"># 25-30: This can indicate that there is a certain amount of market turbulence and volatility is increasing.</span>
+</span></span><span style="display:flex;"><span>      } else <span style="color:#268bd2">if </span>(<span style="color:#268bd2">vix</span>() <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">25</span> <span style="color:#719e07">&amp;</span> <span style="color:#268bd2">vix</span>() <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">30</span>) {
+</span></span><span style="display:flex;"><span>        vix_subtitle <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste0</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, <span style="color:#268bd2">vix</span>(), <span style="color:#2aa198">&#34; certain amount of market turbulence and volatility is increasing volatility ✈️&#34;</span>)
+</span></span><span style="display:flex;"><span>        vix_subtitle2 <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste0</span>(<span style="color:#2aa198">&#34;Certain amount of market turbulence and volatility is increasing volatility ✈️&#34;</span>)
+</span></span><span style="display:flex;"><span>        color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;warning&#34;</span>
+</span></span><span style="display:flex;"><span>        icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;sad&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#586e75"># 30 and over: This can indicate that the market is highly volatile and there may be some extreme swings soon.</span>
+</span></span><span style="display:flex;"><span>      } else <span style="color:#268bd2">if </span>(<span style="color:#268bd2">vix</span>() <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">30</span>) {
+</span></span><span style="display:flex;"><span>        vix_subtitle <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste0</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, <span style="color:#268bd2">vix</span>(), <span style="color:#2aa198">&#34; highly volatile and extreme swings 🐻&#34;</span>)
+</span></span><span style="display:flex;"><span>        vix_subtitle2 <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste0</span>(<span style="color:#2aa198">&#34;Highly volatile and extreme swings 🐻&#34;</span>)
+</span></span><span style="display:flex;"><span>        color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;danger&#34;</span>
+</span></span><span style="display:flex;"><span>        icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;skull&#34;</span>
+</span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>      <span style="color:#268bd2">bs4ValueBox</span>(
-</span></span><span style="display:flex;"><span>        value <span style="color:#719e07">=</span> tags<span style="color:#719e07">$</span><span style="color:#268bd2">p</span>(<span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix), style <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;font-size: 150%;&#34;</span>),
+</span></span><span style="display:flex;"><span>        value <span style="color:#719e07">=</span> tags<span style="color:#719e07">$</span><span style="color:#268bd2">p</span>(<span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, <span style="color:#268bd2">vix</span>()), style <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;font-size: 150%;&#34;</span>),
 </span></span><span style="display:flex;"><span>        subtitle <span style="color:#719e07">=</span> vix_subtitle2,
 </span></span><span style="display:flex;"><span>        color <span style="color:#719e07">=</span> color,
 </span></span><span style="display:flex;"><span>        icon <span style="color:#719e07">=</span> <span style="color:#268bd2">ionicon</span>(icon)
