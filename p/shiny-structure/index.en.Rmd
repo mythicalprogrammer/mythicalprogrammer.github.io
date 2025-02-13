@@ -1,0 +1,407 @@
+---
+title: Shiny Structure
+author: Anthony Quoc Anh Doan
+date: '2025-02-12'
+slug: shiny-structure
+categories:
+  - Dashboard
+  - R
+  - Shiny
+tags:
+  - R
+  - Dashboard
+  - Shiny
+description: ~
+image: orbs-4967554_1280.jpg 
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Introduction
+
+This article outlines how I structure my [**R Shiny**](https://shiny.posit.co/) codebase. Whenever I start a new Shiny application, I use the following structure:
+
+```
+modules/
+utils/
+ui.R
+server.R
+global.R
+```
+## Separation of UI Logic and Server Logic
+
+In [Mastering Shiny by Hadley Wickham](mastering-shiny.org), the *ui* and *server* logic are combined in `app.R`. However, I prefer to separate them into `ui.R` and `server.R` for better organization.
+
+### Template for `server.R`
+
+```r
+library(shiny)
+library(bs4Dash)
+
+# Define server logic
+server <- function(input, output) {
+ set.seed(122) 
+}
+```
+
+I always set a seed for reproducibility, ensuring consistency in functions that involve pseudo-randomness (e.g., random sampling).
+
+### Example of `ui.R`
+
+```r
+library(shiny)
+library(bs4Dash)
+library(fresh)
+
+# Sidebar -----------------------------------------------------------------
+
+sidebar <- dashboardSidebar(
+  sidebarMenu(
+    menuItem("Home", tabName = "home", icon = icon("home"))
+  )
+)
+
+
+# Body --------------------------------------------------------------------
+
+body <- dashboardBody(
+  fresh::use_theme(theme), # theme is defined in global.R
+  tabItems(
+    tabItem(
+      tabName = "home",
+      fluidRow(
+      )
+    )
+  )
+)
+
+
+# Header ------------------------------------------------------------------
+
+header <- dashboardHeader(title = "TOMIC")
+
+# Dashboard Page ----------------------------------------------------------
+
+# Define UI for application
+ui <- dashboardPage(
+  freshTheme = theme,
+  header,
+  sidebar,
+  body
+)
+```
+
+This setup leverages the [fresh](https://github.com/dreamRs/fresh) package for theming alongside [bs4Dash](https://bs4dash.rinterface.com/).
+
+## Global Functions and Variables
+
+The [`global.R` file](https://shiny.posit.co/r/articles/improve/scoping/) is automatically recognized by **Shiny**. It stores **global variables and functions** used throughout the application. For specific functions, I place them in the `utils/` directory.
+
+
+### Template for `global.R`
+
+```r
+library(fresh)
+
+# Source ------------------------------------------------------------------
+
+## utils
+util_file_names <- list.files(path = "utils/", pattern = "\\.R$", full.names = TRUE)
+lapply(util_file_names, source)
+
+## modules
+mods_file_names <- list.files(path = "modules/", pattern = "\\.R$", full.names = TRUE)
+lapply(mods_file_names, source)
+```
+This ensures all **modules** and **utility functions** are automatically loaded.
+
+### Example of `global.R`
+
+```r
+library(fresh)
+
+# Source ------------------------------------------------------------------
+
+## utils
+util_file_names <- list.files(path = "utils/", pattern = "\\.R$", full.names = TRUE)
+lapply(util_file_names, source)
+
+## modules
+mods_file_names <- list.files(path = "modules/", pattern = "\\.R$", full.names = TRUE)
+lapply(mods_file_names, source)
+
+# Theme -------------------------------------------------------------------
+
+# Create the theme
+theme <- fresh::create_theme(
+  bs4dash_color(
+  #   green = "#3fff2d",
+  #   blue = "#2635ff",
+  #   red = "	#ff2b2b",
+  #   yellow = "#feff6e",
+  #   fuchsia = "#ff5bf8",
+  #   navy = "#374c92",
+  #   purple = "#615cbf",
+  #   maroon = "#b659c9",
+  #   lightblue = "#5691cc"
+    lightblue = "#434C5E"
+  ),
+  bs4dash_sidebar_light(
+    bg = "#D8DEE9",
+    hover_bg = "#81A1C1",
+    color = "#2E3440"
+  ),
+  bs4dash_sidebar_dark(
+    bg = "#2E3440",
+    hover_bg = "#81A1C1",
+    color = "#D8DEE9"
+  ),
+  bs4dash_vars(
+    content_bg = "#FFF",
+    box_bg = "#D8DEE9", 
+    info_box_bg = "#D8DEE9"
+  )
+)
+
+# Global Variables --------------------------------------------------------
+
+watchlist <- c("MARA", "NVDA", "CELH", "BITX", "PL")
+markets <- c("^NDX", "^GSPC", "^DJI", "^TNX") # Nasdaq100 and SP500
+
+# Functions ----
+get_yearly_data <- function(ticker) {
+  data <- tq_get(ticker, get = "stock.prices", complete_cases = TRUE)
+  data %>% filter(date >= today() - months(12))
+}
+get_weekly_data <- function(ticker) {
+  data <- tq_get(ticker, get = "stock.prices", complete_cases = TRUE)
+  data %>% filter(date >= today() - weeks(1))
+}
+
+plot_index_graph <- function(data) {
+  ggplotly({
+    data %>%
+      ggplot(aes(date, close)) +
+      geom_line(size = 0.4, alpha = .9) +
+      xlab("Time") +
+      ylab("Points") +
+      theme_minimal()
+  })
+}
+```
+
+The `theme` variable is referenced in **ui.R** to apply consistent styling.
+
+## Utilities (`utils/`) 
+
+### Example: `utils/ticker_utils.R`
+
+```r
+symbol_daily_performance <-
+  function(ticker,
+           sym_name,
+           sym_emoji = "",
+           value_font_size = "150%") {
+    value_font_size <- paste("font-size: ", value_font_size, ";", sep = "")
+    sym <-
+      tq_get(
+        ticker,
+        from = lubridate::today() - 7,
+        to = lubridate::today() + lubridate::days(1)
+      ) %>%
+      group_by(symbol) %>%
+      slice_tail(n = 2) %>%
+      mutate(
+        symbol_move = round(close - lag(close, 1), digits = 2),
+        symbol_move_return = round(
+          (close - lag(close, 1)) / lag(close, 1) * 100,
+          digits = 2
+        )
+      ) %>%
+      drop_na(symbol_move) %>%
+      select(symbol, date, symbol_move, symbol_move_return)
+    sym_subtitle <- paste("+", sym$symbol_move, " (+", sym$symbol_move_return, "%)", sep = "")
+    sym_color <- "gray"
+    sym_icon <- "ellipsis-horizontal"
+    sym_value <- ""
+    # sym_value <- "➡️"
+    if (sym$symbol_move_return > 0) {
+      sym_color <- "success"
+      # sym_value <- "⬆️"
+      sym_icon <- "trending-up"
+    } else if (sym$symbol_move_return < 0) {
+      sym_color <- "danger"
+      # sym_value <- "⬇️"
+      sym_icon <- "trending-down"
+    }
+    bs4ValueBox(
+      value =
+        tags$p(
+          paste(sym_name, " ", sym_value, " ", sym_emoji),
+          style = value_font_size
+        ),
+      subtitle = sym_subtitle,
+      color = sym_color,
+      icon = ionicon(sym_icon)
+    )
+  }
+```
+
+## Modules (`modules/`) 
+
+[Shiny **modules**](https://mastering-shiny.org/scaling-modules.html) allow for better reusability and maintainability.
+
+### Example: `modules\watchlist_mod.R`
+
+```r
+watchlistUI <- function(id) {
+  ns <- NS(id)
+  tagList(
+    box(
+      title = uiOutput(ns("watchlist_placeholder")),
+      id = ns("watchlist"),
+      DT::DTOutput(ns("watchlist"))
+    )
+  )
+}
+
+watchlistServer <- function(id, watchlist) {
+  moduleServer(
+    id,
+    function(input, output, session) {
+      # watch list
+      watchlist_data <-
+        tq_get(
+          watchlist,
+          from = lubridate::today() - 7,
+          to = lubridate::today() + lubridate::days(1)
+        ) %>%
+        group_by(symbol) %>%
+        slice_tail(n = 2) %>%
+        mutate(
+          symbol_move = round(close - lag(close, 1), digits = 2),
+          symbol_move_return = round(
+            (close - lag(close, 1)) / lag(close, 1) * 100,
+            digits = 2
+          ),
+          close = round(close, digits = 2)
+        ) %>%
+        drop_na(symbol_move) %>%
+        select(symbol, date, symbol_move, symbol_move_return, close)
+
+      output$watchlist_placeholder <- renderUI({
+        title <- paste("Watchlist ", watchlist_data$date[1])
+      })
+
+      watchlist_data2 <- watchlist_data %>%
+        select(symbol, symbol_move, symbol_move_return, close)
+      watchlist_dt <- datatable(
+        watchlist_data2,
+        options = list(
+          rowCallback = JS('
+            function(nRow, aData) {
+              if (Number(aData[3]) < 0) {
+                $(nRow).css("background-color", "#ff99bb")
+              } else if (Number(aData[3]) > 1) {
+                $(nRow).css("background-color", "#d9e8a7")
+              }
+          }')
+        ),
+        colnames = c("sym", "$", "%", "close")
+      )
+      output$watchlist <- DT::renderDataTable(
+        watchlist_dt
+      )
+    }
+  )
+}
+```
+
+### Another example: `modules\vix_value_box_mod.R`
+
+```r
+library(shiny)
+
+vixValueBoxUI <- function(id) {
+  ns <- NS(id)
+  tagList(
+    valueBoxOutput(ns("vix_score"))
+  )
+}
+
+vixValueBoxServer <- function(id) {
+  moduleServer(id, function(input, output, session) {
+    vix <-
+      tq_get(
+        "^VIX",
+        from = lubridate::today() - 7,
+        to = lubridate::today() + lubridate::days(1)
+      ) %>%
+      slice_tail(n = 1) %>%
+      mutate(
+        symbol = "VIX",
+        close = round(close, digits = 2)
+      ) %>%
+      select(close)
+
+    vix_subtitle <- "VIX"
+
+    # 0-15: This can indicate a certain amount of optimism in the market as well as very low volatility.
+    if (vix >= 0 & vix <= 15) {
+      vix_subtitle <-
+        paste("VIX: ", vix, " certain amount of optimism and very low volatility 🐮")
+      vix_subtitle2 <-
+        paste("Certain amount of optimism and very low volatility 🐮")
+      color <- "success"
+      icon <- "happy"
+      # 15-25: This can indicate that there is a certain amount of volatility, but nothing extreme.
+    } else if (vix > 15 & vix <= 25) {
+      vix_subtitle <-
+        paste("VIX: ", vix, " certain amount of volatility 🦬")
+      vix_subtitle2 <-
+        paste("Certain amount of volatility 🦬")
+      color <- "success"
+      color <- "success"
+      icon <- "happy"
+      # 25-30: This can indicate that there is a certain amount of market turbulence and volatility is increasing.
+    } else if (vix > 25 & vix <= 30) {
+      vix_subtitle <-
+        paste("VIX: ", vix, " certain amount of market turbulence and volatility is increasing volatility ✈️")
+      vix_subtitle2 <-
+        paste("Certain amount of market turbulence and volatility is increasing volatility ✈️")
+      color <- "warning"
+      icon <- "sad"
+      # 30 and over: This can indicate that the market is highly volatile and there may be some extreme swings soon.
+    } else if (vix > 30) {
+      vix_subtitle <-
+        paste("VIX: ", vix, " highly volatile and extreme swings 🐻")
+      vix_subtitle2 <-
+        paste("Highly volatile and extreme swings 🐻")
+      color <- "danger"
+      icon <- "skull"
+    }
+
+    output$vix_score <- renderbs4ValueBox({
+      bs4ValueBox(
+        value = tags$p(paste("VIX: ", vix), style = "font-size: 150%;"),
+        subtitle = vix_subtitle2,
+        color = color,
+        icon = ionicon(icon)
+      )
+    })
+  })
+}
+```
+
+## Conclusion
+
+This structure keeps my **Shiny** applications modular, maintainable, and scalable. By separating **UI logic**, **server logic**, **global functions**, **utility functions**, and **modules**, I ensure better **readability and reusability** across projects.
+
+
+
+## Credits
+
+### Pictures
+1. [Glow by Jill Wellington](https://pixabay.com/photos/orbs-orbeez-glow-colorful-spheres-4967554/)

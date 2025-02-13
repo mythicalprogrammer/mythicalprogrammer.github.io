@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction This article outlines how I structure my R Shiny codebase. Whenever I start a new Shiny application, I use the following structure:
+1 2 3 4 5 modules/ utils/ ui.R server.R global.R Separation of UI Logic and Server Logic In Mastering Shiny by Hadley Wickham, the ui and server logic are combined in app.R. However, I prefer to separate them into ui.R and server.R for better organization.
+Template for server.'>
+<title>Shiny Structure</title>
+
+<link rel='canonical' href='https://mythicalprogrammer.github.io/p/shiny-structure/'>
+
+<link rel="stylesheet" href="/scss/style.min.ae544f6e875175eb0f852537f03e029a61665cc22ad0fd93bf333e7c3bee5a8c.css"><meta property='og:title' content='Shiny Structure'>
+<meta property='og:description' content='Introduction This article outlines how I structure my R Shiny codebase. Whenever I start a new Shiny application, I use the following structure:
+1 2 3 4 5 modules/ utils/ ui.R server.R global.R Separation of UI Logic and Server Logic In Mastering Shiny by Hadley Wickham, the ui and server logic are combined in app.R. However, I prefer to separate them into ui.R and server.R for better organization.
+Template for server.'>
+<meta property='og:url' content='https://mythicalprogrammer.github.io/p/shiny-structure/'>
+<meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='R' /><meta property='article:tag' content='Dashboard' /><meta property='article:tag' content='Shiny' /><meta property='article:published_time' content='2025-02-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-12T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/shiny-structure/orbs-4967554_1280.jpg' />
+<meta name="twitter:site" content="@AnthonyDoan20">
+    <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="Shiny Structure">
+<meta name="twitter:description" content="Introduction This article outlines how I structure my R Shiny codebase. Whenever I start a new Shiny application, I use the following structure:
+1 2 3 4 5 modules/ utils/ ui.R server.R global.R Separation of UI Logic and Server Logic In Mastering Shiny by Hadley Wickham, the ui and server logic are combined in app.R. However, I prefer to separate them into ui.R and server.R for better organization.
+Template for server."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/shiny-structure/orbs-4967554_1280.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hud04d226d349438d5d6dbe19a25343199_44779_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</a></h1>
+            <h2 class="site-description">An instrument of peace. Where there is hatred, let me sow love; where there is doubt, let&#39;s get some data and build a model.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mythicalprogrammer'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/anthony-anh-quoc-doan-a7234321/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+  <path d="M8 11l0 5" />
+  <path d="M8 8l0 .01" />
+  <path d="M12 16l0 -5" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://mastodon.social/@anthony_doan'
+                        target="_blank"
+                        title="Mastodon"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-mastodon" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z" />
+  <path d="M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.reddit.com/user/anthony_doan/'
+                        target="_blank"
+                        title="Reddit"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-reddit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 8c2.648 0 5.028 .826 6.675 2.14a2.5 2.5 0 0 1 2.326 4.36c0 3.59 -4.03 6.5 -9 6.5c-4.875 0 -8.845 -2.8 -9 -6.294l-1 -.206a2.5 2.5 0 0 1 2.326 -4.36c1.646 -1.313 4.026 -2.14 6.674 -2.14z" />
+  <path d="M12 8l1 -5l6 1" />
+  <path d="M19 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+  <circle cx="9" cy="13" r=".5" fill="currentColor" />
+  <circle cx="15" cy="13" r=".5" fill="currentColor" />
+  <path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://stackoverflow.com/users/339405/mythicalprogrammer'
+                        target="_blank"
+                        title="StackOverflow"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-stackoverflow" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" />
+  <path d="M8 16h8" />
+  <path d="M8.322 12.582l7.956 .836" />
+  <path d="M8.787 9.168l7.826 1.664" />
+  <path d="M10.096 5.764l7.608 2.472" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/AnthonyDoan20'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/portfolio' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder-star" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" />
+  <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+</svg>
+                
+                <span>Portfolio</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#separation-of-ui-logic-and-server-logic">Separation of UI Logic and Server Logic</a>
+      <ol>
+        <li><a href="#template-for-serverr">Template for <code>server.R</code></a></li>
+        <li><a href="#example-of-uir">Example of <code>ui.R</code></a></li>
+      </ol>
+    </li>
+    <li><a href="#global-functions-and-variables">Global Functions and Variables</a>
+      <ol>
+        <li><a href="#template-for-globalr">Template for <code>global.R</code></a></li>
+        <li><a href="#example-of-globalr">Example of <code>global.R</code></a></li>
+      </ol>
+    </li>
+    <li><a href="#utilities-utils">Utilities (<code>utils/</code>)</a>
+      <ol>
+        <li><a href="#example-utilsticker_utilsr">Example: <code>utils/ticker_utils.R</code></a></li>
+      </ol>
+    </li>
+    <li><a href="#modules-modules">Modules (<code>modules/</code>)</a>
+      <ol>
+        <li><a href="#example-moduleswatchlist_modr">Example: <code>modules\watchlist_mod.R</code></a></li>
+        <li><a href="#another-example-modulesvix_value_box_modr">Another example: <code>modules\vix_value_box_mod.R</code></a></li>
+      </ol>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#credits">Credits</a>
+      <ol>
+        <li><a href="#pictures">Pictures</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/shiny-structure/">
+                <img src="/p/shiny-structure/orbs-4967554_1280_hu36800eac9aeb58e758f886c59cc62eea_188063_800x0_resize_q75_box.jpg"
+                        srcset="/p/shiny-structure/orbs-4967554_1280_hu36800eac9aeb58e758f886c59cc62eea_188063_800x0_resize_q75_box.jpg 800w, /p/shiny-structure/orbs-4967554_1280_hu36800eac9aeb58e758f886c59cc62eea_188063_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Shiny Structure" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/dashboard/" >
+                Dashboard
+            </a>
+        
+            <a href="/categories/r/" >
+                R
+            </a>
+        
+            <a href="/categories/shiny/" >
+                Shiny
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/shiny-structure/">Shiny Structure</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 12, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction">Introduction</h2>
+<p>This article outlines how I structure my <a class="link" href="https://shiny.posit.co/"  target="_blank" rel="noopener"
+    ><strong>R Shiny</strong></a> codebase. Whenever I start a new Shiny application, I use the following structure:</p>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>modules/
+</span></span><span style="display:flex;"><span>utils/
+</span></span><span style="display:flex;"><span>ui.R
+</span></span><span style="display:flex;"><span>server.R
+</span></span><span style="display:flex;"><span>global.R
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="separation-of-ui-logic-and-server-logic">Separation of UI Logic and Server Logic</h2>
+<p>In <a class="link" href="mastering-shiny.org" >Mastering Shiny by Hadley Wickham</a>, the <em>ui</em> and <em>server</em> logic are combined in <code>app.R</code>. However, I prefer to separate them into <code>ui.R</code> and <code>server.R</code> for better organization.</p>
+<h3 id="template-for-serverr">Template for <code>server.R</code></h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#268bd2">library</span>(shiny)
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">library</span>(bs4Dash)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Define server logic</span>
+</span></span><span style="display:flex;"><span>server <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(input, output) {
+</span></span><span style="display:flex;"><span> <span style="color:#268bd2">set.seed</span>(<span style="color:#2aa198">122</span>) 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I always set a seed for reproducibility, ensuring consistency in functions that involve pseudo-randomness (e.g., random sampling).</p>
+<h3 id="example-of-uir">Example of <code>ui.R</code></h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">40
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#268bd2">library</span>(shiny)
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">library</span>(bs4Dash)
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">library</span>(fresh)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Sidebar -----------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sidebar <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">dashboardSidebar</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">sidebarMenu</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">menuItem</span>(<span style="color:#2aa198">&#34;Home&#34;</span>, tabName <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;home&#34;</span>, icon <span style="color:#719e07">=</span> <span style="color:#268bd2">icon</span>(<span style="color:#2aa198">&#34;home&#34;</span>))
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Body --------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>body <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">dashboardBody</span>(
+</span></span><span style="display:flex;"><span>  fresh<span style="color:#719e07">::</span><span style="color:#268bd2">use_theme</span>(theme), <span style="color:#586e75"># theme is defined in global.R</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">tabItems</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">tabItem</span>(
+</span></span><span style="display:flex;"><span>      tabName <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;home&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">fluidRow</span>(
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Header ------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>header <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">dashboardHeader</span>(title <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;TOMIC&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Dashboard Page ----------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Define UI for application</span>
+</span></span><span style="display:flex;"><span>ui <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">dashboardPage</span>(
+</span></span><span style="display:flex;"><span>  freshTheme <span style="color:#719e07">=</span> theme,
+</span></span><span style="display:flex;"><span>  header,
+</span></span><span style="display:flex;"><span>  sidebar,
+</span></span><span style="display:flex;"><span>  body
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This setup leverages the <a class="link" href="https://github.com/dreamRs/fresh"  target="_blank" rel="noopener"
+    >fresh</a> package for theming alongside <a class="link" href="https://bs4dash.rinterface.com/"  target="_blank" rel="noopener"
+    >bs4Dash</a>.</p>
+<h2 id="global-functions-and-variables">Global Functions and Variables</h2>
+<p>The <a class="link" href="https://shiny.posit.co/r/articles/improve/scoping/"  target="_blank" rel="noopener"
+    ><code>global.R</code> file</a> is automatically recognized by <strong>Shiny</strong>. It stores <strong>global variables and functions</strong> used throughout the application. For specific functions, I place them in the <code>utils/</code> directory.</p>
+<h3 id="template-for-globalr">Template for <code>global.R</code></h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#268bd2">library</span>(fresh)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Source ------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">## utils</span>
+</span></span><span style="display:flex;"><span>util_file_names <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">list.files</span>(path <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;utils/&#34;</span>, pattern <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;\\.R$&#34;</span>, full.names <span style="color:#719e07">=</span> <span style="color:#cb4b16">TRUE</span>)
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">lapply</span>(util_file_names, source)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">## modules</span>
+</span></span><span style="display:flex;"><span>mods_file_names <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">list.files</span>(path <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;modules/&#34;</span>, pattern <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;\\.R$&#34;</span>, full.names <span style="color:#719e07">=</span> <span style="color:#cb4b16">TRUE</span>)
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">lapply</span>(mods_file_names, source)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This ensures all <strong>modules</strong> and <strong>utility functions</strong> are automatically loaded.</p>
+<h3 id="example-of-globalr">Example of <code>global.R</code></h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">70
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#268bd2">library</span>(fresh)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Source ------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">## utils</span>
+</span></span><span style="display:flex;"><span>util_file_names <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">list.files</span>(path <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;utils/&#34;</span>, pattern <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;\\.R$&#34;</span>, full.names <span style="color:#719e07">=</span> <span style="color:#cb4b16">TRUE</span>)
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">lapply</span>(util_file_names, source)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75">## modules</span>
+</span></span><span style="display:flex;"><span>mods_file_names <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">list.files</span>(path <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;modules/&#34;</span>, pattern <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;\\.R$&#34;</span>, full.names <span style="color:#719e07">=</span> <span style="color:#cb4b16">TRUE</span>)
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">lapply</span>(mods_file_names, source)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Theme -------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Create the theme</span>
+</span></span><span style="display:flex;"><span>theme <span style="color:#719e07">&lt;-</span> fresh<span style="color:#719e07">::</span><span style="color:#268bd2">create_theme</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">bs4dash_color</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   green = &#34;#3fff2d&#34;,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   blue = &#34;#2635ff&#34;,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   red = &#34;	#ff2b2b&#34;,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   yellow = &#34;#feff6e&#34;,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   fuchsia = &#34;#ff5bf8&#34;,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   navy = &#34;#374c92&#34;,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   purple = &#34;#615cbf&#34;,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   maroon = &#34;#b659c9&#34;,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#586e75">#   lightblue = &#34;#5691cc&#34;</span>
+</span></span><span style="display:flex;"><span>    lightblue <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#434C5E&#34;</span>
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">bs4dash_sidebar_light</span>(
+</span></span><span style="display:flex;"><span>    bg <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#D8DEE9&#34;</span>,
+</span></span><span style="display:flex;"><span>    hover_bg <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#81A1C1&#34;</span>,
+</span></span><span style="display:flex;"><span>    color <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#2E3440&#34;</span>
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">bs4dash_sidebar_dark</span>(
+</span></span><span style="display:flex;"><span>    bg <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#2E3440&#34;</span>,
+</span></span><span style="display:flex;"><span>    hover_bg <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#81A1C1&#34;</span>,
+</span></span><span style="display:flex;"><span>    color <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#D8DEE9&#34;</span>
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">bs4dash_vars</span>(
+</span></span><span style="display:flex;"><span>    content_bg <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#FFF&#34;</span>,
+</span></span><span style="display:flex;"><span>    box_bg <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#D8DEE9&#34;</span>, 
+</span></span><span style="display:flex;"><span>    info_box_bg <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;#D8DEE9&#34;</span>
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Global Variables --------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>watchlist <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">c</span>(<span style="color:#2aa198">&#34;MARA&#34;</span>, <span style="color:#2aa198">&#34;NVDA&#34;</span>, <span style="color:#2aa198">&#34;CELH&#34;</span>, <span style="color:#2aa198">&#34;BITX&#34;</span>, <span style="color:#2aa198">&#34;PL&#34;</span>)
+</span></span><span style="display:flex;"><span>markets <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">c</span>(<span style="color:#2aa198">&#34;^NDX&#34;</span>, <span style="color:#2aa198">&#34;^GSPC&#34;</span>, <span style="color:#2aa198">&#34;^DJI&#34;</span>, <span style="color:#2aa198">&#34;^TNX&#34;</span>) <span style="color:#586e75"># Nasdaq100 and SP500</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#586e75"># Functions ----</span>
+</span></span><span style="display:flex;"><span>get_yearly_data <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(ticker) {
+</span></span><span style="display:flex;"><span>  data <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">tq_get</span>(ticker, get <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;stock.prices&#34;</span>, complete_cases <span style="color:#719e07">=</span> <span style="color:#cb4b16">TRUE</span>)
+</span></span><span style="display:flex;"><span>  data <span style="color:#719e07">%&gt;%</span> <span style="color:#268bd2">filter</span>(date <span style="color:#719e07">&gt;=</span> <span style="color:#268bd2">today</span>() <span style="color:#719e07">-</span> <span style="color:#268bd2">months</span>(<span style="color:#2aa198">12</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>get_weekly_data <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(ticker) {
+</span></span><span style="display:flex;"><span>  data <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">tq_get</span>(ticker, get <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;stock.prices&#34;</span>, complete_cases <span style="color:#719e07">=</span> <span style="color:#cb4b16">TRUE</span>)
+</span></span><span style="display:flex;"><span>  data <span style="color:#719e07">%&gt;%</span> <span style="color:#268bd2">filter</span>(date <span style="color:#719e07">&gt;=</span> <span style="color:#268bd2">today</span>() <span style="color:#719e07">-</span> <span style="color:#268bd2">weeks</span>(<span style="color:#2aa198">1</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plot_index_graph <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(data) {
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">ggplotly</span>({
+</span></span><span style="display:flex;"><span>    data <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">ggplot</span>(<span style="color:#268bd2">aes</span>(date, close)) <span style="color:#719e07">+</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">geom_line</span>(size <span style="color:#719e07">=</span> <span style="color:#2aa198">0.4</span>, alpha <span style="color:#719e07">=</span> <span style="color:#2aa198">.9</span>) <span style="color:#719e07">+</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">xlab</span>(<span style="color:#2aa198">&#34;Time&#34;</span>) <span style="color:#719e07">+</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">ylab</span>(<span style="color:#2aa198">&#34;Points&#34;</span>) <span style="color:#719e07">+</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">theme_minimal</span>()
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>theme</code> variable is referenced in <strong>ui.R</strong> to apply consistent styling.</p>
+<h2 id="utilities-utils">Utilities (<code>utils/</code>)</h2>
+<h3 id="example-utilsticker_utilsr">Example: <code>utils/ticker_utils.R</code></h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">48
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>symbol_daily_performance <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">function</span>(ticker,
+</span></span><span style="display:flex;"><span>           sym_name,
+</span></span><span style="display:flex;"><span>           sym_emoji <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>           value_font_size <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;150%&#34;</span>) {
+</span></span><span style="display:flex;"><span>    value_font_size <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;font-size: &#34;</span>, value_font_size, <span style="color:#2aa198">&#34;;&#34;</span>, sep <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    sym <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">tq_get</span>(
+</span></span><span style="display:flex;"><span>        ticker,
+</span></span><span style="display:flex;"><span>        from <span style="color:#719e07">=</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">today</span>() <span style="color:#719e07">-</span> <span style="color:#2aa198">7</span>,
+</span></span><span style="display:flex;"><span>        to <span style="color:#719e07">=</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">today</span>() <span style="color:#719e07">+</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">days</span>(<span style="color:#2aa198">1</span>)
+</span></span><span style="display:flex;"><span>      ) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">group_by</span>(symbol) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">slice_tail</span>(n <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">mutate</span>(
+</span></span><span style="display:flex;"><span>        symbol_move <span style="color:#719e07">=</span> <span style="color:#268bd2">round</span>(close <span style="color:#719e07">-</span> <span style="color:#268bd2">lag</span>(close, <span style="color:#2aa198">1</span>), digits <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>),
+</span></span><span style="display:flex;"><span>        symbol_move_return <span style="color:#719e07">=</span> <span style="color:#268bd2">round</span>(
+</span></span><span style="display:flex;"><span>          (close <span style="color:#719e07">-</span> <span style="color:#268bd2">lag</span>(close, <span style="color:#2aa198">1</span>)) <span style="color:#719e07">/</span> <span style="color:#268bd2">lag</span>(close, <span style="color:#2aa198">1</span>) <span style="color:#719e07">*</span> <span style="color:#2aa198">100</span>,
+</span></span><span style="display:flex;"><span>          digits <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      ) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">drop_na</span>(symbol_move) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">select</span>(symbol, date, symbol_move, symbol_move_return)
+</span></span><span style="display:flex;"><span>    sym_subtitle <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;+&#34;</span>, sym<span style="color:#719e07">$</span>symbol_move, <span style="color:#2aa198">&#34; (+&#34;</span>, sym<span style="color:#719e07">$</span>symbol_move_return, <span style="color:#2aa198">&#34;%)&#34;</span>, sep <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    sym_color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;gray&#34;</span>
+</span></span><span style="display:flex;"><span>    sym_icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;ellipsis-horizontal&#34;</span>
+</span></span><span style="display:flex;"><span>    sym_value <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#586e75"># sym_value &lt;- &#34;➡️&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">if </span>(sym<span style="color:#719e07">$</span>symbol_move_return <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">0</span>) {
+</span></span><span style="display:flex;"><span>      sym_color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># sym_value &lt;- &#34;⬆️&#34;</span>
+</span></span><span style="display:flex;"><span>      sym_icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;trending-up&#34;</span>
+</span></span><span style="display:flex;"><span>    } else <span style="color:#268bd2">if </span>(sym<span style="color:#719e07">$</span>symbol_move_return <span style="color:#719e07">&lt;</span> <span style="color:#2aa198">0</span>) {
+</span></span><span style="display:flex;"><span>      sym_color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;danger&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># sym_value &lt;- &#34;⬇️&#34;</span>
+</span></span><span style="display:flex;"><span>      sym_icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;trending-down&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">bs4ValueBox</span>(
+</span></span><span style="display:flex;"><span>      value <span style="color:#719e07">=</span>
+</span></span><span style="display:flex;"><span>        tags<span style="color:#719e07">$</span><span style="color:#268bd2">p</span>(
+</span></span><span style="display:flex;"><span>          <span style="color:#268bd2">paste</span>(sym_name, <span style="color:#2aa198">&#34; &#34;</span>, sym_value, <span style="color:#2aa198">&#34; &#34;</span>, sym_emoji),
+</span></span><span style="display:flex;"><span>          style <span style="color:#719e07">=</span> value_font_size
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>      subtitle <span style="color:#719e07">=</span> sym_subtitle,
+</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">=</span> sym_color,
+</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">=</span> <span style="color:#268bd2">ionicon</span>(sym_icon)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="modules-modules">Modules (<code>modules/</code>)</h2>
+<p><a class="link" href="https://mastering-shiny.org/scaling-modules.html"  target="_blank" rel="noopener"
+    >Shiny <strong>modules</strong></a> allow for better reusability and maintainability.</p>
+<h3 id="example-moduleswatchlist_modr">Example: <code>modules\watchlist_mod.R</code></h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">61
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>watchlistUI <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(id) {
+</span></span><span style="display:flex;"><span>  ns <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">NS</span>(id)
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">tagList</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">box</span>(
+</span></span><span style="display:flex;"><span>      title <span style="color:#719e07">=</span> <span style="color:#268bd2">uiOutput</span>(<span style="color:#268bd2">ns</span>(<span style="color:#2aa198">&#34;watchlist_placeholder&#34;</span>)),
+</span></span><span style="display:flex;"><span>      id <span style="color:#719e07">=</span> <span style="color:#268bd2">ns</span>(<span style="color:#2aa198">&#34;watchlist&#34;</span>),
+</span></span><span style="display:flex;"><span>      DT<span style="color:#719e07">::</span><span style="color:#268bd2">DTOutput</span>(<span style="color:#268bd2">ns</span>(<span style="color:#2aa198">&#34;watchlist&#34;</span>))
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>watchlistServer <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(id, watchlist) {
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">moduleServer</span>(
+</span></span><span style="display:flex;"><span>    id,
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">function</span>(input, output, session) {
+</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># watch list</span>
+</span></span><span style="display:flex;"><span>      watchlist_data <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">tq_get</span>(
+</span></span><span style="display:flex;"><span>          watchlist,
+</span></span><span style="display:flex;"><span>          from <span style="color:#719e07">=</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">today</span>() <span style="color:#719e07">-</span> <span style="color:#2aa198">7</span>,
+</span></span><span style="display:flex;"><span>          to <span style="color:#719e07">=</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">today</span>() <span style="color:#719e07">+</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">days</span>(<span style="color:#2aa198">1</span>)
+</span></span><span style="display:flex;"><span>        ) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">group_by</span>(symbol) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">slice_tail</span>(n <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">mutate</span>(
+</span></span><span style="display:flex;"><span>          symbol_move <span style="color:#719e07">=</span> <span style="color:#268bd2">round</span>(close <span style="color:#719e07">-</span> <span style="color:#268bd2">lag</span>(close, <span style="color:#2aa198">1</span>), digits <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>),
+</span></span><span style="display:flex;"><span>          symbol_move_return <span style="color:#719e07">=</span> <span style="color:#268bd2">round</span>(
+</span></span><span style="display:flex;"><span>            (close <span style="color:#719e07">-</span> <span style="color:#268bd2">lag</span>(close, <span style="color:#2aa198">1</span>)) <span style="color:#719e07">/</span> <span style="color:#268bd2">lag</span>(close, <span style="color:#2aa198">1</span>) <span style="color:#719e07">*</span> <span style="color:#2aa198">100</span>,
+</span></span><span style="display:flex;"><span>            digits <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          close <span style="color:#719e07">=</span> <span style="color:#268bd2">round</span>(close, digits <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>)
+</span></span><span style="display:flex;"><span>        ) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">drop_na</span>(symbol_move) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">select</span>(symbol, date, symbol_move, symbol_move_return, close)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      output<span style="color:#719e07">$</span>watchlist_placeholder <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">renderUI</span>({
+</span></span><span style="display:flex;"><span>        title <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Watchlist &#34;</span>, watchlist_data<span style="color:#719e07">$</span>date[1])
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      watchlist_data2 <span style="color:#719e07">&lt;-</span> watchlist_data <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">select</span>(symbol, symbol_move, symbol_move_return, close)
+</span></span><span style="display:flex;"><span>      watchlist_dt <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">datatable</span>(
+</span></span><span style="display:flex;"><span>        watchlist_data2,
+</span></span><span style="display:flex;"><span>        options <span style="color:#719e07">=</span> <span style="color:#268bd2">list</span>(
+</span></span><span style="display:flex;"><span>          rowCallback <span style="color:#719e07">=</span> <span style="color:#268bd2">JS</span>(<span style="color:#2aa198">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">            function(nRow, aData) {
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">              if (Number(aData[3]) &lt; 0) {
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                $(nRow).css(&#34;background-color&#34;, &#34;#ff99bb&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">              } else if (Number(aData[3]) &gt; 1) {
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                $(nRow).css(&#34;background-color&#34;, &#34;#d9e8a7&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">              }
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          }&#39;</span>)
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        colnames <span style="color:#719e07">=</span> <span style="color:#268bd2">c</span>(<span style="color:#2aa198">&#34;sym&#34;</span>, <span style="color:#2aa198">&#34;$&#34;</span>, <span style="color:#2aa198">&#34;%&#34;</span>, <span style="color:#2aa198">&#34;close&#34;</span>)
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>      output<span style="color:#719e07">$</span>watchlist <span style="color:#719e07">&lt;-</span> DT<span style="color:#719e07">::</span><span style="color:#268bd2">renderDataTable</span>(
+</span></span><span style="display:flex;"><span>        watchlist_dt
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="another-example-modulesvix_value_box_modr">Another example: <code>modules\vix_value_box_mod.R</code></h3>
+<div class="highlight"><div style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050">71
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#268bd2">library</span>(shiny)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vixValueBoxUI <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(id) {
+</span></span><span style="display:flex;"><span>  ns <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">NS</span>(id)
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">tagList</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">valueBoxOutput</span>(<span style="color:#268bd2">ns</span>(<span style="color:#2aa198">&#34;vix_score&#34;</span>))
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vixValueBoxServer <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">function</span>(id) {
+</span></span><span style="display:flex;"><span>  <span style="color:#268bd2">moduleServer</span>(id, <span style="color:#268bd2">function</span>(input, output, session) {
+</span></span><span style="display:flex;"><span>    vix <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">tq_get</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#2aa198">&#34;^VIX&#34;</span>,
+</span></span><span style="display:flex;"><span>        from <span style="color:#719e07">=</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">today</span>() <span style="color:#719e07">-</span> <span style="color:#2aa198">7</span>,
+</span></span><span style="display:flex;"><span>        to <span style="color:#719e07">=</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">today</span>() <span style="color:#719e07">+</span> lubridate<span style="color:#719e07">::</span><span style="color:#268bd2">days</span>(<span style="color:#2aa198">1</span>)
+</span></span><span style="display:flex;"><span>      ) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">slice_tail</span>(n <span style="color:#719e07">=</span> <span style="color:#2aa198">1</span>) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">mutate</span>(
+</span></span><span style="display:flex;"><span>        symbol <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;VIX&#34;</span>,
+</span></span><span style="display:flex;"><span>        close <span style="color:#719e07">=</span> <span style="color:#268bd2">round</span>(close, digits <span style="color:#719e07">=</span> <span style="color:#2aa198">2</span>)
+</span></span><span style="display:flex;"><span>      ) <span style="color:#719e07">%&gt;%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">select</span>(close)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    vix_subtitle <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;VIX&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#586e75"># 0-15: This can indicate a certain amount of optimism in the market as well as very low volatility.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">if </span>(vix <span style="color:#719e07">&gt;=</span> <span style="color:#2aa198">0</span> <span style="color:#719e07">&amp;</span> vix <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">15</span>) {
+</span></span><span style="display:flex;"><span>      vix_subtitle <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix, <span style="color:#2aa198">&#34; certain amount of optimism and very low volatility 🐮&#34;</span>)
+</span></span><span style="display:flex;"><span>      vix_subtitle2 <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Certain amount of optimism and very low volatility 🐮&#34;</span>)
+</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;happy&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># 15-25: This can indicate that there is a certain amount of volatility, but nothing extreme.</span>
+</span></span><span style="display:flex;"><span>    } else <span style="color:#268bd2">if </span>(vix <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">15</span> <span style="color:#719e07">&amp;</span> vix <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">25</span>) {
+</span></span><span style="display:flex;"><span>      vix_subtitle <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix, <span style="color:#2aa198">&#34; certain amount of volatility 🦬&#34;</span>)
+</span></span><span style="display:flex;"><span>      vix_subtitle2 <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Certain amount of volatility 🦬&#34;</span>)
+</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;happy&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># 25-30: This can indicate that there is a certain amount of market turbulence and volatility is increasing.</span>
+</span></span><span style="display:flex;"><span>    } else <span style="color:#268bd2">if </span>(vix <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">25</span> <span style="color:#719e07">&amp;</span> vix <span style="color:#719e07">&lt;=</span> <span style="color:#2aa198">30</span>) {
+</span></span><span style="display:flex;"><span>      vix_subtitle <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix, <span style="color:#2aa198">&#34; certain amount of market turbulence and volatility is increasing volatility ✈️&#34;</span>)
+</span></span><span style="display:flex;"><span>      vix_subtitle2 <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Certain amount of market turbulence and volatility is increasing volatility ✈️&#34;</span>)
+</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;warning&#34;</span>
+</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;sad&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#586e75"># 30 and over: This can indicate that the market is highly volatile and there may be some extreme swings soon.</span>
+</span></span><span style="display:flex;"><span>    } else <span style="color:#268bd2">if </span>(vix <span style="color:#719e07">&gt;</span> <span style="color:#2aa198">30</span>) {
+</span></span><span style="display:flex;"><span>      vix_subtitle <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix, <span style="color:#2aa198">&#34; highly volatile and extreme swings 🐻&#34;</span>)
+</span></span><span style="display:flex;"><span>      vix_subtitle2 <span style="color:#719e07">&lt;-</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;Highly volatile and extreme swings 🐻&#34;</span>)
+</span></span><span style="display:flex;"><span>      color <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;danger&#34;</span>
+</span></span><span style="display:flex;"><span>      icon <span style="color:#719e07">&lt;-</span> <span style="color:#2aa198">&#34;skull&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    output<span style="color:#719e07">$</span>vix_score <span style="color:#719e07">&lt;-</span> <span style="color:#268bd2">renderbs4ValueBox</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">bs4ValueBox</span>(
+</span></span><span style="display:flex;"><span>        value <span style="color:#719e07">=</span> tags<span style="color:#719e07">$</span><span style="color:#268bd2">p</span>(<span style="color:#268bd2">paste</span>(<span style="color:#2aa198">&#34;VIX: &#34;</span>, vix), style <span style="color:#719e07">=</span> <span style="color:#2aa198">&#34;font-size: 150%;&#34;</span>),
+</span></span><span style="display:flex;"><span>        subtitle <span style="color:#719e07">=</span> vix_subtitle2,
+</span></span><span style="display:flex;"><span>        color <span style="color:#719e07">=</span> color,
+</span></span><span style="display:flex;"><span>        icon <span style="color:#719e07">=</span> <span style="color:#268bd2">ionicon</span>(icon)
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="conclusion">Conclusion</h2>
+<p>This structure keeps my <strong>Shiny</strong> applications modular, maintainable, and scalable. By separating <strong>UI logic</strong>, <strong>server logic</strong>, <strong>global functions</strong>, <strong>utility functions</strong>, and <strong>modules</strong>, I ensure better <strong>readability and reusability</strong> across projects.</p>
+<h2 id="credits">Credits</h2>
+<h3 id="pictures">Pictures</h3>
+<ol>
+<li><a class="link" href="https://pixabay.com/photos/orbs-orbeez-glow-colorful-spheres-4967554/"  target="_blank" rel="noopener"
+    >Glow by Jill Wellington</a></li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/r/">R</a>
+        
+            <a href="/tags/dashboard/">Dashboard</a>
+        
+            <a href="/tags/shiny/">Shiny</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/useful-r-packages-i-ve-come-across/">
+        
+        
+            <div class="article-image">
+                <img src="/p/useful-r-packages-i-ve-come-across/gift-444520_640.16583d375e6e3b7ef54e72e017eec022_hu8aa387175768c8b2bcaf144681e43f89_89602_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Useful Financial R packages I&#39;ve come across"
+                        data-key="useful-r-packages-i-ve-come-across" 
+                        data-hash="md5-Flg9N15uO371TnLgF&#43;7AIg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Useful Financial R packages I&#39;ve come across</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2009 - 
+        
+        2025 Anthony Quoc Anh Doan - Ramblings of a Happy Scientist
+        
+    </section>
+    
+    <section>
+      <p align="center">Desiderata by Max Ehrmann</p>
+      <p>
+          Go placidly amid the noise and the haste, and remember what peace there may be in silence. As far as possible without surrender be on good terms with all persons. Speak your truth quietly and clearly; and listen to others, even to the dull and the ignorant, they too have their story. Avoid loud and aggressive persons, they are vexations to the spirit.
+      </p>
+
+      <p>
+    If you compare yourself with others, you may become vain or bitter; for always there will be greater and lesser persons than yourself. Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.
+      </p>
+
+      <p>
+    Exercise caution in your business affairs, for the world is full of trickery. But let not this blind you to what virtue there is; many persons strive for high ideals, and everywhere life is full of heroism. Be yourself. Especially do not feign affection. Neither be cynical about love; for in the face of all aridity and disenchantment it is as perennial as the grass. Take kindly the counsel of the years, gracefully surrendering the things of youth.
+      </p>
+
+      <p>
+    Nurture strength of spirit to shield you in sudden misfortune. But do not distress yourself with dark imaginings. Many fears are born of fatigue and loneliness. Beyond a wholesome discipline, be gentle with yourself. You are a child of the universe, no less than the trees and the stars; you have a right to be here. And whether or not it is clear to you, no doubt the universe is unfolding as it should.
+      </p>
+
+      <p>
+    Therefore, be at peace with God, whatever you conceive Him to be. And whatever your labors and aspirations in the noisy confusion of life, keep peace in your soul. With all its sham, drudgery and broken dreams; it is still a beautiful world. Be cheerful.
+      </p>
+
+      <p>
+    Strive to be happy.
+      </p>
+      
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
