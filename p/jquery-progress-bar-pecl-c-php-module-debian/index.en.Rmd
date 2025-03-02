@@ -1,0 +1,71 @@
+---
+title: Jquery Progress Bar, pecl c, PHP module, Debian
+author: Anthony Quoc Anh Doan
+date: '2010-01-09'
+slug: jquery-progress-bar-pecl-c-php-module-debian
+categories:
+  - PHP
+  - Server Administration
+  - Web Development
+  - Debian
+  - Apache
+tags:
+  - PECL
+  - uploadprogress
+  - jquery
+  - File Upload
+  - Apache
+  - Linux
+  - PHP Extensions
+  - Web Performance
+description: ~
+image: JQuery_logo_text.svg 
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+# Howto install PECL uploadprogress
+
+I need the `uploadprogress` PHP module for [jQuery progress bar](http://t.wits.sg/2008/06/25/howto-php-and-jquery-upload-progress-bar/). The reason why my boss and I chose this progress bar over the others out there is because this one does not use Flash. Flash has some annoying bugs, making web development frustrating, and at the same time, it makes our code ugly—full of band-aids and workarounds.
+
+Furthermore, it was difficult to find any upload module for jQuery that doesn't require Flash. The reason for this is that JavaScript runs on the client side and cannot track progress on the server side. So how can the progress bar gauge the completion percentage? The answer is a PHP module named `uploadprogress`.
+
+Anyway, in most Linux distributions, you install the module and add a line in `php.ini` such as:
+
+```ini
+extension=uploadprogress.so
+```
+
+and you're done. **Not** in Debian!
+
+## Step 1: Installing
+
+```sh
+sudo aptitude install php5-dev php-pear
+sudo pecl install uploadprogress
+```
+
+## Step 2: The Debian way of enabling `uploadprogress.so`
+
+You need to create a file in `conf.d` to enable any PHP extension in Debian.
+
+```sh
+sudo vim /etc/php5/conf.d/uploadprogress.ini
+```
+
+Here's what my `uploadprogress.ini` looks like:
+
+```ini
+# configuration for PHP uploadprogress module
+extension=uploadprogress.so
+```
+
+## Step 3: Restart Apache2
+
+```sh
+sudo /etc/init.d/apache2 restart
+```
