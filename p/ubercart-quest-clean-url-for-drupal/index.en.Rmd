@@ -1,0 +1,177 @@
+---
+title: 'Ubercart Quest: Clean URL for Drupal'
+author: Anthony Quoc Anh Doan
+date: '2009-10-16'
+slug: ubercart-quest-clean-url-for-drupal
+categories:
+  - Web Development
+  - System Admin
+tags:
+  - PHP
+  - ubercart
+  - Drupal
+  - cleanURLS
+  - e-commerce
+description: ~
+image: ubercart.png 
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+## Problem:  
+**Product's images are not showing**  
+
+One possible cause mentioned in the Ubercart forum is that **Clean URLs** is not enabled.  
+
+---
+
+## Step 1: Enable `mod_rewrite`  
+
+**Clean URLs requires `mod_rewrite` to be enabled**  
+
+> _(Note: `mod_rewrite` is an Apache 2 module)_  
+
+To check if `mod_rewrite` is enabled, run the following command:  
+
+```bash
+/usr/sbin/apache2ctl -M
+```  
+
+Look for:  
+
+```bash
+rewrite_module
+```  
+
+This is the `mod_rewrite` module required for Clean URLs.  
+
+---
+
+## Step 2: Enable `mod_rewrite` if it's not enabled  
+
+To enable `mod_rewrite`, run:  
+
+```bash
+sudo /usr/sbin/a2enmod rewrite
+```  
+
+After entering the command, you should see:  
+
+```bash
+Enabling module rewrite.
+Run '/etc/init.d/apache2 restart' to activate new configuration!
+```  
+
+To disable `mod_rewrite`, use:  
+
+```bash
+sudo /usr/sbin/a2dismod rewrite
+```  
+
+After disabling, you should see:  
+
+```bash
+Module rewrite disabled.
+Run '/etc/init.d/apache2 restart' to activate new configuration!
+```  
+
+**Remember to restart Apache 2 after making changes:**  
+
+```bash
+sudo /etc/init.d/apache2 restart
+```  
+
+---
+
+## Step 3: Check Your Apache 2 Configuration  
+
+_(I'm an Apache 2 noob, so bear with me.)_  
+
+In the `/etc/apache2/sites-enabled` folder, create a config file for your Drupal site.  
+
+Example file: `/etc/apache2/sites-enabled/drupal.conf`  
+
+### Basic Configuration:  
+
+```apache
+<VirtualHost *:80>
+    ServerName www.example.com
+    DocumentRoot /var/www/drupal-6.13
+    <Directory /var/www/drupal-6.13>
+        Options FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+```
+
+### Enable Rewrite Rules  
+
+Add the following inside the `<Directory>` section:  
+
+```apache
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+```
+
+### Final Configuration:  
+
+```apache
+<VirtualHost *:80>
+    ServerName www.example.com
+    DocumentRoot /var/www/drupal-6.13
+    <Directory /var/www/drupal-6.13>
+        RewriteEngine on
+        RewriteBase /
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+        Options FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+```
+
+**Restart Apache 2 again:**  
+
+```bash
+sudo /etc/init.d/apache2 restart
+```  
+
+---
+
+## Step 4: Enable Clean URLs in Drupal  
+
+1. Go to **Administer** → **Site Configuration** → **Clean URLs**  
+2. You should see the following path:  
+
+   ```bash
+   home > administer > site configuration
+   ```
+
+3. Enable **Clean URLs**.  
+
+Ta-da! 🎉 Now the product images should display correctly!  
+
+---
+
+## System Information:  
+**Debian Lenny with Apache 2**  
+
+For more information about `mod_rewrite`:  
+[Apache module mod_rewrite](http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html)  
+
+### Resources:  
+- [Clean URLs | drupal.org](http://drupal.org/node/15365)  
+- [Example Clean URL configuration of httpd.conf for performance | drupal.org](http://drupal.org/node/43788)  
+- [A three-step process for clean URLs in Drupal for Debian Lenny](http://it.toolbox.com/blogs/locutus/a-three-step-process-for-clean-urls-in-drupal-for-debian-lenny-22326)
