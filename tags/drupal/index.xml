@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Drupal on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
+        <link>https://mythicalprogrammer.github.io/tags/drupal/</link>
+        <description>Recent content in Drupal on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Sun, 20 Sep 2009 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/drupal/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Drupal 6 is SLOW</title>
+        <link>https://mythicalprogrammer.github.io/p/drupal-6-is-slow/</link>
+        <pubDate>Sun, 20 Sep 2009 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/drupal-6-is-slow/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/drupal-6-is-slow/Drupal_Logo_Horizontal_Blue.svg" alt="Featured image of post Drupal 6 is SLOW" /&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform and I migrated to my current one.&lt;/p&gt;
+&lt;h2 id=&#34;drupal-6-performance-issues-and-optimization&#34;&gt;Drupal 6 Performance Issues and Optimization&lt;/h2&gt;
+&lt;p&gt;Drupal 6 is incredibly slow right now. Adam and I just installed a lot of modules and enabled them.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;Setup&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Debian 5 with Apache 2&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1st-assumption-database&#34;&gt;1st Assumption: Database&lt;/h3&gt;
+&lt;p&gt;Accessing the database could be the reason for the slowdown. Checking the MySQL logs (&lt;code&gt;/var/log&lt;/code&gt;) reveals nothing—perhaps I didn’t enable logging. I’ll check on that later.&lt;/p&gt;
+&lt;h3 id=&#34;2nd-assumption-modules&#34;&gt;2nd Assumption: Modules&lt;/h3&gt;
+&lt;p&gt;Let&amp;rsquo;s disable all the modules! This helped just a little. During this process, I also disabled all caching options in Drupal.&lt;/p&gt;
+&lt;h3 id=&#34;a-surprising-discovery&#34;&gt;A Surprising Discovery&lt;/h3&gt;
+&lt;p&gt;After taking a day-long break, I checked the website again, and it was fast! However, when clicking on the administration URL, it was still very slow. Here&amp;rsquo;s what I found on the Drupal support forum:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;The admin pages in Drupal 6 are slow because they perform a lot of housekeeping and rebuilding (thousands of queries, as you noticed, and these are not just cosmetic). Caching probably won’t help with that.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;If it is unworkable, disabling the update status module will probably help a bit. There are open issues for reducing the number of queries in future updates, but don’t expect the D6 admin pages to become snappy. They take the hit for some tasks that make the user part of the site more reliable.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;About the normal site pages&amp;hellip; the usual optimization methods should apply.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;— &lt;a class=&#34;link&#34; href=&#34;http://drupal.org/user/33697&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;cog.rusty&lt;/a&gt;, February 21, 2009&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;optimization-steps&#34;&gt;Optimization Steps&lt;/h3&gt;
+&lt;p&gt;Alright, let’s optimize the webpage.&lt;/p&gt;
+&lt;h4 id=&#34;installed-tools&#34;&gt;Installed Tools:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://addons.mozilla.org/extensions/moreinfo.php?application=firefox&amp;amp;category=Developer%20Tools&amp;amp;numpg=10&amp;amp;id=1743&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Life-of-Request Info extension&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://drupal.org/project/devel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Devel module&lt;/a&gt; (Where is this log file?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1st-optimization-php-optimization-with-apc&#34;&gt;1st Optimization: PHP Optimization with APC&lt;/h4&gt;
+&lt;p&gt;I installed the &lt;strong&gt;APC&lt;/strong&gt; package for PHP (read about it &lt;a class=&#34;link&#34; href=&#34;http://pecl.php.net/package/APC&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;).&lt;br&gt;
+Here’s a tutorial on using &lt;strong&gt;APC&lt;/strong&gt;:&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;http://www.easywebdns.com/tutorials/Linux/php/APC_ON_DEBIAN_LENNY&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;APC on Debian Lenny&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;performance-results&#34;&gt;Performance Results:&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Accessing main Drupal as webmaster:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1st try: &lt;strong&gt;1.3s&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;2nd try (browser cache cleared): &lt;strong&gt;0.661s&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;3rd try: &lt;strong&gt;0.877s&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;As a non-user:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;0.536s&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;enabling-all-modules&#34;&gt;Enabling All Modules&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Main page:&lt;/strong&gt; &lt;strong&gt;1.114s - 1.124s&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content-generated pages:&lt;/strong&gt; ~&lt;strong&gt;0.224s&lt;/strong&gt;, at most &lt;strong&gt;&amp;lt; 0.5s&lt;/strong&gt; (no images, just text)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Yay, it’s faster!&lt;/strong&gt; 🚀&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
