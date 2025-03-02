@@ -26,11 +26,77 @@ Am Coll Cardiol. 2023 Mar, 81 (8 Supplement) 536.
 (https://www.jacc.org/doi/full/10.1016/S0735-1097%2823%2900980-4)
 - Pending authors . Pending Title - My Health Veteran Online Utilization and Comorbidities 2023
 
-## Employment History
+## Employment History (2008 - Present)
 
 See my [resume](./2023_08_28_resume.pdf).
 
 ## Portfolio
+
+
+### U.S. Department of Veterans Affairs (GLA) (2020 - 2023)
+
+#### Identifying Racial Healthcare Disparities in Diabetes and Heart Disease 
+* Analyzed **racial and ethnic disparities** in healthcare outcomes among **minority and women veterans**, focusing on **diabetes and cardiovascular disease.**
+* Monitored key health indicators, including **blood sugar levels, blood pressure, and medication usage**, to assess treatment effectiveness across different racial groups.
+* Conducted **data stratification by race and ethnicity**, addressing challenges such as **small sample sizes and multiracial classifications**.
+* Performed **data exploration, cleaning, and covariate creation** to ensure robust statistical analysis and modeling.
+* Developed **data visualizations and dashboards** using **SQL and R** to provide insights into healthcare inequalities and inform clinical decision-making.
+* Supported **predictive analytics and clinical informatics efforts** aimed at improving healthcare equity and optimizing treatment strategies.
+* Collaborated with **clinical teams and researchers** to translate findings into actionable recommendations for policy and program development.
+
+#### Extracting Homelessness Duration Using NLP from Unstructured Text
+* Developed **Natural Language Processing (NLP) solutions** to extract **homelessness and housing duration** from **unstructured field reports** of homeless veterans.
+* Transformed qualitative text data into **structured numerical formats** to enable further research and predictive analytics.
+* Applied **text mining and entity recognition techniques** to identify and standardize temporal information related to homelessness duration.
+* Conducted **data preprocessing and cleaning** to improve text extraction accuracy and model performance.
+* Created **data models and visualizations** to support analysis and inform policy decisions related to veteran homelessness.
+* Ensured **data integrity and consistency**, contributing to **clinical informatics efforts** aimed at optimizing housing and support services for veterans.
+* Supported **interdisciplinary collaboration** with research teams, helping to enhance the **understanding of homelessness trends** and improve program effectiveness.
+
+#### Evaluating Healthcare Effectiveness for Women Veterans (Triage Program – Survey Data)
+* Conducted **exploratory data analysis (EDA)** to assess the effectiveness of a new triage-based healthcare program for **women veterans** across three healthcare sites.
+* Identified and addressed **outliers in survey data**, ensuring data integrity and study focus by appropriately handling cases such as transgender participants.
+* Led the **statistical analysis** for the project, including **data cleaning, visualization, modeling, and summary statistics**, to quantify program effectiveness.
+* Developed **data-driven insights** to support clinical decision-making and optimize healthcare delivery for women veterans.
+* Created **visual reports and dashboards** to track program outcomes and enhance the understanding of patient enrollment trends.
+* Collaborated with **domain experts and clinical teams** to translate complex statistical findings into **actionable recommendations** for improving nursing methodologies and patient care.
+* Addressed challenges posed by **pandemic-related disruptions**, ensuring continuous evaluation and refinement of the triage system.
+
+#### Women Veterans Whole Health Dashboard
+* Developed **interactive dashboards in Power BI** to track key metrics and outcomes for a **pilot program focused on women veterans' whole health**, including stress management, meditation, yoga, and weight loss.
+* Conducted **data cleaning, transformation, and integration** to ensure accuracy and consistency in program analytics.
+* Designed **data visualizations and reporting solutions** to support clinical decision-making and program evaluation.
+* Developed **performance metrics** to assess program effectiveness and optimize resource allocation.
+* Acted as a **liaison with third-party provider Optum**, managing **data ingestion and transformation processes** through monthly meetings.
+* Applied **advanced analytics and clinical informatics expertise** to support data-driven improvements in veteran health outcomes.
+* Ensured seamless **integration of structured and unstructured data** to provide actionable insights for program development and refinement.
+
+#### Impact of the Pandemic on Cardiovascular Disease Medication Uptake
+
+* Developed a **cohort study** based on defined inclusion and exclusion criteria, covering a **three-year study period** (pre-pandemic, transition, and pandemic periods).
+* Extracted and cleaned **structured and unstructured data** from **electronic health records (EHRs) and databases** related to cardiovascular medications.
+* Conducted **exploratory data analysis (EDA)** and developed **data visualizations** to support insights for research publication.
+* Analyzed both **outpatient and inpatient** clinical data to assess medication uptake trends.
+* Applied **advanced analytics and data modeling** to evaluate the impact of the pandemic on medication adherence and patient outcomes.
+
+#### Cohort Creation for Dye Usage in Body Scans and Potential Cancer Risks
+
+* Developed a **longitudinal cohort study** analyzing **20 years of veteran healthcare data** to investigate potential cancer risks associated with contrast dye usage in body scans.
+* Utilized the **OMOP Common Data Model** for the **systematic analysis of observational databases**, ensuring interoperability and consistency across datasets.
+* Tracked patient data over two decades using **inpatient and outpatient records**, applying rigorous **inclusion and exclusion criteria**.
+* Integrated and analyzed multiple datasets, including **medical procedures, visit types, demographics, pharmaceutical drug data (mail-order, inpatient, outpatient, in-network, and self-reported), and mortality records**.
+* Conducted **data extraction, cleaning, and transformation** to support advanced **clinical data modeling and predictive analytics**.
+
+#### Mental Health and Wellness Among Veterans Using My HealtheVet
+
+* Conducted **clinical data analysis** to evaluate the relationship between **mental health conditions and substance use disorders** among veterans using the **My HealtheVet** platform.
+* Utilized **CART (Classification and Regression Tree) analysis** to identify **correlations** (not causation) between mental health status and substance use patterns.
+* Created **visualizations of CART tree diagrams** to illustrate correlations between different **covariates**, providing clear insights into key factors affecting veteran health.
+* Applied **predictive analytics and data modeling** to assess trends and inform strategies for improving **veteran engagement and health outcomes**.
+* Used findings to support the **optimization of My HealtheVet**, enhancing its ability to facilitate mental health monitoring, outreach, and engagement.
+* Provided **data-driven insights** to improve **clinical decision support models** and drive enhancements to **veteran healthcare accessibility and wellness tracking**.
+
+---
 
 ### Fumigate www.fumigatedb.com
 
