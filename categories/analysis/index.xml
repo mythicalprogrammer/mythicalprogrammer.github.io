@@ -6,7 +6,332 @@
         <description>Recent content in analysis on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/analysis/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 02 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/analysis/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Using Window Functions to find Islands</title>
+        <link>https://mythicalprogrammer.github.io/p/using-window-functions-to-find-island/</link>
+        <pubDate>Sun, 02 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/using-window-functions-to-find-island/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/using-window-functions-to-find-island/easter-island-3733247_1280.jpg" alt="Featured image of post Using Window Functions to find Islands" /&gt;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Window Functions&lt;/strong&gt; were introduced in &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/SQL:2003&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ANSI SQL:2003&lt;/a&gt;, making them a relatively new feature. They allow functions to be applied to a set of rows using the &lt;code&gt;OVER&lt;/code&gt; clause.&lt;/p&gt;
+&lt;p&gt;One of the most common use cases for window functions is analytical queries, specifically identifying &lt;strong&gt;islands and gaps&lt;/strong&gt; in a dataset.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Islands&lt;/strong&gt; are groups of &lt;strong&gt;continuous&lt;/strong&gt; data sequences.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gaps&lt;/strong&gt; are &lt;strong&gt;missing&lt;/strong&gt; sequences between data points.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dataset&#34;&gt;Dataset&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s the initial dataset:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;col1&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;33&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;34&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;creating-the-dataset&#34;&gt;Creating the Dataset&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;DROP&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;IF&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;EXISTS&lt;/span&gt; table1;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;TEMPORARY&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;TABLE&lt;/span&gt; table1(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  col1 &lt;span style=&#34;color:#b58900&#34;&gt;INT&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;NULL&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;GENERATED&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;BY&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;DEFAULT&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;AS&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;IDENTITY&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;INTO&lt;/span&gt; table1(col1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;color:#2aa198&#34;&gt;2&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;3&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;11&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;12&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;13&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;27&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;33&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;34&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;35&lt;/span&gt;), (&lt;span style=&#34;color:#2aa198&#34;&gt;42&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;SELECT&lt;/span&gt; col1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;FROM&lt;/span&gt; table1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;BY&lt;/span&gt; col1;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;expected-output&#34;&gt;Expected Output&lt;/h3&gt;
+&lt;p&gt;After identifying &lt;strong&gt;islands&lt;/strong&gt; in the dataset, we should get the following result:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;start_range&lt;/th&gt;
+&lt;th&gt;end_range&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;33&lt;/td&gt;
+&lt;td&gt;35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;algorithmic-approach&#34;&gt;Algorithmic Approach&lt;/h2&gt;
+&lt;p&gt;To solve this, we need to &lt;strong&gt;group&lt;/strong&gt; numbers that belong to the same continuous sequence (island).&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;col1&lt;/th&gt;
+&lt;th&gt;grp&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;b&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;b&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;b&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;td&gt;c&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;33&lt;/td&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;34&lt;/td&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;35&lt;/td&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;td&gt;e&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Each &lt;strong&gt;group (grp)&lt;/strong&gt; represents an &lt;strong&gt;island&lt;/strong&gt;, where numbers belong to a continuous sequence. For example, group &lt;strong&gt;D&lt;/strong&gt; represents the sequence &lt;strong&gt;33, 34, 35&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;sql-implementation&#34;&gt;SQL Implementation&lt;/h3&gt;
+&lt;p&gt;We can use &lt;strong&gt;window functions&lt;/strong&gt; to achieve this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  col1,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  col1 &lt;span style=&#34;color:#719e07&#34;&gt;-&lt;/span&gt; ROW_NUMBER() OVER(&lt;span style=&#34;color:#719e07&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;BY&lt;/span&gt; col1) &lt;span style=&#34;color:#719e07&#34;&gt;AS&lt;/span&gt; grp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;FROM&lt;/span&gt; table1;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;output&#34;&gt;Output&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;col1&lt;/th&gt;
+&lt;th&gt;grp&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;td&gt;21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;33&lt;/td&gt;
+&lt;td&gt;26&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;34&lt;/td&gt;
+&lt;td&gt;26&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;35&lt;/td&gt;
+&lt;td&gt;26&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;explanation&#34;&gt;Explanation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;By subtracting &lt;code&gt;ROW_NUMBER() OVER(ORDER BY col1)&lt;/code&gt; from &lt;code&gt;col1&lt;/code&gt;, we create a unique identifier (&lt;code&gt;grp&lt;/code&gt;) for each island.&lt;/li&gt;
+&lt;li&gt;Numbers in the &lt;strong&gt;same sequence&lt;/strong&gt; get the same &lt;code&gt;grp&lt;/code&gt; value.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;final-query&#34;&gt;Final Query&lt;/h3&gt;
+&lt;p&gt;Now, we just need to group by the &lt;code&gt;grp&lt;/code&gt; column to get the &lt;strong&gt;start&lt;/strong&gt; and &lt;strong&gt;end&lt;/strong&gt; of each island:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;WITH&lt;/span&gt; grp &lt;span style=&#34;color:#719e07&#34;&gt;AS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#719e07&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    col1,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    col1 &lt;span style=&#34;color:#719e07&#34;&gt;-&lt;/span&gt; ROW_NUMBER() OVER(&lt;span style=&#34;color:#719e07&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;BY&lt;/span&gt; col1) &lt;span style=&#34;color:#719e07&#34;&gt;AS&lt;/span&gt; grp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#719e07&#34;&gt;FROM&lt;/span&gt; table1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#719e07&#34;&gt;MIN&lt;/span&gt;(col1) &lt;span style=&#34;color:#719e07&#34;&gt;AS&lt;/span&gt; start_range, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#719e07&#34;&gt;MAX&lt;/span&gt;(col1) &lt;span style=&#34;color:#719e07&#34;&gt;AS&lt;/span&gt; end_range
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;FROM&lt;/span&gt; grp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;BY&lt;/span&gt; grp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;BY&lt;/span&gt; start_range;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;final-output&#34;&gt;Final Output&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;start_range&lt;/th&gt;
+&lt;th&gt;end_range&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;33&lt;/td&gt;
+&lt;td&gt;35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;By leveraging &lt;strong&gt;window functions&lt;/strong&gt;, we efficiently identify &lt;strong&gt;islands&lt;/strong&gt; in a dataset using &lt;strong&gt;row numbering and grouping techniques&lt;/strong&gt;. This method can be extended to various real-world use cases, such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tracking &lt;strong&gt;continuous patient visits&lt;/strong&gt; in healthcare analytics.&lt;/li&gt;
+&lt;li&gt;Identifying &lt;strong&gt;consecutive login days&lt;/strong&gt; in user behavior analysis.&lt;/li&gt;
+&lt;li&gt;Detecting &lt;strong&gt;gaps in financial transactions&lt;/strong&gt; for fraud detection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;h3 id=&#34;pictures&#34;&gt;Pictures&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/photos/easter-island-rapa-nui-sculpture-3733247/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Easter island&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;SQL Example were taken from &amp;ldquo;T-SQL Window Functions, Second Edition For data analysis and beyond&amp;rdquo; by Itzik Ben-Gan&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Interesting Papers I&#39;ve read this week.</title>
         <link>https://mythicalprogrammer.github.io/p/interesting-papers-i-ve-read-this-week/</link>
         <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
