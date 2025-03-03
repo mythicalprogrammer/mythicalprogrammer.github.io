@@ -1,0 +1,86 @@
+---
+title: Mounting an External ntfs harddrive on Linux for writing
+author: Anthony Quoc Anh Doan
+date: '2010-05-16'
+slug: mounting-an-external-ntfs-harddrive-on-linux-for-writing
+categories:
+  - Server Administration
+  - Filesystem Management
+  - Linux
+  - External Storage
+  - NTFS Support
+tags:
+  - Linux
+  - NTFS
+  - External Hard Drive
+  - Mounting Drives
+  - ntfs-3g
+  - fstab
+  - File System
+  - Storage Management
+  - Ubuntu
+  - System Tweaks
+description: ~
+image: Epic_Mount.jpg 
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+![Epic Mount](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHxrirFhIwJoraGK6WF7n1vDOsKznSnEgPOj5wFhaC4d6v1cNiTj4pWa3WpQr_pLMhjLVODIh1Ek8KWUL1E8aikOCyF_x-bQlTPEV54XRdkwljceyh6DDaOH-70B6Tp5C85sRhwjB01A/s400/Epic+Mount.jpg)
+
+*Note: In order to mount, you need GNU yak/water-buffalo and apparently a Lion.*
+
+---
+
+### **Mounting an External Hard Drive on Linux**
+
+If you have an external hard drive formatted with **FAT32** or **FAT16**, you can both read and write to it without issues.
+
+However, if your hard drive uses the **NTFS** file system, you will encounter **read-only access** by default. This is due to **FOSS (Free and Open Source Software) legal restrictions** preventing full NTFS write support. The constant **"Read-only file system"** warning can be frustrating!
+
+### **Solution: Enabling NTFS Write Support**
+The solution is to use `ntfs-3g`, which allows writing to NTFS partitions. Here's a quick summary:
+
+1. **Install `ntfs-3g`**  
+   Search for and install the `ntfs-3g` package using your package manager.  
+   Example for Debian/Ubuntu:  
+   ```sh
+   sudo apt install ntfs-3g
+   ```
+   
+2. **Create a Mount Directory**  
+   Before mounting, create a directory to serve as the mount point.  
+   Example:  
+   ```sh
+   sudo mkdir /mnt/window
+   ```
+
+3. **Find Your External Hard Drive Name**  
+   Use `fdisk` to list available drives and find your external drive based on size:  
+   ```sh
+   sudo fdisk -l
+   ```
+   If you’re using a **USB drive**, it is likely to be **`/dev/sdb`**.
+
+4. **Edit `/etc/fstab` to Mount Automatically**  
+   Open the file in a text editor:  
+   ```sh
+   sudo nano /etc/fstab
+   ```
+   Add the following line:  
+   ```
+   /dev/sdb1  /mnt/window  ntfs-3g  defaults  0  0
+   ```
+
+5. **Mount the Drive**  
+   Run the mount command to apply changes:  
+   ```sh
+   sudo mount -a
+   ```
+
+
+
