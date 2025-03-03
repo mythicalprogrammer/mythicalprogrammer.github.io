@@ -6,7 +6,44 @@
         <description>Recent content in PHP on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Fri, 07 May 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/php/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 08 May 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/php/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Finding a good PHP IDE - Eclipse &#43; PDT</title>
+        <link>https://mythicalprogrammer.github.io/p/finding-a-good-php-ide-eclipse-pdt/</link>
+        <pubDate>Sat, 08 May 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/finding-a-good-php-ide-eclipse-pdt/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/finding-a-good-php-ide-eclipse-pdt/archway-6915701_1280.jpg" alt="Featured image of post Finding a good PHP IDE - Eclipse &#43; PDT" /&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform and I migrated to my current one.&lt;/p&gt;
+&lt;p&gt;So after using Dreamweaver CS3 for a couple of months now, I felt it was lacking. It wasn&amp;rsquo;t as good as Microsoft Visual Studio. One of the things it&amp;rsquo;s lacking is a good auto-complete. The way Dreamweaver CS3 handles most of the coding is annoying and not as natural as Microsoft Visual Studio.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve googled a bit and found out about Eclipse IDE with PDT. So far, it&amp;rsquo;s a great IDE. I do not know all about it but just enough through these videos:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.youtube.com/watch?v=VRFZpk-YHl4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;img src=&#34;http://img.youtube.com/vi/VRFZpk-YHl4/0.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Eclipse PDT Video 1&#34;
+	
+	
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.youtube.com/watch?v=x8WnciHjXco&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;img src=&#34;http://img.youtube.com/vi/x8WnciHjXco/0.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Eclipse PDT Video 2&#34;
+	
+	
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Code Assist is not on by default, so you need to go to:&lt;br&gt;
+&lt;code&gt;Window -&amp;gt; Preferences -&amp;gt; PHP -&amp;gt; Code Assist&lt;/code&gt;&lt;br&gt;
+Check the &lt;strong&gt;&amp;ldquo;Enabled auto activation&amp;rdquo;&lt;/strong&gt; checkbox. The default 200 ms delay is long, so I edited it to 20 ms.&lt;/p&gt;
+&lt;p&gt;Image by &lt;a href=&#34;https://pixabay.com/users/kellepics-4893063/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6915701&#34;&gt;Stefan Keller&lt;/a&gt; from &lt;a href=&#34;https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6915701&#34;&gt;Pixabay&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Installation for Smarty PHP on WAMP</title>
         <link>https://mythicalprogrammer.github.io/p/installation-for-smarty-php-on-wamp/</link>
         <pubDate>Fri, 07 May 2010 00:00:00 +0000</pubDate>

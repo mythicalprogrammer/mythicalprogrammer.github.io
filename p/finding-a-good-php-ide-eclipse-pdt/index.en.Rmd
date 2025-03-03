@@ -1,0 +1,41 @@
+---
+title: Finding a good PHP IDE - Eclipse + PDT
+author: Anthony Quoc Anh Doan
+date: '2010-05-08'
+slug: finding-a-good-php-ide-eclipse-pdt
+categories:
+  - PHP
+  - Web Development
+  - IDE & Tools
+  - Code Editors
+tags:
+  - Eclipse
+  - PHP IDE
+  - Dreamweaver CS3
+  - Microsoft Visual Studio
+  - Web Development Tools
+  - Coding Productivity
+  - IDE Setup
+description: ~
+image: archway-6915701_1280.jpg 
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+So after using Dreamweaver CS3 for a couple of months now, I felt it was lacking. It wasn't as good as Microsoft Visual Studio. One of the things it's lacking is a good auto-complete. The way Dreamweaver CS3 handles most of the coding is annoying and not as natural as Microsoft Visual Studio.
+
+I've googled a bit and found out about Eclipse IDE with PDT. So far, it's a great IDE. I do not know all about it but just enough through these videos:
+
+[![Eclipse PDT Video 1](http://img.youtube.com/vi/VRFZpk-YHl4/0.jpg)](http://www.youtube.com/watch?v=VRFZpk-YHl4)
+
+[![Eclipse PDT Video 2](http://img.youtube.com/vi/x8WnciHjXco/0.jpg)](http://www.youtube.com/watch?v=x8WnciHjXco)
+
+**Note:** Code Assist is not on by default, so you need to go to:  
+`Window -> Preferences -> PHP -> Code Assist`  
+Check the **"Enabled auto activation"** checkbox. The default 200 ms delay is long, so I edited it to 20 ms.
+
+Image by <a href="https://pixabay.com/users/kellepics-4893063/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6915701">Stefan Keller</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6915701">Pixabay</a>
