@@ -143,19 +143,27 @@
         <description></description>
         </item>
         <item>
-        <title>Development Environment</title>
-        <link>https://mythicalprogrammer.github.io/categories/development-environment/</link>
-        <pubDate>Sun, 26 Jun 2011 00:00:00 +0000</pubDate>
+        <title>Functional Programming</title>
+        <link>https://mythicalprogrammer.github.io/categories/functional-programming/</link>
+        <pubDate>Mon, 27 Jun 2011 00:00:00 +0000</pubDate>
         
-        <guid>https://mythicalprogrammer.github.io/categories/development-environment/</guid>
+        <guid>https://mythicalprogrammer.github.io/categories/functional-programming/</guid>
         <description></description>
         </item>
         <item>
         <title>Scala</title>
         <link>https://mythicalprogrammer.github.io/categories/scala/</link>
-        <pubDate>Sun, 26 Jun 2011 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 27 Jun 2011 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/categories/scala/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Development Environment</title>
+        <link>https://mythicalprogrammer.github.io/categories/development-environment/</link>
+        <pubDate>Sun, 26 Jun 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/development-environment/</guid>
         <description></description>
         </item>
         <item>

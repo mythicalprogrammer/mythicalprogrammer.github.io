@@ -1,0 +1,73 @@
+---
+title: Scala Function Basics
+author: Anthony Quoc Anh Doan
+date: '2011-06-27'
+slug: scala-function-basics
+categories:
+  - Programming
+  - Scala
+  - Functional Programming
+tags:
+  - Scala
+  - functional-programming
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**NOTE:**
+This is a very old post that I've migrated from my blogger account.
+
+I have matured since then and continue to learn, striving to remain humble with a mindset of humility.
+
+---
+
+# Scala Function Basics  
+
+## Defining a Basic Function  
+
+```scala
+def functionName() = { /* function body */ }
+```
+
+## Function with a Parameter  
+
+```scala
+def functionName(param1: ParamType) = { /* function body */ }
+```
+
+## Function with a Return Type  
+
+```scala
+def functionName(param1: ParamType): ResultType = { /* function body */ }
+```
+
+## Examples  
+
+### Simple Function  
+
+```scala
+def printHello() = { println("Hello, world!") }
+```
+
+### Function with a Parameter  
+
+```scala
+def echo(str: String) = { println(str) }
+```
+
+### Function with a Return Type  
+
+```scala
+def echo(str: String): Int = { 
+    println(s"The length of '$str' is: ") 
+    str.length 
+}
+```
+
+## Reference  
+
+[Fun with Scala Functions](http://oldfashionedsoftware.com/2008/08/23/fun-with-scala-functions/)  
