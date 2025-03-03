@@ -1,0 +1,35 @@
+---
+title: Why Scala?
+author: Anthony Quoc Anh Doan
+date: '2011-06-25'
+slug: why-scala
+categories:
+  - Programming
+  - Software Development
+  - Scala
+tags:
+  - Programming Language Theory
+  - Scala
+  - Java
+  - Software Development
+description: ~
+image: Scala-full-color.png
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+## NOTE:
+
+This is a very old post that I've migrated from my blogger account.
+
+I've since mature since then and am continuously learning and hoping to be humble with humility. 
+
+## Preface
+
+There was a man, to be more specific a developer, that is I. I'm going to learn Scala and writing things down is going to help me. These are my notes for the book Programming In Scala by Martin Odersky, Lex Spoon, Bill Venners. That is all.
+
+## Why Scala?
+
+Pro:<br />It is a great balance between readability like Ruby and Python but with type define. <br />Got a great parallel library that is model after Erlang. <br />Going to help me learn functional language.<br />Got a web framework.<br />Fast because it uses JVM.<br />Polygot.<br /><br />Con:<br />It uses JVM.<br />Own by Oracle which does not understand open source and is recently a threat to open source.<br /><br />The light at the end of the tunnel:<br />There are open source implementation of JVM out there. Con, crashes a lot cause oracle will not give them the TCK license. Oh wellz. I'm also bias against Java coming from a C++/PHP background.

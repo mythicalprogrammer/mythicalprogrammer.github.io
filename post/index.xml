@@ -5707,6 +5707,21 @@ Youjo Senki
 </description>
         </item>
         <item>
+        <title>Why Scala?</title>
+        <link>https://mythicalprogrammer.github.io/p/why-scala/</link>
+        <pubDate>Sat, 25 Jun 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/why-scala/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/why-scala/Scala-full-color.png" alt="Featured image of post Why Scala?" /&gt;&lt;h2 id=&#34;note&#34;&gt;NOTE:&lt;/h2&gt;
+&lt;p&gt;This is a very old post that I&amp;rsquo;ve migrated from my blogger account.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve since mature since then and am continuously learning and hoping to be humble with humility.&lt;/p&gt;
+&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
+&lt;p&gt;There was a man, to be more specific a developer, that is I. I&amp;rsquo;m going to learn Scala and writing things down is going to help me. These are my notes for the book Programming In Scala by Martin Odersky, Lex Spoon, Bill Venners. That is all.&lt;/p&gt;
+&lt;h2 id=&#34;why-scala&#34;&gt;Why Scala?&lt;/h2&gt;
+&lt;p&gt;Pro:&lt;br /&gt;It is a great balance between readability like Ruby and Python but with type define. &lt;br /&gt;Got a great parallel library that is model after Erlang. &lt;br /&gt;Going to help me learn functional language.&lt;br /&gt;Got a web framework.&lt;br /&gt;Fast because it uses JVM.&lt;br /&gt;Polygot.&lt;br /&gt;&lt;br /&gt;Con:&lt;br /&gt;It uses JVM.&lt;br /&gt;Own by Oracle which does not understand open source and is recently a threat to open source.&lt;br /&gt;&lt;br /&gt;The light at the end of the tunnel:&lt;br /&gt;There are open source implementation of JVM out there. Con, crashes a lot cause oracle will not give them the TCK license. Oh wellz. I&amp;rsquo;m also bias against Java coming from a C++/PHP background.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>My Webserver Setup part 1</title>
         <link>https://mythicalprogrammer.github.io/p/my-webserver-setup-part-1/</link>
         <pubDate>Fri, 02 Jul 2010 00:00:00 +0000</pubDate>
