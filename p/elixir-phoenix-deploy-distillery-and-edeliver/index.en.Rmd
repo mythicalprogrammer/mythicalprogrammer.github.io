@@ -17,7 +17,7 @@ image: color-1544543_1280.jpg
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no 
 ---
 
 ## Step 1: Create your Digital Ocean droplet

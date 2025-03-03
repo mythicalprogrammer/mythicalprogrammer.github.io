@@ -14,7 +14,7 @@ image: easter-island-3733247_1280.jpg
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no 
 ---
 
 ## Introduction

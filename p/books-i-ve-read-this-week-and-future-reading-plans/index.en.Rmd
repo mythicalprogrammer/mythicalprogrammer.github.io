@@ -16,7 +16,7 @@ image: books-1655783_1280.jpg
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no 
 ---
 
 ## Books I’ve read this week

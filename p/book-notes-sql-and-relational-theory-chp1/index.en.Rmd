@@ -2,7 +2,7 @@
 title: 'Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes'
 author: A.Q.Doan
 date: '2023-11-21'
-slug: book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes
+slug: book-notes-sql-and-relational-theory-chp1
 categories:
   - SQL
   - Book
@@ -11,9 +11,11 @@ description: ~
 image: database-schema-1895779_1280.png
 math: ~
 license: Not Sure. These are snippets of passage in the book I've found relevant.
-hidden: yes
-comments: yes
+hidden: no 
+comments: no 
 ---
+
+Note: DRAFT
 
 ## Introduction
 

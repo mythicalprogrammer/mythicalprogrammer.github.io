@@ -14,7 +14,7 @@ image: book-2304078_1920.jpg
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no 
 ---
 
 ## Introduction

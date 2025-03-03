@@ -12,9 +12,11 @@ description: ~
 image: ~
 math: ~
 license: ~
-hidden: yes 
-comments: yes
+hidden: no 
+comments: no 
 ---
+
+Note: Draft, not sure when I'll come back and continue this.
 
 
 ## Credits

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
-A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex. In particular, those types can be either system or user defined.'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='NOTE: DRAFT, not sure when I&amp;rsquo;ll come back to continue this.
+Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
+A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex.'>
 <title>Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes</title>
 
-<link rel='canonical' href='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/'>
+<link rel='canonical' href='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/'>
 
 <link rel="stylesheet" href="/scss/style.min.ae544f6e875175eb0f852537f03e029a61665cc22ad0fd93bf333e7c3bee5a8c.css"><meta property='og:title' content='Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes'>
-<meta property='og:description' content='Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
-A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex. In particular, those types can be either system or user defined.'>
-<meta property='og:url' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/'>
+<meta property='og:description' content='NOTE: DRAFT, not sure when I&amp;rsquo;ll come back to continue this.
+Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
+A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex.'>
+<meta property='og:url' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/'>
 <meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Book notes' /><meta property='article:published_time' content='2023-11-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Book notes' /><meta property='article:published_time' content='2023-11-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/village-8396532_1280.jpg' />
 <meta name="twitter:site" content="@AnthonyDoan20">
     <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes">
-<meta name="twitter:description" content="Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
-A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex. In particular, those types can be either system or user defined."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280.jpg' />
+<meta name="twitter:description" content="NOTE: DRAFT, not sure when I&amp;rsquo;ll come back to continue this.
+Types and Domains TYPES AND RELATIONS Data types (types for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.
+A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/village-8396532_1280.jpg' />
     </head>
     <body class="
     article-page
@@ -392,9 +395,9 @@ A relational attribute (i.e., an attribute of a relation or relvar) can be of an
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/">
-                <img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_800x0_resize_q75_box.jpg"
-                        srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_800x0_resize_q75_box.jpg 800w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/p/book-notes-sql-and-relational-theory-chp2/">
+                <img src="/p/book-notes-sql-and-relational-theory-chp2/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_800x0_resize_q75_box.jpg"
+                        srcset="/p/book-notes-sql-and-relational-theory-chp2/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_800x0_resize_q75_box.jpg 800w, /p/book-notes-sql-and-relational-theory-chp2/village-8396532_1280_hue1ddd2565bae2c38352275251d9b80ad_171484_1600x0_resize_q75_box.jpg 1600w"
                         width="800" 
                         height="453" 
                         loading="lazy"
@@ -421,7 +424,7 @@ A relational attribute (i.e., an attribute of a relation or relvar) can be of an
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/">Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes</a>
+            <a href="/p/book-notes-sql-and-relational-theory-chp2/">Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes</a>
         </h2>
     
         
@@ -458,7 +461,7 @@ A relational attribute (i.e., an attribute of a relation or relvar) can be of an
 
 
                 <time class="article-time--reading">
-                    9 minute read
+                    10 minute read
                 </time>
             </div>
         
@@ -473,12 +476,13 @@ A relational attribute (i.e., an attribute of a relation or relvar) can be of an
     <section class="article-content">
     
     
-    <h1 id="types-and-domains">Types and Domains</h1>
+    <p>NOTE: DRAFT, not sure when I&rsquo;ll come back to continue this.</p>
+<h1 id="types-and-domains">Types and Domains</h1>
 <h2 id="types-and-relations">TYPES AND RELATIONS</h2>
-<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sees-it-4138304_1280.jpg"
+<p><img src="/p/book-notes-sql-and-relational-theory-chp2/sees-it-4138304_1280.jpg"
 	width="853"
 	height="1280"
-	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sees-it-4138304_1280_hu29a3f0abc71b4a3eecfe9dc01436e86c_258345_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sees-it-4138304_1280_hu29a3f0abc71b4a3eecfe9dc01436e86c_258345_1024x0_resize_q75_box.jpg 1024w"
+	srcset="/p/book-notes-sql-and-relational-theory-chp2/sees-it-4138304_1280_hu29a3f0abc71b4a3eecfe9dc01436e86c_258345_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-chp2/sees-it-4138304_1280_hu29a3f0abc71b4a3eecfe9dc01436e86c_258345_1024x0_resize_q75_box.jpg 1024w"
 	loading="lazy"
 	
 		alt="RELATIONS"
@@ -506,10 +510,10 @@ operands are of the right types for the operation in question (or, possibly, tha
 those right types). Observe, moreover, that this mechanism works for all operations, not just for
 the equality comparisons</p>
 <h2 id="data-value-atomicity">DATA VALUE ATOMICITY</h2>
-<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/atom-3669818_1280.jpg"
+<p><img src="/p/book-notes-sql-and-relational-theory-chp2/atom-3669818_1280.jpg"
 	width="1280"
 	height="720"
-	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/atom-3669818_1280_hu71442ee2154632edebb8def9e89c4ef8_192625_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/atom-3669818_1280_hu71442ee2154632edebb8def9e89c4ef8_192625_1024x0_resize_q75_box.jpg 1024w"
+	srcset="/p/book-notes-sql-and-relational-theory-chp2/atom-3669818_1280_hu71442ee2154632edebb8def9e89c4ef8_192625_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-chp2/atom-3669818_1280_hu71442ee2154632edebb8def9e89c4ef8_192625_1024x0_resize_q75_box.jpg 1024w"
 	loading="lazy"
 	
 		alt="Atomicity"
@@ -531,10 +535,10 @@ smaller pieces by the DBMS (excluding certain special functions).”</p>
 <p>the notion of <strong>atomicity has no absolute meaning;</strong> it
 just depends on what we want to do with the data.</p>
 <h2 id="whats-a-type">WHAT’S A TYPE?</h2>
-<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/typewriter-1248088_1280.jpg"
+<p><img src="/p/book-notes-sql-and-relational-theory-chp2/typewriter-1248088_1280.jpg"
 	width="1280"
 	height="853"
-	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/typewriter-1248088_1280_hu78a9f0ec1cb07f9f1e113f5480a76b75_249355_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/typewriter-1248088_1280_hu78a9f0ec1cb07f9f1e113f5480a76b75_249355_1024x0_resize_q75_box.jpg 1024w"
+	srcset="/p/book-notes-sql-and-relational-theory-chp2/typewriter-1248088_1280_hu78a9f0ec1cb07f9f1e113f5480a76b75_249355_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-chp2/typewriter-1248088_1280_hu78a9f0ec1cb07f9f1e113f5480a76b75_249355_1024x0_resize_q75_box.jpg 1024w"
 	loading="lazy"
 	
 		alt="Typewriter"
@@ -617,10 +621,10 @@ scalar types:</p>
 <li>XML</li>
 </ul>
 <h2 id="type-checking-and-coercion-in-sql">TYPE CHECKING AND COERCION IN SQL</h2>
-<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/stop-1971756_640.jpg"
+<p><img src="/p/book-notes-sql-and-relational-theory-chp2/stop-1971756_640.jpg"
 	width="640"
 	height="476"
-	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/stop-1971756_640_hud9bef26450e551accdd4025dfb691a3b_149023_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/stop-1971756_640_hud9bef26450e551accdd4025dfb691a3b_149023_1024x0_resize_q75_box.jpg 1024w"
+	srcset="/p/book-notes-sql-and-relational-theory-chp2/stop-1971756_640_hud9bef26450e551accdd4025dfb691a3b_149023_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-chp2/stop-1971756_640_hud9bef26450e551accdd4025dfb691a3b_149023_1024x0_resize_q75_box.jpg 1024w"
 	loading="lazy"
 	
 		alt="COERCION"
@@ -652,10 +656,10 @@ one of the comparisons a &lt; b, a = b, and a &gt; b evaluates to TRUE and the o
 Don’t use PAD SPACE—always use NO PAD instead, if possible.</p>
 <p><strong>Strong recommendation:</strong> Avoid possibly nondeterministic expressions as much as you can.</p>
 <h2 id="row-and-table-types-in-sql">ROW AND TABLE TYPES IN SQL</h2>
-<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sunrise-1014712_640.jpg"
+<p><img src="/p/book-notes-sql-and-relational-theory-chp2/sunrise-1014712_640.jpg"
 	width="640"
 	height="422"
-	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sunrise-1014712_640_hu4459685c3f53736b064ee02b0a339fc0_45530_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes/sunrise-1014712_640_hu4459685c3f53736b064ee02b0a339fc0_45530_1024x0_resize_q75_box.jpg 1024w"
+	srcset="/p/book-notes-sql-and-relational-theory-chp2/sunrise-1014712_640_hu4459685c3f53736b064ee02b0a339fc0_45530_480x0_resize_q75_box.jpg 480w, /p/book-notes-sql-and-relational-theory-chp2/sunrise-1014712_640_hu4459685c3f53736b064ee02b0a339fc0_45530_1024x0_resize_q75_box.jpg 1024w"
 	loading="lazy"
 	
 		alt="ROW"
@@ -781,6 +785,30 @@ Don’t use PAD SPACE—always use NO PAD instead, if possible.</p>
             
                 
 <article class="has-image">
+    <a href="/p/book-notes-sql-and-relational-theory-chp1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/book-notes-sql-and-relational-theory-chp1/_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_d32d3323aaa61d9ae91a54b630a65ef6.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes"
+                        data-key="book-notes-sql-and-relational-theory-chp1" 
+                        data-hash="md5-kn2d699zQmsKr/Q9fdMOPw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/using-window-functions-to-find-island/">
         
         
@@ -808,50 +836,6 @@ Don’t use PAD SPACE—always use NO PAD instead, if possible.</p>
 </aside>
 
      
-    
-        
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">

@@ -11,9 +11,11 @@ description: ~
 image:  nixos-logo.png
 math: ~
 license: ~
-hidden: yes 
-comments: yes
+hidden: no 
+comments: no 
 ---
+
+Note: Draft, I'm not sure when I will get back to this.
 
 ## Introducation
 

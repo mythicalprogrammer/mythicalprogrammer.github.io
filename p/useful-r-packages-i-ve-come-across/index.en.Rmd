@@ -11,7 +11,7 @@ description: ~
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no 
 image: gift-444520_640.jpg 
 ---
 

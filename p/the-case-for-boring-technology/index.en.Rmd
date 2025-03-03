@@ -16,7 +16,7 @@ image: bored-3082828_1920.jpg
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no 
 ---
 
 ## Introduction

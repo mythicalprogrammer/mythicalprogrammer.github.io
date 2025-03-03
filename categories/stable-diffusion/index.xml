@@ -7,6 +7,33 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <lastBuildDate>Mon, 22 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/stable-diffusion/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>My current ComfyUI and AnimateDiff workflow (and How to set it up)</title>
+        <link>https://mythicalprogrammer.github.io/p/my-current-comfyui-and-animatediff-workflow/</link>
+        <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/my-current-comfyui-and-animatediff-workflow/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/my-current-comfyui-and-animatediff-workflow/dance_053.png" alt="Featured image of post My current ComfyUI and AnimateDiff workflow (and How to set it up)" /&gt;&lt;p&gt;Note: Draft, not sure when I&amp;rsquo;ll continue this.&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Firstly, I want to thank &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/@houseofdim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;House of Dim&lt;/a&gt; and his &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=We3UmWWmlQE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;tutorial&lt;/a&gt;. It was this video that got me started with &lt;a class=&#34;link&#34; href=&#34;https://animatediff.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AnimateDiff&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;first-workflow&#34;&gt;First Workflow&lt;/h2&gt;
+&lt;p&gt;Animate Prep Workflow: &lt;a class=&#34;link&#34; href=&#34;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_prep_workflow.json&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_prep_workflow.json&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;dance_053.png&#34; &gt;Dancing picture&lt;/a&gt; was created by me using stable diffusion&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=We3UmWWmlQE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ComfyUI + AnimateDiff + ControlNets Workflow by House of Dim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Animate Prep Workflow: &lt;a class=&#34;link&#34; href=&#34;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_prep_workflow.json&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_prep_workflow.json&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;AnimateDiff+ControlNets Workflow: &lt;a class=&#34;link&#34; href=&#34;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_workflow.json&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Dimgul/ComfyUI-Workflows/blob/main/house_of_dim_animate_workflow.json&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Stable Diffusion in the Cloud Set up</title>
         <link>https://mythicalprogrammer.github.io/p/stable-diffusion-in-the-cloud-set-up/</link>
         <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
@@ -728,6 +755,53 @@ than 5GB (default).&lt;/p&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=PcrwJ5C3zGM&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ComfyUI AnimateDiff Prompt Travel: Runpod.io Cloud GPUs Tutorial by  c0nsumption&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>My ComfyUI, AnimateDiff, ControlNets Workflow</title>
+        <link>https://mythicalprogrammer.github.io/p/my-comfyui-animatediff-controlnets-workflow/</link>
+        <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/my-comfyui-animatediff-controlnets-workflow/</guid>
+        <description>&lt;p&gt;Note: Draft, not sure when I&amp;rsquo;ll come back to continue this.&lt;/p&gt;
+&lt;h2 id=&#34;goal&#34;&gt;Goal&lt;/h2&gt;
+&lt;p&gt;To create a tutorial for myself so I can come back to.&lt;/p&gt;
+&lt;p&gt;I have a passion for dancing and I&amp;rsquo;d want to make AI instagram video of myself dancing.&lt;/p&gt;
+&lt;h2 id=&#34;preprocessing-video&#34;&gt;Preprocessing video&lt;/h2&gt;
+&lt;h3 id=&#34;softwares-needed&#34;&gt;Softwares Needed&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://handbrake.fr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Handbrake&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.blackmagicdesign.com/products/davinciresolve&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DaVinci Resolve&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;steps&#34;&gt;Steps&lt;/h3&gt;
+&lt;p&gt;Credit: &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=We3UmWWmlQE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ComfyUI + AnimateDiff + ControlNets Workflow by House of Dim&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Get a Video you want to AI&lt;/li&gt;
+&lt;li&gt;If it&amp;rsquo;s Iphone you need 1. Qubii; to back up into sd 2. a SD card reader to read from laptop.&lt;/li&gt;
+&lt;li&gt;Get HandBrake; use this to convert your iphone video to mp4, so DaVinci Resolve can actually read the codec. Window cannot read Apple&amp;rsquo;s MOV video.&lt;/li&gt;
+&lt;li&gt;Get DaVinci Resolve (free)&lt;/li&gt;
+&lt;li&gt;In DaVinci Resolve go to Project Settings menu (File -&amp;gt; Project Settings).
+From here make sure the resolution is 1080 x 1920 HD (for instagram reel).
+Make sure to check the checkbox for &amp;lsquo;Use vertical resolution&amp;rsquo; for portrait mode.
+Make sure the &amp;lsquo;Playback frame rate&amp;rsquo; option is at &amp;lsquo;24&amp;rsquo; frames per second.&lt;/li&gt;
+&lt;li&gt;Go to the &amp;lsquo;Edit&amp;rsquo; tab. The tab menu are at the bottom.&lt;/li&gt;
+&lt;li&gt;From here locate the &amp;lsquo;Master&amp;rsquo; panel. Right click on the &amp;lsquo;Master&amp;rsquo; panel to get a drop down menu.
+Select the option &amp;lsquo;Import Media&amp;hellip;&amp;rsquo; from the right click drop down menu.
+Select the video you want to AI
+Drag and drop this video into the timeline panel&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To trim the video:
+On the timeline panel
+left side move the verticle red line forward to where you want your video to start.
+Then to trim the left side you do shortcut key &amp;lsquo;Ctrl + Shift + [&amp;rsquo;
+For the right side, ending trim, same thing but the short cut key is &amp;lsquo;Ctrl + Shift + ]&amp;rsquo;
+9. top right panel &amp;lsquo;inspector&amp;rsquo;
+10. bottom tab deliver
+set format to &amp;lsquo;JPEG&amp;rsquo;&lt;/p&gt;
 </description>
         </item>
         

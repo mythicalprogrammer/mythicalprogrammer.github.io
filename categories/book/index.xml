@@ -7,6 +7,431 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <lastBuildDate>Wed, 22 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/book/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes</title>
+        <link>https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/</link>
+        <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/village-8396532_1280.jpg" alt="Featured image of post Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes" /&gt;&lt;p&gt;NOTE: DRAFT, not sure when I&amp;rsquo;ll come back to continue this.&lt;/p&gt;
+&lt;h1 id=&#34;types-and-domains&#34;&gt;Types and Domains&lt;/h1&gt;
+&lt;h2 id=&#34;types-and-relations&#34;&gt;TYPES AND RELATIONS&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/sees-it-4138304_1280.jpg&#34;
+	width=&#34;853&#34;
+	height=&#34;1280&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/sees-it-4138304_1280_hu29a3f0abc71b4a3eecfe9dc01436e86c_258345_480x0_resize_q75_box.jpg 480w, https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/sees-it-4138304_1280_hu29a3f0abc71b4a3eecfe9dc01436e86c_258345_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RELATIONS&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;66&#34;
+		data-flex-basis=&#34;159px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data types&lt;/strong&gt; (&lt;strong&gt;types&lt;/strong&gt; for short) are fundamental to computer science. Every attribute of every relation is defined to be of some type, and the same is true of relvars.&lt;/p&gt;
+&lt;p&gt;A relational attribute (i.e., an attribute of a relation or relvar) can be of any type whatsoever, implying among other things that such types can be arbitrarily complex. In particular, those types can be either system or user defined.&lt;/p&gt;
+&lt;p&gt;Two major topics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Equality comparisons and “domain check override”:&lt;/strong&gt; That domains really are types.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data value atomicity and first normal form:&lt;/strong&gt; That the types in question can be arbitrarily complex.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;equality-comparisons&#34;&gt;EQUALITY COMPARISONS&lt;/h2&gt;
+&lt;p&gt;The Main Differences Between an Expression and a Statement in Programming. Expressions can be assigned or used as operands, while statements can only be declared. Statements create side effects to be useful, while expressions are values or execute to values.&lt;/p&gt;
+&lt;p&gt;THE_ operators, effectively provides both (a) the domain checking we want in the first place and
+(b) a way of overriding that checking, when desired, in the second place&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;strong typing.&lt;/strong&gt; -
+(a) everything—in particular, every value and every variable—has a type, and (b) whenever we try to perform some operation, the system checks that the
+operands are of the right types for the operation in question (or, possibly, that they’re coercible to
+those right types). Observe, moreover, that this mechanism works for all operations, not just for
+the equality comparisons&lt;/p&gt;
+&lt;h2 id=&#34;data-value-atomicity&#34;&gt;DATA VALUE ATOMICITY&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/atom-3669818_1280.jpg&#34;
+	width=&#34;1280&#34;
+	height=&#34;720&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/atom-3669818_1280_hu71442ee2154632edebb8def9e89c4ef8_192625_480x0_resize_q75_box.jpg 480w, https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/atom-3669818_1280_hu71442ee2154632edebb8def9e89c4ef8_192625_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Atomicity&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;data value atomicity&lt;/strong&gt; and the related notion of &lt;strong&gt;first
+normal form&lt;/strong&gt; (&lt;code&gt;1NF&lt;/code&gt; for short).&lt;/p&gt;
+&lt;p&gt;1NF meant that every tuple in every
+relation contains just a single value (of the appropriate type) in every attribute position—and it’s
+usual to add that those “single values” are supposed to be “atomic.&lt;/p&gt;
+&lt;p&gt;What does it mean for data to be atomic?&lt;/p&gt;
+&lt;p&gt;Codd defines atomic data as data that “cannot be decomposed into
+smaller pieces by the DBMS (excluding certain special functions).”&lt;/p&gt;
+&lt;p&gt;the notion of &lt;strong&gt;atomicity has no absolute meaning;&lt;/strong&gt; it
+just depends on what we want to do with the data.&lt;/p&gt;
+&lt;h2 id=&#34;whats-a-type&#34;&gt;WHAT’S A TYPE?&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/typewriter-1248088_1280.jpg&#34;
+	width=&#34;1280&#34;
+	height=&#34;853&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/typewriter-1248088_1280_hu78a9f0ec1cb07f9f1e113f5480a76b75_249355_480x0_resize_q75_box.jpg 480w, https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/typewriter-1248088_1280_hu78a9f0ec1cb07f9f1e113f5480a76b75_249355_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Typewriter&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;So what is a type, exactly? In essence, it’s a named, &lt;em&gt;finite&lt;/em&gt; set of values—all possible values of some specific kind.&lt;/p&gt;
+&lt;p&gt;To elaborate briefly:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The types we’re interested in are always &lt;em&gt;finite&lt;/em&gt; because we’re dealing with computers,which (as pointed out in connection with type RATIONAL earlier in the chapter) are finite by definition.&lt;/li&gt;
+&lt;li&gt;Note also that &lt;em&gt;qualifier named&lt;/em&gt;: Types with different names are different types.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Moreover:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Every &lt;em&gt;value&lt;/em&gt; is of some type&lt;/strong&gt; — in fact, of exactly one type, except possibly if type inheritance is supported, a concept that’s beyond the scope of this book.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Every variable, every attribute, every operator that returns a result, and every parameter of every operator is defined, or declared, to be of some type.&lt;/strong&gt; 10 And to say that, e.g., variable V is declared to be of type T means, precisely, that every value v that can legally be
+assigned to V is in turn of type T.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Every expression denotes some value and is therefore of some type:&lt;/strong&gt; namely, the type of the value in question, which is to say the type of the value returned by the outermost operator in the expression (where by “outermost” I mean the operator that’s executed last). For example, the type of the expression
+&lt;code&gt;( a / b ) + ( x - y )&lt;/code&gt;
+is the type declared for the operator “&lt;code&gt;+&lt;/code&gt;”, whatever that happens to be.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;associated with every type there’s a set of operators for operating on values and variables of the type in question&lt;/strong&gt; — where to say that operator &lt;code&gt;Op&lt;/code&gt; is “associated with” type &lt;code&gt;T&lt;/code&gt; basically just means that operator &lt;code&gt;Op&lt;/code&gt; has a parameter of type &lt;code&gt;T&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;That defining a new type involves at least all of the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Defining a name for the type (obviously enough).&lt;/li&gt;
+&lt;li&gt;Defining the values that make up that type. I’ll discuss this aspect in detail in Chapter 8.&lt;/li&gt;
+&lt;li&gt;Defining the hidden physical representation for values of that type. As noted earlier, this is
+an implementation issue, not a model issue, and I won’t discuss it further in this book (at
+least, not much).&lt;/li&gt;
+&lt;li&gt;Defining one or more selector operators for selecting, or specifying, values of that type.
+Note: Here’s as good a place as any to point out in the interest of accuracy that the
+selectors for type T aren’t “associated with” type T in the sense that they have a parameter
+of type T; rather, they return a result of type T.&lt;/li&gt;
+&lt;li&gt;Defining the operators, including in particular assignment (“:=”), equality comparison
+(“=”), and THE_ operators, that apply to values and variables of that type (see below).&lt;/li&gt;
+&lt;li&gt;For those operators that return a result, defining the type of that result (again, see below).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;points 4, 5, and 6 taken together imply that (a) the system knows precisely
+which expressions are legal, and (b) for those expressions that are legal it knows the type of the
+result as well.&lt;/p&gt;
+&lt;h2 id=&#34;scalar-vs-nonscalar-types&#34;&gt;SCALAR vs. NONSCALAR TYPES&lt;/h2&gt;
+&lt;p&gt;Types are frequently said to be either scalar or nonscalar. Loosely, a type is scalar if it has no user visible components and nonscalar otherwise.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;scalar&lt;/strong&gt; - types that are neither tuple nor relation types.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;nonscalar&lt;/strong&gt; - types that are either tuple or relation types.&lt;/li&gt;
+&lt;li&gt;A &lt;em&gt;generated type&lt;/em&gt; is a type that’s obtained by invoking some
+type generator (in the example, the &lt;strong&gt;type generator&lt;/strong&gt; is, specifically, RELATION). You can think of a type generator as a special kind of operator; it’s special because (a) it returns a type instead of a value, and (b) it’s invoked at compile time instead of run time. For instance, most programming languages support a type generator called ARRAY, which lets users define a variety of specific array types. For present purposes, however, the only type generators we’re interested in are TUPLE and RELATION.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Finally, a few miscellaneous points to close this section:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Even though tuple and relation types do have user visible components (namely, their attributes), there’s no suggestion that those components have to be physically stored as such, in the form in which they’re seen by the user. In fact, the physical representation of tuples and relations should be hidden from the user, just as it is for scalar values (recall the discussion of physical data independence in Chapter 1).&lt;/li&gt;
+&lt;li&gt;Like scalar types, tuple and relation types certainly need associated selector operators (and literals as a special case). I’ll defer the details to the next chapter. They don’t need &lt;code&gt;THE_&lt;/code&gt; operators, however; instead, they have operators that provide access to the corresponding attributes, and those operators play a role somewhat analogous to that played by &lt;code&gt;THE_&lt;/code&gt; operators in connection with scalar types.&lt;/li&gt;
+&lt;li&gt;Tuple and relation types also need assignment and equality comparison operators. I gave an example of tuple assignment earlier in the present section; I’ll defer details of the other operators—relational assignment, and tuple and relational equality comparisons—to the next chapter.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scalar-types-in-sql&#34;&gt;SCALAR TYPES IN SQL&lt;/h2&gt;
+&lt;p&gt;SQL supports the following more or less self-explanatory system defined
+scalar types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;BOOLEAN&lt;/li&gt;
+&lt;li&gt;INTEGER&lt;/li&gt;
+&lt;li&gt;SMALLINT&lt;/li&gt;
+&lt;li&gt;BIGINT&lt;/li&gt;
+&lt;li&gt;NUMERIC(p,q)&lt;/li&gt;
+&lt;li&gt;DECIMAL(p,q)&lt;/li&gt;
+&lt;li&gt;FLOAT(p)&lt;/li&gt;
+&lt;li&gt;CHARACTER(n)&lt;/li&gt;
+&lt;li&gt;CHARACTER VARYING(n)&lt;/li&gt;
+&lt;li&gt;CHARACTER LARGE OBJECT(n)&lt;/li&gt;
+&lt;li&gt;BINARY(n)&lt;/li&gt;
+&lt;li&gt;BINARY VARYING(n)&lt;/li&gt;
+&lt;li&gt;BINARY LARGE OBJECT(n)&lt;/li&gt;
+&lt;li&gt;DATE&lt;/li&gt;
+&lt;li&gt;TIME&lt;/li&gt;
+&lt;li&gt;TIMESTAMP&lt;/li&gt;
+&lt;li&gt;INTERVAL&lt;/li&gt;
+&lt;li&gt;XML&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;type-checking-and-coercion-in-sql&#34;&gt;TYPE CHECKING AND COERCION IN SQL&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/stop-1971756_640.jpg&#34;
+	width=&#34;640&#34;
+	height=&#34;476&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/stop-1971756_640_hud9bef26450e551accdd4025dfb691a3b_149023_480x0_resize_q75_box.jpg 480w, https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/stop-1971756_640_hud9bef26450e551accdd4025dfb691a3b_149023_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;COERCION&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;322px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;SQL supports only a weak form of strong typing.&lt;/p&gt;
+&lt;p&gt;Thus, for example, an attempt to compare a number and a character string is illegal.&lt;/p&gt;
+&lt;p&gt;However, an attempt to compare (say) two numbers is legal, even if those numbers are of different types—say INTEGER and FLOAT.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Strong recommendations:&lt;/strong&gt; Do your best to avoid coercions wherever possible. columns with the same name are always of the same type; And when they can’t be avoided, I recommend doing them explicitly,
+using &lt;code&gt;CAST&lt;/code&gt; or some &lt;code&gt;CAST&lt;/code&gt; equivalent&lt;/p&gt;
+&lt;p&gt;Certain coercions are unfortunately built into the very fabric of SQL and so can’t be avoided. To be specific:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If a table expression tx is used as a row subquery, then the table &lt;code&gt;t&lt;/code&gt; denoted by tx is supposed to have just one row &lt;code&gt;r&lt;/code&gt;, and that table &lt;code&gt;t&lt;/code&gt; is coerced to that row &lt;code&gt;r&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If a table expression &lt;code&gt;tx&lt;/code&gt; is used as a scalar subquery, then the table t denoted by tx is supposed to have just one column and just one row and hence to contain just one value &lt;code&gt;v&lt;/code&gt;, and that table &lt;code&gt;t&lt;/code&gt; is doubly coerced to that value &lt;code&gt;v&lt;/code&gt;. Note: This case occurs in connection with SQL-style aggregation in particular (see Chapter 7).&lt;/li&gt;
+&lt;li&gt;In practice, the row expression &lt;code&gt;rx&lt;/code&gt; in the &lt;code&gt;ALL&lt;/code&gt; or &lt;code&gt;ANY&lt;/code&gt; comparison &lt;code&gt;rx θ sq&lt;/code&gt;—where (a) &lt;code&gt;θ&lt;/code&gt; is a simple scalar comparison operator, such as “&lt;code&gt;&amp;lt;&lt;/code&gt;” or “&lt;code&gt;&amp;gt;&lt;/code&gt;”, followed by the keyword &lt;code&gt;ALL&lt;/code&gt; or &lt;code&gt;ANY&lt;/code&gt;, and (b) &lt;em&gt;sq&lt;/em&gt; is a subquery—often consists of a simple scalar expression, in which case the scalar value denoted by that expression is effectively coerced to a row that contains just that scalar value. Note: Throughout this book, I use the term row expression to mean either a row subquery or a row selector invocation (where row selector in turn is my preferred term for what SQL calls a row value constructor—see Chapter 3); in other words, I use row expression to mean any expression that denotes a row, just as I use table expression to mean any expression that denotes a table. As for &lt;code&gt;ALL&lt;/code&gt; or &lt;code&gt;ANY&lt;/code&gt; comparisons, they’re discussed in Chapter 11.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;collations-in-sql&#34;&gt;COLLATIONS IN SQL&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;collation&lt;/strong&gt;—
+also known as a collating sequence—is a rule that’s associated with a specific character set and governs the comparison of strings of characters from that character set. Let C be a collation for
+character set S, and let a and b be any two characters from S. Then C must be such that exactly
+one of the comparisons a &amp;lt; b, a = b, and a &amp;gt; b evaluates to TRUE and the other two to FALSE
+(under C).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recommendation:&lt;/strong&gt;
+Don’t use PAD SPACE—always use NO PAD instead, if possible.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Strong recommendation:&lt;/strong&gt; Avoid possibly nondeterministic expressions as much as you can.&lt;/p&gt;
+&lt;h2 id=&#34;row-and-table-types-in-sql&#34;&gt;ROW AND TABLE TYPES IN SQL&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/sunrise-1014712_640.jpg&#34;
+	width=&#34;640&#34;
+	height=&#34;422&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/sunrise-1014712_640_hu4459685c3f53736b064ee02b0a339fc0_45530_480x0_resize_q75_box.jpg 480w, https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp2/sunrise-1014712_640_hu4459685c3f53736b064ee02b0a339fc0_45530_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ROW&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;SQL ROW type generator (type constructor):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;DECLARE&lt;/span&gt; SRV &lt;span style=&#34;color:#719e07&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;SQL&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;row&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;variable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;ROW&lt;/span&gt; ( SNO &lt;span style=&#34;color:#b58900&#34;&gt;VARCHAR&lt;/span&gt;(&lt;span style=&#34;color:#2aa198&#34;&gt;5&lt;/span&gt;) ,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      SNAME &lt;span style=&#34;color:#b58900&#34;&gt;VARCHAR&lt;/span&gt;(&lt;span style=&#34;color:#2aa198&#34;&gt;25&lt;/span&gt;) ,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      STATUS &lt;span style=&#34;color:#b58900&#34;&gt;INTEGER&lt;/span&gt; ,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      CITY &lt;span style=&#34;color:#b58900&#34;&gt;VARCHAR&lt;/span&gt;(&lt;span style=&#34;color:#2aa198&#34;&gt;20&lt;/span&gt;) ) ;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;SQL row assignment:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;SET&lt;/span&gt; SRV &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; ( S &lt;span style=&#34;color:#719e07&#34;&gt;WHERE&lt;/span&gt; SNO &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#39;S1&amp;#39;&lt;/span&gt; ) ;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;SQL doesn&amp;rsquo;t really have a &lt;code&gt;TABLE&lt;/code&gt; type generator.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CREATE TABLE&lt;/code&gt; for defining table variables.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;TABLE&lt;/span&gt; S
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ( SNO    &lt;span style=&#34;color:#b58900&#34;&gt;VARCHAR&lt;/span&gt;(&lt;span style=&#34;color:#2aa198&#34;&gt;5&lt;/span&gt;)  &lt;span style=&#34;color:#719e07&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;NULL&lt;/span&gt; ,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    SNAME  &lt;span style=&#34;color:#b58900&#34;&gt;VARCHAR&lt;/span&gt;(&lt;span style=&#34;color:#2aa198&#34;&gt;25&lt;/span&gt;) &lt;span style=&#34;color:#719e07&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;NULL&lt;/span&gt; ,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    STATUS &lt;span style=&#34;color:#b58900&#34;&gt;INTEGER&lt;/span&gt;     &lt;span style=&#34;color:#719e07&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;NULL&lt;/span&gt; ,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    CITY   &lt;span style=&#34;color:#b58900&#34;&gt;VARCHAR&lt;/span&gt;(&lt;span style=&#34;color:#2aa198&#34;&gt;20&lt;/span&gt;) &lt;span style=&#34;color:#719e07&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;NULL&lt;/span&gt; ,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#719e07&#34;&gt;UNIQUE&lt;/span&gt; ( SNO ) ) ;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Type tables. &lt;strong&gt;Strong recommendation:&lt;/strong&gt; Don&amp;rsquo;t use them, nor any features related to them.&lt;/p&gt;
+&lt;h2 id=&#34;concluding-remarks&#34;&gt;CONCLUDING REMARKS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Relations can have attributes of any type whatsoever.&lt;/li&gt;
+&lt;li&gt;The question as to what types are supported is orthogonal to the question of support for the relational model itself.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;First normal form&lt;/strong&gt; just means that every tuple in every relation contains a single value, of the appropriate type, in every attribute position.&lt;/li&gt;
+&lt;li&gt;Certain important exceptions to the rule that relational attributes can be of any type whatsoever. Two exceptions:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;The first is that if relation &lt;code&gt;r&lt;/code&gt; is of type &lt;code&gt;T&lt;/code&gt;, then no attribute of &lt;code&gt;r&lt;/code&gt; can itself be of type &lt;code&gt;T&lt;/code&gt; (think about it!).&lt;/li&gt;
+&lt;li&gt;The second (which in fact I’ve already touched on) is that no relation in the database can have an attribute of any pointer type.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;First picture (tables): &lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/illustrations/village-city-coast-colorful-houses-8396532/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/illustrations/village-city-coast-colorful-houses-8396532/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/photos/sees-it-relation-relationship-soul-4138304/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/photos/sees-it-relation-relationship-soul-4138304/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/photos/atom-nuclear-power-plant-abandoned-3669818/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/photos/atom-nuclear-power-plant-abandoned-3669818/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/photos/stop-violence-abuse-partner-1971756/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/photos/stop-violence-abuse-partner-1971756/&lt;/a&gt; - This is the only one out of a few choices that had some sembalence of sense for Coercion. Plus I love Kermit.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/photos/sunrise-boat-rowing-boat-nobody-1014712/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/photos/sunrise-boat-rowing-boat-nobody-1014712/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/photos/typewriter-vintage-old-1248088/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pixabay.com/photos/typewriter-vintage-old-1248088/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes</title>
+        <link>https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/</link>
+        <pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/database-schema-1895779_1280.png" alt="Featured image of post Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes" /&gt;&lt;p&gt;Note: DRAFT&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Christopher_J._Date&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;C.J. Date&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s been awhile since I&amp;rsquo;ve dealt with Relational Theory so I&amp;rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.&lt;/p&gt;
+&lt;h2 id=&#34;original-model-terminology&#34;&gt;Original Model Terminology&lt;/h2&gt;
+&lt;p&gt;The original model by &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Edgar_F._Codd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;E. F. Codd&lt;/a&gt; had three major components:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;structure&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;integrity&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;and &lt;code&gt;manipulation&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;structural-features&#34;&gt;Structural Features&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Relation&lt;/strong&gt; (&amp;quot;&lt;em&gt;table&lt;/em&gt;&amp;quot;) - are defined over types&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Attribute&lt;/strong&gt; (&amp;quot;&lt;em&gt;column&lt;/em&gt;&amp;quot;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Type&lt;/strong&gt; (&amp;quot;&lt;em&gt;column values&lt;/em&gt;&amp;quot; aka &amp;ldquo;&lt;em&gt;domain&lt;/em&gt;&amp;rdquo;) - a conceptual pool of values from which actual attributes in actual relations take their actual values.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;N-ary relation&lt;/strong&gt; - # of column in a table&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Candidate key&lt;/strong&gt; (&amp;quot;&lt;em&gt;key&lt;/em&gt;&amp;quot;) - every relation has at least one. A combination of attributes (cols), often just 1 attribute (e.g. column with id&amp;rsquo;s), such that every tuple in the relation has a unique value for the combinatoin in question.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Primary key&lt;/strong&gt; - is a candidate key that&amp;rsquo;s been singled out for special trestment in some way.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Foreign key&lt;/strong&gt; - a combination, or set, of attributes &lt;code&gt;FK&lt;/code&gt; in some relation &lt;code&gt;r2&lt;/code&gt; such that each &lt;code&gt;FK&lt;/code&gt; value is required to be equal to some value of some key &lt;code&gt;K&lt;/code&gt; in some relation &lt;code&gt;r1&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Constraint&lt;/strong&gt; (aka &lt;em&gt;integrity constraint&lt;/em&gt;) - a boolean expression that must evaluate to TRUE.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;integrity-features&#34;&gt;Integrity Features&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;The Entity Integrity Rule&lt;/strong&gt; - Primary key attributes don&amp;rsquo;t permit NULL&amp;rsquo;s.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The Referential Integrity Rule&lt;/strong&gt; - There mustn&amp;rsquo;t be any unmatched foreign key values. &lt;em&gt;If B references A, then A must exists.&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;manipulative-features&#34;&gt;Manipulative Features&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Relational algebra&lt;/strong&gt; - a collection of operators (e.g., &lt;code&gt;difference&lt;/code&gt;, or &lt;code&gt;MINUS&lt;/code&gt;) that can be applied to relations (tables). Allows us to derived &amp;ldquo;new&amp;rdquo; relations from &amp;ldquo;old&amp;rdquo; ones.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Relational assignment&lt;/strong&gt; operator - allows the value of some relational algebra expression (e.g., &lt;code&gt;r1 MINUS r2&lt;/code&gt;, where &lt;code&gt;r1&lt;/code&gt; and &lt;code&gt;r2&lt;/code&gt; are relations) to be assigned to some relation (table). How updates are done in the relational model.&lt;em&gt;Update&lt;/em&gt; means &lt;code&gt;INSERT&lt;/code&gt;, &lt;code&gt;DELETE&lt;/code&gt;, and &lt;code&gt;UPDATE&lt;/code&gt; operators.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Closure property&lt;/strong&gt; - The output from every operation is the same kind of thing as the input, the out put from one peration can become the input to another. Enable us to wrjite nested relational expressions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;original-operators&#34;&gt;Original Operators*&lt;/h4&gt;
+&lt;p&gt;*the ones that Codd defined in his earliest papers&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/fig1_2_the_original_relational_algebra.PNG&#34;
+	width=&#34;883&#34;
+	height=&#34;758&#34;
+	srcset=&#34;https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/fig1_2_the_original_relational_algebra_huf92dc89bfee175422dd0d35d7552ca9e_34135_480x0_resize_box_3.PNG 480w, https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/fig1_2_the_original_relational_algebra_huf92dc89bfee175422dd0d35d7552ca9e_34135_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Figure 1.2 The Original Relational Algebra&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;116&#34;
+		data-flex-basis=&#34;279px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Restrict&lt;/strong&gt; - Returns a relation containing all tuples from a specified relation that satisfy a specified condition. For example, we might restrict relation &lt;code&gt;EMP&lt;/code&gt; to just those tuples where the &lt;code&gt;DNO&lt;/code&gt; value is &lt;code&gt;D2&lt;/code&gt;. &lt;em&gt;My Note&lt;/em&gt;: this seems like a &lt;code&gt;WHERE&lt;/code&gt; clause.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project&lt;/strong&gt; - Returns a relation containing all (sub)tuples that remain in a specified relation after specified attributes have been removed. For example, we might project relation &lt;code&gt;EMP&lt;/code&gt; on just the &lt;code&gt;ENO&lt;/code&gt; and &lt;code&gt;SALARY&lt;/code&gt; attributes (thereby removing the &lt;code&gt;ENAME&lt;/code&gt; and &lt;code&gt;DNO&lt;/code&gt; attributes). &lt;em&gt;My Notes&lt;/em&gt;: &lt;code&gt;SELECT&lt;/code&gt; statement, where you specified which column(s) you want.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Product&lt;/strong&gt; - Returns a relation containing all possible tuples that are a combination of two tuples, one from each of two specified relations. Note: TRhis operator is also known variously as &lt;em&gt;cartesian product&lt;/em&gt; (sometimes more specifically &lt;em&gt;extended&lt;/em&gt; or &lt;em&gt;expanded&lt;/em&gt; cartesian product), &lt;em&gt;cross product&lt;/em&gt;,&lt;em&gt;cross join&lt;/em&gt;, and &lt;em&gt;cartesian join&lt;/em&gt;; in fact it&amp;rsquo;s really just a special case of join (see chp 6).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Union&lt;/strong&gt; - Returns a relation containing all tuples that appear in either or both of two specified relations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Intersect&lt;/strong&gt; - Returns a relation containing all tuples that appear in both of two specified relations (special case of join).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Difference&lt;/strong&gt; - Returns a relation containing all tuples that appear in the first and not the second of specified relations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Join&lt;/strong&gt; - Returns a relation containing all possible tuples that are a combination of two tuples, one from each of two specified relations, such that the two tuples contributing to any given result tuple have a common value for the common attributes of the two relations (and that common value appears just once, not twice, in that result tuple). Note: This kind of join was originally called the &lt;em&gt;natural&lt;/em&gt; join, to distinguish it from various other kinds. This is the most inportant join so &lt;em&gt;join&lt;/em&gt; means &lt;em&gt;natural join&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Relational_calculus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Relational Calculus&lt;/a&gt; is an alternative to &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Relational_algebra&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Relational Algebra&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;data-model-vs-implementation&#34;&gt;Data Model vs Implementation&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;A &lt;strong&gt;data model (first sense)&lt;/strong&gt; is an abstract, self-contained, logical definition of the data structures, data operators, and so forth, that together make up the abstract machine with which users interact. &lt;em&gt;The model (first sense) is what the user has to know.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;An &lt;strong&gt;implementation&lt;/strong&gt; of a given data model (first sense) is a physical realization on a real machine of the components of the abstract machine that together constitute that model. &lt;em&gt;The implementation is what the user doesn’t have to know.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Physical data independence&lt;/strong&gt; - means we have the freedom to make changes in the way the data is physically stored and accessed without having to make corresponding changes in the way the data is perceived by the user. &lt;em&gt;&amp;hellip;means protecting investment in user training
+and applications.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;data model (second sense)&lt;/strong&gt; is a model of the data—especially the persistent data—of some particular enterprise. Is just a logical, and possibly somewhat abstract, database design.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;domain&lt;/strong&gt; can be thought of as a conceptual pool of values from which actual attributes in actual relations take their actual values. In other words, a domain is a type, and the terms domain and type are effectively interchangeable.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;data-model-first-sense-vs-data-model-second-sense&#34;&gt;Data Model (first sense) vs Data Model (second sense)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A &lt;strong&gt;data model in the first sense&lt;/strong&gt; is like a &lt;em&gt;programming language&lt;/em&gt;, whose constructs can be used to solve many specific problems but in and of themselves have no direct connection with any such specific problem.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;data model in the second sense&lt;/strong&gt; is like a &lt;em&gt;specific program&lt;/em&gt; written in that language—it uses the facilities provided by the model, in the first sense of that term, to solve some specific problem.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;properties-of-relations&#34;&gt;PROPERTIES OF RELATIONS&lt;/h2&gt;
+&lt;p&gt;First of all, every relation has a heading and a body:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Heading&lt;/strong&gt; is a set of attributes (where by the term attribute I mean, very specifically, an attribute-name : type-name pair, and where no two attributes in the same heading have the same attribute name).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Body&lt;/strong&gt; is a set of tuples that conform to that heading.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Degree&lt;/strong&gt; (aka &lt;em&gt;arity&lt;/em&gt;) is the number of attributes in the heading, both of that heading as such and of any relation that has that heading.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cardinality&lt;/strong&gt; is the number of tuples in the body, both of the body itself and of the relation that contains it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relations never contain duplicate tuples. SQL tables are allowed to contain duplicate rows and thus aren’t relations, in general.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The tuples of a relation are unordered. &lt;code&gt;ORDER BY&lt;/code&gt; is useful for
+displaying results, but it isn’t a relational operator as such.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relations are always &lt;em&gt;normalized&lt;/em&gt; (equivalently, they’re in &lt;em&gt;first normal form&lt;/em&gt;, &lt;code&gt;1NF&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;some-crucial-points&#34;&gt;Some Crucial Points&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Every subset of a tuple is a tuple.&lt;/li&gt;
+&lt;li&gt;Every subset of a heading is a heading.&lt;/li&gt;
+&lt;li&gt;Every subset of a body is a body.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Equality:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;two tuples are duplicates of each other if and only if they’re equal: in other words, if and only if they’re the very same tuple.&lt;/li&gt;
+&lt;li&gt;two relations are equal if and only if, in turn, their headings are equal and their bodies are equal.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;base-vs-derived-relations&#34;&gt;BASE vs. DERIVED RELATIONS&lt;/h2&gt;
+&lt;p&gt;The operators of the relational algebra allow us to start with some given relations and obtain further relations from those given ones.&lt;/p&gt;
+&lt;p&gt;The given relations are referred to as &lt;em&gt;base relations&lt;/em&gt;, the others are &lt;em&gt;derived relations&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CREATE TABLE&lt;/code&gt; SQL statement - creates base relations.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CREATE VIEW&lt;/code&gt; SQL statement - is one way to create derived relations. A &lt;em&gt;view&lt;/em&gt; (also known as a &lt;code&gt;virtual relation&lt;/code&gt;) is a named relation whose value at any given time &lt;code&gt;t&lt;/code&gt; is the result of evaluating a certain relational expression at that time &lt;code&gt;t&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Can think of a view as being &lt;strong&gt;“materialized”&lt;/strong&gt;—in effect, you can think of a base relation being constructed whose value is obtained by evaluating the specified relational expression—at the time the view in question is referenced.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note: Relational model has nothing to say about physical storage matters at all.&lt;/p&gt;
+&lt;p&gt;Note: a view is that it is a table/relation. Don&amp;rsquo;t treat it any differently when come to relational algebra on view vs table/relation.&lt;/p&gt;
+&lt;h2 id=&#34;relations-vs-relvars&#34;&gt;RELATIONS vs. RELVARS&lt;/h2&gt;
+&lt;h2 id=&#34;values-vs-variables&#34;&gt;VALUES vs. VARIABLES&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;A &lt;strong&gt;value&lt;/strong&gt; is an &lt;em&gt;“individual constant”&lt;/em&gt; (this is the term used by logicians), such as the integer 3. A value has no location in time or space. However, values can be represented in memory by means of some encoding, and those representations or encodings do have location in time and space. Indeed, distinct representations of the same value can appear at any number of distinct locations in time and space—meaning, loosely, that any number of different variables (see the definition immediately following) can have the same value, at the same time or different times. Observe in particular that, by definition, a value can’t be updated; for if it could, then after such an update it wouldn’t be that value any longer.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;variable&lt;/strong&gt; is a holder for a representation of a value. A variable does have location in time and space. Also, variables, unlike values, can be updated; that is, the current value of the variable can be replaced by another value. (After all, that’s what &lt;em&gt;“variable”&lt;/em&gt; means—to be a variable is to be updatable, to be updatable is to be a variable; equivalently, to be a variable is to be assignable to, to be assignable to is to be a variable.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;concluding-remarks&#34;&gt;CONCLUDING REMARKS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Relations have no duplicate tuples, no top to bottom tuple ordering, and no left to right attribute ordering.&lt;/li&gt;
+&lt;li&gt;Overall, the relational model is declarative, not procedural, in nature; that is, it always favors declarative solutions over procedural ones, wherever such solutions are feasible.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Declarative&lt;/strong&gt; means the system does the work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Procedural&lt;/strong&gt; means the user does the work.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;First picture (tables): &lt;a class=&#34;link&#34; href=&#34;https://pixabay.com/vectors/database-schema-data-tables-schema-1895779/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;database-schema-data-tables-schema-1895779&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Book Note: Introduction to Hierarchical Bayesian Modeling for Ecological Data, Chapter 1</title>
         <link>https://mythicalprogrammer.github.io/p/book-note-intro-to-hierarchical-bayes-modeling-eco-data-chp-one/</link>
         <pubDate>Sat, 15 Jul 2017 00:00:00 +0000</pubDate>

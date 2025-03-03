@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Note: DRAFT
+Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
 It&amp;rsquo;s been awhile since I&amp;rsquo;ve dealt with Relational Theory so I&amp;rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.
 Original Model Terminology The original model by E. F. Codd had three major components:
 structure, integrity, and manipulation.'>
 <title>Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes</title>
 
-<link rel='canonical' href='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/'>
+<link rel='canonical' href='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/'>
 
 <link rel="stylesheet" href="/scss/style.min.ae544f6e875175eb0f852537f03e029a61665cc22ad0fd93bf333e7c3bee5a8c.css"><meta property='og:title' content='Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes'>
-<meta property='og:description' content='Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
+<meta property='og:description' content='Note: DRAFT
+Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
 It&amp;rsquo;s been awhile since I&amp;rsquo;ve dealt with Relational Theory so I&amp;rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.
 Original Model Terminology The original model by E. F. Codd had three major components:
 structure, integrity, and manipulation.'>
-<meta property='og:url' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/'>
+<meta property='og:url' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/'>
 <meta property='og:site_name' content='Anthony Quoc Anh Doan - Ramblings of a Happy Scientist'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Book notes' /><meta property='article:published_time' content='2023-11-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Book notes' /><meta property='article:published_time' content='2023-11-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/database-schema-1895779_1280.png' />
 <meta name="twitter:site" content="@AnthonyDoan20">
     <meta name="twitter:creator" content="@AnthonyDoan20"><meta name="twitter:title" content="Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes">
-<meta name="twitter:description" content="Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
+<meta name="twitter:description" content="Note: DRAFT
+Introduction Started reading &amp;ldquo;SQL and Relational Theory&amp;rdquo; by C.J. Date.
 It&amp;rsquo;s been awhile since I&amp;rsquo;ve dealt with Relational Theory so I&amp;rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.
 Original Model Terminology The original model by E. F. Codd had three major components:
 structure, integrity, and manipulation."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280.png' />
+    <meta name="twitter:image" content='https://mythicalprogrammer.github.io/p/book-notes-sql-and-relational-theory-chp1/database-schema-1895779_1280.png' />
     </head>
     <body class="
     article-page
@@ -411,9 +414,9 @@ structure, integrity, and manipulation."><meta name="twitter:card" content="summ
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/">
-                <img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_800x0_resize_box_3.png"
-                        srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_800x0_resize_box_3.png 800w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_1600x0_resize_box_3.png 1600w"
+            <a href="/p/book-notes-sql-and-relational-theory-chp1/">
+                <img src="/p/book-notes-sql-and-relational-theory-chp1/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_800x0_resize_box_3.png"
+                        srcset="/p/book-notes-sql-and-relational-theory-chp1/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_800x0_resize_box_3.png 800w, /p/book-notes-sql-and-relational-theory-chp1/database-schema-1895779_1280_huac3e39f9b8c6552b2a8f76d2e5316d9f_72957_1600x0_resize_box_3.png 1600w"
                         width="800" 
                         height="699" 
                         loading="lazy"
@@ -440,7 +443,7 @@ structure, integrity, and manipulation."><meta name="twitter:card" content="summ
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/">Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes</a>
+            <a href="/p/book-notes-sql-and-relational-theory-chp1/">Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 1 - Setting the Scene - Notes</a>
         </h2>
     
         
@@ -492,7 +495,8 @@ structure, integrity, and manipulation."><meta name="twitter:card" content="summ
     <section class="article-content">
     
     
-    <h2 id="introduction">Introduction</h2>
+    <p>Note: DRAFT</p>
+<h2 id="introduction">Introduction</h2>
 <p>Started reading &ldquo;SQL and Relational Theory&rdquo; by <a class="link" href="https://en.wikipedia.org/wiki/Christopher_J._Date"  target="_blank" rel="noopener"
     >C.J. Date</a>.</p>
 <p>It&rsquo;s been awhile since I&rsquo;ve dealt with Relational Theory so I&rsquo;m taking notes since their terminology is different than SQL. I also have a strange style of learning which requires physically doing something on top of visually reading. This is the physical part.</p>
@@ -528,10 +532,10 @@ structure, integrity, and manipulation."><meta name="twitter:card" content="summ
 </ol>
 <h4 id="original-operators">Original Operators*</h4>
 <p>*the ones that Codd defined in his earliest papers</p>
-<p><img src="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/fig1_2_the_original_relational_algebra.PNG"
+<p><img src="/p/book-notes-sql-and-relational-theory-chp1/fig1_2_the_original_relational_algebra.PNG"
 	width="883"
 	height="758"
-	srcset="/p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/fig1_2_the_original_relational_algebra_huf92dc89bfee175422dd0d35d7552ca9e_34135_480x0_resize_box_3.PNG 480w, /p/book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp1-notes/fig1_2_the_original_relational_algebra_huf92dc89bfee175422dd0d35d7552ca9e_34135_1024x0_resize_box_3.PNG 1024w"
+	srcset="/p/book-notes-sql-and-relational-theory-chp1/fig1_2_the_original_relational_algebra_huf92dc89bfee175422dd0d35d7552ca9e_34135_480x0_resize_box_3.PNG 480w, /p/book-notes-sql-and-relational-theory-chp1/fig1_2_the_original_relational_algebra_huf92dc89bfee175422dd0d35d7552ca9e_34135_1024x0_resize_box_3.PNG 1024w"
 	loading="lazy"
 	
 		alt="Figure 1.2 The Original Relational Algebra"
@@ -675,6 +679,30 @@ displaying results, but it isn’t a relational operator as such.</p>
             
                 
 <article class="has-image">
+    <a href="/p/book-notes-sql-and-relational-theory-chp2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/book-notes-sql-and-relational-theory-chp2/village-8396532_1280.e8ae3e21f2485c191770e82590baaf53_hue1ddd2565bae2c38352275251d9b80ad_171484_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes"
+                        data-key="book-notes-sql-and-relational-theory-chp2" 
+                        data-hash="md5-6K4&#43;IfJIXBkXcOglkLqvUw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/using-window-functions-to-find-island/">
         
         
@@ -702,50 +730,6 @@ displaying results, but it isn’t a relational operator as such.</p>
 </aside>
 
      
-    
-        
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">

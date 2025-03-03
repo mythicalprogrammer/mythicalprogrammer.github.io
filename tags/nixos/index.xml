@@ -6,6 +6,58 @@
         <description>Recent content in NixOS on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Wed, 20 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/nixos/index.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Wed, 20 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/nixos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>NixOS: A new journey</title>
+        <link>https://mythicalprogrammer.github.io/p/nixos-a-new-journey/</link>
+        <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/nixos-a-new-journey/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/nixos-a-new-journey/nixos-logo.png" alt="Featured image of post NixOS: A new journey" /&gt;&lt;p&gt;Note: Draft, I&amp;rsquo;m not sure when I will get back to this.&lt;/p&gt;
+&lt;h2 id=&#34;introducation&#34;&gt;Introducation&lt;/h2&gt;
+&lt;p&gt;This story happened a long time ago, 2 days ago, in a galaxy far, far away. It is already over. Nothing can be done to change it. It is a story of frustration and love for a crazy operating system on a lost technology laptop &lt;a class=&#34;link&#34; href=&#34;https://www.thinkwiki.org/wiki/Category:T400&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Thinkpad T400&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;Installation on 32 bit&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nixos.org/manual/nixos/stable/index.html#sec-installation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nixos.org/manual/nixos/stable/index.html#sec-installation&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;filesystem-chosen-btrfs&#34;&gt;Filesystem Chosen (BTRFS)&lt;/h2&gt;
+&lt;p&gt;Youtube overview on it: &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=iwNg_fusT9A&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/watch?v=iwNg_fusT9A&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Encryption: &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=co5V2YmFVEE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/watch?v=co5V2YmFVEE&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;fs-questions&#34;&gt;FS questions&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;What are subvolumes in BTRFS?&lt;/li&gt;
+&lt;li&gt;What software/apps is recommended for BTRFS? (Esp. Defrag. Look at OpenSUSE app)&lt;/li&gt;
+&lt;li&gt;How large my /swap be if I have 64 GB of RAM?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-swapspace&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-swapspace&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;At least 4GB.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://superuser.com/questions/777907/swap-partition-size-on-a-64-gb-ram-computer-for-memory-intensive-work&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://superuser.com/questions/777907/swap-partition-size-on-a-64-gb-ram-computer-for-memory-intensive-work&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;16GB&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;What&amp;rsquo;s Impermanence means in NixOS?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://discourse.nixos.org/t/what-does-impermanence-add-over-built-in-functionality/27939&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://discourse.nixos.org/t/what-does-impermanence-add-over-built-in-functionality/27939&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;The idea of impermanence is that upon reboot, the machine loses its state and in the case of NixOS gets recreated from your configuration (stored in a persistent area of your file system). So any erroneous state changes (accidental or otherwise) are lost between reboots.
+The persistent area will hold some important data - perhaps ssh keys (depending on type) and passwords that you may need beyond your configuration.nix (or flake)
+It does not affect your home folders.
+I found Guekka’s blog are good resource - &lt;a class=&#34;link&#34; href=&#34;https://guekka.github.io/nixos-server-1/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NixOS as a server, part 1: Impermanence | Guekka&amp;rsquo;s blog&lt;/a&gt;
+I use it - as much to find out more about it as anything else.
+If it interests you, try on a spare machine first.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ndash;  Damage May 7, 2023, 7:45pm 2&lt;/p&gt;
+&lt;h3 id=&#34;nixoss-wiki-btrfs-layout-recommendations&#34;&gt;NixOS&amp;rsquo;s Wiki BTRFS layout recommendations&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nixos.wiki/wiki/Btrfs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nixos.wiki/wiki/Btrfs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;#5: How do you encrypt?&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.nixos.org/wiki/Btrfs#Installation_with_encryption&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.nixos.org/wiki/Btrfs#Installation_with_encryption&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>

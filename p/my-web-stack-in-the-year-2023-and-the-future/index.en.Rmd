@@ -19,7 +19,7 @@ image: ghost-in-the-shell-7765132_1280.jpg
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no 
 ---
 
 ## Current Webstack 2023

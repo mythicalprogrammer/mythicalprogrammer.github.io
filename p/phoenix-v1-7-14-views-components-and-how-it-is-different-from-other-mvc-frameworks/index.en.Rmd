@@ -14,7 +14,7 @@ image: ai-generated-8579708_1280.jpg
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no
 ---
 
 ## Introduction

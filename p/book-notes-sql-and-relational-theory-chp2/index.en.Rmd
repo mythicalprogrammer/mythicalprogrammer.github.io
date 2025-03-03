@@ -2,7 +2,7 @@
 title: 'Book Notes: SQL and Relational Theory (3rd ed) by C.J. Date, Chp 2 - Types and Domains - Notes'
 author: A.Q. Doan
 date: '2023-11-22'
-slug: book-notes-sql-and-relational-theory-3rd-ed-by-c-j-date-chp-2-notes
+slug: book-notes-sql-and-relational-theory-chp2
 categories:
   - SQL
   - Book
@@ -12,9 +12,11 @@ description: ~
 image: village-8396532_1280.jpg
 math: ~
 license: Not Sure. These are snippets of passage in the book I've found relevant.
-hidden: yes 
-comments: yes
+hidden: no 
+comments: no 
 ---
+
+NOTE: DRAFT, not sure when I'll come back to continue this.
 
 # Types and Domains
 

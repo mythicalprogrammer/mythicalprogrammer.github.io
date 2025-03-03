@@ -6,6 +6,34 @@
         <description>Recent content in Window 10 on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Thu, 30 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/window-10/index.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 30 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/window-10/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Configuring Window 10 to be more developer friendly</title>
+        <link>https://mythicalprogrammer.github.io/p/configuring-window-10-to-be-more-developer-friendly/</link>
+        <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/configuring-window-10-to-be-more-developer-friendly/</guid>
+        <description>&lt;p&gt;Note: Draft, not sure when I&amp;rsquo;ll come back and continue this.&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=235G6X5EAvM&amp;amp;t=9s&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Make your WSL or WSL2 terminal awesome - with Windows Terminal, zsh, oh-my-zsh and Powerlevel10k by Christian Lempa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nerdfonts.com/font-downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Nerd Fonts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Windows_Package_Manager&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Windows Package Manager, Winget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows/package-manager/#windows-package-manager-for-developers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Winget Docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://devblogs.microsoft.com/commandline/introducing-windows-terminal/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Windows Terminal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows/wsl/install&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;WSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/WSL/issues/5663&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;WSL issue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/WSL/issues/5393&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;WSL Update&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>
