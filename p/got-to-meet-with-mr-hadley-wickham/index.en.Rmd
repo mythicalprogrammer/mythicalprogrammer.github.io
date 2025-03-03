@@ -1,0 +1,26 @@
+---
+title: Got to meet with Mr. Hadley Wickham
+author: Anthony Quoc Anh Doan
+date: '2017-11-09'
+slug: got-to-meet-with-mr-hadley-wickham
+categories:
+  - R
+  - Artificial intelligence
+  - data
+  - statistic
+tags:
+  - Book notes
+  - datascience
+  - R
+  - Open Source
+description: ~
+image: R_logo.png
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+![The Hadley Wickham](images/IMG_20171109_184717_428.jpg)
+
+![He signed my book.](images/20171109_184517.jpg)
