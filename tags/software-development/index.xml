@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Software Development on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
+        <link>https://mythicalprogrammer.github.io/tags/software-development/</link>
+        <description>Recent content in Software Development on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Sat, 19 Jun 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/software-development/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Recommended Reads on Programming</title>
+        <link>https://mythicalprogrammer.github.io/p/recommended-reads-on-programming/</link>
+        <pubDate>Sat, 19 Jun 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/recommended-reads-on-programming/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/recommended-reads-on-programming/ganesha-1853602_1280.jpg" alt="Featured image of post Recommended Reads on Programming" /&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform and I migrated to my current one.&lt;/p&gt;
+&lt;h2 id=&#34;reading-list&#34;&gt;Reading List&lt;/h2&gt;
+&lt;h3 id=&#34;programmers-are-tiny-godshttppowazekcomposts1655&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;http://powazek.com/posts/1655&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Programmers are Tiny Gods&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;By Derek Powazek&lt;/p&gt;
+&lt;h3 id=&#34;in-the-beginning-was-the-command-line&#34;&gt;In the Beginning… Was the Command Line&lt;/h3&gt;
+&lt;p&gt;By Neal Stephenson&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://artlung.com/smorgasborg/C_R_Y_P_T_O_N_O_M_I_C_O_N.shtml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Read Online&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.cryptonomicon.com/beginning.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://en.wikipedia.org/wiki/In_the_Beginning..._Was_the_Command_Line&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Wikipedia Entry&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;📌 Also check out this &lt;a class=&#34;link&#34; href=&#34;http://stackoverflow.com/questions/194696/favorite-essay-about-programming&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;StackOverflow discussion&lt;/a&gt; on favorite programming essays.&lt;/p&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Image by &lt;a href=&#34;https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1853602&#34;&gt;Pexels&lt;/a&gt; from &lt;a href=&#34;https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1853602&#34;&gt;Pixabay&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

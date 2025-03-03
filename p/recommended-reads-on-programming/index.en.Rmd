@@ -1,0 +1,41 @@
+---
+title: Recommended Reads on Programming
+author: Anthony Quoc Anh Doan
+date: '2010-06-19'
+slug: recommended-reads-on-programming
+categories:
+  - Programming
+  - Software Development
+  - Computer Science
+tags:
+  - Programming
+  - Essays
+  - Command Line
+  - Software Development
+  - Reading List
+description: ~
+image: ganesha-1853602_1280.jpg 
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+## Reading List
+
+### [Programmers are Tiny Gods](http://powazek.com/posts/1655)  
+By Derek Powazek  
+
+### In the Beginning… Was the Command Line  
+By Neal Stephenson  
+- [Read Online](http://artlung.com/smorgasborg/C_R_Y_P_T_O_N_O_M_I_C_O_N.shtml)  
+- [Download](http://www.cryptonomicon.com/beginning.html)  
+- [Wikipedia Entry](http://en.wikipedia.org/wiki/In_the_Beginning..._Was_the_Command_Line)  
+
+📌 Also check out this [StackOverflow discussion](http://stackoverflow.com/questions/194696/favorite-essay-about-programming) on favorite programming essays.  
+
+## Credits
+
+* Image by <a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1853602">Pexels</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1853602">Pixabay</a>
