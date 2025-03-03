@@ -5128,6 +5128,71 @@ Youjo Senki
 </description>
         </item>
         <item>
+        <title>Make your internet faster: Faster DNS &amp; Free Fast DNS</title>
+        <link>https://mythicalprogrammer.github.io/p/make-your-internet-faster-faster-dns-free-fast-dns/</link>
+        <pubDate>Wed, 21 Apr 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/make-your-internet-faster-faster-dns-free-fast-dns/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/make-your-internet-faster-faster-dns-free-fast-dns/dns-recrussion-big.jpg" alt="Featured image of post Make your internet faster: Faster DNS &amp; Free Fast DNS" /&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform and I migrated to my current one.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlGzIMlBzjFDYi0MfTqlBTNw0V_XfH1LbKQkjCP0Z4A_eqsbFuly5Luh0NzxENyy4hMhNRJM_NxtLt2HUdwtEFQIkTXvcPUQ_kfs5CNC6QpdxuRjvsAQsu-pTPrAMGe2x0g865ksvyXg/s400/dns-recrussion-big.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DNS Recursion&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;To find the fastest Internet in your area:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://code.google.com/p/namebench/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;namebench&lt;/a&gt; is a Google project that will find the fastest DNS around your area. It takes a while.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;free-fast-dns&#34;&gt;Free Fast DNS&lt;/h3&gt;
+&lt;h4 id=&#34;free-public-dns-server&#34;&gt;Free Public DNS Server&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Service provider:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;http://code.google.com/speed/public-dns/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Google&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;8.8.8.8&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;8.8.4.4&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Service provider:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;http://www.scrubit.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ScrubIt&lt;/a&gt;&lt;br&gt;
+Public DNS server address:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;67.138.54.100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;207.225.209.66&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Service provider:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;http://www.dnsadvantage.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DNS Advantage&lt;/a&gt;&lt;br&gt;
+DNS Advantage free DNS server list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;156.154.70.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;156.154.71.1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Service provider:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;http://www.opendns.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenDNS&lt;/a&gt;&lt;br&gt;
+OpenDNS free DNS server list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;208.67.222.222&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;208.67.220.220&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Service provider:&lt;/strong&gt; &lt;strong&gt;vnsc-pri.sys.gtei.net&lt;/strong&gt;&lt;br&gt;
+Public Name Server IP address:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;4.2.2.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;4.2.2.2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;4.2.2.3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;4.2.2.4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;4.2.2.5&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;4.2.2.6&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Fast DNS made possible thanks to &lt;a class=&#34;link&#34; href=&#34;http://theos.in/windows-xp/free-fast-public-dns-server-list/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;this site&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Jquery Progress Bar, pecl c, PHP module, Debian</title>
         <link>https://mythicalprogrammer.github.io/p/jquery-progress-bar-pecl-c-php-module-debian/</link>
         <pubDate>Sat, 09 Jan 2010 00:00:00 +0000</pubDate>

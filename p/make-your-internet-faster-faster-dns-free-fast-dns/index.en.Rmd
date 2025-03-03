@@ -1,0 +1,59 @@
+---
+title: 'Make your internet faster: Faster DNS & Free Fast DNS'
+author: Anthony Quoc Anh Doan
+date: '2010-04-21'
+slug: make-your-internet-faster-faster-dns-free-fast-dns
+categories:
+  - Networking
+tags:
+  - DNS
+  - Network
+description: ~
+image: dns-recrussion-big.jpg
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+![DNS Recursion](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlGzIMlBzjFDYi0MfTqlBTNw0V_XfH1LbKQkjCP0Z4A_eqsbFuly5Luh0NzxENyy4hMhNRJM_NxtLt2HUdwtEFQIkTXvcPUQ_kfs5CNC6QpdxuRjvsAQsu-pTPrAMGe2x0g865ksvyXg/s400/dns-recrussion-big.jpg)
+
+To find the fastest Internet in your area:
+
+* [namebench](http://code.google.com/p/namebench/) is a Google project that will find the fastest DNS around your area. It takes a while.
+
+### Free Fast DNS
+
+#### Free Public DNS Server
+
+**Service provider:** [Google](http://code.google.com/speed/public-dns/)  
+- `8.8.8.8`  
+- `8.8.4.4`
+
+**Service provider:** [ScrubIt](http://www.scrubit.com/)  
+Public DNS server address:  
+- `67.138.54.100`  
+- `207.225.209.66`
+
+**Service provider:** [DNS Advantage](http://www.dnsadvantage.com/)  
+DNS Advantage free DNS server list:  
+- `156.154.70.1`  
+- `156.154.71.1`
+
+**Service provider:** [OpenDNS](http://www.opendns.com/)  
+OpenDNS free DNS server list:  
+- `208.67.222.222`  
+- `208.67.220.220`
+
+**Service provider:** **vnsc-pri.sys.gtei.net**  
+Public Name Server IP address:  
+- `4.2.2.1`  
+- `4.2.2.2`  
+- `4.2.2.3`  
+- `4.2.2.4`  
+- `4.2.2.5`  
+- `4.2.2.6`
+
+Fast DNS made possible thanks to [this site](http://theos.in/windows-xp/free-fast-public-dns-server-list/).
