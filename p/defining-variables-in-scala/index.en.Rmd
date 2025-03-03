@@ -1,0 +1,55 @@
+---
+title: Defining Variables in Scala
+author: Anthony Quoc Anh Doan
+date: '2011-06-29'
+slug: defining-variables-in-scala
+categories:
+  - Scala
+  - Functional Programming
+  - Programming
+tags:
+  - Scala
+  - immutable
+  - mutable
+  - functional-programming
+  - programming-basics
+  - Programming Language Theory
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**NOTE:**
+This is a very old post that I've migrated from my tumblr account.
+
+I have matured since then and continue to learn, striving to remain humble with a mindset of humility.
+
+---
+
+# Defining Variables in Scala  
+
+## Two Types of Variables  
+
+- `val` (immutable)  
+- `var` (mutable)  
+
+## Example: Immutable `val`  
+
+```scala
+val hello = "Hello Scala"
+hello = "Hello again" // ERROR: can only assign once
+println(hello)
+```
+
+> Note: `val` is **not** the same as `const` in C++. *(See: Java `final` vs. C++ `const`.)*  
+
+## Example: Mutable `var`  
+
+```scala
+var goodbye = "Hello Scala"
+goodbye = "Goodbye Scala"
+println(goodbye)
+```
