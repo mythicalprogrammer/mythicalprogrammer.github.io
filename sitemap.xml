@@ -230,6 +230,36 @@
     <loc>https://mythicalprogrammer.github.io/tags/hierarchicalmodeling/</loc>
     <lastmod>2017-07-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/environment-variables/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/pear/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/php/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/php/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/p/php-howto-installing-pear-with-wamp-on-window/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/wamp/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/wamp/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/web-development/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/windows/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/windows-configuration/</loc>
+    <lastmod>2010-05-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/authentication/</loc>
     <lastmod>2010-05-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -257,19 +287,10 @@
     <loc>https://mythicalprogrammer.github.io/tags/object-oriented-programming/</loc>
     <lastmod>2010-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/php/</loc>
-    <lastmod>2010-05-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mythicalprogrammer.github.io/categories/php/</loc>
-    <lastmod>2010-05-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/php5/</loc>
     <lastmod>2010-05-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/smarty-php/</loc>
-    <lastmod>2010-05-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/web-development/</loc>
     <lastmod>2010-05-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/categories/debian/</loc>
@@ -369,9 +390,6 @@
     <lastmod>2010-05-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/categories/template-engines/</loc>
-    <lastmod>2010-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/wamp/</loc>
     <lastmod>2010-05-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/dns/</loc>

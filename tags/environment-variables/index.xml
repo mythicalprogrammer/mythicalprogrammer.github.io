@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Environment Variables on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
+        <link>https://mythicalprogrammer.github.io/tags/environment-variables/</link>
+        <description>Recent content in Environment Variables on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Sat, 29 May 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/environment-variables/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PHP howto: Installing PEAR with WAMP on Window</title>
+        <link>https://mythicalprogrammer.github.io/p/php-howto-installing-pear-with-wamp-on-window/</link>
+        <pubDate>Sat, 29 May 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/php-howto-installing-pear-with-wamp-on-window/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/php-howto-installing-pear-with-wamp-on-window/pear-6136656_1280.jpg" alt="Featured image of post PHP howto: Installing PEAR with WAMP on Window" /&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform and I migrated to my current one.&lt;/p&gt;
+&lt;h1 id=&#34;installing-pear-on-wamp&#34;&gt;Installing PEAR on WAMP&lt;/h1&gt;
+&lt;h2 id=&#34;step-by-step-guide&#34;&gt;&lt;strong&gt;Step-by-Step Guide&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;1-follow-this-tutorial&#34;&gt;&lt;strong&gt;1. Follow This Tutorial&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I followed &lt;a class=&#34;link&#34; href=&#34;http://phphints.wordpress.com/2008/08/26/installing-pear-package-manager-on-wamp/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;this tutorial&lt;/a&gt; to install PEAR on WAMP.&lt;/p&gt;
+&lt;p&gt;However, the tutorial &lt;strong&gt;misses the environment variables installation part&lt;/strong&gt; (it only covers Vista).&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-setting-up-environment-variables&#34;&gt;&lt;strong&gt;2. Setting Up Environment Variables&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;To set up environment variables on Windows, follow these steps (source: &lt;a class=&#34;link&#34; href=&#34;http://support.microsoft.com/kb/310519&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft&lt;/a&gt;):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Right-click &lt;strong&gt;My Computer&lt;/strong&gt;, then click &lt;strong&gt;Properties&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Advanced&lt;/strong&gt; tab.&lt;/li&gt;
+&lt;li&gt;Click &lt;strong&gt;Environment Variables&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;📸 &lt;em&gt;Example Screenshot:&lt;/em&gt;&lt;br&gt;
+&lt;img src=&#34;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAMmqSm_fD7GMfqBTTQi3skJB_7DxA4eOix1sJyrQmEuvj2Rd0mGTUGSk8IahegjYfXwCejS0SQW5UIJqi5rBSFWhmaoi6AJSA6dndq-3Q-r8nULAMrlUD3OpP7oPdfZOy-08rHMVCQA/s400/1.JPG&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Environment Variables&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3-editing-the-path-variable&#34;&gt;&lt;strong&gt;3. Editing the Path Variable&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Find the &lt;strong&gt;System variables&lt;/strong&gt; section and look for the &lt;code&gt;Path&lt;/code&gt; variable.&lt;br&gt;
+Edit the &lt;code&gt;Path&lt;/code&gt; variable and add the following (separated by a semicolon):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;c:\wamp\bin\php\php5.3.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;📌 &lt;strong&gt;Important:&lt;/strong&gt; If the command line is already open, &lt;strong&gt;exit and reopen it&lt;/strong&gt; for the changes to take effect.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;4-verifying-the-installation&#34;&gt;&lt;strong&gt;4. Verifying the Installation&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Run the following command in the terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;path
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;If everything is set up correctly, you should see the updated path including PEAR.&lt;/p&gt;
+&lt;p&gt;📸 &lt;em&gt;Verification Screenshot:&lt;/em&gt;&lt;br&gt;
+&lt;img src=&#34;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvsg_hI_15F2w3CdIyfcOt6rMZAPEY4VeoH3GlvaL34WdVizCTrteRY6EFJU_zFBQYb1FV0XKSw4YWfOSM6bHZK2JGtAlJkUjZilLx53r2D2F8f70VdBZ0So-y2i95tyoLmuSo0Y82RA/s400/2.JPG&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Path Verification&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Setting up PEAR on WAMP is straightforward, but you need to &lt;strong&gt;manually configure the environment variables&lt;/strong&gt; for proper installation. Make sure to restart your terminal after making changes, and you should be good to go! 🚀&lt;/p&gt;
+&lt;h2 id=&#34;credit&#34;&gt;&lt;strong&gt;Credit&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Image by &lt;a href=&#34;https://pixabay.com/users/mockupgraphics-3307584/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6136656&#34;&gt;Anna Arzamasova&lt;/a&gt; from &lt;a href=&#34;https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6136656&#34;&gt;Pixabay&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

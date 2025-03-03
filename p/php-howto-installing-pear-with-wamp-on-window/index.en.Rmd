@@ -1,0 +1,83 @@
+---
+title: 'PHP howto: Installing PEAR with WAMP on Window'
+author: Anthony Quoc Anh Doan
+date: '2010-05-29'
+slug: php-howto-installing-pear-with-wamp-on-window
+categories:
+  - Web Development
+  - PHP
+  - WAMP
+  - Windows Configuration
+tags:
+  - PHP
+  - WAMP
+  - PEAR
+  - Windows
+  - Environment Variables
+  - Web Development
+description: ~
+image: pear-6136656_1280.jpg
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+# Installing PEAR on WAMP  
+
+## **Step-by-Step Guide**  
+
+### **1. Follow This Tutorial**
+I followed [this tutorial](http://phphints.wordpress.com/2008/08/26/installing-pear-package-manager-on-wamp/) to install PEAR on WAMP.  
+
+However, the tutorial **misses the environment variables installation part** (it only covers Vista).  
+
+---
+
+### **2. Setting Up Environment Variables**  
+To set up environment variables on Windows, follow these steps (source: [Microsoft](http://support.microsoft.com/kb/310519)):  
+
+1. Right-click **My Computer**, then click **Properties**.  
+2. Click the **Advanced** tab.  
+3. Click **Environment Variables**.  
+
+📸 *Example Screenshot:*  
+![Environment Variables](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAMmqSm_fD7GMfqBTTQi3skJB_7DxA4eOix1sJyrQmEuvj2Rd0mGTUGSk8IahegjYfXwCejS0SQW5UIJqi5rBSFWhmaoi6AJSA6dndq-3Q-r8nULAMrlUD3OpP7oPdfZOy-08rHMVCQA/s400/1.JPG)  
+
+---
+
+### **3. Editing the Path Variable**
+Find the **System variables** section and look for the `Path` variable.  
+Edit the `Path` variable and add the following (separated by a semicolon):  
+
+```plaintext
+c:\wamp\bin\php\php5.3.0
+```
+
+📌 **Important:** If the command line is already open, **exit and reopen it** for the changes to take effect.  
+
+---
+
+### **4. Verifying the Installation**
+Run the following command in the terminal:  
+
+```sh
+path
+```
+If everything is set up correctly, you should see the updated path including PEAR.  
+
+📸 *Verification Screenshot:*  
+![Path Verification](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvsg_hI_15F2w3CdIyfcOt6rMZAPEY4VeoH3GlvaL34WdVizCTrteRY6EFJU_zFBQYb1FV0XKSw4YWfOSM6bHZK2JGtAlJkUjZilLx53r2D2F8f70VdBZ0So-y2i95tyoLmuSo0Y82RA/s400/2.JPG)  
+
+---
+
+## **Conclusion**
+Setting up PEAR on WAMP is straightforward, but you need to **manually configure the environment variables** for proper installation. Make sure to restart your terminal after making changes, and you should be good to go! 🚀  
+
+## **Credit**
+
+* Image by <a href="https://pixabay.com/users/mockupgraphics-3307584/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6136656">Anna Arzamasova</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6136656">Pixabay</a>
+
+
