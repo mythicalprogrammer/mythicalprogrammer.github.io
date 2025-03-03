@@ -2,7 +2,7 @@
 title: 'Make your internet faster: Faster DNS & Free Fast DNS'
 author: Anthony Quoc Anh Doan
 date: '2010-04-21'
-slug: make-your-internet-faster-faster-dns-free-fast-dns
+slug: make-your-internet-faster-with-free-fast-dns
 categories:
   - Networking
 tags:

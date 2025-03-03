@@ -3,27 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mythicalprogrammer.github.io/</loc>
-    <lastmod>2025-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/categories/analysis/</loc>
-    <lastmod>2025-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/categories/</loc>
-    <lastmod>2025-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/postgresql/</loc>
-    <lastmod>2025-03-02T00:00:00+00:00</lastmod>
+    <loc>https://mythicalprogrammer.github.io/tags/datascience/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/p/minding-the-gap-date/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/post/</loc>
-    <lastmod>2025-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/programming/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/sql/</loc>
-    <lastmod>2025-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/categories/sql/</loc>
-    <lastmod>2025-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/sql-server/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/postgresql/</loc>
     <lastmod>2025-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/p/using-window-functions-to-find-island/</loc>
@@ -173,9 +185,6 @@
     <loc>https://mythicalprogrammer.github.io/p/books-i-ve-read-this-week-and-future-reading-plans/</loc>
     <lastmod>2018-12-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/datascience/</loc>
-    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/machinelearning/</loc>
     <lastmod>2018-12-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -290,6 +299,21 @@
     <loc>https://mythicalprogrammer.github.io/categories/web-hosting/</loc>
     <lastmod>2010-07-02T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/development-environment/</loc>
+    <lastmod>2010-06-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/installation-guide/</loc>
+    <lastmod>2010-06-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/p/installing-scala-2-9-on-ubuntu/</loc>
+    <lastmod>2010-06-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/linux/</loc>
+    <lastmod>2010-06-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/ubuntu/</loc>
+    <lastmod>2010-06-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/command-line/</loc>
     <lastmod>2010-06-19T00:00:00+00:00</lastmod>
   </url><url>
@@ -297,9 +321,6 @@
     <lastmod>2010-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/essays/</loc>
-    <lastmod>2010-06-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/programming/</loc>
     <lastmod>2010-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/reading-list/</loc>
@@ -386,9 +407,6 @@
     <loc>https://mythicalprogrammer.github.io/tags/fstab/</loc>
     <lastmod>2010-05-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/linux/</loc>
-    <lastmod>2010-05-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://mythicalprogrammer.github.io/p/mounting-an-external-ntfs-harddrive-on-linux-for-writing/</loc>
     <lastmod>2010-05-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -411,9 +429,6 @@
     <lastmod>2010-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/system-tweaks/</loc>
-    <lastmod>2010-05-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/ubuntu/</loc>
     <lastmod>2010-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/categories/code-editors/</loc>
@@ -449,9 +464,6 @@
     <loc>https://mythicalprogrammer.github.io/p/installation-for-smarty-php-on-wamp/</loc>
     <lastmod>2010-05-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mythicalprogrammer.github.io/tags/installation-guide/</loc>
-    <lastmod>2010-05-07T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://mythicalprogrammer.github.io/categories/server-configuration/</loc>
     <lastmod>2010-05-07T00:00:00+00:00</lastmod>
   </url><url>
@@ -467,7 +479,7 @@
     <loc>https://mythicalprogrammer.github.io/tags/dns/</loc>
     <lastmod>2010-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mythicalprogrammer.github.io/p/make-your-internet-faster-faster-dns-free-fast-dns/</loc>
+    <loc>https://mythicalprogrammer.github.io/p/make-your-internet-faster-with-free-fast-dns/</loc>
     <lastmod>2010-04-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/network/</loc>

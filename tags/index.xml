@@ -6,20 +6,36 @@
         <description>Recent content in Tags on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sun, 02 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>postgresql</title>
-        <link>https://mythicalprogrammer.github.io/tags/postgresql/</link>
-        <pubDate>Sun, 02 Mar 2025 00:00:00 +0000</pubDate>
+        <lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>datascience</title>
+        <link>https://mythicalprogrammer.github.io/tags/datascience/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://mythicalprogrammer.github.io/tags/postgresql/</guid>
+        <guid>https://mythicalprogrammer.github.io/tags/datascience/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Programming</title>
+        <link>https://mythicalprogrammer.github.io/tags/programming/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/programming/</guid>
         <description></description>
         </item>
         <item>
         <title>sql</title>
         <link>https://mythicalprogrammer.github.io/tags/sql/</link>
-        <pubDate>Sun, 02 Mar 2025 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/sql/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>postgresql</title>
+        <link>https://mythicalprogrammer.github.io/tags/postgresql/</link>
+        <pubDate>Sun, 02 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/postgresql/</guid>
         <description></description>
         </item>
         <item>
@@ -199,14 +215,6 @@
         <description></description>
         </item>
         <item>
-        <title>datascience</title>
-        <link>https://mythicalprogrammer.github.io/tags/datascience/</link>
-        <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/tags/datascience/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>machinelearning</title>
         <link>https://mythicalprogrammer.github.io/tags/machinelearning/</link>
         <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
@@ -343,6 +351,30 @@
         <description></description>
         </item>
         <item>
+        <title>Installation Guide</title>
+        <link>https://mythicalprogrammer.github.io/tags/installation-guide/</link>
+        <pubDate>Fri, 25 Jun 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/installation-guide/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Linux</title>
+        <link>https://mythicalprogrammer.github.io/tags/linux/</link>
+        <pubDate>Fri, 25 Jun 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/linux/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Ubuntu</title>
+        <link>https://mythicalprogrammer.github.io/tags/ubuntu/</link>
+        <pubDate>Fri, 25 Jun 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/ubuntu/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Command Line</title>
         <link>https://mythicalprogrammer.github.io/tags/command-line/</link>
         <pubDate>Sat, 19 Jun 2010 00:00:00 +0000</pubDate>
@@ -356,14 +388,6 @@
         <pubDate>Sat, 19 Jun 2010 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/essays/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Programming</title>
-        <link>https://mythicalprogrammer.github.io/tags/programming/</link>
-        <pubDate>Sat, 19 Jun 2010 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/tags/programming/</guid>
         <description></description>
         </item>
         <item>
@@ -511,14 +535,6 @@
         <description></description>
         </item>
         <item>
-        <title>Linux</title>
-        <link>https://mythicalprogrammer.github.io/tags/linux/</link>
-        <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/tags/linux/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>Mounting Drives</title>
         <link>https://mythicalprogrammer.github.io/tags/mounting-drives/</link>
         <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
@@ -556,14 +572,6 @@
         <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/system-tweaks/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Ubuntu</title>
-        <link>https://mythicalprogrammer.github.io/tags/ubuntu/</link>
-        <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/tags/ubuntu/</guid>
         <description></description>
         </item>
         <item>
@@ -620,14 +628,6 @@
         <pubDate>Sat, 08 May 2010 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/web-development-tools/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Installation Guide</title>
-        <link>https://mythicalprogrammer.github.io/tags/installation-guide/</link>
-        <pubDate>Fri, 07 May 2010 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/tags/installation-guide/</guid>
         <description></description>
         </item>
         <item>

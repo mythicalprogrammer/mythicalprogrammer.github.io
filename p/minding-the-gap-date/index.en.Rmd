@@ -1,0 +1,74 @@
+---
+title: Minding the Gap (Date) with Window Functions
+author: Anthony Quoc Anh Doan
+date: '2025-03-03'
+slug: minding-the-gap-date
+categories:
+  - SQL
+  - SQL Server
+  - analysis
+tags:
+  - datascience
+  - sql
+  - Programming
+description: ~
+image: mind-the-gap-1876790_1280.jpg 
+math: ~
+license: ~
+hidden: yes 
+comments: no 
+---
+
+Source: https://data-mozart.com/island-adventures-with-t-sql-window-functions/
+
+
+LEAD win fn: https://learn.microsoft.com/en-us/sql/t-sql/functions/lead-transact-sql?view=sql-server-ver16
+
+Quote:
+Again, with LEAD, the code is much more intuitive and human readable. Here, we are just checking range between consecutive dates and if it’s greater than 1, that means that we have a gap in our sequence. When that criteria is met, we are just adding one day to last “island” date in the sequence to get first “gap” date, while subtracting one from the first “island” date in next sequence to get the last date of the “gap”.
+
+
+## Code
+
+```SQL
+
+DROP TABLE IF EXISTS #table2
+;
+
+CREATE TABLE #table2(visit_date date);
+
+
+INSERT INTO #table2(visit_date)
+VALUES
+('2025-02-02'),
+('2025-02-03'),
+('2025-02-11'),
+('2025-02-12'),
+('2025-02-13'),
+('2025-02-27'),
+('2025-04-03'),
+('2025-04-04'),
+('2025-04-05'),
+('2025-05-12')
+;
+
+
+SELECT *
+FROM #table2
+ORDER BY visit_date
+;
+
+WITH CTE_LEAD AS
+(
+SELECT visit_date AS startDate
+	, LEAD(visit_date) OVER(ORDER BY visit_date) AS endDate
+FROM #table2
+)
+SELECT DATEADD(dd, 1, startDate) AS startDate
+	,DATEADD(dd, -1, endDate) endDate
+FROM CTE_LEAD
+WHERE DATEDIFF(dd, startDate, endDate) > 1
+;
+```
+
+Image by <a href="https://pixabay.com/users/gregplom-3802982/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1876790">Greg Plominski</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1876790">Pixabay</a>

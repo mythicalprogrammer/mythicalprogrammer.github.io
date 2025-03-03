@@ -1,0 +1,91 @@
+---
+title: Installing Scala 2.9 on Ubuntu
+author: Anthony Quoc Anh Doan
+date: '2010-06-25'
+slug: installing-scala-2-9-on-ubuntu
+categories:
+  - Programming
+  - Linux
+  - Scala
+  - Development Environment
+tags:
+  - Scala
+  - Ubuntu
+  - Linux
+  - Software Development
+  - Installation Guide
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**NOTE:**
+This is a very old post that I've migrated from my blogger account.
+
+I have matured since then and continue to learn, striving to remain humble with a mindset of humility.
+
+---
+
+![The creator of Scala: Dr. Martin Odersky](images/odersky.jpeg)
+
+# Installing Scala 2.9 on Ubuntu  
+
+## Steps to Install Scala (Latest Version as of Writing: 2.9)  
+
+### 1. Download Scala  
+Open your browser and go to the [Scala downloads page](http://www.scala-lang.org/downloads).  
+
+Find the appropriate package for **Unix, Mac OS X, or Cygwin**, and either download it manually or copy the direct link to the package.  
+
+### 2. Open Terminal & Navigate to Root  
+```bash
+cd /
+```  
+
+### 3. Create `/opt` Directory (If It Doesn't Exist)  
+Ubuntu does not include an `/opt` directory by default, so create one manually:  
+```bash
+sudo mkdir /opt  
+```
+
+### 4. Navigate to `/opt`  
+```bash
+cd /opt  
+```
+
+### 5. Download Scala  
+Replace the version number with the latest available if necessary:  
+```bash
+sudo wget http://www.scala-lang.org/downloads/distrib/files/scala-2.9.0.1.tgz  
+```
+
+### 6. Extract the Package  
+```bash
+sudo tar zxvf scala-2.9.0.1.tgz  
+```
+
+### 7. Remove the Archive File  
+```bash
+sudo rm scala-2.9.0.1.tgz  
+```
+
+### 8. Add Scala to Your PATH  
+Edit your `~/.bashrc` file to include Scala’s binary path:  
+```bash
+nano ~/.bashrc  
+```
+Add the following line at the end of the file:  
+```bash
+export PATH=/opt/scala-2.9.0.1/bin:$PATH  
+```
+
+### 9. Apply the Changes  
+```bash
+source ~/.bashrc  
+```
+
+## References  
+- [Original Ubuntu Forums Thread](http://ubuntuforums.org/showthread.php?t=1623824)  
