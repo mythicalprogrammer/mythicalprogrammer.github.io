@@ -1,0 +1,76 @@
+---
+title: 'Book Review: Learning PHP, MySQL, and JavaScript: A Step-By-Step Guide to
+  Creating Dynamic Websites (Animal Guide)'
+author: Anthony Quoc Anh Doan
+date: '2010-05-17'
+slug: book-review-learning-php-mysql-and-javascript
+categories:
+  - Programming
+  - Web Development
+  - PHP
+  - MySQL
+  - JavaScript
+tags:
+  - PHP
+  - MySQL
+  - JavaScript
+  - Web Development
+  - Book Review
+  - PHP5
+  - Coding Best Practices
+  - Smarty PHP
+  - Authentication
+  - Object-Oriented Programming
+description: ~
+image: lrg.jpg
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+Note I've matured now and have decided to not post any books I do not like. I apologize in advance for my negative review of this book and I did not intend to be overly negative. I was young and am still learning.
+
+The post:
+
+# Learning PHP, MySQL, and JavaScript  
+*A Step-By-Step Guide to Creating Dynamic Websites (Animal Guide)*  
+
+[![Book Cover](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiz-xcT1ve0-7D2WM4lxeQ07NWZ7gAFBfL600uOJ5CKCwGuf7JU4s8-sk0eurZaW820fdq1a_s30_4aQrmW9EntNaSeeD6IBtSEuuCXHT6WDTH73xIjND9bPTP6h5U4iuEK7EooSng2g/s1600/lrg.jpg)](http://www.amazon.com/gp/product/0596157134?ie=UTF8&tag=bejeofme-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0596157134)  
+
+---
+
+## **My Review**
+I needed to **review PHP** since many things have changed. I first tried *Head First PHP & MySQL*, but it wasn’t technical enough for me. While I initially thought its teaching style would help, it didn’t work out.  
+
+This book assumes **some programming knowledge**, which is great because it moves at a faster pace. Unlike *Head First PHP & MySQL*, which is slow, this book goes straight to the key subjects—**PHP, MySQL**, and even touches on other topics. However, when I reached the **JavaScript section**, I stopped reading.  
+
+---
+
+## **Pros & Cons**  
+
+### **✅ What I Liked**
+- **Fast-paced** if you already know some programming.  
+- **Great MySQL chapters** – I learned about MySQL database engines like **InnoDB** and **ISAM** and how to **search databases like a search engine**.  
+- **Good for PHP basics** – helped me **dive back into PHP** and solidify the fundamentals of PHP5.  
+
+### **❌ What I Didn't Like**
+- **Too many code errors** – you can find them listed [here](http://oreilly.com/catalog/errata.csp?isbn=9780596157142).  
+- **Confusing examples** – Some techniques shouldn't even be used in real-world applications.  
+- **PHP authentication example is flawed** – The book combines **HTTP authentication with PHP sessions**, but doesn't explain **how to log out properly**. Deleting browser cookies doesn’t work, and I had to **Google better solutions** (hint: use a **logout flag** in the script).  
+- **Smarty introduction is weak** – Installation instructions were unclear, which is why I wrote a [separate guide](http://yourallstar.blogspot.com/2010/05/installation-for-smarty-php-on-wamp.html) for Windows XP.  
+- **No Object-Oriented PHP** – All PHP examples are **procedural**, with no coverage of **OOP** in PHP5.  
+- **Terrible JavaScript section** – The JavaScript coding style is **ugly**, doesn’t follow **best practices**, and lacks proper **variable declarations (`var variable1`) and semicolons**. A better **beginner JavaScript book** would be a wiser choice (I'll post a review of one soon).  
+
+---
+
+## **Final Verdict**  
+This book is a **basic introduction to PHP** for those with a programming background. However, it **does not cover Object-Oriented PHP5 at all**.  
+
+I’d rate it **⭐️⭐️⭐️ (3/5 stars)** because it helped me **refresh my PHP knowledge**, but I **wouldn’t recommend buying it**—especially if you’re looking for advanced topics or modern best practices.  
+
+📌 **Warning:** I only read **up to Chapter 16** (out of 20). I stopped when I reached **JavaScript**.  
+
+Oh, and if you **click the image and buy it from Amazon**, I get some store credit for more books—but honestly, **this isn’t worth buying**. 😉  

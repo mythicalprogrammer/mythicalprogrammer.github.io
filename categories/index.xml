@@ -135,6 +135,30 @@
         <description></description>
         </item>
         <item>
+        <title>JavaScript</title>
+        <link>https://mythicalprogrammer.github.io/categories/javascript/</link>
+        <pubDate>Mon, 17 May 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/javascript/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>MySQL</title>
+        <link>https://mythicalprogrammer.github.io/categories/mysql/</link>
+        <pubDate>Mon, 17 May 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/mysql/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PHP</title>
+        <link>https://mythicalprogrammer.github.io/categories/php/</link>
+        <pubDate>Mon, 17 May 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/php/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Debian</title>
         <link>https://mythicalprogrammer.github.io/categories/debian/</link>
         <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
@@ -188,14 +212,6 @@
         <pubDate>Sat, 08 May 2010 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/categories/ide-tools/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>PHP</title>
-        <link>https://mythicalprogrammer.github.io/categories/php/</link>
-        <pubDate>Sat, 08 May 2010 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/categories/php/</guid>
         <description></description>
         </item>
         <item>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Smarty PHP on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</title>
+        <link>https://mythicalprogrammer.github.io/tags/smarty-php/</link>
+        <description>Recent content in Smarty PHP on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Mon, 17 May 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/smarty-php/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Book Review: Learning PHP, MySQL, and JavaScript: A Step-By-Step Guide to Creating Dynamic Websites (Animal Guide)</title>
+        <link>https://mythicalprogrammer.github.io/p/book-review-learning-php-mysql-and-javascript/</link>
+        <pubDate>Mon, 17 May 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/book-review-learning-php-mysql-and-javascript/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/book-review-learning-php-mysql-and-javascript/lrg.jpg" alt="Featured image of post Book Review: Learning PHP, MySQL, and JavaScript: A Step-By-Step Guide to Creating Dynamic Websites (Animal Guide)" /&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform and I migrated to my current one.&lt;/p&gt;
+&lt;p&gt;Note I&amp;rsquo;ve matured now and have decided to not post any books I do not like. I apologize in advance for my negative review of this book and I did not intend to be overly negative. I was young and am still learning.&lt;/p&gt;
+&lt;p&gt;The post:&lt;/p&gt;
+&lt;h1 id=&#34;learning-php-mysql-and-javascript&#34;&gt;Learning PHP, MySQL, and JavaScript&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;A Step-By-Step Guide to Creating Dynamic Websites (Animal Guide)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.amazon.com/gp/product/0596157134?ie=UTF8&amp;amp;tag=bejeofme-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0596157134&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;img src=&#34;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiz-xcT1ve0-7D2WM4lxeQ07NWZ7gAFBfL600uOJ5CKCwGuf7JU4s8-sk0eurZaW820fdq1a_s30_4aQrmW9EntNaSeeD6IBtSEuuCXHT6WDTH73xIjND9bPTP6h5U4iuEK7EooSng2g/s1600/lrg.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Book Cover&#34;
+	
+	
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;my-review&#34;&gt;&lt;strong&gt;My Review&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;I needed to &lt;strong&gt;review PHP&lt;/strong&gt; since many things have changed. I first tried &lt;em&gt;Head First PHP &amp;amp; MySQL&lt;/em&gt;, but it wasn’t technical enough for me. While I initially thought its teaching style would help, it didn’t work out.&lt;/p&gt;
+&lt;p&gt;This book assumes &lt;strong&gt;some programming knowledge&lt;/strong&gt;, which is great because it moves at a faster pace. Unlike &lt;em&gt;Head First PHP &amp;amp; MySQL&lt;/em&gt;, which is slow, this book goes straight to the key subjects—&lt;strong&gt;PHP, MySQL&lt;/strong&gt;, and even touches on other topics. However, when I reached the &lt;strong&gt;JavaScript section&lt;/strong&gt;, I stopped reading.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pros--cons&#34;&gt;&lt;strong&gt;Pros &amp;amp; Cons&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;-what-i-liked&#34;&gt;&lt;strong&gt;✅ What I Liked&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fast-paced&lt;/strong&gt; if you already know some programming.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Great MySQL chapters&lt;/strong&gt; – I learned about MySQL database engines like &lt;strong&gt;InnoDB&lt;/strong&gt; and &lt;strong&gt;ISAM&lt;/strong&gt; and how to &lt;strong&gt;search databases like a search engine&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Good for PHP basics&lt;/strong&gt; – helped me &lt;strong&gt;dive back into PHP&lt;/strong&gt; and solidify the fundamentals of PHP5.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;-what-i-didnt-like&#34;&gt;&lt;strong&gt;❌ What I Didn&amp;rsquo;t Like&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Too many code errors&lt;/strong&gt; – you can find them listed &lt;a class=&#34;link&#34; href=&#34;http://oreilly.com/catalog/errata.csp?isbn=9780596157142&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Confusing examples&lt;/strong&gt; – Some techniques shouldn&amp;rsquo;t even be used in real-world applications.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PHP authentication example is flawed&lt;/strong&gt; – The book combines &lt;strong&gt;HTTP authentication with PHP sessions&lt;/strong&gt;, but doesn&amp;rsquo;t explain &lt;strong&gt;how to log out properly&lt;/strong&gt;. Deleting browser cookies doesn’t work, and I had to &lt;strong&gt;Google better solutions&lt;/strong&gt; (hint: use a &lt;strong&gt;logout flag&lt;/strong&gt; in the script).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smarty introduction is weak&lt;/strong&gt; – Installation instructions were unclear, which is why I wrote a &lt;a class=&#34;link&#34; href=&#34;http://yourallstar.blogspot.com/2010/05/installation-for-smarty-php-on-wamp.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;separate guide&lt;/a&gt; for Windows XP.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No Object-Oriented PHP&lt;/strong&gt; – All PHP examples are &lt;strong&gt;procedural&lt;/strong&gt;, with no coverage of &lt;strong&gt;OOP&lt;/strong&gt; in PHP5.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Terrible JavaScript section&lt;/strong&gt; – The JavaScript coding style is &lt;strong&gt;ugly&lt;/strong&gt;, doesn’t follow &lt;strong&gt;best practices&lt;/strong&gt;, and lacks proper &lt;strong&gt;variable declarations (&lt;code&gt;var variable1&lt;/code&gt;) and semicolons&lt;/strong&gt;. A better &lt;strong&gt;beginner JavaScript book&lt;/strong&gt; would be a wiser choice (I&amp;rsquo;ll post a review of one soon).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;final-verdict&#34;&gt;&lt;strong&gt;Final Verdict&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;This book is a &lt;strong&gt;basic introduction to PHP&lt;/strong&gt; for those with a programming background. However, it &lt;strong&gt;does not cover Object-Oriented PHP5 at all&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;I’d rate it &lt;strong&gt;⭐️⭐️⭐️ (3/5 stars)&lt;/strong&gt; because it helped me &lt;strong&gt;refresh my PHP knowledge&lt;/strong&gt;, but I &lt;strong&gt;wouldn’t recommend buying it&lt;/strong&gt;—especially if you’re looking for advanced topics or modern best practices.&lt;/p&gt;
+&lt;p&gt;📌 &lt;strong&gt;Warning:&lt;/strong&gt; I only read &lt;strong&gt;up to Chapter 16&lt;/strong&gt; (out of 20). I stopped when I reached &lt;strong&gt;JavaScript&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Oh, and if you &lt;strong&gt;click the image and buy it from Amazon&lt;/strong&gt;, I get some store credit for more books—but honestly, &lt;strong&gt;this isn’t worth buying&lt;/strong&gt;. 😉&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
