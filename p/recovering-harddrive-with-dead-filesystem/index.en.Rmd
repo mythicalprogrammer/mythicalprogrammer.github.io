@@ -1,0 +1,23 @@
+---
+title: Recovering Harddrive with dead filesystem
+author: Anthony Quoc Anh Doan
+date: '2010-05-16'
+slug: recovering-harddrive-with-dead-filesystem
+categories:
+  - Debian
+  - Server Administration
+tags:
+  - Linux
+description: ~
+image: skull-1193784_1280.jpg 
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+So my landlord computer is shot so he wants the file. Problem is his filesystem is dead, his master boot record is shot to death beyond mountable. So what to do...<br /><br />You do this:<br />http://www.debian-administration.org/articles/420<br /><br />It didn't work so I did PhotoRec which is cover in the above link and retrieve files. It took 160 passes and it still didn't finish so I just grab what it retrieved.
+
+Image by <a href="https://pixabay.com/users/volfdrag-1905053/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1193784">Milos Duskic</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1193784">Pixabay</a>

@@ -6,7 +6,19 @@
         <description>Recent content in Linux on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sun, 11 Apr 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 16 May 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Recovering Harddrive with dead filesystem</title>
+        <link>https://mythicalprogrammer.github.io/p/recovering-harddrive-with-dead-filesystem/</link>
+        <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/recovering-harddrive-with-dead-filesystem/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/recovering-harddrive-with-dead-filesystem/skull-1193784_1280.jpg" alt="Featured image of post Recovering Harddrive with dead filesystem" /&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform and I migrated to my current one.&lt;/p&gt;
+&lt;p&gt;So my landlord computer is shot so he wants the file. Problem is his filesystem is dead, his master boot record is shot to death beyond mountable. So what to do&amp;hellip;&lt;br /&gt;&lt;br /&gt;You do this:&lt;br /&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.debian-administration.org/articles/420&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.debian-administration.org/articles/420&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;It didn&amp;rsquo;t work so I did PhotoRec which is cover in the above link and retrieve files. It took 160 passes and it still didn&amp;rsquo;t finish so I just grab what it retrieved.&lt;/p&gt;
+&lt;p&gt;Image by &lt;a href=&#34;https://pixabay.com/users/volfdrag-1905053/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1193784&#34;&gt;Milos Duskic&lt;/a&gt; from &lt;a href=&#34;https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1193784&#34;&gt;Pixabay&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Change timezone Debian Lenny</title>
         <link>https://mythicalprogrammer.github.io/p/change-timezone-debian-lenny/</link>
         <pubDate>Sun, 11 Apr 2010 00:00:00 +0000</pubDate>
