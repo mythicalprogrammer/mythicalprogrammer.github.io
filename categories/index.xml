@@ -143,6 +143,22 @@
         <description></description>
         </item>
         <item>
+        <title>Debian</title>
+        <link>https://mythicalprogrammer.github.io/categories/debian/</link>
+        <pubDate>Sun, 11 Apr 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/debian/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Server Administration</title>
+        <link>https://mythicalprogrammer.github.io/categories/server-administration/</link>
+        <pubDate>Sun, 11 Apr 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/server-administration/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Apache</title>
         <link>https://mythicalprogrammer.github.io/categories/apache/</link>
         <pubDate>Sat, 09 Jan 2010 00:00:00 +0000</pubDate>
@@ -151,27 +167,11 @@
         <description></description>
         </item>
         <item>
-        <title>Debian</title>
-        <link>https://mythicalprogrammer.github.io/categories/debian/</link>
-        <pubDate>Sat, 09 Jan 2010 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/categories/debian/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>PHP</title>
         <link>https://mythicalprogrammer.github.io/categories/php/</link>
         <pubDate>Sat, 09 Jan 2010 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/categories/php/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Server Administration</title>
-        <link>https://mythicalprogrammer.github.io/categories/server-administration/</link>
-        <pubDate>Sat, 09 Jan 2010 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/categories/server-administration/</guid>
         <description></description>
         </item>
         <item>

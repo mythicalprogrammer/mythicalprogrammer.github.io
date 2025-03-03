@@ -1,0 +1,37 @@
+---
+title: Change timezone Debian Lenny
+author: Anthony Quoc Anh Doan
+date: '2010-04-11'
+slug: change-timezone-debian-lenny
+categories:
+  - Server Administration
+  - Debian
+  - Linux
+tags:
+  - Linux
+description: ~
+image: clock-1392328_1280.jpg 
+math: ~
+license: ~
+hidden: no
+comments: no
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+![Daylight Saving Time Costs Billions](http://www.treehugger.com/daylight-saving-time-costs-billions.jpg)
+
+Needed to change the timezone on a server to match our client.
+
+Run this command:
+
+```sh
+sudo dpkg-reconfigure tzdata
+```
+
+And it'll bring up a GUI-like command line interface where you can select options using the space bar, tab through choices, and press enter to confirm. Real simple.
+
+Thanks to:  
+[http://www.zeitoun.net/articles/timezone-change-debian-lenny/start](http://www.zeitoun.net/articles/timezone-change-debian-lenny/start)
+
+Image by <a href="https://pixabay.com/users/alexas_fotos-686414/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1392328">Alexa</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1392328">Pixabay</a>
