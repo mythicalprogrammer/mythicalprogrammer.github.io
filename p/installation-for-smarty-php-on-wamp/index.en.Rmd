@@ -1,0 +1,71 @@
+---
+title: Installation for Smarty PHP on WAMP
+author: Anthony Quoc Anh Doan
+date: '2010-05-07'
+slug: installation-for-smarty-php-on-wamp
+categories:
+  - PHP
+  - Web Development
+  - Server Configuration
+  - Template Engines
+tags:
+  - WAMP
+  - Smarty
+  - PHP
+  - Template Engine
+  - Installation Guide
+description: ~
+image: smarty_template_logo.png 
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform and I migrated to my current one.
+
+![Smarty Logo](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgp3eTn3PLLLXEWfJESZe_FpDGOqiGEotuM4pGhCvPniEaB73M6xMjlRsMQYJtfbADoyvJKbzSxP7ugEOxKJu8m-NK2ObVXTTB85ExzEzjwJDuDKpl8EUG_pdolkWetzm85X3XPaWGfPg/s400/smarty-logo-orange.gif)
+
+I got this from here: [http://news.php.net/php.smarty.dev/2703](http://news.php.net/php.smarty.dev/2703)
+
+## Steps to Install Smarty:
+
+### 1. Download [Smarty](http://www.smarty.net/download.php)
+
+### 2. Extract Smarty
+Extract it **outside** of the `www` folder (e.g., `C:\wamp`).  
+Rename the `Smarty.x.x.x` folder to `smarty`.
+
+### 3. Edit `php.ini`
+To do this, left-click on the WAMP icon in the system tray, under the **PHP** menu, there should be a `php.ini` option.
+
+Example configuration:
+```ini
+include_path = ".;C:\wamp\smarty\libs"
+```
+**WARNING:** Copy-pasting might create errors with single and double quotes. Make sure to type them manually.
+
+### 4. Restart All Services
+Click on the WAMP icon in the system tray and select **Restart All Services**.
+
+### 5. Create Required Folders
+In your root `www` folder, create a directory named `smarty`, and within that folder, create:  
+- `templates`
+- `configs`
+
+Outside of `www`, within `C:/wamp/smarty`, create:  
+- `templates_c`
+- `cache`
+
+**Note:** There are security concerns for live setups, but for localhost, this is fine. Always use Linux for live testing.
+
+### 6. Create an HTML File
+Inside `www` or any subfolder within `www`, create a file (e.g., `index.html`).
+
+### 7. Create the Template File
+Create `index.tpl` and place it inside `www/smarty/templates`.
+
+For more details, refer to:  
+[http://news.php.net/php.smarty.dev/2703](http://news.php.net/php.smarty.dev/2703)  
+
+**Note:** Blogspot may parse out HTML tags, so some code might not be displayed correctly.

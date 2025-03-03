@@ -5128,6 +5128,67 @@ Youjo Senki
 </description>
         </item>
         <item>
+        <title>Installation for Smarty PHP on WAMP</title>
+        <link>https://mythicalprogrammer.github.io/p/installation-for-smarty-php-on-wamp/</link>
+        <pubDate>Fri, 07 May 2010 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/installation-for-smarty-php-on-wamp/</guid>
+        <description>&lt;img src="https://mythicalprogrammer.github.io/p/installation-for-smarty-php-on-wamp/smarty_template_logo.png" alt="Featured image of post Installation for Smarty PHP on WAMP" /&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform and I migrated to my current one.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgp3eTn3PLLLXEWfJESZe_FpDGOqiGEotuM4pGhCvPniEaB73M6xMjlRsMQYJtfbADoyvJKbzSxP7ugEOxKJu8m-NK2ObVXTTB85ExzEzjwJDuDKpl8EUG_pdolkWetzm85X3XPaWGfPg/s400/smarty-logo-orange.gif&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Smarty Logo&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;I got this from here: &lt;a class=&#34;link&#34; href=&#34;http://news.php.net/php.smarty.dev/2703&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://news.php.net/php.smarty.dev/2703&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;steps-to-install-smarty&#34;&gt;Steps to Install Smarty:&lt;/h2&gt;
+&lt;h3 id=&#34;1-download-smartyhttpwwwsmartynetdownloadphp&#34;&gt;1. Download &lt;a class=&#34;link&#34; href=&#34;http://www.smarty.net/download.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Smarty&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;2-extract-smarty&#34;&gt;2. Extract Smarty&lt;/h3&gt;
+&lt;p&gt;Extract it &lt;strong&gt;outside&lt;/strong&gt; of the &lt;code&gt;www&lt;/code&gt; folder (e.g., &lt;code&gt;C:\wamp&lt;/code&gt;).&lt;br&gt;
+Rename the &lt;code&gt;Smarty.x.x.x&lt;/code&gt; folder to &lt;code&gt;smarty&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;3-edit-phpini&#34;&gt;3. Edit &lt;code&gt;php.ini&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;To do this, left-click on the WAMP icon in the system tray, under the &lt;strong&gt;PHP&lt;/strong&gt; menu, there should be a &lt;code&gt;php.ini&lt;/code&gt; option.&lt;/p&gt;
+&lt;p&gt;Example configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;include_path &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;.;C:\wamp\smarty\libs&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; Copy-pasting might create errors with single and double quotes. Make sure to type them manually.&lt;/p&gt;
+&lt;h3 id=&#34;4-restart-all-services&#34;&gt;4. Restart All Services&lt;/h3&gt;
+&lt;p&gt;Click on the WAMP icon in the system tray and select &lt;strong&gt;Restart All Services&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;5-create-required-folders&#34;&gt;5. Create Required Folders&lt;/h3&gt;
+&lt;p&gt;In your root &lt;code&gt;www&lt;/code&gt; folder, create a directory named &lt;code&gt;smarty&lt;/code&gt;, and within that folder, create:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;templates&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;configs&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Outside of &lt;code&gt;www&lt;/code&gt;, within &lt;code&gt;C:/wamp/smarty&lt;/code&gt;, create:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;templates_c&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cache&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; There are security concerns for live setups, but for localhost, this is fine. Always use Linux for live testing.&lt;/p&gt;
+&lt;h3 id=&#34;6-create-an-html-file&#34;&gt;6. Create an HTML File&lt;/h3&gt;
+&lt;p&gt;Inside &lt;code&gt;www&lt;/code&gt; or any subfolder within &lt;code&gt;www&lt;/code&gt;, create a file (e.g., &lt;code&gt;index.html&lt;/code&gt;).&lt;/p&gt;
+&lt;h3 id=&#34;7-create-the-template-file&#34;&gt;7. Create the Template File&lt;/h3&gt;
+&lt;p&gt;Create &lt;code&gt;index.tpl&lt;/code&gt; and place it inside &lt;code&gt;www/smarty/templates&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For more details, refer to:&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;http://news.php.net/php.smarty.dev/2703&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://news.php.net/php.smarty.dev/2703&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Blogspot may parse out HTML tags, so some code might not be displayed correctly.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Make your internet faster: Faster DNS &amp; Free Fast DNS</title>
         <link>https://mythicalprogrammer.github.io/p/make-your-internet-faster-faster-dns-free-fast-dns/</link>
         <pubDate>Wed, 21 Apr 2010 00:00:00 +0000</pubDate>
