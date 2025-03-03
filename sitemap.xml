@@ -230,6 +230,39 @@
     <loc>https://mythicalprogrammer.github.io/tags/hierarchicalmodeling/</loc>
     <lastmod>2017-07-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/debian/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/debian/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/firewall-configuration/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/linode/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/linux-setup/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/p/my-webserver-setup-part-1/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/networking/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/server-administration/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/ssh-security/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/tags/vps-setup/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mythicalprogrammer.github.io/categories/web-hosting/</loc>
+    <lastmod>2010-07-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/command-line/</loc>
     <lastmod>2010-06-19T00:00:00+00:00</lastmod>
   </url><url>
@@ -317,9 +350,6 @@
     <loc>https://mythicalprogrammer.github.io/tags/smarty-php/</loc>
     <lastmod>2010-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mythicalprogrammer.github.io/categories/debian/</loc>
-    <lastmod>2010-05-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/external-hard-drive/</loc>
     <lastmod>2010-05-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -354,9 +384,6 @@
     <lastmod>2010-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/p/recovering-harddrive-with-dead-filesystem/</loc>
-    <lastmod>2010-05-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mythicalprogrammer.github.io/categories/server-administration/</loc>
     <lastmod>2010-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/storage-management/</loc>
@@ -423,9 +450,6 @@
     <lastmod>2010-04-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/tags/network/</loc>
-    <lastmod>2010-04-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mythicalprogrammer.github.io/categories/networking/</loc>
     <lastmod>2010-04-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mythicalprogrammer.github.io/p/change-timezone-debian-lenny/</loc>
