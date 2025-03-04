@@ -279,11 +279,59 @@
         <description></description>
         </item>
         <item>
+        <title>arrays</title>
+        <link>https://mythicalprogrammer.github.io/tags/arrays/</link>
+        <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/arrays/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>collections</title>
+        <link>https://mythicalprogrammer.github.io/tags/collections/</link>
+        <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/collections/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>containers</title>
+        <link>https://mythicalprogrammer.github.io/tags/containers/</link>
+        <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/containers/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>data-structures</title>
+        <link>https://mythicalprogrammer.github.io/tags/data-structures/</link>
+        <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/data-structures/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>functional-programming</title>
         <link>https://mythicalprogrammer.github.io/tags/functional-programming/</link>
-        <pubDate>Fri, 01 Jul 2011 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/functional-programming/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>mutable</title>
+        <link>https://mythicalprogrammer.github.io/tags/mutable/</link>
+        <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/mutable/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Scala</title>
+        <link>https://mythicalprogrammer.github.io/tags/scala/</link>
+        <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/scala/</guid>
         <description></description>
         </item>
         <item>
@@ -303,27 +351,11 @@
         <description></description>
         </item>
         <item>
-        <title>Scala</title>
-        <link>https://mythicalprogrammer.github.io/tags/scala/</link>
-        <pubDate>Fri, 01 Jul 2011 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/tags/scala/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>immutable</title>
         <link>https://mythicalprogrammer.github.io/tags/immutable/</link>
         <pubDate>Wed, 29 Jun 2011 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/immutable/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>mutable</title>
-        <link>https://mythicalprogrammer.github.io/tags/mutable/</link>
-        <pubDate>Wed, 29 Jun 2011 00:00:00 +0000</pubDate>
-        
-        <guid>https://mythicalprogrammer.github.io/tags/mutable/</guid>
         <description></description>
         </item>
         <item>

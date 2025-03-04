@@ -1,0 +1,78 @@
+---
+title: Arrays (Containers in Scala) [Mutable]
+author: Anthony Quoc Anh Doan
+date: '2011-07-03'
+slug: arrays-containers-in-scala-mutable
+categories:
+  - Programming
+  - Functional Programming
+  - Scala
+  - Data Structures
+tags:
+  - Scala
+  - functional-programming
+  - arrays
+  - collections
+  - mutable
+  - data-structures
+  - containers
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform (Tumblr) and I migrated to my current one.
+
+## **Array Initialization**  
+
+### **Using `new Array` Constructor**  
+
+```scala
+val arrayOfStrings = new Arrayrings(0) = "Hi"
+arrayOfStrings(1) = " array"
+arrayOfStrings(2) = " of Strings.\n"
+```
+
+### **Using `Array` Factory Method**  
+
+```scala
+val arrayOfStrings = Array("Hi", " array", " of Strings.\n")
+```
+
+## **Printing Array Elements**  
+
+```scala
+for (i <- 0 to 2)
+  print(arrayOfStrings(i))
+```
+
+### **Output:**  
+```
+Hi array of Strings.
+```
+
+---
+
+## **Understanding `val` and Mutability**  
+
+Although `val` makes a variable immutable, it does not make the contents of an array immutable. You **cannot reassign** `arrayOfStrings` to a new array, but you **can** modify its elements:  
+
+```scala
+arrayOfStrings(0) = "Bye"
+for (i <- 0 to 2)
+  print(arrayOfStrings(i))
+```
+
+### **Output:**  
+```
+Bye array of Strings.
+```
+
+---
+
+## **Why Does This Happen?**  
+
+Even though `val` prevents reassignment of the **variable**, it does not make the object it points to immutable. The array itself remains **mutable**, meaning its elements can be modified. However, you **cannot** assign `arrayOfStrings` to a completely new array.  

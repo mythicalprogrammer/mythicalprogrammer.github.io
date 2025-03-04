@@ -6,7 +6,86 @@
         <description>Recent content in mutable on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Wed, 29 Jun 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/mutable/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 03 Jul 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/mutable/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Arrays (Containers in Scala) [Mutable]</title>
+        <link>https://mythicalprogrammer.github.io/p/arrays-containers-in-scala-mutable/</link>
+        <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/arrays-containers-in-scala-mutable/</guid>
+        <description>&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post was created awhile back on another platform (Tumblr) and I migrated to my current one.&lt;/p&gt;
+&lt;h2 id=&#34;array-initialization&#34;&gt;&lt;strong&gt;Array Initialization&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;using-new-array-constructor&#34;&gt;&lt;strong&gt;Using &lt;code&gt;new Array&lt;/code&gt; Constructor&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;val&lt;/span&gt; arrayOfStrings &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;Arrayrings&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;Hi&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;arrayOfStrings&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34; array&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;arrayOfStrings&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34; of Strings.\n&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;using-array-factory-method&#34;&gt;&lt;strong&gt;Using &lt;code&gt;Array&lt;/code&gt; Factory Method&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;val&lt;/span&gt; arrayOfStrings &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;Array&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;Hi&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34; array&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34; of Strings.\n&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;printing-array-elements&#34;&gt;&lt;strong&gt;Printing Array Elements&lt;/strong&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;i &lt;span style=&#34;color:#719e07&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;0&lt;/span&gt; to &lt;span style=&#34;color:#2aa198&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  print&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;arrayOfStrings&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#719e07&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;output&#34;&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Hi array of Strings.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;understanding-val-and-mutability&#34;&gt;&lt;strong&gt;Understanding &lt;code&gt;val&lt;/code&gt; and Mutability&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Although &lt;code&gt;val&lt;/code&gt; makes a variable immutable, it does not make the contents of an array immutable. You &lt;strong&gt;cannot reassign&lt;/strong&gt; &lt;code&gt;arrayOfStrings&lt;/code&gt; to a new array, but you &lt;strong&gt;can&lt;/strong&gt; modify its elements:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;arrayOfStrings&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;Bye&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;i &lt;span style=&#34;color:#719e07&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;0&lt;/span&gt; to &lt;span style=&#34;color:#2aa198&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  print&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;arrayOfStrings&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#719e07&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;output-1&#34;&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bye array of Strings.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;why-does-this-happen&#34;&gt;&lt;strong&gt;Why Does This Happen?&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Even though &lt;code&gt;val&lt;/code&gt; prevents reassignment of the &lt;strong&gt;variable&lt;/strong&gt;, it does not make the object it points to immutable. The array itself remains &lt;strong&gt;mutable&lt;/strong&gt;, meaning its elements can be modified. However, you &lt;strong&gt;cannot&lt;/strong&gt; assign &lt;code&gt;arrayOfStrings&lt;/code&gt; to a completely new array.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Defining Variables in Scala</title>
         <link>https://mythicalprogrammer.github.io/p/defining-variables-in-scala/</link>
         <pubDate>Wed, 29 Jun 2011 00:00:00 +0000</pubDate>
