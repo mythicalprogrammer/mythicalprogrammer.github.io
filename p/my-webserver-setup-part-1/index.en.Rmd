@@ -26,8 +26,6 @@ comments: no
 
 **Note:** This post was created awhile back on another platform and I migrated to my current one.
 
-Here's your improved Markdown version of the post with better readability, formatting, and structure:
-
 ---
 
 # **Setting Up a Debian (Lenny) Server on Linode**  
