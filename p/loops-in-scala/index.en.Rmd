@@ -1,0 +1,67 @@
+---
+title: Loops in Scala
+author: Anthony Quoc Anh Doan
+date: '2011-07-01'
+slug: loops-in-scala
+categories:
+  - Programming
+  - Functional Programming
+  - Scala
+tags:
+  - Scala
+  - Loops
+  - functional-programming
+  - iterators
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: no 
+---
+
+**Note:** This post was created awhile back on another platform (Tumblr) and I migrated to my current one.
+
+
+## **`while` Loop**  
+
+```scala
+var i = 0
+while (i < 10) {
+  println(i)
+  i += 1
+}
+```
+
+## **`for` Loop**  
+
+### **Using a Range (`until`)**  
+
+```scala
+for (i <- 0 until 10) {
+  println(i)
+}
+```
+
+### **Iterating Over a Collection**  
+
+```scala
+for (s <- listOfStrings) {
+  // Do something with s
+}
+```
+
+## **`foreach` Loop (More Functional Approach)**  
+
+```scala
+listOfStrings.foreach(doSomething)
+
+def doSomething(s: String): Unit = {
+  // Process s
+}
+```
+
+---
+
+### **Reference**  
+[Loops in Scala – Matt Hicks](http://www.matthicks.com/2009/10/loops-in-scala.html)  
