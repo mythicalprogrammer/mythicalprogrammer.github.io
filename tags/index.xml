@@ -6,18 +6,18 @@
         <description>Recent content in Tags on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>datascience</title>
-        <link>https://mythicalprogrammer.github.io/tags/datascience/</link>
-        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        <lastBuildDate>Tue, 04 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Data Science</title>
+        <link>https://mythicalprogrammer.github.io/tags/data-science/</link>
+        <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://mythicalprogrammer.github.io/tags/datascience/</guid>
+        <guid>https://mythicalprogrammer.github.io/tags/data-science/</guid>
         <description></description>
         </item>
         <item>
         <title>Programming</title>
         <link>https://mythicalprogrammer.github.io/tags/programming/</link>
-        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/programming/</guid>
         <description></description>
@@ -25,7 +25,7 @@
         <item>
         <title>sql</title>
         <link>https://mythicalprogrammer.github.io/tags/sql/</link>
-        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/sql/</guid>
         <description></description>
@@ -212,6 +212,14 @@
         <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/tags/edeliver/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>datascience</title>
+        <link>https://mythicalprogrammer.github.io/tags/datascience/</link>
+        <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/tags/datascience/</guid>
         <description></description>
         </item>
         <item>

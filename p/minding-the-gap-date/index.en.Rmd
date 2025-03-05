@@ -1,74 +1,187 @@
 ---
 title: Minding the Gap (Date) with Window Functions
 author: Anthony Quoc Anh Doan
-date: '2025-03-03'
+date: '2025-03-04'
 slug: minding-the-gap-date
 categories:
   - SQL
   - SQL Server
-  - analysis
+  - Data Analysis
 tags:
-  - datascience
-  - sql
+  - Data Science
+  - SQL
   - Programming
-description: ~
-image: mind-the-gap-1876790_1280.jpg 
+description: Using SQL Window Functions to identify and analyze gaps in sequential data.
+image: mind-the-gap-1876790_1280.jpg
 math: ~
 license: ~
-hidden: yes 
-comments: no 
+hidden: no
+comments: no
 ---
 
-Source: https://data-mozart.com/island-adventures-with-t-sql-window-functions/
+## Introduction
 
+In this post, we explore the concept of **gaps** in sequential data and how **Window Functions** can be leveraged to identify and analyze them effectively.
 
-LEAD win fn: https://learn.microsoft.com/en-us/sql/t-sql/functions/lead-transact-sql?view=sql-server-ver16
+## Refresher on Window Functions
 
-Quote:
-Again, with LEAD, the code is much more intuitive and human readable. Here, we are just checking range between consecutive dates and if it’s greater than 1, that means that we have a gap in our sequence. When that criteria is met, we are just adding one day to last “island” date in the sequence to get first “gap” date, while subtracting one from the first “island” date in next sequence to get the last date of the “gap”.
+**Window Functions** were introduced in [ANSI SQL:2003](https://en.wikipedia.org/wiki/SQL:2003). These functions allow computations across a set of table rows that are related to the current row using the `OVER` clause.
 
+A common use case for window functions is analytical queries, particularly in identifying **islands and gaps** in datasets:
 
-## Code
+- **Islands**: Groups of **continuous** data sequences.
+- **Gaps**: **Missing** sequences between data points.
 
-```SQL
+## Problem Scenario
 
-DROP TABLE IF EXISTS #table2
-;
+Consider a scenario where a patient enrolled in a health program is required to check in daily. Our objective is to identify the **gaps** in their consecutive visits.
 
-CREATE TABLE #table2(visit_date date);
+## Dataset
 
+### Sample Data
 
-INSERT INTO #table2(visit_date)
+| visit_date |
+|------------|
+| 2025-02-02 |
+| 2025-02-03 |
+| 2025-02-11 |
+| 2025-02-12 |
+| 2025-02-13 |
+| 2025-02-27 |
+| 2025-04-03 |
+| 2025-04-04 |
+| 2025-04-05 |
+| 2025-05-12 |
+
+### Creating the Dataset in SQL
+
+```sql
+DROP TABLE IF EXISTS #table2;
+
+CREATE TABLE #table2(visit_date DATE);
+
+INSERT INTO #table2 (visit_date)
 VALUES
-('2025-02-02'),
-('2025-02-03'),
-('2025-02-11'),
-('2025-02-12'),
-('2025-02-13'),
-('2025-02-27'),
-('2025-04-03'),
-('2025-04-04'),
-('2025-04-05'),
-('2025-05-12')
-;
-
-
-SELECT *
-FROM #table2
-ORDER BY visit_date
-;
-
-WITH CTE_LEAD AS
-(
-SELECT visit_date AS startDate
-	, LEAD(visit_date) OVER(ORDER BY visit_date) AS endDate
-FROM #table2
-)
-SELECT DATEADD(dd, 1, startDate) AS startDate
-	,DATEADD(dd, -1, endDate) endDate
-FROM CTE_LEAD
-WHERE DATEDIFF(dd, startDate, endDate) > 1
-;
+    ('2025-02-02'),
+    ('2025-02-03'),
+    ('2025-02-11'),
+    ('2025-02-12'),
+    ('2025-02-13'),
+    ('2025-02-27'),
+    ('2025-04-03'),
+    ('2025-04-04'),
+    ('2025-04-05'),
+    ('2025-05-12');
 ```
 
-Image by <a href="https://pixabay.com/users/gregplom-3802982/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1876790">Greg Plominski</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1876790">Pixabay</a>
+## Expected Output
+
+After analyzing gaps, we should obtain the following missing date ranges:
+
+| start_range | end_range |
+|------------|----------|
+| 2025-02-04 | 2025-02-10 |
+| 2025-02-14 | 2025-02-26 |
+| 2025-02-28 | 2025-04-02 |
+| 2025-04-06 | 2025-05-11 |
+
+## Algorithmic Approach
+
+To identify gaps, we calculate the difference in days between each visit. If the gap is greater than one day, it indicates a missing period.
+
+### Step 1: Compare Each Visit to the Next
+
+| current_visit | next_visit |
+|--------------|-----------|
+| 2025-02-02  | 2025-02-03 |
+| 2025-02-03  | 2025-02-11 |
+| 2025-02-11  | 2025-02-12 |
+| 2025-02-12  | 2025-02-13 |
+| 2025-02-13  | 2025-02-27 |
+| 2025-02-27  | 2025-04-03 |
+| 2025-04-03  | 2025-04-04 |
+| 2025-04-04  | 2025-04-05 |
+| 2025-04-05  | 2025-05-12 |
+| 2025-05-12  | NULL |
+
+### Step 2: Compute Days Between Visits
+
+| current_visit | next_visit | days_between |
+|--------------|-----------|--------------|
+| 2025-02-02  | 2025-02-03 | 1 |
+| 2025-02-03  | 2025-02-11 | 8 |
+| 2025-02-11  | 2025-02-12 | 1 |
+| 2025-02-12  | 2025-02-13 | 1 |
+| 2025-02-13  | 2025-02-27 | 14 |
+| 2025-02-27  | 2025-04-03 | 35 |
+| 2025-04-03  | 2025-04-04 | 1 |
+| 2025-04-04  | 2025-04-05 | 1 |
+| 2025-04-05  | 2025-05-12 | 37 |
+| 2025-05-12  | NULL | NULL |
+
+Any difference greater than **1 day** represents a gap.
+
+## SQL Implementation
+
+We use the **LEAD Window Function** to fetch the next visit date for comparison.
+
+```sql
+SELECT visit_date AS startDate,
+       LEAD(visit_date) OVER (ORDER BY visit_date) AS endDate
+FROM #table2;
+```
+
+### Output
+
+| startDate | endDate |
+|-----------|---------|
+| 2025-02-02 | 2025-02-03 |
+| 2025-02-03 | 2025-02-11 |
+| 2025-02-11 | 2025-02-12 |
+| 2025-02-12 | 2025-02-13 |
+| 2025-02-13 | 2025-02-27 |
+| 2025-02-27 | 2025-04-03 |
+| 2025-04-03 | 2025-04-04 |
+| 2025-04-04 | 2025-04-05 |
+| 2025-04-05 | 2025-05-12 |
+| 2025-05-12 | NULL |
+
+## Final Query
+
+The final query identifies gaps by filtering where the difference is greater than 1 day:
+
+```sql
+WITH CTE_LEAD AS (
+    SELECT visit_date AS startDate,
+           LEAD(visit_date) OVER (ORDER BY visit_date) AS endDate
+    FROM #table2
+)
+SELECT DATEADD(DAY, 1, startDate) AS startDate,
+       DATEADD(DAY, -1, endDate) AS endDate
+FROM CTE_LEAD
+WHERE DATEDIFF(DAY, startDate, endDate) > 1;
+```
+
+## Explanation
+
+- The **CTE_LEAD** common table expression fetches the next visit date.
+- The outer query filters out rows where the gap is more than one day.
+- The `DATEADD()` function adjusts the start and end dates to reflect the missing range.
+
+### Final Output
+
+| startDate  | endDate |
+|------------|---------|
+| 2025-02-04 | 2025-02-10 |
+| 2025-02-14 | 2025-02-26 |
+| 2025-02-28 | 2025-04-02 |
+| 2025-04-06 | 2025-05-11 |
+
+## Conclusion
+
+This post demonstrated how **Window Functions** help identify gaps in sequential data efficiently, making them a powerful tool for analytical SQL queries.
+
+## References
+
+- https://data-mozart.com/island-adventures-with-t-sql-window-functions/
+- https://learn.microsoft.com/en-us/sql/t-sql/functions/lead-transact-sql

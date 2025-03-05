@@ -6,18 +6,18 @@
         <description>Recent content in Categories on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>analysis</title>
-        <link>https://mythicalprogrammer.github.io/categories/analysis/</link>
-        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        <lastBuildDate>Tue, 04 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Data Analysis</title>
+        <link>https://mythicalprogrammer.github.io/categories/data-analysis/</link>
+        <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://mythicalprogrammer.github.io/categories/analysis/</guid>
+        <guid>https://mythicalprogrammer.github.io/categories/data-analysis/</guid>
         <description></description>
         </item>
         <item>
         <title>SQL</title>
         <link>https://mythicalprogrammer.github.io/categories/sql/</link>
-        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/categories/sql/</guid>
         <description></description>
@@ -25,9 +25,17 @@
         <item>
         <title>SQL Server</title>
         <link>https://mythicalprogrammer.github.io/categories/sql-server/</link>
-        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://mythicalprogrammer.github.io/categories/sql-server/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>analysis</title>
+        <link>https://mythicalprogrammer.github.io/categories/analysis/</link>
+        <pubDate>Sun, 02 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/categories/analysis/</guid>
         <description></description>
         </item>
         <item>
