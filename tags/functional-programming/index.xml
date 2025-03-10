@@ -6,7 +6,86 @@
         <description>Recent content in functional-programming on Anthony Quoc Anh Doan - Ramblings of a Happy Scientist</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sun, 03 Jul 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 05 Jul 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://mythicalprogrammer.github.io/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Lists in Scala (Immutable Containers)</title>
+        <link>https://mythicalprogrammer.github.io/p/lists-in-scala-immutable-containers/</link>
+        <pubDate>Tue, 05 Jul 2011 00:00:00 +0000</pubDate>
+        
+        <guid>https://mythicalprogrammer.github.io/p/lists-in-scala-immutable-containers/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In Scala, a &lt;strong&gt;List&lt;/strong&gt; is an immutable sequence of elements. Unlike &lt;strong&gt;Arrays&lt;/strong&gt;, which are mutable, &lt;strong&gt;Lists&lt;/strong&gt; provide a functional approach to handling collections.&lt;/p&gt;
+&lt;h2 id=&#34;creating-a-list&#34;&gt;Creating a List&lt;/h2&gt;
+&lt;p&gt;A List can be created easily using the &lt;code&gt;List&lt;/code&gt; keyword:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;val&lt;/span&gt; listOfInt &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;List&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;list-concatenation-&#34;&gt;List Concatenation (&lt;code&gt;:::&lt;/code&gt;)&lt;/h2&gt;
+&lt;p&gt;To concatenate two lists, use the &lt;code&gt;:::&lt;/code&gt; operator:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;val&lt;/span&gt; firstList &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;List&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;val&lt;/span&gt; secondList &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;List&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;val&lt;/span&gt; firstSecondCombined &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; firstList &lt;span style=&#34;color:#719e07&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#dc322f&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#dc322f&#34;&gt;secondList&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#586e75&#34;&gt;// Result: List(1, 2, 3, 3, 5, 7)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;prepending-elements-&#34;&gt;Prepending Elements (&lt;code&gt;::&lt;/code&gt;)&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;::&lt;/code&gt; operator is used to prepend a new element to the beginning of an existing list:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#495050&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;val&lt;/span&gt; threeFour &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;List&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;three&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;four&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#719e07&#34;&gt;val&lt;/span&gt; twoThreeFour &lt;span style=&#34;color:#719e07&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;two&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#719e07&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#dc322f&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#dc322f&#34;&gt;threeFour&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#586e75&#34;&gt;// Result: List(&amp;#34;two&amp;#34;, &amp;#34;three&amp;#34;, &amp;#34;four&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;lists-vs-arrays&#34;&gt;Lists vs Arrays&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Feature&lt;/th&gt;
+&lt;th&gt;List&lt;/th&gt;
+&lt;th&gt;Array&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Mutability&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Immutable&lt;/td&gt;
+&lt;td&gt;Mutable&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Usage&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Functional, persistent data structures&lt;/td&gt;
+&lt;td&gt;Performance-efficient for indexed access&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Modification&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Elements cannot be modified&lt;/td&gt;
+&lt;td&gt;Elements can be updated&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;key-takeaway&#34;&gt;Key Takeaway&lt;/h3&gt;
+&lt;p&gt;Use &lt;strong&gt;Lists&lt;/strong&gt; when working with &lt;strong&gt;immutable&lt;/strong&gt; collections in a functional style, and &lt;strong&gt;Arrays&lt;/strong&gt; when you need &lt;strong&gt;mutable&lt;/strong&gt; collections with fast indexed access.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Arrays (Containers in Scala) [Mutable]</title>
         <link>https://mythicalprogrammer.github.io/p/arrays-containers-in-scala-mutable/</link>
         <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>

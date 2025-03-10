@@ -1,0 +1,61 @@
+---
+title: Lists in Scala (Immutable Containers)
+author: Anthony Quoc Anh Doan
+date: '2011-07-05'
+slug: lists-in-scala-immutable-containers
+categories:
+  - Scala
+  - Functional Programming
+  - Data Structures
+tags:
+  - Scala
+  - collections
+  - immutability
+  - functional-programming
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: yes
+---
+
+## Introduction  
+In Scala, a **List** is an immutable sequence of elements. Unlike **Arrays**, which are mutable, **Lists** provide a functional approach to handling collections.
+
+## Creating a List  
+A List can be created easily using the `List` keyword:  
+
+```scala
+val listOfInt = List(3, 5, 7)
+```
+
+## List Concatenation (`:::`)  
+To concatenate two lists, use the `:::` operator:  
+
+```scala
+val firstList = List(1, 2, 3)
+val secondList = List(3, 5, 7)
+val firstSecondCombined = firstList ::: secondList
+// Result: List(1, 2, 3, 3, 5, 7)
+```
+
+## Prepending Elements (`::`)  
+The `::` operator is used to prepend a new element to the beginning of an existing list:  
+
+```scala
+val threeFour = List("three", "four")
+val twoThreeFour = "two" :: threeFour
+// Result: List("two", "three", "four")
+```
+
+## Lists vs Arrays  
+
+| Feature | List | Array |
+|---------|------|-------|
+| **Mutability** | Immutable | Mutable |
+| **Usage** | Functional, persistent data structures | Performance-efficient for indexed access |
+| **Modification** | Elements cannot be modified | Elements can be updated |
+
+### Key Takeaway  
+Use **Lists** when working with **immutable** collections in a functional style, and **Arrays** when you need **mutable** collections with fast indexed access.
