@@ -17,7 +17,7 @@ image: ~
 math: ~
 license: ~
 hidden: no
-comments: yes
+comments: no 
 ---
 
 ## Introduction  

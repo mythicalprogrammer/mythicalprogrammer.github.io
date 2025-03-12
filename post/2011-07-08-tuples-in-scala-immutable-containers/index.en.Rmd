@@ -1,0 +1,49 @@
+---
+title: Tuples in Scala (Immutable Containers)
+author: Anthony Quoc Anh Doan
+date: '2011-07-08'
+slug: tuples-in-scala-immutable-containers
+categories:
+  - Scala
+  - Functional Programming
+  - Data Structures
+tags:
+  - Scala
+  - tuples
+  - immutable
+  - collections
+  - functional-programming
+description: ~
+image: ~
+math: ~
+license: ~
+hidden: no
+comments: no
+---
+
+## What Are Tuples?  
+Tuples are similar to lists but can contain multiple data types. They allow grouping of heterogeneous elements into a single value.  
+
+### Creating a Tuple  
+
+```scala
+val randomCollection = (1985, "clown", "rubber chicken", 12, "dove", 'c')
+```
+
+**Note:**  
+The Scala compiler infers the data types of each element automatically:  
+- `1985` is an `Int`  
+- `"clown"` is a `String`  
+- `'c'` is a `Char`  
+
+## Accessing Tuple Elements  
+
+To retrieve elements from a tuple, use `._` followed by the index (starting at **1**).  
+
+```scala
+println(randomCollection._1) // Outputs: 1985
+println(randomCollection._2) // Outputs: clown
+```
+
+**Important:** Unlike lists or arrays (which use zero-based indexing), tuples in Scala are **one-based indexed** when accessing elements.  
+
